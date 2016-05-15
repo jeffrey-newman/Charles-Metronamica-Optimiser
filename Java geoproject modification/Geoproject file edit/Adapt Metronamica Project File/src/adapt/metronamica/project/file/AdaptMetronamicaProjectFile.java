@@ -303,10 +303,7 @@ public class AdaptMetronamicaProjectFile
         try
         {
             doc = builder.parse(new File(filename));
-         } catch (SAXException ex)
-        {
-            Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex)
+         } catch (SAXException | IOException ex)
         {
             Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
         }
