@@ -9,13 +9,16 @@
 #ifndef MetronamicaOF_hpp
 #define MetronamicaOF_hpp
 
-#include <stdio.h>
+#include <iostream>
 #include <cstdlib>
 #include <cmath>
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <boost/filesystem.hpp>
+#include <boost/algorithm/string.hpp> // include Boost, a C++ library
 #include "Evaluation.hpp"
+#include "MapComparison_0_4.h"
 
 class MetronamicaOF : public EvaluatorBase
 {
@@ -24,21 +27,27 @@ class MetronamicaOF : public EvaluatorBase
     int num_int_decision_vars;
     int num_constraints;
     int replicates;
-    double min_dv_value;
-    double max_dv_value;
-    std::string geo_cmd;
+    boost::filesystem::path geo_cmd;
     boost::filesystem::path java_geoproj_edit;
-    std::string mck_cmd;
-    std::string wine_temporary_dir;
+    boost::filesystem::path mck_cmd;
+    boost::filesystem::path wine_cmd;
+    boost::filesystem::path java_cmd;
     boost::filesystem::path template_dir;
     boost::filesystem::path temporary_dir;
+    std::string wine_temp_dir; // same path as temporary dir, but in the wine (windows) path format.
     std::string geoproject_name;
     std::string logfile_name;
-    std::string actual_map;
-    std::string original_map;
-    std::string masking_map;
-    std::string fks_coefficients;
-    std::vector<int> rand_seeds { 1000,1001,1002,1003,1004,10005,1006,1007,1008,1009 };
+    boost::filesystem::path actual_map;
+    boost::filesystem::path original_map;
+    boost::filesystem::path masking_map;
+    boost::filesystem::path fks_coefficients;
+    std::vector<int> rand_seeds { 1000,1001,1002,1003,1004,1005,1006,1007,1008,1009, 1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020 };
+    int analysisNum;
+    std::vector<double> min_dv_values  = {500,-1000,.05,500,-1000,.05,500,-1000,.05,500,-1000,.05,500,-1000,.05,500,-1000,.05,500,-1000,.05,500,-1000,.05,500,-1000,.05,500,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,-1000,.05,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};   // lower bound of x
+    std::vector<double> max_dv_values = {5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,1000,5,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}; // upper bound of x
+    std::vector<int> int_lowerbounds;
+    std::vector<int> int_upperbounds;
+    std::vector<MinOrMaxType> minimise_or_maximise = {MAXIMISATION, MINIMISATION};
     
     ProblemDefinitions prob_defs;
     std::pair<std::vector<double>, std::vector<double> > objectives_and_constrataints;
@@ -120,7 +129,7 @@ class MetronamicaOF : public EvaluatorBase
                 std:: cerr << e.what() << '\n';
             }
         }
-        return true
+        return true;
     }
     
     //Reads an entire file into string in memory
@@ -141,32 +150,58 @@ class MetronamicaOF : public EvaluatorBase
         std::string file_contents = readfile(file.string());
         std::string search_term_1 = "overall_difference";
         std::string search_term_2 = "\"";
-        int begin = file_contents.find(search_term) + 20;
+        int begin = file_contents.find(search_term_1) + 20;
         int end = file_contents.find(search_term_2, begin);
-        std::string diff_str = file_contents.substr(begin, (begin-end));
+        std::string diff_str = file_contents.substr(begin, (end-begin));
         double diff = std::stod(diff_str);
         return (diff);
     }
 
 
 public:
-    MetronamicOF()
+    MetronamicaOF(boost::filesystem::path & metro_exe,
+                  boost::filesystem::path & mck_exe,
+                  boost::filesystem::path & wine_exe,
+                  boost::filesystem::path & java_exe,
+                  boost::filesystem::path & geoproj_edit_jar,
+                  boost::filesystem::path & template_path,
+                  boost::filesystem::path & working_dir,
+                  std::string &_wine_work_dir,
+                  std::string &_geoproj_name,
+                  std::string & _logfile_name,
+                  boost::filesystem::path & actual_map_path,
+                  boost::filesystem::path & original_map_path,
+                  boost::filesystem::path & masking_map_path,
+                  boost::filesystem::path &  fks_coefficients_path)
     :   num_objectives(2),
     num_real_decision_vars(371),
     num_int_decision_vars(0),
     num_constraints(0),
-    min_dv_value(0),
-    max_dv_value(1),
-    prob_defs(num_real_decision_vars, min_dv_value, max_dv_value,  num_int_decision_vars, 0, 0, num_objectives, MINIMISATION, num_constraints),
-    objectives_and_constrataints(std::piecewise_construct, std::make_tuple(num_objectives, std::numeric_limits<double>::max()), std::make_tuple(num_constraints))
+    replicates(10),
+      geo_cmd(metro_exe),
+      java_geoproj_edit(geoproj_edit_jar),
+      mck_cmd(mck_exe),
+      wine_cmd(wine_exe),
+      java_cmd(java_exe),
+      template_dir(template_path),
+      temporary_dir(working_dir),
+      wine_temp_dir(_wine_work_dir),
+      geoproject_name(_geoproj_name),
+      logfile_name(_logfile_name),
+      actual_map(actual_map_path),
+      original_map(original_map_path),
+      masking_map(masking_map_path),
+      fks_coefficients(fks_coefficients_path),
+      int_lowerbounds(0, std::numeric_limits<int>::min()),
+      int_upperbounds(0, std::numeric_limits<int>::max()),
+      prob_defs(min_dv_values, max_dv_values,  int_lowerbounds, int_upperbounds, minimise_or_maximise, num_constraints),
+     objectives_and_constrataints(std::piecewise_construct, std::make_tuple(num_objectives, std::numeric_limits<double>::max()), std::make_tuple(num_constraints))
     {
         analysisNum = createAnalysis();
-        loadMap1(analysisNum, actual_map);
-        loadOriginalMap(analysisNum, original_map);
-        loadMaskingMap(analysisNum, masking_map);
-        loadTransitionFuzzyWeights(analysisNum, fks_coefficients);
-        
-        
+        loadMap1(analysisNum, actual_map.c_str());
+        loadOriginalMap(analysisNum, original_map.c_str());
+        loadMaskingMap(analysisNum, masking_map.c_str());
+        loadTransitionFuzzyWeights(analysisNum, fks_coefficients.c_str());
     }
     
     std::pair<std::vector<double>, std::vector<double> > &
@@ -175,47 +210,54 @@ public:
         std::vector<double> & obj = this->objectives_and_constrataints.first;
         obj[0] = 0; obj[1] = 0;
         
-        for (int j = 0; j < 10; ++j)
+        for (int j = 0; j < replicates; ++j)
         {
             
             boost::filesystem::path ph = boost::filesystem::unique_path(temporary_dir / "%%%%-%%%%-%%%%-%%%%");
-            create_directories(ph);
-            copyDir(template_dir, ph)
-            std::string tmp_dir_name = ph.filename.string();
-            std::string geoproject_path = wine_temporary_dir + "\\" + tmp_dir_name + "\\" + geoproject_name;
-            std::string logfile_path = wine_temporary_dir + "\\" + tmp_dir_name + "\\"  + logfile_name;
+//            create_directories(ph);
+            copyDir(template_dir, ph);
+            boost::filesystem::path orig_geoproj_path = ph / geoproject_name;
+            std::string mod_proj_file(orig_geoproj_path.stem().string() + "_mod" + orig_geoproj_path.extension().string());
+            boost::filesystem::path mod_geoproj_path = ph / mod_proj_file;
+            //boost::filesystem::path logfile_path = ph / logfile_name;
             
             boost::filesystem::current_path(ph);
             std::stringstream cmd1, cmd2, cmd3, cmd4;
-            
+
             // Modify Geoproject file with decision variables and random seed
-            cmd4 << "java -jar " << java_geoproj_edit.string();
+            cmd4 << java_cmd << " -jar " << java_geoproj_edit << " ";
+            cmd4 << orig_geoproj_path<< " " << mod_geoproj_path;
             for (int i = 0; i < num_real_decision_vars; ++i)
             {
-                cmd4 << " " << num_real_decision_vars[i];
+                cmd4 << " " << real_decision_vars[i];
             }
             cmd4 << " " << rand_seeds[j];
-            int i4 = system(cmd4.c_str());
+            std::cout << "Running: " << cmd4.str() << std::endl;
+            int i4 = system(cmd4.str().c_str());
             
-            
+            std::string wine_proj_path = "\"" + wine_temp_dir + "\\\\" + ph.filename().string() + "\\\\" + mod_proj_file + "\"";
             //Call the model
-            cmd1 << "wine " << geo_cmd << " --Reset --Save " << geoproject_path;
-            int i1 = system(cmd1.c_str());
-            cmd2 << geo_cmd << " --Run --Save --LogSettings " << logfile_path << " " << geoproject_path;
-            int i2 = system(cmd2.c_str());
+            cmd1 << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path;
+            std::cout << "Running: " << cmd1.str() << std::endl;
+            int i1 = system(cmd1.str().c_str());
+            cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << logfile_name << " " << wine_proj_path;
+            std::cout << "Running: " << cmd2.str() << std::endl;
+            int i2 = system(cmd2.str().c_str());
             
             // Calc FKS
-            output_map = ph / "Log" / "Land_use" / "Land use map_2000-Jan-01 00_00_00.rst"
-            loadMap2(analysisNum, output_map);
+            boost::filesystem::path output_map = ph / "Log" / "Land_use" / "Land use map_2000-Jan-01 00_00_00.rst";
+            loadMap2(analysisNum, output_map.c_str());
             obj[0] += getFuzzyKappaSim(analysisNum);
             
             //Fourth calculate clumpiness values
-            std::string clumpcsl = wine_temporary_dir + "\\" + tmp_dir_name\\Log\\Land_use\\clump.csl";
-            std::string loglog = wine_temporary_dir + "\\tmp_dir_name\\Log\\Land_use\\auto_cal_log.log";
-            std::string logdir = wine_temporary_dir + "\\tmp_dir_name\\Log\\Land_use";
-            cmd3 << "wine " << mck_cmd << " /RunComparisonSet " << clumpcsl << " " << loglog << " "
-            << logdir;
-            int i3 = system(cmd3.c_str());
+            std::string clumpcsl = wine_temp_dir + "\\\\" + ph.filename().string() + "\\\\Log\\\\Land_use\\\\clump.csl";
+            std::string loglog = wine_temp_dir + "\\\\" + ph.filename().string() + "\\\\Log\\\\Land_use\\\\auto_cal_log.log";
+            std::string logdir = wine_temp_dir + "\\\\" + ph.filename().string() + "\\\\Log\\\\Land_use";
+
+            cmd3 << wine_cmd << " " << mck_cmd << " /RunComparisonSet \"" << clumpcsl << "\" \"" << loglog << "\" \""
+            << logdir << "\"";
+            std::cout << "Running: " << cmd3.str() << std::endl;
+            int i3 = system(cmd3.str().c_str());
             
             // Take avg of clumpiness
             double avg_clump = 0;
@@ -243,12 +285,12 @@ public:
             obj[1] += avg_clump;
             
             boost::filesystem::current_path(temporary_dir);
-            boost::filesystem::remove_all(ph)
+            boost::filesystem::remove_all(ph);
         }
         
         obj[0] /= replicates;
         obj[1] /= replicates;
-        return (this->objectives_and_constrataints)
+        return (this->objectives_and_constrataints);
     }
     
     ProblemDefinitions & getProblemDefinitions()

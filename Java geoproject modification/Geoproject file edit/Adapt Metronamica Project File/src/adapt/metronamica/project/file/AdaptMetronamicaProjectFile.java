@@ -278,6 +278,27 @@ public class AdaptMetronamicaProjectFile
             Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
+    
+    static void set_all_values2(XPathFactory xPathFactory, Document doc, String xpath_query, int new_value)
+    {
+        try
+        {
+            // TODO code application logic here
+            
+            XPath xpath = xPathFactory.newXPath();
+            XPathExpression expr = xpath.compile(xpath_query);
+            NodeList nl = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
+            for(int i=0; i<nl.getLength() ; i++) 
+            {
+                Node nd = nl.item(i);
+                nd.getFirstChild().setNodeValue(Integer.toString(new_value));
+            }            
+        } catch (XPathExpressionException ex)
+        {
+            Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -913,6 +934,8 @@ public class AdaptMetronamicaProjectFile
          // Recreation areas
         double recmwe = dvs[369];
         double recowe = dvs[370];
+        
+        int rseed = Integer.parseInt(args[373]);
           
 
         set_exp_rule_selfinfluence(xPathFactory, doc, 4, 1, gregre1, gregre2, gregre3);
@@ -1143,6 +1166,7 @@ public class AdaptMetronamicaProjectFile
         set_all_values(xPathFactory, doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[9]", natowe);
         set_all_values(xPathFactory, doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[10]", recowe);
 
+        set_all_values2(xPathFactory, doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Total_potential\"]/TotalPotentialBlock/Seed", rseed);
          // Use a Transformer for output
     try
     {
