@@ -361,579 +361,579 @@ public class AdaptMetronamicaProjectFile
         //// Parameters - Inertia Neighbourhood Rules
             // Greenhouses (Function Class 1)
         // From GREenhouses to GREenhouses
-        double gregre1 = dvs[1];
-        double gregre2 = dvs[2];
-        double gregre3 = dvs[3];
+        double gregre1 = dvs[0];
+        double gregre2 = dvs[1];
+        double gregre3 = dvs[2];
             // Housing Low Density (Function Class 2)
         // From Housing Low Density to Housing Low Density
-        double hldhld1 = dvs[4];
-        double hldhld2 = dvs[5];
-        double hldhld3 = dvs[6];
+        double hldhld1 = dvs[3];
+        double hldhld2 = dvs[4];
+        double hldhld3 = dvs[5];
              // Housing High Density (Function Class 3)
          // From Housing High Density to Housing High Density
-        double hhdhhd1 = dvs[7];
-        double hhdhhd2 = dvs[8];
-        double hhdhhd3 = dvs[9];
+        double hhdhhd1 = dvs[6];
+        double hhdhhd2 = dvs[7];
+        double hhdhhd3 = dvs[8];
              // Industry (Function Class 4)
          // From INDustry to INDustry
-        double indind1 = dvs[10];
-        double indind2 = dvs[11];
-        double indind3 = dvs[12];
+        double indind1 = dvs[9];
+        double indind2 = dvs[10];
+        double indind3 = dvs[11];
              // Services (Function Class 5)
          // From SERvices to SERvices
-        double serser1 = dvs[13];
-        double serser2 = dvs[14];
-        double serser3 = dvs[15];
+        double serser1 = dvs[12];
+        double serser2 = dvs[13];
+        double serser3 = dvs[14];
              // Socio-cultural uses (Function class 6)
          // From Socio-Cultural Uses to Socio-Cultural Uses
-        double scuscu1 = dvs[16];
-        double scuscu2 = dvs[17];
-        double scuscu3 = dvs[18];
+        double scuscu1 = dvs[15];
+        double scuscu2 = dvs[16];
+        double scuscu3 = dvs[17];
              // Forest (Function class 7)
          // From FORest to FORest
-        double forfor1 = dvs[19];
-        double forfor2 = dvs[20];
-        double forfor3 = dvs[21];
+        double forfor1 = dvs[18];
+        double forfor2 = dvs[19];
+        double forfor3 = dvs[20];
              // Extensive Grasslands (Function class 8)
          // From EXtensive Grasslands to EXtensive Grasslands
-        double exgexg1 = dvs[22];
-        double exgexg2 = dvs[23];
-        double exgexg3 = dvs[24];
+        double exgexg1 = dvs[21];
+        double exgexg2 = dvs[22];
+        double exgexg3 = dvs[23];
              // Nature (Function class 9)
          // From NATure to NATure
-        double natnat1 = dvs[25];
-        double natnat2 = dvs[26];
-        double natnat3 = dvs[27];
+        double natnat1 = dvs[24];
+        double natnat2 = dvs[25];
+        double natnat3 = dvs[26];
              // Recreation Areas (Function class 10)
          // From RECreation areas to RECreation areas
-        double recrec1 = dvs[28];
-        double recrec2 = dvs[29];
-        double recrec3 = dvs[30];
+        double recrec1 = dvs[27];
+        double recrec2 = dvs[28];
+        double recrec3 = dvs[29];
 
          //// Parameters - Interaction Neighbourhood Rules
              // Greenhouses (Function Class 1)
          // From Other AGriculture to GREenhouses
-        double oaggre1 = dvs[31];
-        double oaggre2 = dvs[32];
+        double oaggre1 = dvs[30];
+        double oaggre2 = dvs[31];
          // From PAStures to GREenhouses
-        double pasgre1 = dvs[33];
-        double pasgre2 = dvs[34];
+        double pasgre1 = dvs[32];
+        double pasgre2 = dvs[33];
          // From ARable Land to GREenhouses 
-        double arlgre1 = dvs[35];
-        double arlgre2 = dvs[36];
+        double arlgre1 = dvs[34];
+        double arlgre2 = dvs[35];
          // From Housing Low Density to GREenhouses
-        double hldgre1 = dvs[37];
-        double hldgre2 = dvs[38];
+        double hldgre1 = dvs[36];
+        double hldgre2 = dvs[37];
          // From Housing High Density to GREenhouses
-        double hhdgre1 = dvs[39];
-        double hhdgre2 = dvs[40];
+        double hhdgre1 = dvs[38];
+        double hhdgre2 = dvs[39];
          // From INDustry to GREenhouses
-        double indgre1 = dvs[41];
-        double indgre2 = dvs[42];
+        double indgre1 = dvs[40];
+        double indgre2 = dvs[41];
          // From SERvices to GREenhouses
-        double sergre1 = dvs[43];
-        double sergre2 = dvs[44];
+        double sergre1 = dvs[42];
+        double sergre2 = dvs[43];
          // From Socio-Cultural Uses to GREenhouses
-        double scugre1 = dvs[45];
-        double scugre2 = dvs[46];
+        double scugre1 = dvs[44];
+        double scugre2 = dvs[45];
          // From FORest to GREeehouses
-        double forgre1 = dvs[47];
-        double forgre2 = dvs[48];
+        double forgre1 = dvs[46];
+        double forgre2 = dvs[47];
          // From EXtensive Grasslands to GREenhouses
-        double exggre1 = dvs[49];
-        double exggre2 = dvs[50];
+        double exggre1 = dvs[48];
+        double exggre2 = dvs[49];
          // From NATure to GREenhouses
-        double natgre1 = dvs[51];
-        double natgre2 = dvs[52];
+        double natgre1 = dvs[50];
+        double natgre2 = dvs[51];
          // From RECreation areas to GREenhouses
-        double recgre1 = dvs[53];
-        double recgre2 = dvs[54];
+        double recgre1 = dvs[52];
+        double recgre2 = dvs[53];
          // From AIRport to GREenhouses
-        double airgre1 = dvs[55];
-        double airgre2 = dvs[56];
+        double airgre1 = dvs[54];
+        double airgre2 = dvs[55];
          // From FREsh water to GREenhouses
-        double fregre1 = dvs[57];
-        double fregre2 = dvs[58];
+        double fregre1 = dvs[56];
+        double fregre2 = dvs[57];
          // From MARine water to GREenhouses
-        double margre1 = dvs[59];
-        double margre2 = dvs[60];
+        double margre1 = dvs[58];
+        double margre2 = dvs[59];
              // Housing Low Density (Function Class 2)
          // From Other AGriculture to Housing Low Density
-        double oaghld1 = dvs[61];
-        double oaghld2 = dvs[62];
+        double oaghld1 = dvs[60];
+        double oaghld2 = dvs[61];
          // From PAStures to Housing Low Density
-        double pashld1 = dvs[63];
-        double pashld2 = dvs[64];
+        double pashld1 = dvs[62];
+        double pashld2 = dvs[63];
          // From ARable Land to Housing Low Density 
-        double arlhld1 = dvs[65];
-        double arlhld2 = dvs[66];
+        double arlhld1 = dvs[64];
+        double arlhld2 = dvs[65];
          // From GREenhouses to Housing Low Density
-        double grehld1 = dvs[67];
-        double grehld2 = dvs[68];
+        double grehld1 = dvs[66];
+        double grehld2 = dvs[67];
          // From Housing High Density to Housing Low Density
-        double hhdhld1 = dvs[69];
-        double hhdhld2 = dvs[70];
+        double hhdhld1 = dvs[68];
+        double hhdhld2 = dvs[69];
          // From INDustry to Housing Low Density
-        double indhld1 = dvs[71];
-        double indhld2 = dvs[72];
+        double indhld1 = dvs[70];
+        double indhld2 = dvs[71];
          // From SERvices to Housing Low Density
-        double serhld1 = dvs[73];
-        double serhld2 = dvs[74];
+        double serhld1 = dvs[72];
+        double serhld2 = dvs[73];
          // From Socio-Cultural Uses to Housing Low Density
-        double scuhld1 = dvs[75];
-        double scuhld2 = dvs[76];
+        double scuhld1 = dvs[74];
+        double scuhld2 = dvs[75];
          // From FORest to Housing Low Density
-        double forhld1 = dvs[77];
-        double forhld2 = dvs[78];
+        double forhld1 = dvs[76];
+        double forhld2 = dvs[77];
          // From EXtensive Grasslands to Housing Low Density
-        double exghld1 = dvs[79];
-        double exghld2 = dvs[80];
+        double exghld1 = dvs[78];
+        double exghld2 = dvs[79];
          // From NATure to Housing Low Density
-        double nathld1 = dvs[81];
-        double nathld2 = dvs[82];
+        double nathld1 = dvs[80];
+        double nathld2 = dvs[81];
          // From RECreation areas to Housing Low Density
-        double rechld1 = dvs[83];
-        double rechld2 = dvs[84];
+        double rechld1 = dvs[82];
+        double rechld2 = dvs[83];
          // From AIRport to Housing Low Density
-        double airhld1 = dvs[85];
-        double airhld2 = dvs[86];
+        double airhld1 = dvs[84];
+        double airhld2 = dvs[85];
          // From FREsh water to Housing Low Density
-        double frehld1 = dvs[87];
-        double frehld2 = dvs[88];
+        double frehld1 = dvs[86];
+        double frehld2 = dvs[87];
          // From MARine water to Housing Low Density
-        double marhld1 = dvs[89];
-        double marhld2 = dvs[90];
+        double marhld1 = dvs[88];
+        double marhld2 = dvs[89];
              // Housing High Density (Function Class 3)
          // From Other AGriculture to Housing High Density
-        double oaghhd1 = dvs[91];
-        double oaghhd2 = dvs[92];
+        double oaghhd1 = dvs[90];
+        double oaghhd2 = dvs[91];
          // From PAStures to Housing High Density
-        double pashhd1 = dvs[93];
-        double pashhd2 = dvs[94];
+        double pashhd1 = dvs[92];
+        double pashhd2 = dvs[93];
          // From ARable Land to Housing High Density 
-        double arlhhd1 = dvs[95];
-        double arlhhd2 = dvs[96];
+        double arlhhd1 = dvs[94];
+        double arlhhd2 = dvs[95];
          // From GREenhouses to Housing High Density
-        double grehhd1 = dvs[97];
-        double grehhd2 = dvs[98];
+        double grehhd1 = dvs[96];
+        double grehhd2 = dvs[97];
          // From Housing Low Density to Housing High Density
-        double hldhhd1 = dvs[99];
-        double hldhhd2 = dvs[100];    
+        double hldhhd1 = dvs[98];
+        double hldhhd2 = dvs[99];    
          // From INDustry to Housing High Density
-        double indhhd1 = dvs[101];
-        double indhhd2 = dvs[102];
+        double indhhd1 = dvs[100];
+        double indhhd2 = dvs[101];
          // From SERvices to Housing High Density
-        double serhhd1 = dvs[103];
-        double serhhd2 = dvs[104];
+        double serhhd1 = dvs[102];
+        double serhhd2 = dvs[103];
          // From Socio-Cultural Uses to Housing High Density
-        double scuhhd1 = dvs[105];
-        double scuhhd2 = dvs[106];
+        double scuhhd1 = dvs[104];
+        double scuhhd2 = dvs[105];
          // From FORest to Housing High Density
-        double forhhd1 = dvs[107];
-        double forhhd2 = dvs[108];
+        double forhhd1 = dvs[106];
+        double forhhd2 = dvs[107];
          // From EXtensive Grasslands to Housing High Density
-        double exghhd1 = dvs[109];
-        double exghhd2 = dvs[110];
+        double exghhd1 = dvs[108];
+        double exghhd2 = dvs[109];
          // From NATure to Housing High Density
-        double nathhd1 = dvs[111];
-        double nathhd2 = dvs[112];
+        double nathhd1 = dvs[110];
+        double nathhd2 = dvs[111];
          // From RECreation areas to Housing High Density
-        double rechhd1 = dvs[113];
-        double rechhd2 = dvs[114];
+        double rechhd1 = dvs[112];
+        double rechhd2 = dvs[113];
          // From AIRport to Housing High Density
-        double airhhd1 = dvs[115];
-        double airhhd2 = dvs[116];
+        double airhhd1 = dvs[114];
+        double airhhd2 = dvs[115];
          // From FREsh water to Housing High Density
-        double frehhd1 = dvs[117];
-        double frehhd2 = dvs[118];
+        double frehhd1 = dvs[116];
+        double frehhd2 = dvs[117];
          // From MARine water to Housing High Density
-        double marhhd1 = dvs[119];
-        double marhhd2 = dvs[120];
+        double marhhd1 = dvs[118];
+        double marhhd2 = dvs[119];
              // Industry (Function Class 4)
          // From Other AGriculture to INDustry
-        double oagind1 = dvs[121];
-        double oagind2 = dvs[122];
+        double oagind1 = dvs[120];
+        double oagind2 = dvs[121];
          // From PAStures to INDustry
-        double pasind1 = dvs[123];
-        double pasind2 = dvs[124];
+        double pasind1 = dvs[122];
+        double pasind2 = dvs[123];
          // From ARable Land to INDustry 
-        double arlind1 = dvs[125];
-        double arlind2 = dvs[126];
+        double arlind1 = dvs[124];
+        double arlind2 = dvs[125];
          // From GREenhouses to INDustry
-        double greind1 = dvs[127];
-        double greind2 = dvs[128];
+        double greind1 = dvs[126];
+        double greind2 = dvs[127];
          // From Housing Low Density to INDustry
-        double hldind1 = dvs[129];
-        double hldind2 = dvs[130];
+        double hldind1 = dvs[128];
+        double hldind2 = dvs[129];
          // From Housing High Density to INDustry
-        double hhdind1 = dvs[131];
-        double hhdind2 = dvs[132];
+        double hhdind1 = dvs[130];
+        double hhdind2 = dvs[131];
          // From SERvices to INDustry
-        double serind1 = dvs[133];
-        double serind2 = dvs[134];
+        double serind1 = dvs[132];
+        double serind2 = dvs[133];
          // From Socio-Cultural Uses to INDustry
-        double scuind1 = dvs[135];
-        double scuind2 = dvs[136];
+        double scuind1 = dvs[134];
+        double scuind2 = dvs[135];
          // From FORest to INDustry
-        double forind1 = dvs[137];
-        double forind2 = dvs[138];
+        double forind1 = dvs[136];
+        double forind2 = dvs[137];
          // From EXtensive Grasslands to INDustry
-        double exgind1 = dvs[139];
-        double exgind2 = dvs[140];
+        double exgind1 = dvs[138];
+        double exgind2 = dvs[139];
          // From NATure to INDustry
-        double natind1 = dvs[141];
-        double natind2 = dvs[142];
+        double natind1 = dvs[140];
+        double natind2 = dvs[141];
          // From RECreation areas to INDustry
-        double recind1 = dvs[143];
-        double recind2 = dvs[144];
+        double recind1 = dvs[142];
+        double recind2 = dvs[143];
          // From AIRport to INDustry
-        double airind1 = dvs[145];
-        double airind2 = dvs[146];
+        double airind1 = dvs[144];
+        double airind2 = dvs[145];
          // From FREsh water to INDustry
-        double freind1 = dvs[147];
-        double freind2 = dvs[148];
+        double freind1 = dvs[146];
+        double freind2 = dvs[147];
          // From MARine water to INDustry
-        double marind1 = dvs[149];
-        double marind2 = dvs[150];
+        double marind1 = dvs[148];
+        double marind2 = dvs[149];
              // Services (Function Class 5)
          // From Other AGriculture to SERvices
-        double oagser1 = dvs[151];
-        double oagser2 = dvs[152];
+        double oagser1 = dvs[150];
+        double oagser2 = dvs[151];
          // From PAStures to SERvices
-        double passer1 = dvs[153];
-        double passer2 = dvs[154];
+        double passer1 = dvs[152];
+        double passer2 = dvs[153];
          // From ARable Land to SERvices 
-        double arlser1 = dvs[155];
-        double arlser2 = dvs[156];
+        double arlser1 = dvs[154];
+        double arlser2 = dvs[155];
          // From GREenhouses to SERvices
-        double greser1 = dvs[157];
-        double greser2 = dvs[158];
+        double greser1 = dvs[156];
+        double greser2 = dvs[157];
          // From Housing Low Density to SERvices
-        double hldser1 = dvs[159];
-        double hldser2 = dvs[160];
+        double hldser1 = dvs[158];
+        double hldser2 = dvs[159];
          // From Housing High Density to SERvices
-        double hhdser1 = dvs[161];
-        double hhdser2 = dvs[162];
+        double hhdser1 = dvs[160];
+        double hhdser2 = dvs[161];
          // From INDustry to SERvices
-        double indser1 = dvs[163];
-        double indser2 = dvs[164];
+        double indser1 = dvs[162];
+        double indser2 = dvs[163];
          // From Socio-Cultural uses to SERvices
-        double scuser1 = dvs[165];
-        double scuser2 = dvs[166];
+        double scuser1 = dvs[164];
+        double scuser2 = dvs[165];
          // From FORest to SERvices
-        double forser1 = dvs[167];
-        double forser2 = dvs[168];
+        double forser1 = dvs[166];
+        double forser2 = dvs[167];
          // From EXtensive Grasslands to SERvices
-        double exgser1 = dvs[169];
-        double exgser2 = dvs[170];
+        double exgser1 = dvs[168];
+        double exgser2 = dvs[169];
          // From NATure to SERvices
-        double natser1 = dvs[171];
-        double natser2 = dvs[172];
+        double natser1 = dvs[170];
+        double natser2 = dvs[171];
          // From RECreation areas to SERvices
-        double recser1 = dvs[173];
-        double recser2 = dvs[174];
+        double recser1 = dvs[172];
+        double recser2 = dvs[173];
          // From AIRport to SERvices
-        double airser1 = dvs[175];
-        double airser2 = dvs[176];
+        double airser1 = dvs[174];
+        double airser2 = dvs[175];
          // From FREsh water to SERvices
-        double freser1 = dvs[177];
-        double freser2 = dvs[178];
+        double freser1 = dvs[176];
+        double freser2 = dvs[177];
          // From MARine water to SERvices
-        double marser1 = dvs[179];
-        double marser2 = dvs[180];
+        double marser1 = dvs[178];
+        double marser2 = dvs[179];
              // Socio-cultural uses (Function class 6)
          // From Other AGriculture to Socio-Cultural Uses
-        double oagscu1 = dvs[181];
-        double oagscu2 = dvs[182];
-         // From PAStures to Socio-Cultural Uses
-        double passcu1 = dvs[183];
-        double passcu2 = dvs[184];
+        double oagscu1 = dvs[180];
+        double oagscu2 = dvs[181];
+         // From PAStures to Soio-Cultural Uses
+        double passcu1 = dvs[182];
+        double passcu2 = dvs[183];
          // From ARable Land to Socio-Cultural Uses 
-        double arlscu1 = dvs[185];
-        double arlscu2 = dvs[186];
-         // From GREenhouses to Socio-Cultural Uses
-        double grescu1 = dvs[187];
-        double grescu2 = dvs[188];
+        double arlscu1 = dvs[184];
+        double arlscu2 = dvs[185];
+         // From GREenhouses toSocio-Cultural Uses
+        double grescu1 = dvs[186];
+        double grescu2 = dvs[187];
          // From Housing Low Density to Socio-Cultural Uses
-        double hldscu1 = dvs[189];
-        double hldscu2 = dvs[190];
+        double hldscu1 = dvs[188];
+        double hldscu2 = dvs[189];
          // From Housing High Density to Socio-Cultural Uses
-        double hhdscu1 = dvs[191];
-        double hhdscu2 = dvs[192];
+        double hhdscu1 = dvs[190];
+        double hhdscu2 = dvs[191];
          // From INDustry to Socio-Cultural Uses
-        double indscu1 = dvs[193];
-        double indscu2 = dvs[194];
+        double indscu1 = dvs[192];
+        double indscu2 = dvs[193];
          // From SERvices to Socio-Cultural Uses
-        double serscu1 = dvs[195];
-        double serscu2 = dvs[196];
+        double serscu1 = dvs[194];
+        double serscu2 = dvs[195];
          // From FORest to Socio-cultural Uses
-        double forscu1 = dvs[197];
-        double forscu2 = dvs[198];
+        double forscu1 = dvs[196];
+        double forscu2 = dvs[197];
          // From EXtensive Grasslands to Socio-Cultural Uses
-        double exgscu1 = dvs[199];
-        double exgscu2 = dvs[200];
+        double exgscu1 = dvs[198];
+        double exgscu2 = dvs[199];
          // From NATure to Socio-Cultural Uses
-        double natscu1 = dvs[201];
-        double natscu2 = dvs[202];
+        double natscu1 = dvs[200];
+        double natscu2 = dvs[201];
          // From RECreation areas to Socio-Cultural Uses
-        double recscu1 = dvs[203];
-        double recscu2 = dvs[204];
+        double recscu1 = dvs[202];
+        double recscu2 = dvs[203];
          // From AIRport to Socio-Cultural Uses
-        double airscu1 = dvs[205];
-        double airscu2 = dvs[206];
-         // From FREsh water to Socio-Cultural Uses
-        double frescu1 = dvs[207];
-        double frescu2 = dvs[208];
+        double airscu1 = dvs[204];
+        double airscu2 = dvs[205];
+         // From FREsh water toSocio-Cultural Uses
+        double frescu1 = dvs[206];
+        double frescu2 = dvs[207];
          // From MARine water to Socio-Cultural Uses
-        double marscu1 = dvs[209];
-        double marscu2 = dvs[210];
+        double marscu1 = dvs[208];
+        double marscu2 = dvs[209];
              // Forest (Function class 7)
          // From Other AGriculture to FORest
-        double oagfor1 = dvs[211];
-        double oagfor2 = dvs[212];
+        double oagfor1 = dvs[210];
+        double oagfor2 = dvs[211];
          // From PAStures to FORest
-        double pasfor1 = dvs[213];
-        double pasfor2 = dvs[214];
+        double pasfor1 = dvs[212];
+        double pasfor2 = dvs[213];
          // From ARable Land to FORest
-        double arlfor1 = dvs[215];
-        double arlfor2 = dvs[216];
+        double arlfor1 = dvs[214];
+        double arlfor2 = dvs[215];
          // From GREenhouses to FORest
-        double grefor1 = dvs[217];
-        double grefor2 = dvs[218];
+        double grefor1 = dvs[216];
+        double grefor2 = dvs[217];
          // From Housing Low Density to FORest
-        double hldfor1 = dvs[219];
-        double hldfor2 = dvs[220];
+        double hldfor1 = dvs[218];
+        double hldfor2 = dvs[219];
          // From Housing High Density to FORest
-        double hhdfor1 = dvs[221];
-        double hhdfor2 = dvs[222];
+        double hhdfor1 = dvs[220];
+        double hhdfor2 = dvs[221];
          // From INDustry to FORest
-        double indfor1 = dvs[223];
-        double indfor2 = dvs[224];
+        double indfor1 = dvs[222];
+        double indfor2 = dvs[223];
          // From SERvices to FORest
-        double serfor1 = dvs[225];
-        double serfor2 = dvs[226];
+        double serfor1 = dvs[224];
+        double serfor2 = dvs[225];
          // From Socio-Cultural Uses to FORest
-        double scufor1 = dvs[227];
-        double scufor2 = dvs[228];
+        double scufor1 = dvs[226];
+        double scufor2 = dvs[227];
          // From EXtensive Grasslands to FORest
-        double exgfor1 = dvs[229];
-        double exgfor2 = dvs[230];
+        double exgfor1 = dvs[228];
+        double exgfor2 = dvs[229];
          // From NATure to FORest
-        double natfor1 = dvs[231];
-        double natfor2 = dvs[232];
+        double natfor1 = dvs[230];
+        double natfor2 = dvs[231];
          // From RECreation areas to FORest
-        double recfor1 = dvs[233];
-        double recfor2 = dvs[234];
+        double recfor1 = dvs[232];
+        double recfor2 = dvs[233];
          // From AIRport to FORest
-        double airfor1 = dvs[235];
-        double airfor2 = dvs[236];
+        double airfor1 = dvs[234];
+        double airfor2 = dvs[235];
          // From FREsh water to FORest
-        double frefor1 = dvs[237];
-        double frefor2 = dvs[238];
+        double frefor1 = dvs[236];
+        double frefor2 = dvs[237];
          // From MARine water to FORest
-        double marfor1 = dvs[239];
-        double marfor2 = dvs[240];
+        double marfor1 = dvs[238];
+        double marfor2 = dvs[239];
              // Extensive Grasslands (Function class 8)
          // From Other AGriculture to EXtensive Grasslands
-        double oagexg1 = dvs[241];
-        double oagexg2 = dvs[242];
+        double oagexg1 = dvs[240];
+        double oagexg2 = dvs[241];
          // From PAStures to EXtensive Grasslands
-        double pasexg1 = dvs[243];
-        double pasexg2 = dvs[244];
+        double pasexg1 = dvs[242];
+        double pasexg2 = dvs[243];
          // From ARable Land to EXtensive Grasslands 
-        double arlexg1 = dvs[245];
-        double arlexg2 = dvs[246];
-         // From GREenhouses to EXtensive Grasslands
-        double greexg1 = dvs[247];
-        double greexg2 = dvs[248];
+        double arlexg1 = dvs[244];
+        double arlexg2 = dvs[245];
+         // From GREenhouses toEXtensive Grasslands
+        double greexg1 = dvs[246];
+        double greexg2 = dvs[247];
          // From Housing Low Density to EXtensive Grasslands
-        double hldexg1 = dvs[249];
-        double hldexg2 = dvs[250];
+        double hldexg1 = dvs[248];
+        double hldexg2 = dvs[249];
          // From Housing High Density to EXtensive Grasslands
-        double hhdexg1 = dvs[251];
-        double hhdexg2 = dvs[252];
+        double hhdexg1 = dvs[250];
+        double hhdexg2 = dvs[251];
          // From INDustry to EXtensive Grasslands
-        double indexg1 = dvs[253];
-        double indexg2 = dvs[254];
+        double indexg1 = dvs[252];
+        double indexg2 = dvs[253];
          // From SERvices to EXtensive Grasslands
-        double serexg1 = dvs[255];
-        double serexg2 = dvs[256];
+        double serexg1 = dvs[254];
+        double serexg2 = dvs[255];
          // From Socio-Cultural Uses to EXtensive Grasslands
-        double scuexg1 = dvs[257];
-        double scuexg2 = dvs[258];
+        double scuexg1 = dvs[256];
+        double scuexg2 = dvs[257];
          // From FORest to EXtensive Grasslands
-        double forexg1 = dvs[259];
-        double forexg2 = dvs[260];
+        double forexg1 = dvs[258];
+        double forexg2 = dvs[259];
          // From NATure to EXtensive Grasslands
-        double natexg1 = dvs[261];
-        double natexg2 = dvs[262];
+        double natexg1 = dvs[260];
+        double natexg2 = dvs[261];
          // From RECreation areas to EXtensive Grasslands
-        double recexg1 = dvs[263];
-        double recexg2 = dvs[264];
+        double recexg1 = dvs[262];
+        double recexg2 = dvs[263];
          // From AIRport to EXtensive Grasslands
-        double airexg1 = dvs[265];
-        double airexg2 = dvs[266];
+        double airexg1 = dvs[264];
+        double airexg2 = dvs[265];
          // From FREsh water to EXtensive Grasslands
-        double freexg1 = dvs[267];
-        double freexg2 = dvs[268];
+        double freexg1 = dvs[266];
+        double freexg2 = dvs[267];
          // From MARine water to EXtensive Grasslands
-        double marexg1 = dvs[269];
-        double marexg2 = dvs[270];
+        double marexg1 = dvs[268];
+        double marexg2 = dvs[269];
              // Nature (Function class 9)
          // From Other AGriculture to NATure
-        double oagnat1 = dvs[271];
-        double oagnat2 = dvs[272];
+        double oagnat1 = dvs[270];
+        double oagnat2 = dvs[271];
          // From PAStures to NATure
-        double pasnat1 = dvs[273];
-        double pasnat2 = dvs[274];
+        double pasnat1 = dvs[272];
+        double pasnat2 = dvs[273];
          // From ARable Land to NATure 
-        double arlnat1 = dvs[275];
-        double arlnat2 = dvs[276];
+        double arlnat1 = dvs[274];
+        double arlnat2 = dvs[275];
          // From GREenhouses to NATure
-        double grenat1 = dvs[277];
-        double grenat2 = dvs[278];
+        double grenat1 = dvs[276];
+        double grenat2 = dvs[277];
          // From Housing Low Density to NATure
-        double hldnat1 = dvs[279];
-        double hldnat2 = dvs[280];
+        double hldnat1 = dvs[278];
+        double hldnat2 = dvs[279];
          // From Housing High Density to NATure
-        double hhdnat1 = dvs[281];
-        double hhdnat2 = dvs[282];
+        double hhdnat1 = dvs[280];
+        double hhdnat2 = dvs[281];
          // From INDustry to NATure
-        double indnat1 = dvs[283];
-        double indnat2 = dvs[284];
+        double indnat1 = dvs[282];
+        double indnat2 = dvs[283];
          // From SERvices to NATure
-        double sernat1 = dvs[285];
-        double sernat2 = dvs[286];
+        double sernat1 = dvs[284];
+        double sernat2 = dvs[285];
          // From Socio-Cultural Uses to NATure
-        double scunat1 = dvs[287];
-        double scunat2 = dvs[288];
+        double scunat1 = dvs[286];
+        double scunat2 = dvs[287];
          // From FORest to NATure
-        double fornat1 = dvs[289];
-        double fornat2 = dvs[290];
+        double fornat1 = dvs[288];
+        double fornat2 = dvs[289];
          // From EXtensive Grasslands to NATure
-        double exgnat1 = dvs[291];
-        double exgnat2 = dvs[292];
-         // From RECreation areas to NATure
-        double recnat1 = dvs[293];
-        double recnat2 = dvs[294];
+        double exgnat1 = dvs[290];
+        double exgnat2 = dvs[291];
+         // From RECreation ares to NATure
+        double recnat1 = dvs[292];
+        double recnat2 = dvs[293];
          // From AIRport to NATure
-        double airnat1 = dvs[295];
-        double airnat2 = dvs[296];
+        double airnat1 = dvs[294];
+        double airnat2 = dvs[295];
          // From FREsh water to NATure
-        double frenat1 = dvs[297];
-        double frenat2 = dvs[298];
+        double frenat1 = dvs[296];
+        double frenat2 = dvs[297];
          // From MARine water to NATure
-        double marnat1 = dvs[299];
-        double marnat2 = dvs[300];
+        double marnat1 = dvs[298];
+        double marnat2 = dvs[299];
              // Recreation Areas (Function class 10)
          // From Other AGriculture to RECreation areas
-        double oagrec1 = dvs[301];
-        double oagrec2 = dvs[302];
+        double oagrec1 = dvs[300];
+        double oagrec2 = dvs[301];
          // From PAStures to RECreation areas
-        double pasrec1 = dvs[303];
-        double pasrec2 = dvs[304];
+        double pasrec1 = dvs[302];
+        double pasrec2 = dvs[303];
          // From ARable Land to RECreation areas 
-        double arlrec1 = dvs[305];
-        double arlrec2 = dvs[306];
+        double arlrec1 = dvs[304];
+        double arlrec2 = dvs[305];
          // From GREenhouses to RECreation areas
-        double grerec1 = dvs[307];
-        double grerec2 = dvs[308];
+        double grerec1 = dvs[306];
+        double grerec2 = dvs[307];
          // From Housing Low Density to RECreation areas
-        double hldrec1 = dvs[309];
-        double hldrec2 = dvs[310];
+        double hldrec1 = dvs[308];
+        double hldrec2 = dvs[309];
          // From Housing High Density to RECreation areas
-        double hhdrec1 = dvs[311];
-        double hhdrec2 = dvs[312];
+        double hhdrec1 = dvs[310];
+        double hhdrec2 = dvs[311];
          // From INDustry to RECreation areas
-        double indrec1 = dvs[313];
-        double indrec2 = dvs[314];
+        double indrec1 = dvs[312];
+        double indrec2 = dvs[313];
          // From SERvices to RECreation areas
-        double serrec1 = dvs[315];
-        double serrec2 = dvs[316];
+        double serrec1 = dvs[314];
+        double serrec2 = dvs[315];
          // From Socio-Cultural Uses to RECreation areas
-        double scurec1 = dvs[317];
-        double scurec2 = dvs[318];
+        double scurec1 = dvs[316];
+        double scurec2 = dvs[317];
          // From FORest to RECreation areas
-        double forrec1 = dvs[319];
-        double forrec2 = dvs[320];
+        double forrec1 = dvs[318];
+        double forrec2 = dvs[319];
          // From EXtensive Grasslands to RECreation areas
-        double exgrec1 = dvs[321];
-        double exgrec2 = dvs[322];
+        double exgrec1 = dvs[320];
+        double exgrec2 = dvs[321];
          // From NATure to RECreation areas
-        double natrec1 = dvs[323];
-        double natrec2 = dvs[324];
+        double natrec1 = dvs[322];
+        double natrec2 = dvs[323];
          // From AIRport to RECreation areas
-        double airrec1 = dvs[325];
-        double airrec2 = dvs[326];
+        double airrec1 = dvs[324];
+        double airrec2 = dvs[325];
          // From FREsh water to RECreation areas
-        double frerec1 = dvs[327];
-        double frerec2 = dvs[328];
+        double frerec1 = dvs[326];
+        double frerec2 = dvs[327];
          // From MARine water to RECreation areas
-        double marrec1 = dvs[329];
-        double marrec2 = dvs[330];
+        double marrec1 = dvs[328];
+        double marrec2 = dvs[329];
 
          //// Parameters - Accessibility distance decay
          // Greenhouses
-        double gremdd = dvs[331];
-        double greodd = dvs[332];
+        double gremdd = dvs[330];
+        double greodd = dvs[331];
          // Housing low density
-        double hldmdd = dvs[333];
-        double hldodd = dvs[334];
+        double hldmdd = dvs[332];
+        double hldodd = dvs[333];
          // Housing high density
-        double hhdmdd = dvs[335];
-        double hhdodd = dvs[336];
+        double hhdmdd = dvs[334];
+        double hhdodd = dvs[335];
          // Industry
-        double indmdd = dvs[337];
-        double indodd = dvs[338];
+        double indmdd = dvs[336];
+        double indodd = dvs[337];
          // Services
         double sermdd = dvs[338];
-        double serodd = dvs[340];
+        double serodd = dvs[339];
          // Socio cultural Uses
-        double scumdd = dvs[341];
-        double scuodd = dvs[342];
+        double scumdd = dvs[340];
+        double scuodd = dvs[341];
          // Forest
-        double formdd = dvs[343];
-        double forodd = dvs[344];
+        double formdd = dvs[342];
+        double forodd = dvs[343];
          // Extensive grasslands
-        double exgmdd = dvs[345];
-        double exgodd = dvs[346];
+        double exgmdd = dvs[344];
+        double exgodd = dvs[345];
          // Nature
-        double natmdd = dvs[347];
-        double natodd = dvs[348];
+        double natmdd = dvs[346];
+        double natodd = dvs[347];
          // Recreation areas
-        double recmdd = dvs[349];
-        double recodd = dvs[350];
+        double recmdd = dvs[348];
+        double recodd = dvs[349];
          //// Parameters - Accessibility Weights
          // Greenhouses
-        double gremwe = dvs[351];
-        double greowe = dvs[352];
+        double gremwe = dvs[350];
+        double greowe = dvs[351];
          // Housing low density
-        double hldmwe = dvs[353];
-        double hldowe = dvs[354];
+        double hldmwe = dvs[352];
+        double hldowe = dvs[353];
          // Housing high density
-        double hhdmwe = dvs[355];
-        double hhdowe = dvs[356];
+        double hhdmwe = dvs[354];
+        double hhdowe = dvs[355];
          // Industry
-        double indmwe = dvs[357];
-        double indowe = dvs[358];
+        double indmwe = dvs[356];
+        double indowe = dvs[357];
          // Services
-        double sermwe = dvs[359];
-        double serowe = dvs[360];
+        double sermwe = dvs[358];
+        double serowe = dvs[359];
          // Socio cultural uses
-        double scumwe = dvs[361];
-        double scuowe = dvs[362];
+        double scumwe = dvs[360];
+        double scuowe = dvs[361];
          // Forest
-        double formwe = dvs[363];
-        double forowe = dvs[364];
+        double formwe = dvs[362];
+        double forowe = dvs[363];
          // Extensive grasslands
-        double exgmwe = dvs[365];
-        double exgowe = dvs[366];
+        double exgmwe = dvs[364];
+        double exgowe = dvs[365];
          // Nature
-        double natmwe = dvs[367];
-        double natowe = dvs[368];
+        double natmwe = dvs[366];
+        double natowe = dvs[367];
          // Recreation areas
-        double recmwe = dvs[369];
-        double recowe = dvs[370];
+        double recmwe = dvs[368];
+        double recowe = dvs[369];
         
         int rseed = Integer.parseInt(args[373]);
           
