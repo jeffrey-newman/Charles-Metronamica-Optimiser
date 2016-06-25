@@ -11,7 +11,9 @@
 #include <random>
 #include <chrono>
 #include <boost/program_options.hpp>
+//#define BOOST_NO_CXX11_SCOPED_ENUMS
 #include <boost/filesystem.hpp>
+//#undef BOOST_NO_CXX11_SCOPED_ENUMS
 #include <boost/mpi.hpp>
 #include "MetronamicaOF.hpp"
 #include "ParallelEvaluator.hpp"
@@ -19,8 +21,8 @@
 #include "pathify.hpp"
 
 
-int main(int argc, const char * argv[]) {
-    boost::mpi::environment env;
+int main(int argc, char * argv[]) {
+    boost::mpi::environment env(argc, argv);
     boost::mpi::communicator world;
 
     CmdLinePaths metro_exe;  // path to the Metronamic executable GeonamicaCmd.exe
