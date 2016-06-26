@@ -4,7 +4,7 @@ Running:
 /home/a1091793/Documents/Projects/Run/Checks/
 
 Running: 
-"/usr/bin/wine" "/home/a1091793/Apps/Metronamica/GeonamicaCmd.exe" --Reset --Save "Z:\\home\\a1091793\\Documents\\Projects\\Run\\Checks\\f932-b93c-a6a7-4b94\\Randstad_base_mod.geoproj"
+"/usr/bin/wine" "/home/a1091793/Apps/Metronamica/GeonamicaCmd.exe" --Reset --Save "Z:\\home\\a1091793\\Documents\\Projects\\Run\\Checks\\f932-b93c-a6a7-4b94\\Randstad_base.geoproj"
 
 Running: 
 "/usr/bin/wine" "/home/a1091793/Apps/Metronamica/GeonamicaCmd.exe" --Run --Save --LogSettings "Z:\\home\a1091793\\Documents\\Projects\\Charles NSGAII\\Project files\\NSGAII\\LogSettings\\LogSettings.xml" "Z:\\home\\a1091793\\Documents\\Projects\\Run\\Checks\\f932-b93c-a6a7-4b94\\Randstad_base_mod.geoproj"

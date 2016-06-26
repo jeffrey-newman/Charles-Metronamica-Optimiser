@@ -20,7 +20,7 @@
 #include "Evaluation.hpp"
 #include "MapComparison_0_4.h"
 
-class MetronamicaOF : public EvaluatorBase
+class MetronamicaOF : public ObjectivesAndConstraintsBase
 {
     int num_objectives;
     int num_real_decision_vars;

@@ -28,6 +28,9 @@ if(MAC_FRAMEWORK_PATHS)
     add_definitions(-DWITH_MAC_FRAMEWORK)
 ENDIF()
 
+# Define required for how hypervolume is calculated.
+add_definitions(-DVARIANT=4)
+
 include_directories(${GDAL_INCLUDE_DIR} )
 include_directories(${Boost_INCLUDE_DIRS} )
 INCLUDE_DIRECTORIES(${AHHZ_RASTER_UTIL} )
@@ -47,17 +50,17 @@ endif()
 
 SET(Metro_calib_parallel_Src
         MainPar.cpp
-        MetronamicaOF.cpp
         MetronamicaOF.hpp
+        Pathify.hpp
 
 )
 
 SET(Metro_calib_serial_Src
         MainSer.cpp
-        MetronamicaOF.cpp
         MetronamicaOF.hpp
-
+        Pathify.hpp
 )
+
 
 
 file(GLOB_RECURSE AHHZ_Raster
@@ -70,14 +73,35 @@ file(GLOB_RECURSE AHHZ_Raster
  )
 
 SET(prll-nsga-src
+        "${PARALLEL-NSGAII}/Checkpoint.hpp"
+        "${PARALLEL-NSGAII}/Comparator.hpp"
         "${PARALLEL-NSGAII}/Crossover.hpp"
+        "${PARALLEL-NSGAII}/DebsCrowdingDistance.hpp"
+        "${PARALLEL-NSGAII}/DebsNondominatedSorting.hpp"
+        "${PARALLEL-NSGAII}/Evaluation.hpp"
         "${PARALLEL-NSGAII}/Individual.hpp"
+        "${PARALLEL-NSGAII}/Merge.hpp"
         "${PARALLEL-NSGAII}/Mutation.hpp"
-        "${PARALLEL-NSGAII}/parallel_nsgaII_backend.cpp"
-        "${PARALLEL-NSGAII}/parallel_nsgaII_backend.hpp"
-        "${PARALLEL-NSGAII}/parallel_nsgaII_backendPriv.hpp"
+        "${PARALLEL-NSGAII}/NSGAII.hpp"
+        "${PARALLEL-NSGAII}/ParallelEvaluator.hpp"
         "${PARALLEL-NSGAII}/Population.hpp"
+        "${PARALLEL-NSGAII}/ProblemDefinitions.hpp"
+        "${PARALLEL-NSGAII}/Selection.hpp"
         "${PARALLEL-NSGAII}/Types.hpp"
+
+        "${PARALLEL-NSGAII}/Checkpoints/MaxGenCheckpoint.hpp"
+        "${PARALLEL-NSGAII}/Checkpoints/SavePopCheckpoint.hpp"
+        "${PARALLEL-NSGAII}/Checkpoints/SerialiseCheckpoint.hpp"
+        "${PARALLEL-NSGAII}/Checkpoints/PlotFronts.hpp"
+        "${PARALLEL-NSGAII}/Checkpoints/colours.hpp"
+        "${PARALLEL-NSGAII}/Checkpoints/ResetMutationXoverFlags.hpp"
+
+        "${PARALLEL-NSGAII}/Serialization/SerializeBoostPath.hpp"
+        "${PARALLEL-NSGAII}/Serialization/SerializeRng.hpp"
+
+        "${PARALLEL-NSGAII}/Metrics/hv.c"
+        "${PARALLEL-NSGAII}/Metrics/hv.h"
+        "${PARALLEL-NSGAII}/Metrics/Hypervolume.hpp"
     )
 
 SET (MCL_HEADERS

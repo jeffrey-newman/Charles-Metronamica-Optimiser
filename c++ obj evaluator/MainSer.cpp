@@ -17,7 +17,13 @@
 #include "MetronamicaOF.hpp"
 #include "ParallelEvaluator.hpp"
 #include "NSGAII.hpp"
-#include "pathify.hpp"
+#include "Pathify.hpp"
+#include "Checkpoints/SavePopCheckpoint.hpp"
+#include "Checkpoints/MaxGenCheckpoint.hpp"
+#include "Checkpoints/PlotFronts.hpp"
+#include "Metrics/Hypervolume.hpp"
+#include "Checkpoints/ResetMutationXoverFlags.hpp"
+#include "Checkpoints/MetricLinePlot.hpp"
 
 int main(int argc, const char * argv[]) {
 
@@ -60,7 +66,7 @@ int main(int argc, const char * argv[]) {
             ("working-dir,d", po::value<std::string>(&working_dir.first)->default_value(boost::filesystem::current_path().string()), "path of directory for storing temp files during running")
             ("wine-work-dir,n", po::value<std::string>(&wine_working_dir_path), "path to working directory (working-dir,d), but in wine path format - e.g. Z:\\path\\to\\working\\dir")
             ("pop-size,p", po::value<int>(&pop_size)->default_value(415), "Population size of the NSGAII")
-            ("max-gen,x", po::value<int>(&max_gen)->default_value(500), "maximum generations - terminaation condition");
+            ("max-gen-no-hvol-improve,x", po::value<int>(&max_gen)->default_value(50), "maximum generations with no improvement in the hypervolume metric - terminaation condition");
 
 
 
@@ -117,11 +123,19 @@ int main(int argc, const char * argv[]) {
         RNG rng(seed);
 
         // The optimiser
-        NSGAII<RNG> optimiser(rng, metro_eval, max_gen);
-//        optimiser.visualise();
+        NSGAII<RNG> optimiser(rng, metro_eval);
+        SavePopCheckpoint save_pop(1, working_dir.second);
+        std::vector<double> ref_point =  {-1, 9.764}; //From Charle's email 23rd June
+        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen);
+        MetricLinePlot hvol_plot(hvol);
+        PlotFrontVTK plotfront;
+        optimiser.add_checkpoint(save_pop);
+        optimiser.add_checkpoint(hvol_plot);
+        optimiser.add_checkpoint(plotfront);
 
         // Initialise population
         PopulationSPtr pop = intialisePopulationRandomDVAssignment(pop_size, metro_eval.getProblemDefinitions(), rng);
+        SetMutationInverseDVSize(pop->at(0), optimiser.getRealMutationOperator());
 
         // Run the optimisation
         optimiser(pop);
