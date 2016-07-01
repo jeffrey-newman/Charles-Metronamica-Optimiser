@@ -131,7 +131,8 @@ SET (MCL_SOURCES
         "${MCL}/FuzzyKappaSimulation.cpp"
         "${MCL}/FuzzyKappaSimulationImproved.cpp"
         )
-
+        
+link_directories(Boost_LIBRARY_DIRS)
 add_executable(metrocalpar ${Metro_calib_parallel_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES})
 target_link_libraries(metrocalpar ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} )
 
