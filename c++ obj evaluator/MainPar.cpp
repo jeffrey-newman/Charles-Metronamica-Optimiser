@@ -49,7 +49,8 @@ int main(int argc, char * argv[]) {
 //    boost::filesystem::path metro_exe_path;
 
     int pop_size; // For the GA
-    int max_gen;  // Termination condition for the GA
+    int max_gen_hvol;  // Termination condition for the GA
+    int max_gen;
 
     namespace po = boost::program_options;
     po::options_description desc("Allowed options");
@@ -70,7 +71,8 @@ int main(int argc, char * argv[]) {
             ("working-dir,d", po::value<std::string>(&working_dir.first)->default_value(boost::filesystem::current_path().string()), "path of directory for storing temp files during running")
             ("wine-work-dir,n", po::value<std::string>(&wine_working_dir_path), "path to working directory (working-dir,d), but in wine path format - e.g. Z:\\path\\to\\working\\dir")
             ("pop-size,p", po::value<int>(&pop_size)->default_value(415), "Population size of the NSGAII")
-            ("max-gen-no-hvol-improve,x", po::value<int>(&max_gen)->default_value(50), "maximum generations with no improvement in the hypervolume metric - terminaation condition");
+            ("max-gen-no-hvol-improve,x", po::value<int>(&max_gen_hvol)->default_value(50), "maximum generations with no improvement in the hypervolume metric - terminaation condition")
+            ("max-gen,y", po::value<int>(&max_gen)->default_value(500), "Maximum number of generations - termination condition");
 
 
 
@@ -148,14 +150,16 @@ int main(int argc, char * argv[]) {
         NSGAII<RNG> optimiser(rng, eval_server);
         SavePopCheckpoint save_pop(1, working_dir.second);
         std::vector<double> ref_point =  {-1, 9.764}; //From Charle's email 23rd June
-        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen);
+        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen_hvol);
         MetricLinePlot hvol_plot(hvol);
+        MaxGenCheckpoint maxgen(max_gen);
         std::string mail_subj("Hypervolume of front from Metro calibrator ");
         MailCheckpoint mail(10, hvol, mail_subj);
         std::string jeffs_address("jeffrey.newman@adelaide.edu.au");
         std::string charles_address("charles.p.newland@adelaide.edu.au");
         mail.addAddress(jeffs_address);
         mail.addAddress(charles_address);
+
 
         PlotFrontVTK plotfront;
     //    ResetMutXvrDebugFlags reset_flags;
@@ -165,6 +169,7 @@ int main(int argc, char * argv[]) {
         optimiser.add_checkpoint(save_pop);
         optimiser.add_checkpoint(hvol_plot);
         optimiser.add_checkpoint(plotfront);
+        optimiser.add_checkpoint(maxgen);
 //        optimiser.visualise();
 
         // Initialise population
