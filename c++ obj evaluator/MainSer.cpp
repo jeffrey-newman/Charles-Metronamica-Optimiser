@@ -24,6 +24,7 @@
 #include "Metrics/Hypervolume.hpp"
 #include "Checkpoints/ResetMutationXoverFlags.hpp"
 #include "Checkpoints/MetricLinePlot.hpp"
+#include "Checkpoints/MaxGenCheckpoint.hpp"
 
 int main(int argc, const char * argv[]) {
 

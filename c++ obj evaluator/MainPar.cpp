@@ -26,6 +26,7 @@
 #include "Checkpoints/ResetMutationXoverFlags.hpp"
 #include "Checkpoints/MetricLinePlot.hpp"
 #include "Checkpoints/MailCheckpoint.hpp"
+#include "Checkpoints/MaxGenCheckpoint.hpp"
 
 int main(int argc, char * argv[]) {
     boost::mpi::environment env(argc, argv);
