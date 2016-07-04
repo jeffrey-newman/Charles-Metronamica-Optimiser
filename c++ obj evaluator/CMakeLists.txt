@@ -48,19 +48,6 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
   add_definitions(-DMSVC)
 endif()
 
-SET(Metro_calib_parallel_Src
-        MainPar.cpp
-        MetronamicaOF.hpp
-        Pathify.hpp
-
-)
-
-SET(Metro_calib_serial_Src
-        MainSer.cpp
-        MetronamicaOF.hpp
-        Pathify.hpp
-)
-
 
 
 file(GLOB_RECURSE AHHZ_Raster
@@ -131,7 +118,28 @@ SET (MCL_SOURCES
         "${MCL}/FuzzyKappaSimulation.cpp"
         "${MCL}/FuzzyKappaSimulationImproved.cpp"
         )
-        
+
+SET(Metro_calib_parallel_Src
+        MainPar.cpp
+        MetronamicaOF.hpp
+        Pathify.hpp
+
+    )
+
+SET(Metro_calib_serial_Src
+       MainSer.cpp
+       MetronamicaOF.hpp
+       Pathify.hpp
+    )
+
+SET(Metro_calib_test_Src
+        TestMetroCalOF.cpp
+        MetronamicaOF.hpp
+        Pathify.hpp
+    )
+
+
+
 link_directories(${Boost_LIBRARY_DIRS})
 add_executable(metrocalpar ${Metro_calib_parallel_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES})
 target_link_libraries(metrocalpar ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} )
@@ -156,3 +164,15 @@ IF(USE_VTK)
         target_link_libraries(metrocalser vtkHybrid vtkWidgets)
     endif()
 ENDIF()
+
+add_executable(metrocaltest ${Metro_calib_test_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES})
+target_link_libraries(metrocaltest ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} )
+
+IF(USE_VTK)
+    if(VTK_LIBRARIES)
+        target_link_libraries(metrocaltest ${VTK_LIBRARIES})
+    else()
+        target_link_libraries(metrocaltest vtkHybrid vtkWidgets)
+    endif()
+ENDIF()
+

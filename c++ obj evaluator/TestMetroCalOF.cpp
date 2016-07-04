@@ -1,4 +1,4 @@
- 
+
 //
 //  main.cpp
 //  MetronamicaCalibrator
@@ -25,7 +25,7 @@
 #include "Checkpoints/ResetMutationXoverFlags.hpp"
 #include "Checkpoints/MetricLinePlot.hpp"
 #include "Checkpoints/MaxGenCheckpoint.hpp"
-#include "Checkpoints/MailCheckpoint.hpp"
+#include <boost/timer/timer.hpp>
 
 int main(int argc, const char * argv[]) {
 
@@ -49,6 +49,7 @@ int main(int argc, const char * argv[]) {
     int pop_size; // For the GA
     int max_gen_hvol;  // Termination condition for the GA
     int max_gen;
+    std::string time_fname;
 
     namespace po = boost::program_options;
     po::options_description desc("Allowed options");
@@ -68,9 +69,7 @@ int main(int argc, const char * argv[]) {
             ("fks-coeef,c", po::value<std::string>(&fks_coefficients_file.first), "path of the fuzzy coeeficint table")
             ("working-dir,d", po::value<std::string>(&working_dir.first)->default_value(boost::filesystem::current_path().string()), "path of directory for storing temp files during running")
             ("wine-work-dir,n", po::value<std::string>(&wine_working_dir_path), "path to working directory (working-dir,d), but in wine path format - e.g. Z:\\path\\to\\working\\dir")
-            ("pop-size,p", po::value<int>(&pop_size)->default_value(415), "Population size of the NSGAII")
-            ("max-gen-no-hvol-improve,x", po::value<int>(&max_gen_hvol)->default_value(50), "maximum generations with no improvement in the hypervolume metric - terminaation condition");
-            ("max-gen,y", po::value<int>(&max_gen)->default_value(500), "Maximum number of generations - termination condition");
+            ("time,i", po::value<std::string>(&time_fname)->default_value("timer.txt"), "File to write elapsed time for optimiser too");
 
 
 
@@ -90,21 +89,6 @@ int main(int argc, const char * argv[]) {
     pathify(masking_map_file);
     pathify(fks_coefficients_file);
     pathify(working_dir);
-
-//    pathify(metro_exe) //.second = boost::filesystem::path(metro_exe.first);
-//    mck_exe.second = boost::filesystem::path(mck_exe.first);
-//    wine_exe.second = boost::filesystem::path(wine_exe.first);
-//    java_exe.second = boost::filesystem::path(java_exe.first);
-//    geoproj_manip_jar.second = boost::filesystem::path(geoproj_manip_jar.first);
-//    template_dir.second = boost::filesystem::path(template_dir.first);
-//    log_file.second = boost::filesystem::path(log_file.first);
-//    actual_map_file.second = boost::filesystem::path(actual_map_file.first);
-//    original_map_file.second = boost::filesystem::path(original_map_file.first);
-//    masking_map_file.second = boost::filesystem::path(masking_map_file.first);
-//    fks_coefficients_file.second = boost::filesystem::path(fks_coefficients_file.first);
-//    working_dir.second = boost::filesystem::path(working_dir.first);
-
-
 
     MetronamicaOF metro_eval(metro_exe.second,
                              mck_exe.second,
@@ -126,41 +110,41 @@ int main(int argc, const char * argv[]) {
         unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
         RNG rng(seed);
 
-        // The optimiser
-        NSGAII<RNG> optimiser(rng, metro_eval);
-        SavePopCheckpoint save_pop(1, working_dir.second);
-        std::vector<double> ref_point =  {-1, 9.764}; //From Charle's email 23rd June
-        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen_hvol);
-        MetricLinePlot hvol_plot(hvol);
-        MaxGenCheckpoint maxgen(max_gen);
-        std::string mail_subj("Hypervolume of front from Metro calibrator ");
-        MailCheckpoint mail(10, hvol, mail_subj);
-        std::string jeffs_address("jeffrey.newman@adelaide.edu.au");
-        std::string charles_address("charles.p.newland@adelaide.edu.au");
-        mail.addAddress(jeffs_address);
-        mail.addAddress(charles_address);
-
-        PlotFrontVTK plotfront;
-        optimiser.add_checkpoint(save_pop);
-        optimiser.add_checkpoint(hvol_plot);
-        optimiser.add_checkpoint(plotfront);
-        optimiser.add_checkpoint(maxgen);
-
         // Initialise population
-        PopulationSPtr pop = intialisePopulationRandomDVAssignment(pop_size, metro_eval.getProblemDefinitions(), rng);
-        SetMutationInverseDVSize(pop->at(0), optimiser.getRealMutationOperator());
-
-        // Run the optimisation
-        optimiser(pop);
+        PopulationSPtr pop = intialisePopulationRandomDVAssignment(1, metro_eval.getProblemDefinitions(), rng);
 
 
-//        t.reset((boost::timer::auto_cpu_timer *) nullptr);
-//        if (ofs.is_open())
-//        {
-//            ofs << timer_info.str();
-//            ofs.close();
-//        }
-//        std::cout << timer_info.str() << std::endl;
+
+        IndividualSPtr ind = pop->at(0);
+        std::vector<double> objectives;
+        std::vector<double> constraints;
+
+        std::stringstream timer_info;
+        boost::scoped_ptr<boost::timer::auto_cpu_timer> t((boost::timer::auto_cpu_timer *) nullptr);
+        std::ofstream ofs(time_fname.c_str());
+        if (ofs.is_open())
+        {
+            t.reset(new boost::timer::auto_cpu_timer(timer_info, 3));
+        }
+        else
+        {
+            std::cerr << "Error: Could not open file for writing time elapsed for search, using std::cout";
+            t.reset(new boost::timer::auto_cpu_timer(3));
+        }
+
+        t.reset((boost::timer::auto_cpu_timer *) nullptr);
+        if (ofs.is_open())
+        {
+            ofs << timer_info.str();
+            ofs.close();
+        }
+        std::cout << timer_info.str() << std::endl;
+
+        std::tie(objectives, constraints) = metro_eval(ind->getRealDVVector(), ind->getIntDVVector());
+        ind->setObjectives(objectives);
+        ind->setConstraints(constraints);
+
+        std::cout << ind << std::endl;
 
 
 }
