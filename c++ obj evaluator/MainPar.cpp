@@ -52,6 +52,7 @@ int main(int argc, char * argv[]) {
     int pop_size; // For the GA
     int max_gen_hvol;  // Termination condition for the GA
     int max_gen;
+    int mail_hvol_gen;
 
     namespace po = boost::program_options;
     po::options_description desc("Allowed options");
@@ -73,6 +74,7 @@ int main(int argc, char * argv[]) {
             ("wine-work-dir,n", po::value<std::string>(&wine_working_dir_path), "path to working directory (working-dir,d), but in wine path format - e.g. Z:\\path\\to\\working\\dir")
             ("pop-size,p", po::value<int>(&pop_size)->default_value(415), "Population size of the NSGAII")
             ("max-gen-no-hvol-improve,x", po::value<int>(&max_gen_hvol)->default_value(50), "maximum generations with no improvement in the hypervolume metric - terminaation condition")
+            ("mail-gen-hvol,e", po::value<int>(&mail_hvol_gen)->default_value(10), "How often to mail the hpervolume value")
             ("max-gen,y", po::value<int>(&max_gen)->default_value(500), "Maximum number of generations - termination condition");
 
 
@@ -155,7 +157,7 @@ int main(int argc, char * argv[]) {
         MetricLinePlot hvol_plot(hvol);
         MaxGenCheckpoint maxgen(max_gen);
         std::string mail_subj("Hypervolume of front from Metro calibrator ");
-        MailCheckpoint mail(10, hvol, mail_subj);
+        MailCheckpoint mail(mail_hvol_gen, hvol, mail_subj);
         std::string jeffs_address("jeffrey.newman@adelaide.edu.au");
         std::string charles_address("charles.p.newland@adelaide.edu.au");
         mail.addAddress(jeffs_address);

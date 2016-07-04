@@ -1,0 +1,11 @@
+
+
+module load CMake/3.5.2-foss-2016uofa 
+module load GDAL/2.1.0-foss-2016uofa 
+module load Boost/1.59.0-foss-2016uofa 
+
+cd /home/a1091793/Code/CharlesMetOpt2/Charles-Metronamica-Optimiser
+git pull
+
+cd /home/a1091793/Code/CharlesMetOpt2/build5
+make
