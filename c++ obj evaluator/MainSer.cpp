@@ -119,7 +119,8 @@ int main(int argc, const char * argv[]) {
                              actual_map_file.second,
                              original_map_file.second,
                              masking_map_file.second,
-                             fks_coefficients_file.second);
+                             fks_coefficients_file.second,
+                             0, true);
 
         // The random number generator
         typedef std::mt19937 RNG;

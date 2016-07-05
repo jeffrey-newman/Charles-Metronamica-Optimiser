@@ -124,7 +124,9 @@ int main(int argc, char * argv[]) {
                              actual_map_file.second,
                              original_map_file.second,
                              masking_map_file.second,
-                             fks_coefficients_file.second);
+                             fks_coefficients_file.second,
+                             world.rank(),
+                             true);
     
     
     if (world.rank() == 0)

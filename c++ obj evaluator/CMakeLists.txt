@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 set (CMAKE_CXX_STANDARD 11)
 #Variable for location of parallel-nsgaII-backend
 
-FIND_PACKAGE(Boost REQUIRED COMPONENTS filesystem system program_options mpi serialization timer chrono)
+FIND_PACKAGE(Boost REQUIRED COMPONENTS filesystem system program_options mpi serialization timer chrono date_time)
 find_package(GDAL)
 find_package(MPI REQUIRED)
 include_directories(${MPI_CXX_INCLUDE_PATH})
