@@ -216,7 +216,7 @@ public:
         std::string temp_dir_template = "Metro_Cal_OF_worker" + std::to_string(evaluator_id) + "_%%%%-%%%%";
         worker_dir = boost::filesystem::unique_path(working_dir / temp_dir_template);
 //            create_directories(ph);
-        copyDir(template_dir, working_dir);
+        copyDir(template_dir, worker_dir);
     }
 
     ~MetronamicaOF()
@@ -232,7 +232,7 @@ public:
         std::ofstream logging_file;
         if (is_logging)
         {
-            logging_file.open(log_file_name.c_str(), std::ios_base::trunc);
+            logging_file.open(log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
         }
 
@@ -259,28 +259,28 @@ public:
             {
                 cmd4 << " " << real_decision_vars[i];
             }
-            cmd4 << " " << rand_seeds[j] << ">> \"" << log_file_name.c_str() << "\" 2>&1";
+            cmd4 << " " << rand_seeds[j] << " >> \"" << log_file_name.c_str() << "\" 2>&1";
 
             if (is_logging) logging_file << "Running: " << cmd4.str() << std::endl;
             if (is_logging) logging_file.close();
             int i4 = system(cmd4.str().c_str());
-            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::trunc);
+            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
             
             std::string wine_proj_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + mod_proj_file + "\"";
             //Call the model
-            cmd1 << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path << ">> \"" << log_file_name.c_str() << "\" 2>&1";;
+            cmd1 << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path << " >> \"" << log_file_name.c_str() << "\" 2>&1";;
             if (is_logging) logging_file << "Running: " << cmd1.str() << std::endl;
             if (is_logging)  logging_file.close();
             int i1 = system(cmd1.str().c_str());
-            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::trunc);
+            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
 
-            cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << logfile_name << " " << wine_proj_path << ">> \"" << log_file_name.c_str() << "\" 2>&1";;
+            cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << logfile_name << " " << wine_proj_path << " >> \"" << log_file_name.c_str() << "\" 2>&1";;
             if (is_logging) logging_file << "Running: " << cmd2.str() << std::endl;
             if (is_logging) logging_file.close();
             int i2 = system(cmd2.str().c_str());
-            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::trunc);
+            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
             
             // Calc FKS
@@ -298,7 +298,7 @@ public:
             if (is_logging) logging_file << "Running: " << cmd3.str() << std::endl;
             if (is_logging) logging_file.close();
             int i3 = system(cmd3.str().c_str());
-            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::trunc);
+            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
             
             // Take avg of clumpiness
