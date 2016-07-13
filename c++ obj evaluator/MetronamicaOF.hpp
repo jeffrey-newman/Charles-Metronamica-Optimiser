@@ -294,7 +294,7 @@ public:
             std::string logdir = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use";
 
             cmd3 << wine_cmd << " " << mck_cmd << " /RunComparisonSet \"" << clumpcsl << "\" \"" << loglog << "\" \""
-            << logdir << "\"";
+            << logdir << "\"" << " >> \"" << log_file_name.c_str() << "\" 2>&1";;;
             if (is_logging) logging_file << "Running: " << cmd3.str() << std::endl;
             if (is_logging) logging_file.close();
             int i3 = system(cmd3.str().c_str());
