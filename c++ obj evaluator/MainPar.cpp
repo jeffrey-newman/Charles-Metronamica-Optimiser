@@ -41,6 +41,7 @@ int main(int argc, char * argv[]) {
     std::string geoproj_file;
     std::string wine_working_dir_path;
     std::string log_file;
+    CmdLinePaths wine_reg_mod_file;
     CmdLinePaths actual_map_file;
     CmdLinePaths original_map_file;
     CmdLinePaths masking_map_file;
@@ -72,6 +73,7 @@ int main(int argc, char * argv[]) {
             ("fks-coeef,c", po::value<std::string>(&fks_coefficients_file.first), "path of the fuzzy coeeficint table")
             ("working-dir,d", po::value<std::string>(&working_dir.first)->default_value(boost::filesystem::current_path().string()), "path of directory for storing temp files during running")
             ("wine-work-dir,n", po::value<std::string>(&wine_working_dir_path), "path to working directory (working-dir,d), but in wine path format - e.g. Z:\\path\\to\\working\\dir")
+            ("wine-reg-edit,r", po::value<std::string>(&wine_reg_mod_file.first), "path of the wine registry file to update registry on nodes")
             ("pop-size,p", po::value<int>(&pop_size)->default_value(415), "Population size of the NSGAII")
             ("max-gen-no-hvol-improve,x", po::value<int>(&max_gen_hvol)->default_value(50), "maximum generations with no improvement in the hypervolume metric - terminaation condition")
             ("mail-gen-hvol,e", po::value<int>(&mail_hvol_gen)->default_value(10), "How often to mail the hpervolume value")
@@ -95,6 +97,7 @@ int main(int argc, char * argv[]) {
     pathify(masking_map_file);
     pathify(fks_coefficients_file);
     pathify(working_dir);
+    pathify(wine_reg_mod_file);
 
 //    pathify(metro_exe) //.second = boost::filesystem::path(metro_exe.first);
 //    mck_exe.second = boost::filesystem::path(mck_exe.first);
@@ -125,6 +128,7 @@ int main(int argc, char * argv[]) {
                              original_map_file.second,
                              masking_map_file.second,
                              fks_coefficients_file.second,
+                             wine_reg_mod_file.second,
                              world.rank(),
                              true);
     

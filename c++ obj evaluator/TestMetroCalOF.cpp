@@ -38,6 +38,7 @@ int main(int argc, const char * argv[]) {
     std::string geoproj_file;
     std::string wine_working_dir_path;
     std::string log_file;
+    CmdLinePaths wine_reg_mod_file;
     CmdLinePaths actual_map_file;
     CmdLinePaths original_map_file;
     CmdLinePaths masking_map_file;
@@ -69,6 +70,7 @@ int main(int argc, const char * argv[]) {
             ("fks-coeef,c", po::value<std::string>(&fks_coefficients_file.first), "path of the fuzzy coeeficint table")
             ("working-dir,d", po::value<std::string>(&working_dir.first)->default_value(boost::filesystem::current_path().string()), "path of directory for storing temp files during running")
             ("wine-work-dir,n", po::value<std::string>(&wine_working_dir_path), "path to working directory (working-dir,d), but in wine path format - e.g. Z:\\path\\to\\working\\dir")
+            ("wine-reg-edit,r", po::value<std::string>(&wine_reg_mod_file.first), "path of the wine registry file to update registry on nodes")
             ("time,i", po::value<std::string>(&time_fname)->default_value("timer.txt"), "File to write elapsed time for optimiser too");
 
 
@@ -89,6 +91,7 @@ int main(int argc, const char * argv[]) {
     pathify(masking_map_file);
     pathify(fks_coefficients_file);
     pathify(working_dir);
+    pathify(wine_reg_mod_file);
 
     MetronamicaOF metro_eval(metro_exe.second,
                              mck_exe.second,
@@ -103,7 +106,8 @@ int main(int argc, const char * argv[]) {
                              actual_map_file.second,
                              original_map_file.second,
                              masking_map_file.second,
-                             fks_coefficients_file.second);
+                             fks_coefficients_file.second,
+                             wine_reg_mod_file.second);
 
         // The random number generator
         typedef std::mt19937 RNG;
