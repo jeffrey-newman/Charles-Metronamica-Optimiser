@@ -165,7 +165,7 @@ int main(int argc, char * argv[]) {
         NSGAII<RNG> optimiser(rng, eval_server);
         if (eval_strm.is_open())
         {
-            optimiser.log(ParallelEvaluatorBase::LVL1, eval_strm);
+            optimiser.log(NSGAII<RNG>::LVL1, eval_strm);
         }
         SavePopCheckpoint save_pop(1, working_dir.second);
         std::vector<double> ref_point =  {-1, 9.764}; //From Charle's email 23rd June
