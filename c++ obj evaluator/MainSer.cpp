@@ -50,6 +50,7 @@ int main(int argc, const char * argv[]) {
     int pop_size; // For the GA
     int max_gen_hvol;  // Termination condition for the GA
     int max_gen;
+    int replicates;
 
     namespace po = boost::program_options;
     po::options_description desc("Allowed options");
@@ -71,8 +72,9 @@ int main(int argc, const char * argv[]) {
             ("wine-work-dir,n", po::value<std::string>(&wine_working_dir_path), "path to working directory (working-dir,d), but in wine path format - e.g. Z:\\path\\to\\working\\dir")
             ("wine-reg-edit,r", po::value<std::string>(&wine_reg_mod_file.first), "path of the wine registry file to update registry on nodes")
             ("pop-size,p", po::value<int>(&pop_size)->default_value(415), "Population size of the NSGAII")
-            ("max-gen-no-hvol-improve,x", po::value<int>(&max_gen_hvol)->default_value(50), "maximum generations with no improvement in the hypervolume metric - terminaation condition");
-            ("max-gen,y", po::value<int>(&max_gen)->default_value(500), "Maximum number of generations - termination condition");
+            ("max-gen-no-hvol-improve,x", po::value<int>(&max_gen_hvol)->default_value(50), "maximum generations with no improvement in the hypervolume metric - terminaation condition")
+            ("max-gen,y", po::value<int>(&max_gen)->default_value(500), "Maximum number of generations - termination condition")
+            ("replicates,i", po::value<int>(&replicates)->default_value(10), "Number of times to rerun Metronamica to account for stochasticity of model for each objective function evaluation");
 
 
 
@@ -124,7 +126,7 @@ int main(int argc, const char * argv[]) {
                              masking_map_file.second,
                              fks_coefficients_file.second,
                              wine_reg_mod_file.second,
-                             0, true);
+                             0, true, replicates);
 
         // The random number generator
         typedef std::mt19937 RNG;

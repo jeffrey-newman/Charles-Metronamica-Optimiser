@@ -181,12 +181,13 @@ public:
                   boost::filesystem::path &  fks_coefficients_path,
                   boost::filesystem::path & wine_regedit_path,
                   int _id = 0,
-                  bool _is_logging = false)
+                  bool _is_logging = false,
+                  int _replicates = 10)
     :   num_objectives(2),
     num_real_decision_vars(371),
     num_int_decision_vars(0),
     num_constraints(0),
-    replicates(10),
+    replicates(_replicates),
       geo_cmd(metro_exe),
       java_geoproj_edit(geoproj_edit_jar),
       mck_cmd(mck_exe),

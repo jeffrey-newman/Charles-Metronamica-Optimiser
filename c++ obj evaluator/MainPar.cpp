@@ -54,6 +54,7 @@ int main(int argc, char * argv[]) {
     int max_gen_hvol;  // Termination condition for the GA
     int max_gen;
     int mail_hvol_gen;
+    int replicates;
 
     namespace po = boost::program_options;
     po::options_description desc("Allowed options");
@@ -77,7 +78,8 @@ int main(int argc, char * argv[]) {
             ("pop-size,p", po::value<int>(&pop_size)->default_value(415), "Population size of the NSGAII")
             ("max-gen-no-hvol-improve,x", po::value<int>(&max_gen_hvol)->default_value(50), "maximum generations with no improvement in the hypervolume metric - terminaation condition")
             ("mail-gen-hvol,e", po::value<int>(&mail_hvol_gen)->default_value(10), "How often to mail the hpervolume value")
-            ("max-gen,y", po::value<int>(&max_gen)->default_value(500), "Maximum number of generations - termination condition");
+            ("max-gen,y", po::value<int>(&max_gen)->default_value(500), "Maximum number of generations - termination condition")
+            ("replicates,i", po::value<int>(&replicates)->default_value(10), "Number of times to rerun Metronamica to account for stochasticity of model for each objective function evaluation");
 
 
 
@@ -130,7 +132,8 @@ int main(int argc, char * argv[]) {
                              fks_coefficients_file.second,
                              wine_reg_mod_file.second,
                              world.rank(),
-                             true);
+                             true,
+                             replicates);
     
     
     if (world.rank() == 0)
