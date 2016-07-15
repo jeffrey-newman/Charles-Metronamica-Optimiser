@@ -223,6 +223,7 @@ public:
 
         std::stringstream cmd;
         cmd << wine_cmd << " regedit " << wine_regedit_path;
+        std::cout << "Running: " << cmd.str() << "\n";
         system(cmd.str().c_str());
     }
 
