@@ -148,7 +148,13 @@ int main(int argc, char * argv[]) {
 
 
         //create evaluator server
+        boost::filesystem::path eval_log = working_dir.second / "evaluation_timing.log";
+        std::ofstream eval_strm(eval_log.c_str());
         ParallelEvaluatePopServer eval_server(env, world, metro_eval.getProblemDefinitions());
+        if (eval_strm.is_open())
+        {
+            eval_server.log(ParallelEvaluatorBase::LVL1, eval_strm);
+        }
 
         // The random number generator
         typedef std::mt19937 RNG;
