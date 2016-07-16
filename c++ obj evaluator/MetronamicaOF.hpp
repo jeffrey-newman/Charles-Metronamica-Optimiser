@@ -222,9 +222,19 @@ public:
 //            create_directories(ph);
         copyDir(template_dir, worker_dir);
 
+        std::string filename = "logWorker" + std::to_string(evaluator_id) + "_WineRegEdit_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
+        boost::filesystem::path log_file_name = working_dir / filename;
+        std::ofstream logging_file;
+        if (is_logging)
+        {
+            logging_file.open(log_file_name.c_str(), std::ios_base::app);
+            if (!logging_file.is_open()) is_logging = false;
+        }
+
         std::stringstream cmd;
         cmd << wine_cmd << " regedit " << wine_regedit_path;
-        std::cout << "Running: " << cmd.str() << "\n";
+        if (is_logging) cmd << " >> \"" << log_file_name.c_str() << "\" 2>&1";
+        if (is_logging) logging_file << "Running: " << cmd.str() << "\n";
         system(cmd.str().c_str());
     }
 
@@ -268,7 +278,8 @@ public:
             {
                 cmd4 << " " << real_decision_vars[i];
             }
-            cmd4 << " " << rand_seeds[j] << " >> \"" << log_file_name.c_str() << "\" 2>&1";
+            cmd4 << " " << rand_seeds[j] ;
+            if (is_logging) cmd4 << " >> \"" << log_file_name.c_str() << "\" 2>&1";
 
             if (is_logging) logging_file << "Running: " << cmd4.str() << std::endl;
             if (is_logging) logging_file.close();
@@ -278,14 +289,16 @@ public:
             
             std::string wine_proj_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + mod_proj_file + "\"";
             //Call the model
-            cmd1 << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path << " >> \"" << log_file_name.c_str() << "\" 2>&1";;
+            cmd1 << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path ;
+            if (is_logging) cmd1 << " >> \"" << log_file_name.c_str() << "\" 2>&1";
             if (is_logging) logging_file << "Running: " << cmd1.str() << std::endl;
             if (is_logging)  logging_file.close();
             int i1 = system(cmd1.str().c_str());
             if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
 
-            cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << logfile_name << " " << wine_proj_path << " >> \"" << log_file_name.c_str() << "\" 2>&1";;
+            cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << logfile_name << " " << wine_proj_path ;
+            if (is_logging) cmd2 << " >> \"" << log_file_name.c_str() << "\" 2>&1";
             if (is_logging) logging_file << "Running: " << cmd2.str() << std::endl;
             if (is_logging) logging_file.close();
             int i2 = system(cmd2.str().c_str());
@@ -303,7 +316,8 @@ public:
             std::string logdir = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use";
 
             cmd3 << wine_cmd << " " << mck_cmd << " /RunComparisonSet \"" << clumpcsl << "\" \"" << loglog << "\" \""
-            << logdir << "\"" << " >> \"" << log_file_name.c_str() << "\" 2>&1";;;
+            << logdir << "\"" ;
+            if (is_logging) cmd3 << " >> \"" << log_file_name.c_str() << "\" 2>&1";
             if (is_logging) logging_file << "Running: " << cmd3.str() << std::endl;
             if (is_logging) logging_file.close();
             int i3 = system(cmd3.str().c_str());
