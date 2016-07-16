@@ -192,6 +192,7 @@ int main(int argc, char * argv[]) {
         optimiser.add_checkpoint(hvol_plot);
         optimiser.add_checkpoint(plotfront);
         optimiser.add_checkpoint(maxgen);
+        optimiser.add_checkpoint(mail);
 //        optimiser.visualise();
 
         // Initialise population
