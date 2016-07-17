@@ -139,6 +139,9 @@ SET(Metro_calib_test_Src
         Pathify.hpp
     )
 
+SET(Hypervolume_test_Src
+        HypervolumeCheck.cpp
+    )
 
 
 link_directories(${Boost_LIBRARY_DIRS})
@@ -177,3 +180,5 @@ IF(USE_VTK)
     endif()
 ENDIF()
 
+add_executable(testhypervol ${Hypervolume_test_Src})
+target_link_libraries(testhypervol ${Boost_LIBRARIES} )

@@ -149,6 +149,7 @@ int main(int argc, const char * argv[]) {
 
         PlotFrontVTK plotfront;
         optimiser.add_checkpoint(save_pop);
+        optimiser.add_checkpoint(mail);
         optimiser.add_checkpoint(hvol_plot);
         optimiser.add_checkpoint(plotfront);
         optimiser.add_checkpoint(maxgen);
@@ -157,8 +158,11 @@ int main(int argc, const char * argv[]) {
         PopulationSPtr pop = intialisePopulationRandomDVAssignment(pop_size, metro_eval.getProblemDefinitions(), rng);
         SetMutationInverseDVSize(pop->at(0), optimiser.getRealMutationOperator());
 
+        hvol(pop);
+        std::cout << "Hypervolume: " << hvol.getVal() << std::endl;
+
         // Run the optimisation
-        optimiser(pop);
+//        optimiser(pop);
 
 
 //        t.reset((boost::timer::auto_cpu_timer *) nullptr);

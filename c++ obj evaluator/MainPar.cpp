@@ -189,17 +189,21 @@ int main(int argc, char * argv[]) {
 //        optimiser.add_checkpoint(max_gen_terminate);
     //    optimiser.add_checkpoint(save_state);
         optimiser.add_checkpoint(save_pop);
+        optimiser.add_checkpoint(mail);
         optimiser.add_checkpoint(hvol_plot);
         optimiser.add_checkpoint(plotfront);
         optimiser.add_checkpoint(maxgen);
-        optimiser.add_checkpoint(mail);
+
 //        optimiser.visualise();
 
         // Initialise population
         PopulationSPtr pop = intialisePopulationRandomDVAssignment(pop_size, metro_eval.getProblemDefinitions(), rng);
 
+        hvol(pop);
+        std::cout << "Hypervolume: " << hvol.getVal() << std::endl;
+
         // Run the optimisation
-        optimiser(pop);
+//        optimiser(pop);
 
 
 //        t.reset((boost::timer::auto_cpu_timer *) nullptr);
