@@ -141,8 +141,14 @@ SET(Metro_calib_test_Src
 
 SET(Hypervolume_test_Src
         HypervolumeCheck.cpp
+        "${PARALLEL-NSGAII}/Metrics/hv.c"
+        "${PARALLEL-NSGAII}/Metrics/hv.h"
+        "${PARALLEL-NSGAII}/Metrics/Hypervolume.hpp"
     )
 
+SET(Evaluation_test_Src
+        EvaluationTester.cpp
+    )
 
 link_directories(${Boost_LIBRARY_DIRS})
 add_executable(metrocalpar ${Metro_calib_parallel_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES})
@@ -182,3 +188,13 @@ ENDIF()
 
 add_executable(testhypervol ${Hypervolume_test_Src})
 target_link_libraries(testhypervol ${Boost_LIBRARIES} )
+
+add_executable(testevaluation ${Evaluation_test_Src} ${MCL_HEADERS} ${MCL_SOURCES})
+target_link_libraries(testevaluation ${Boost_LIBRARIES} ${GDAL_LIBRARY} )
+IF(USE_VTK)
+    if(VTK_LIBRARIES)
+        target_link_libraries(testevaluation ${VTK_LIBRARIES})
+    else()
+        target_link_libraries(testevaluation vtkHybrid vtkWidgets)
+    endif()
+ENDIF()

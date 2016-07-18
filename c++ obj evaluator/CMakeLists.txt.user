@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.0.2, 2016-07-17T17:25:27. -->
+<!-- Written by QtCreator 4.0.2, 2016-07-18T12:19:56. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -62,9 +62,9 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.7.0 GCC 64bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.7.0 GCC 64bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.57.gcc_64_kit</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">1</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">4</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <valuelist type="QVariantList" key="CMake.Configuration">
      <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable}</value>
@@ -353,7 +353,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">metrocalser</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments">-m &quot;/home/a1091793/bin/Metronamica/GeonamicaCmd.exe&quot; -k &quot;/home/a1091793/bin/Map Comparison Kit 3/MCK.exe&quot; -w &quot;/usr/bin/wine&quot; -j &quot;/usr/local/jdk1.8.0_91/bin/java&quot; -g &quot;/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/Charles-Metronamica-Optimiser/Java geoproject modification/Geoproject file edit/Adapt Metronamica Project File/dist/Adapt_Metronamica_Project_File.jar&quot; -t &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/&quot; -f &quot;Randstad_base.geoproj&quot; -l &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/LogSettings/LogSettings.xml&quot; -a &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/lu2000.asc&quot; -o &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/lu1989.asc&quot; -s &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/region.asc&quot; -c &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/coefficients.txt&quot; -d &quot;/home/a1091793/Documents/Modelling/RunMetroCal&quot; -n &quot;Z:\\home\\a1091793\\Documents\\Modelling\\RunMetroCal&quot; -p 370 -x 50</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_6_1_GCC_64bit-Release</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">metrocalser</value>
@@ -409,7 +409,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">metrocalpar</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments">-m &quot;/home/a1091793/bin/Metronamica/GeonamicaCmd.exe&quot; -k &quot;/home/a1091793/bin/Map Comparison Kit 3/MCK.exe&quot; -w &quot;/usr/bin/wine&quot; -j &quot;/usr/local/jdk1.8.0_91/bin/java&quot; -g &quot;/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/Charles-Metronamica-Optimiser/Java geoproject modification/Geoproject file edit/Adapt Metronamica Project File/dist/Adapt_Metronamica_Project_File.jar&quot; -t &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/&quot; -f &quot;Randstad_base.geoproj&quot; -l &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/LogSettings/LogSettings.xml&quot; -a &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/lu2000.asc&quot; -o &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/lu1989.asc&quot; -s &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/region.asc&quot; -c &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/coefficients.txt&quot; -d &quot;/home/a1091793/Documents/Modelling/RunMetroCal&quot; -n &quot;Z:\\home\\a1091793\\Documents\\Modelling\\RunMetroCal&quot; -r &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/wineRegSetOnlineCheck.reg&quot; -p 370 -x 3 -y 2 -i 2</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_6_1_GCC_64bit-Release</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">metrocalpar</value>
@@ -465,7 +465,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">metrocaltest</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_6_1_GCC_64bit-Release</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">metrocaltest</value>
@@ -521,8 +521,8 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">testhypervol</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_6_1_GCC_64bit-Release</value>
-    <value type="int" key="PE.EnvironmentAspect.Base">-1</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">testhypervol</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
@@ -534,7 +534,63 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
    </valuemap>
-   <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">4</value>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.4">
+    <value type="bool" key="Analyzer.QmlProfiler.AggregateTraces">false</value>
+    <value type="bool" key="Analyzer.QmlProfiler.FlushEnabled">false</value>
+    <value type="uint" key="Analyzer.QmlProfiler.FlushInterval">1000</value>
+    <value type="QString" key="Analyzer.QmlProfiler.LastTraceFile"></value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="Analyzer.Valgrind.AddedSuppressionFiles"/>
+    <value type="bool" key="Analyzer.Valgrind.Callgrind.CollectBusEvents">false</value>
+    <value type="bool" key="Analyzer.Valgrind.Callgrind.CollectSystime">false</value>
+    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableBranchSim">false</value>
+    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableCacheSim">false</value>
+    <value type="bool" key="Analyzer.Valgrind.Callgrind.EnableEventToolTips">true</value>
+    <value type="double" key="Analyzer.Valgrind.Callgrind.MinimumCostRatio">0.01</value>
+    <value type="double" key="Analyzer.Valgrind.Callgrind.VisualisationMinimumCostRatio">10</value>
+    <value type="bool" key="Analyzer.Valgrind.FilterExternalIssues">true</value>
+    <value type="int" key="Analyzer.Valgrind.LeakCheckOnFinish">1</value>
+    <value type="int" key="Analyzer.Valgrind.NumCallers">25</value>
+    <valuelist type="QVariantList" key="Analyzer.Valgrind.RemovedSuppressionFiles"/>
+    <value type="int" key="Analyzer.Valgrind.SelfModifyingCodeDetection">1</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.ShowReachable">false</value>
+    <value type="bool" key="Analyzer.Valgrind.TrackOrigins">true</value>
+    <value type="QString" key="Analyzer.Valgrind.ValgrindExecutable">valgrind</value>
+    <valuelist type="QVariantList" key="Analyzer.Valgrind.VisibleErrorKinds">
+     <value type="int">0</value>
+     <value type="int">1</value>
+     <value type="int">2</value>
+     <value type="int">3</value>
+     <value type="int">4</value>
+     <value type="int">5</value>
+     <value type="int">6</value>
+     <value type="int">7</value>
+     <value type="int">8</value>
+     <value type="int">9</value>
+     <value type="int">10</value>
+     <value type="int">11</value>
+     <value type="int">12</value>
+     <value type="int">13</value>
+     <value type="int">14</value>
+    </valuelist>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">testevaluation</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments">-m &quot;/home/a1091793/bin/Metronamica/GeonamicaCmd.exe&quot; -k &quot;/home/a1091793/bin/Map Comparison Kit 3/MCK.exe&quot; -w &quot;/usr/bin/wine&quot; -j &quot;/usr/local/jdk1.8.0_91/bin/java&quot; -g &quot;/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/Charles-Metronamica-Optimiser/Java geoproject modification/Geoproject file edit/Adapt Metronamica Project File/dist/Adapt_Metronamica_Project_File.jar&quot; -t &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/&quot; -f &quot;Randstad_base.geoproj&quot; -l &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/LogSettings/LogSettings.xml&quot; -a &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/lu2000.asc&quot; -o &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/lu1989.asc&quot; -s &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/region.asc&quot; -c &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/RandstadData/Randstad/Log/Land_use/coefficients.txt&quot; -d &quot;/home/a1091793/Documents/Modelling/RunMetroCal&quot; -n &quot;Z:\\home\\a1091793\\Documents\\Modelling\\RunMetroCal&quot; -r &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/wineRegSetOnlineCheck.reg&quot; -i 2</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">testevaluation</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.testevaluation</value>
+    <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+   </valuemap>
+   <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">5</value>
   </valuemap>
  </data>
  <data>

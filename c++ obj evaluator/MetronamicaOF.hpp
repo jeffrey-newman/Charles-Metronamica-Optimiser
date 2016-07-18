@@ -38,7 +38,8 @@ class MetronamicaOF : public ObjectivesAndConstraintsBase
     boost::filesystem::path worker_dir;
     std::string wine_temp_dir; // same path as temporary dir, but in the wine (windows) path format.
     std::string geoproject_name;
-    std::string logfile_name;
+    boost::filesystem::path metro_logfile_name;
+        std::string cp_metro_log_name;
     boost::filesystem::path actual_map;
     boost::filesystem::path original_map;
     boost::filesystem::path masking_map;
@@ -174,7 +175,7 @@ public:
                   boost::filesystem::path & working_dir,
                   std::string &_wine_work_dir,
                   std::string &_geoproj_name,
-                  std::string & _logfile_name,
+                  boost::filesystem::path & _logfile_name,
                   boost::filesystem::path & actual_map_path,
                   boost::filesystem::path & original_map_path,
                   boost::filesystem::path & masking_map_path,
@@ -197,7 +198,7 @@ public:
       working_dir(working_dir),
       wine_temp_dir(_wine_work_dir),
       geoproject_name(_geoproj_name),
-      logfile_name(_logfile_name),
+      metro_logfile_name(_logfile_name),
       actual_map(actual_map_path),
       original_map(original_map_path),
       masking_map(masking_map_path),
@@ -222,6 +223,16 @@ public:
 //            create_directories(ph);
         copyDir(template_dir, worker_dir);
 
+
+        namespace fs = boost::filesystem;
+        std::string metro_cp_log_name = "calibration_log_%%%%-%%%%.xml";
+        boost::filesystem::path metro_cp_log_path = boost::filesystem::unique_path(worker_dir / metro_cp_log_name);
+        fs::copy_file(
+                      metro_logfile_name,
+                      metro_cp_log_path
+                      );
+        cp_metro_log_name = metro_cp_log_path.filename().string();
+
         std::string filename = "logWorker" + std::to_string(evaluator_id) + "_WineRegEdit_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
         boost::filesystem::path log_file_name = working_dir / filename;
         std::ofstream logging_file;
@@ -243,20 +254,21 @@ public:
         boost::filesystem::remove_all(worker_dir);
     }
     
-    std::pair<std::vector<double>, std::vector<double> > &
+    std::pair<std::vector<double>, std::vector<double> >
     operator()(const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars)
     {
+        std::pair<std::vector<double>, std::vector<double> > objectives_and_constrataints(std::piecewise_construct, std::make_tuple(num_objectives, std::numeric_limits<double>::max()), std::make_tuple(num_constraints));
         std::string filename = "logWorker" + std::to_string(evaluator_id) + "_EvalNo" + std::to_string(eval_count) + "_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
-        boost::filesystem::path log_file_name = working_dir / filename;
+        boost::filesystem::path debug_log_file_name = working_dir / filename;
         std::ofstream logging_file;
         if (is_logging)
         {
-            logging_file.open(log_file_name.c_str(), std::ios_base::app);
+            logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
         }
 
 
-        std::vector<double> & obj = this->objectives_and_constrataints.first;
+        std::vector<double> & obj = objectives_and_constrataints.first;
         obj[0] = 0; obj[1] = 0;
         
         for (int j = 0; j < replicates; ++j)
@@ -279,30 +291,31 @@ public:
                 cmd4 << " " << real_decision_vars[i];
             }
             cmd4 << " " << rand_seeds[j] ;
-            if (is_logging) cmd4 << " >> \"" << log_file_name.c_str() << "\" 2>&1";
+            if (is_logging) cmd4 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
 
             if (is_logging) logging_file << "Running: " << cmd4.str() << std::endl;
             if (is_logging) logging_file.close();
             int i4 = system(cmd4.str().c_str());
-            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::app);
+            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
             
             std::string wine_proj_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + mod_proj_file + "\"";
+            std::string metro_log_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + cp_metro_log_name + "\"";
             //Call the model
             cmd1 << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path ;
-            if (is_logging) cmd1 << " >> \"" << log_file_name.c_str() << "\" 2>&1";
+            if (is_logging) cmd1 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
             if (is_logging) logging_file << "Running: " << cmd1.str() << std::endl;
             if (is_logging)  logging_file.close();
             int i1 = system(cmd1.str().c_str());
-            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::app);
+            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
 
-            cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << logfile_name << " " << wine_proj_path ;
-            if (is_logging) cmd2 << " >> \"" << log_file_name.c_str() << "\" 2>&1";
+            cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << metro_log_path << " " << wine_proj_path ;
+            if (is_logging) cmd2 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
             if (is_logging) logging_file << "Running: " << cmd2.str() << std::endl;
             if (is_logging) logging_file.close();
             int i2 = system(cmd2.str().c_str());
-            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::app);
+            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
             
             // Calc FKS
@@ -317,35 +330,36 @@ public:
 
             cmd3 << wine_cmd << " " << mck_cmd << " /RunComparisonSet \"" << clumpcsl << "\" \"" << loglog << "\" \""
             << logdir << "\"" ;
-            if (is_logging) cmd3 << " >> \"" << log_file_name.c_str() << "\" 2>&1";
+            if (is_logging) cmd3 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
             if (is_logging) logging_file << "Running: " << cmd3.str() << std::endl;
             if (is_logging) logging_file.close();
             int i3 = system(cmd3.str().c_str());
-            if (is_logging) logging_file.open(log_file_name.c_str(), std::ios_base::app);
+            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
             
             // Take avg of clumpiness
             double avg_clump = 0;
             boost::filesystem::path gre = worker_dir / "Log" / "Land_use" / "moving window based structure_4.sts";
-            avg_clump += abs(overall_diff(gre));
+            double gre_diff = overall_diff(gre);
+            avg_clump += std::abs(gre_diff);
             boost::filesystem::path hld = worker_dir / "Log" / "Land_use" / "moving window based structure_5.sts";
-            avg_clump += abs(overall_diff(hld));
+            avg_clump += std::abs(overall_diff(hld));
             boost::filesystem::path hhd = worker_dir / "Log" / "Land_use" / "moving window based structure_6.sts";
-            avg_clump += abs(overall_diff(hhd));
+            avg_clump += std::abs(overall_diff(hhd));
             boost::filesystem::path ind = worker_dir / "Log" / "Land_use" / "moving window based structure_7.sts";
-            avg_clump += abs(overall_diff(ind));
+            avg_clump += std::abs(overall_diff(ind));
             boost::filesystem::path ser = worker_dir / "Log" / "Land_use" / "moving window based structure_8.sts";
-            avg_clump += abs(overall_diff(ser));
+            avg_clump += std::abs(overall_diff(ser));
             boost::filesystem::path scu = worker_dir / "Log" / "Land_use" / "moving window based structure_9.sts";
-            avg_clump += abs(overall_diff(scu));
+            avg_clump += std::abs(overall_diff(scu));
             boost::filesystem::path forr = worker_dir / "Log" / "Land_use" / "moving window based structure_10.sts";
-            avg_clump += abs(overall_diff(forr));
+            avg_clump += std::abs(overall_diff(forr));
             boost::filesystem::path exg = worker_dir / "Log" / "Land_use" / "moving window based structure_11.sts";
-            avg_clump += abs(overall_diff(exg));
+            avg_clump += std::abs(overall_diff(exg));
             boost::filesystem::path nat = worker_dir / "Log" / "Land_use" / "moving window based structure_12.sts";
-            avg_clump += abs(overall_diff(nat));
+            avg_clump += std::abs(overall_diff(nat));
             boost::filesystem::path rec = worker_dir / "Log" / "Land_use" / "moving window based structure_13.sts";
-            avg_clump += abs(overall_diff(rec));
+            avg_clump += std::abs(overall_diff(rec));
             avg_clump /= 10.0;
             obj[1] += avg_clump;
             
@@ -357,7 +371,7 @@ public:
         obj[1] /= replicates;
         ++eval_count;
         if (is_logging) logging_file.close();
-        return (this->objectives_and_constrataints);
+        return (objectives_and_constrataints);
     }
     
     ProblemDefinitions & getProblemDefinitions()

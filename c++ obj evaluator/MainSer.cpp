@@ -37,7 +37,7 @@ int main(int argc, const char * argv[]) {
     CmdLinePaths template_dir;
     std::string geoproj_file;
     std::string wine_working_dir_path;
-    std::string log_file;
+    CmdLinePaths log_file;
     CmdLinePaths wine_reg_mod_file;
     CmdLinePaths actual_map_file;
     CmdLinePaths original_map_file;
@@ -63,7 +63,7 @@ int main(int argc, const char * argv[]) {
             ("geoproj-manip,g", po::value<std::string>(&geoproj_manip_jar.first), "path to the java jar for manipulating geoproject files.")
             ("template,t", po::value<std::string>(&template_dir.first), "path to template geoproject directory")
             ("geoproj-file,f", po::value<std::string>(&geoproj_file), "name of geoproject file (without full path)")
-            ("log-name,l", po::value<std::string>(&log_file), "path of the log settings xml file (full path in wine format)")
+            ("log-name,l", po::value<std::string>(&log_file.first), "path of the log settings xml file (full path in wine format)")
             ("actual-map,a", po::value<std::string>(&actual_map_file.first), "path of the actual landuse map at end of simulation to compare to")
             ("orignal-map,o", po::value<std::string>(&original_map_file.first), "path of the landuse map at start of the simulation")
             ("masking-map,s", po::value<std::string>(&masking_map_file.first), "path of the masking map to mask out/in sections of the raster")
@@ -95,19 +95,7 @@ int main(int argc, const char * argv[]) {
     pathify(fks_coefficients_file);
     pathify(working_dir);
     pathify(wine_reg_mod_file);
-
-//    pathify(metro_exe) //.second = boost::filesystem::path(metro_exe.first);
-//    mck_exe.second = boost::filesystem::path(mck_exe.first);
-//    wine_exe.second = boost::filesystem::path(wine_exe.first);
-//    java_exe.second = boost::filesystem::path(java_exe.first);
-//    geoproj_manip_jar.second = boost::filesystem::path(geoproj_manip_jar.first);
-//    template_dir.second = boost::filesystem::path(template_dir.first);
-//    log_file.second = boost::filesystem::path(log_file.first);
-//    actual_map_file.second = boost::filesystem::path(actual_map_file.first);
-//    original_map_file.second = boost::filesystem::path(original_map_file.first);
-//    masking_map_file.second = boost::filesystem::path(masking_map_file.first);
-//    fks_coefficients_file.second = boost::filesystem::path(fks_coefficients_file.first);
-//    working_dir.second = boost::filesystem::path(working_dir.first);
+    pathify(log_file);
 
 
 
@@ -120,7 +108,7 @@ int main(int argc, const char * argv[]) {
                              working_dir.second,
                              wine_working_dir_path,
                              geoproj_file,
-                             log_file,
+                             log_file.second,
                              actual_map_file.second,
                              original_map_file.second,
                              masking_map_file.second,
