@@ -1,0 +1,1 @@
+python CLUMPYcmd.py C:\Users\Charles\OneDrive\Clumpiness\Example_complex_Randstad\lu1989.asc C:\Users\Charles\OneDrive\Clumpiness\Example_complex_Randstad\lu2000.asc C:\Users\Charles\OneDrive\Clumpiness\Example_complex_Randstad\region.asc 3 3
