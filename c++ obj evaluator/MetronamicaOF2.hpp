@@ -220,7 +220,7 @@ public:
       eval_count(0)
     {
         analysisNum = createAnalysis();
-        loadMap2(analysisNum, actual_map.c_str());
+        loadMap1(analysisNum, actual_map.c_str());
         loadOriginalMap(analysisNum, original_map.c_str());
         loadMaskingMap(analysisNum, masking_map.c_str());
         loadTransitionFuzzyWeights(analysisNum, fks_coefficients.c_str());
@@ -262,13 +262,12 @@ public:
     }
 
     double
-    calcClumpDiff(int analysisNum, int luc_val)
+    calcClumpDiff(int analysisNum, int luc_val, std::ostream & log)
     {
-
-
         double clump_sim = getClumpiness(analysisNum, MAP_SIMULATED, luc_val);
         double clump_act = getClumpiness(analysisNum, MAP_ACTUAL, luc_val);
         double diff = std::abs(clump_sim - clump_act);
+        if (is_logging) log << "clump diff: " << clump_sim << " - " << clump_act << " = " << diff << "\n";
         return (diff);
     }
     
@@ -342,7 +341,7 @@ public:
             
             // Calc FKS
             boost::filesystem::path output_map = worker_dir / "Log" / "Land_use" / "Land use map_2000-Jan-01 00_00_00.rst";
-            loadMap1(analysisNum, output_map.c_str());
+            loadMap2(analysisNum, output_map.c_str());
             obj[0] += getFuzzyKappaSim(analysisNum);
             
 //            //Fourth calculate clumpiness values
@@ -372,25 +371,35 @@ public:
 //            _Nature_                    11
 //            _Recreation areas_          12
             int gre_val = 3;
-            avg_clump += calcClumpDiff(analysisNum, gre_val);
+            if (is_logging) logging_file << "Greenhouses ";
+            avg_clump += calcClumpDiff(analysisNum, gre_val, logging_file);
             int hld_val = 4;
-            avg_clump +=  calcClumpDiff(analysisNum, hld_val);
+            if (is_logging) logging_file << "_Housing low density_ ";
+            avg_clump +=  calcClumpDiff(analysisNum, hld_val, logging_file);
             int hhd_val = 5;
-            avg_clump +=  calcClumpDiff(analysisNum, hhd_val);
+            if (is_logging) logging_file << "_Housing high density_ ";
+            avg_clump +=  calcClumpDiff(analysisNum, hhd_val, logging_file);
             int ind_val = 6;
-            avg_clump +=  calcClumpDiff(analysisNum, ind_val);
+            if (is_logging) logging_file << "_Industry_  ";
+            avg_clump +=  calcClumpDiff(analysisNum, ind_val, logging_file);
             int ser_val = 7;
-            avg_clump +=  calcClumpDiff(analysisNum, ser_val);
+            if (is_logging) logging_file << "_Services_ ";
+            avg_clump +=  calcClumpDiff(analysisNum, ser_val, logging_file);
             int scu_val = 8;
-            avg_clump +=  calcClumpDiff(analysisNum, scu_val);
+            if (is_logging) logging_file << "_Socio cultural uses_ ";
+            avg_clump +=  calcClumpDiff(analysisNum, scu_val, logging_file);
             int forr_val = 9;
-            avg_clump +=  calcClumpDiff(analysisNum, forr_val);
+            if (is_logging) logging_file << "_Forest_  ";
+            avg_clump +=  calcClumpDiff(analysisNum, forr_val, logging_file);
             int exg_val = 10;
-            avg_clump +=  calcClumpDiff(analysisNum, exg_val);
+            if (is_logging) logging_file << "_Extensive grasslands_ ";
+            avg_clump +=  calcClumpDiff(analysisNum, exg_val, logging_file);
             int nat_val = 11;
-            avg_clump +=  calcClumpDiff(analysisNum, nat_val);
+            if (is_logging) logging_file << "_Nature_  ";
+            avg_clump +=  calcClumpDiff(analysisNum, nat_val, logging_file);
             int rec_val = 12;
-            avg_clump +=  calcClumpDiff(analysisNum, rec_val);
+            if (is_logging) logging_file << "_Recreation areas_ ";
+            avg_clump +=  calcClumpDiff(analysisNum, rec_val, logging_file);
             avg_clump /= 10.0;
             obj[1] += avg_clump;
             
