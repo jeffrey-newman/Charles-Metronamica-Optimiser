@@ -342,7 +342,10 @@ public:
             // Calc FKS
             boost::filesystem::path output_map = worker_dir / "Log" / "Land_use" / "Land use map_2000-Jan-01 00_00_00.rst";
             loadMap2(analysisNum, output_map.c_str());
-            obj[0] += getFuzzyKappaSim(analysisNum);
+            if (is_logging) logging_file << "Simulated map: " << output_map.string() << "\n";
+            double fks = getFuzzyKappaSim(analysisNum);
+            obj[0] += fks;
+            if (is_logging) logging_file << "KKS: " << fks;
             
 //            //Fourth calculate clumpiness values
 //            std::string clumpcsl = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use\\\\clump.csl";
