@@ -282,7 +282,11 @@ public:
         if (is_logging)
         {
             logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
-            if (!logging_file.is_open()) is_logging = false;
+            if (!logging_file.is_open())
+            {
+                is_logging = false;
+                std::cout << "attempt to log failed\n";
+            }
         }
 
 

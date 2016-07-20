@@ -187,11 +187,11 @@ int main(int argc, char * argv[]) {
         // Initialise population
         PopulationSPtr pop = intialisePopulationRandomDVAssignment(pop_size, metro_eval.getProblemDefinitions(), rng);
 
-        hvol(pop);
-        std::cout << "Hypervolume: " << hvol.getVal() << std::endl;
+//        hvol(pop);
+//        std::cout << "Hypervolume: " << hvol.getVal() << std::endl;
 
         // Run the optimisation
-//        optimiser(pop);
+        optimiser(pop);
 
 
 //        t.reset((boost::timer::auto_cpu_timer *) nullptr);

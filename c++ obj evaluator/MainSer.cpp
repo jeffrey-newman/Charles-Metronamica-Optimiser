@@ -146,11 +146,11 @@ int main(int argc, const char * argv[]) {
         PopulationSPtr pop = intialisePopulationRandomDVAssignment(pop_size, metro_eval.getProblemDefinitions(), rng);
         SetMutationInverseDVSize(pop->at(0), optimiser.getRealMutationOperator());
 
-        hvol(pop);
-        std::cout << "Hypervolume: " << hvol.getVal() << std::endl;
+//        hvol(pop);
+//        std::cout << "Hypervolume: " << hvol.getVal() << std::endl;
 
         // Run the optimisation
-//        optimiser(pop);
+        optimiser(pop);
 
 
 //        t.reset((boost::timer::auto_cpu_timer *) nullptr);
