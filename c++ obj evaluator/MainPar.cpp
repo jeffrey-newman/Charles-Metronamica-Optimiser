@@ -15,7 +15,7 @@
 #include <boost/filesystem.hpp>
 //#undef BOOST_NO_CXX11_SCOPED_ENUMS
 #include <boost/mpi.hpp>
-#include "MetronamicaOF.hpp"
+#include "MetronamicaOF2.hpp"
 #include "ParallelEvaluator.hpp"
 #include "NSGAII.hpp"
 #include "Pathify.hpp"
@@ -104,7 +104,7 @@ int main(int argc, char * argv[]) {
 
 
 
-    MetronamicaOF metro_eval(metro_exe.second,
+    MetronamicaOF2 metro_eval(metro_exe.second,
                              mck_exe.second,
                              wine_exe.second,
                              java_exe.second,

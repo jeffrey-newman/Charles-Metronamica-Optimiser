@@ -104,6 +104,7 @@ SET (MCL_HEADERS
         "${MCL}/FuzzyKappaSimulationImproved.hpp"
         "${MCL}/ReadFuzzyTables.h"
         "${MCL}/dt.h"
+        "${MCL}/Clumpiness.h"
         )
 
 SET (MCL_SOURCES
@@ -118,24 +119,25 @@ SET (MCL_SOURCES
         "${MCL}/Neighbourhood_Impl.cpp"
         "${MCL}/FuzzyKappaSimulation.cpp"
         "${MCL}/FuzzyKappaSimulationImproved.cpp"
+        "${MCL}/Clumpiness.cpp"
         )
 
 SET(Metro_calib_parallel_Src
         MainPar.cpp
-        MetronamicaOF.hpp
+        MetronamicaOF2.hpp
         Pathify.hpp
 
     )
 
 SET(Metro_calib_serial_Src
        MainSer.cpp
-       MetronamicaOF.hpp
+       MetronamicaOF2.hpp
        Pathify.hpp
     )
 
 SET(Metro_calib_test_Src
         TestMetroCalOF.cpp
-        MetronamicaOF.hpp
+        MetronamicaOF2.hpp
         Pathify.hpp
     )
 
@@ -148,6 +150,8 @@ SET(Hypervolume_test_Src
 
 SET(Evaluation_test_Src
         EvaluationTester.cpp
+        MetronamicaOF2.hpp
+        Pathify.hpp
     )
 
 link_directories(${Boost_LIBRARY_DIRS})

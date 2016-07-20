@@ -14,7 +14,7 @@
 #include <boost/program_options.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/mpi.hpp>
-#include "MetronamicaOF.hpp"
+#include "MetronamicaOF2.hpp"
 #include "ParallelEvaluator.hpp"
 #include "NSGAII.hpp"
 #include "Pathify.hpp"
@@ -94,7 +94,7 @@ int main(int argc, const char * argv[]) {
     pathify(wine_reg_mod_file);
     pathify(log_file);
 
-    MetronamicaOF metro_eval(metro_exe.second,
+    MetronamicaOF2 metro_eval(metro_exe.second,
                              mck_exe.second,
                              wine_exe.second,
                              java_exe.second,
