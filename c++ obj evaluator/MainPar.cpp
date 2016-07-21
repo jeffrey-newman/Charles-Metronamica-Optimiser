@@ -161,6 +161,10 @@ int main(int argc, char * argv[]) {
         SavePopCheckpoint save_pop(1, working_dir.second);
         std::vector<double> ref_point =  {-1, 9.764}; //From Charle's email 23rd June
         Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen_hvol);
+        if (eval_strm.is_open())
+        {
+            hvol.log(Hypervolume::LVL1, eval_strm);
+        }
         MetricLinePlot hvol_plot(hvol);
         MaxGenCheckpoint maxgen(max_gen);
         std::string mail_subj("Hypervolume of front from Metro calibrator ");
