@@ -181,6 +181,7 @@ int main(int argc, char * argv[]) {
 //        optimiser.add_checkpoint(max_gen_terminate);
     //    optimiser.add_checkpoint(save_state);
         optimiser.add_checkpoint(save_pop);
+        optimiser.add_checkpoint(hvol);
         optimiser.add_checkpoint(mail);
         optimiser.add_checkpoint(hvol_plot);
         optimiser.add_checkpoint(plotfront);
