@@ -258,7 +258,7 @@ public:
 
     ~MetronamicaOF2()
     {
-        boost::filesystem::remove_all(worker_dir);
+//        boost::filesystem::remove_all(worker_dir);
     }
 
     double
@@ -345,7 +345,7 @@ public:
             if (is_logging) logging_file << "Simulated map: " << output_map.string() << "\n";
             double fks = getFuzzyKappaSim(analysisNum);
             obj[0] += fks;
-            if (is_logging) logging_file << "KKS: " << fks;
+            if (is_logging) logging_file << "FKS: " << fks;
             
 //            //Fourth calculate clumpiness values
 //            std::string clumpcsl = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use\\\\clump.csl";
