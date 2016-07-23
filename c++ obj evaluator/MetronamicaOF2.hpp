@@ -15,9 +15,12 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <thread>         // std::this_thread::sleep_for
+#include <chrono>         // std::chrono::seconds
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string.hpp> // include Boost, a C++ library
 #include <boost/date_time.hpp>
+#include <boost/optional.hpp>
 #include "Evaluation.hpp"
 #include "MapComparison_0_4.h"
 
@@ -261,6 +264,41 @@ public:
 //        boost::filesystem::remove_all(worker_dir);
     }
 
+
+    boost::optional<boost::filesystem::path>
+    runMetro( std::string & mod_proj_file, bool is_logging, boost::filesystem::path & debug_log_file_name, std::ofstream & logging_file)
+    {
+        std::stringstream cmd1, cmd2;
+        std::string wine_proj_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + mod_proj_file + "\"";
+        std::string metro_log_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + cp_metro_log_name + "\"";
+        //Call the model
+        cmd1 << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path ;
+        if (is_logging) cmd1 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
+        if (is_logging) logging_file << "Running: " << cmd1.str() << std::endl;
+        if (is_logging)  logging_file.close();
+        int i1 = system(cmd1.str().c_str());
+        if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
+        if (!logging_file.is_open()) is_logging = false;
+
+        cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << metro_log_path << " " << wine_proj_path ;
+        if (is_logging) cmd2 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
+        if (is_logging) logging_file << "Running: " << cmd2.str() << std::endl;
+        if (is_logging) logging_file.close();
+        int i2 = system(cmd2.str().c_str());
+        if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
+        if (!logging_file.is_open()) is_logging = false;
+
+        boost::filesystem::path output_map = worker_dir / "Log" / "Land_use" / "Land use map_2000-Jan-01 00_00_00.rst";
+        if (boost::filesystem::exists(output_map))
+        {
+            return output_map;
+        }
+        else
+        {
+            return boost::none;
+        }
+    }
+
     double
     calcClumpDiff(int analysisNum, int luc_val, std::ostream & log)
     {
@@ -302,7 +340,7 @@ public:
             //boost::filesystem::path logfile_path = temporary_dir / logfile_name;
             
             boost::filesystem::current_path(worker_dir);
-            std::stringstream cmd1, cmd2, cmd3, cmd4;
+            std::stringstream /*cmd3,*/ cmd4;    //mcd3 is for MCK.
 
             // Modify Geoproject file with decision variables and random seed
             cmd4 << java_cmd << " -jar " << java_geoproj_edit << " ";
@@ -320,32 +358,51 @@ public:
             if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
             
-            std::string wine_proj_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + mod_proj_file + "\"";
-            std::string metro_log_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + cp_metro_log_name + "\"";
-            //Call the model
-            cmd1 << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path ;
-            if (is_logging) cmd1 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
-            if (is_logging) logging_file << "Running: " << cmd1.str() << std::endl;
-            if (is_logging)  logging_file.close();
-            int i1 = system(cmd1.str().c_str());
-            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
-            if (!logging_file.is_open()) is_logging = false;
+            boost::optional<boost::filesystem::path> output_map = runMetro(mod_proj_file, is_logging, debug_log_file_name, logging_file);
+            if (!output_map)
+            {
+                output_map = runMetro(mod_proj_file, is_logging, debug_log_file_name, logging_file);
+                if (!output_map)
+                {
+                    //Write error message and assume infeasible set of parameters and so assign worse OF values. (-1, 10)
+                    if (is_logging) logging_file << "Was unable to successfully run Metronamica on decision variables\n";
+                    obj[0] = -1;
+                    obj[1] = 10;
+                    return (objectives_and_constrataints);
+                }
+            }
 
-            cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << metro_log_path << " " << wine_proj_path ;
-            if (is_logging) cmd2 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
-            if (is_logging) logging_file << "Running: " << cmd2.str() << std::endl;
-            if (is_logging) logging_file.close();
-            int i2 = system(cmd2.str().c_str());
-            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
-            if (!logging_file.is_open()) is_logging = false;
-            
-            // Calc FKS
-            boost::filesystem::path output_map = worker_dir / "Log" / "Land_use" / "Land use map_2000-Jan-01 00_00_00.rst";
-            loadMap2(analysisNum, output_map.c_str());
-            if (is_logging) logging_file << "Simulated map: " << output_map.string() << "\n";
-            double fks = getFuzzyKappaSim(analysisNum);
-            obj[0] += fks;
-            if (is_logging) logging_file << "FKS: " << fks;
+            try
+            {
+                loadMap2(analysisNum, (*output_map).c_str());
+                if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
+                double fks = getFuzzyKappaSim(analysisNum);
+                obj[0] += fks;
+                if (is_logging) logging_file << "FKS: " << fks;
+            }
+            catch (std::runtime_error err)
+            {
+                try
+                {
+                    std::cout << err.what() << std::endl;
+                    std::this_thread::sleep_for (std::chrono::seconds(3));
+                    loadMap2(analysisNum, (*output_map).c_str());
+                    if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
+                    double fks = getFuzzyKappaSim(analysisNum);
+                    obj[0] += fks;
+                    if (is_logging) logging_file << "FKS: " << fks;
+                }
+                catch (...)
+                {
+                    //Write error message and assume infeasible set of parameters and so assign worse OF values. (-1, 10)
+                    if (is_logging) logging_file << "Was unable to calculate FKS\n";
+                    obj[0] = -1;
+                    obj[1] = 10;
+                    return (objectives_and_constrataints);
+                }
+            }
+
+
             
 //            //Fourth calculate clumpiness values
 //            std::string clumpcsl = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use\\\\clump.csl";
@@ -361,50 +418,64 @@ public:
 //            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
 //            if (!logging_file.is_open()) is_logging = false;
             
-            // Take avg of clumpiness
-            double avg_clump = 0;            
-//            _Greenhouses_               3
-//            _Housing low density_       4
-//            _Housing high density_      5
-//            _Industry_                  6
-//            _Services_                  7
-//            _Socio cultural uses_       8
-//            _Forest_                    9
-//            _Extensive grasslands_      10
-//            _Nature_                    11
-//            _Recreation areas_          12
-            int gre_val = 3;
-            if (is_logging) logging_file << "Greenhouses ";
-            avg_clump += calcClumpDiff(analysisNum, gre_val, logging_file);
-            int hld_val = 4;
-            if (is_logging) logging_file << "_Housing low density_ ";
-            avg_clump +=  calcClumpDiff(analysisNum, hld_val, logging_file);
-            int hhd_val = 5;
-            if (is_logging) logging_file << "_Housing high density_ ";
-            avg_clump +=  calcClumpDiff(analysisNum, hhd_val, logging_file);
-            int ind_val = 6;
-            if (is_logging) logging_file << "_Industry_  ";
-            avg_clump +=  calcClumpDiff(analysisNum, ind_val, logging_file);
-            int ser_val = 7;
-            if (is_logging) logging_file << "_Services_ ";
-            avg_clump +=  calcClumpDiff(analysisNum, ser_val, logging_file);
-            int scu_val = 8;
-            if (is_logging) logging_file << "_Socio cultural uses_ ";
-            avg_clump +=  calcClumpDiff(analysisNum, scu_val, logging_file);
-            int forr_val = 9;
-            if (is_logging) logging_file << "_Forest_  ";
-            avg_clump +=  calcClumpDiff(analysisNum, forr_val, logging_file);
-            int exg_val = 10;
-            if (is_logging) logging_file << "_Extensive grasslands_ ";
-            avg_clump +=  calcClumpDiff(analysisNum, exg_val, logging_file);
-            int nat_val = 11;
-            if (is_logging) logging_file << "_Nature_  ";
-            avg_clump +=  calcClumpDiff(analysisNum, nat_val, logging_file);
-            int rec_val = 12;
-            if (is_logging) logging_file << "_Recreation areas_ ";
-            avg_clump +=  calcClumpDiff(analysisNum, rec_val, logging_file);
-            avg_clump /= 10.0;
-            obj[1] += avg_clump;
+
+            try
+            {
+                // Take avg of clumpiness
+                double avg_clump = 0;
+    //            _Greenhouses_               3
+    //            _Housing low density_       4
+    //            _Housing high density_      5
+    //            _Industry_                  6
+    //            _Services_                  7
+    //            _Socio cultural uses_       8
+    //            _Forest_                    9
+    //            _Extensive grasslands_      10
+    //            _Nature_                    11
+    //            _Recreation areas_          12
+                int gre_val = 3;
+                if (is_logging) logging_file << "Greenhouses ";
+                avg_clump += calcClumpDiff(analysisNum, gre_val, logging_file);
+                int hld_val = 4;
+                if (is_logging) logging_file << "_Housing low density_ ";
+                avg_clump +=  calcClumpDiff(analysisNum, hld_val, logging_file);
+                int hhd_val = 5;
+                if (is_logging) logging_file << "_Housing high density_ ";
+                avg_clump +=  calcClumpDiff(analysisNum, hhd_val, logging_file);
+                int ind_val = 6;
+                if (is_logging) logging_file << "_Industry_  ";
+                avg_clump +=  calcClumpDiff(analysisNum, ind_val, logging_file);
+                int ser_val = 7;
+                if (is_logging) logging_file << "_Services_ ";
+                avg_clump +=  calcClumpDiff(analysisNum, ser_val, logging_file);
+                int scu_val = 8;
+                if (is_logging) logging_file << "_Socio cultural uses_ ";
+                avg_clump +=  calcClumpDiff(analysisNum, scu_val, logging_file);
+                int forr_val = 9;
+                if (is_logging) logging_file << "_Forest_  ";
+                avg_clump +=  calcClumpDiff(analysisNum, forr_val, logging_file);
+                int exg_val = 10;
+                if (is_logging) logging_file << "_Extensive grasslands_ ";
+                avg_clump +=  calcClumpDiff(analysisNum, exg_val, logging_file);
+                int nat_val = 11;
+                if (is_logging) logging_file << "_Nature_  ";
+                avg_clump +=  calcClumpDiff(analysisNum, nat_val, logging_file);
+                int rec_val = 12;
+                if (is_logging) logging_file << "_Recreation areas_ ";
+                avg_clump +=  calcClumpDiff(analysisNum, rec_val, logging_file);
+                avg_clump /= 10.0;
+                obj[1] += avg_clump;
+
+            }
+            catch (...)
+            {
+                //Write error message and assume infeasible set of parameters and so assign worse OF values. (-1, 10)
+                if (is_logging) logging_file << "Was unable to calculate avg. clumpiness difference\n";
+                obj[0] = -1;
+                obj[1] = 10;
+                return (objectives_and_constrataints);
+            }
+
             
 //            boost::filesystem::current_path(temporary_dir);
 
