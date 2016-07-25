@@ -243,20 +243,20 @@ public:
                       );
         cp_metro_log_name = metro_cp_log_path.filename().string();
 
-        std::string filename = "logWorker" + std::to_string(evaluator_id) + "_WineRegEdit_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
-        boost::filesystem::path log_file_name = working_dir / filename;
-        std::ofstream logging_file;
-        if (is_logging)
-        {
-            logging_file.open(log_file_name.c_str(), std::ios_base::app);
-            if (!logging_file.is_open()) is_logging = false;
-        }
+//        std::string filename = "logWorker" + std::to_string(evaluator_id) + "_WineRegEdit_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
+//        boost::filesystem::path log_file_name = working_dir / filename;
+//        std::ofstream logging_file;
+//        if (is_logging)
+//        {
+//            logging_file.open(log_file_name.c_str(), std::ios_base::app);
+//            if (!logging_file.is_open()) is_logging = false;
+//        }
 
-        std::stringstream cmd;
-        cmd << wine_cmd << " regedit " << wine_regedit_path;
-        if (is_logging) cmd << " >> \"" << log_file_name.c_str() << "\" 2>&1";
-        if (is_logging) logging_file << "Running: " << cmd.str() << "\n";
-        system(cmd.str().c_str());
+//        std::stringstream cmd;
+//        cmd << wine_cmd << " regedit " << wine_regedit_path;
+//        if (is_logging) cmd << " >> \"" << log_file_name.c_str() << "\" 2>&1";
+//        if (is_logging) logging_file << "Running: " << cmd.str() << "\n";
+//        system(cmd.str().c_str());
     }
 
     ~MetronamicaOF2()
