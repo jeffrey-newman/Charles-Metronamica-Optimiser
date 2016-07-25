@@ -114,7 +114,7 @@ int main(int argc, char * argv[]) {
     //        optimiser.visualise();
 
     // Initialise population
-    PopulationSPtr pop;
+    PopulationSPtr pop(new Population);
     restore_population(pop, pop_xml_file.second.c_str());
     BOOST_FOREACH(IndividualSPtr ind, *pop)
     {
