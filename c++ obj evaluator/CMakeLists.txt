@@ -154,6 +154,12 @@ SET(Evaluation_test_Src
         Pathify.hpp
     )
 
+SET(GetFirstFront_Src
+        GetFirstFront.cpp
+        MetronamicaOF2.hpp
+        Pathify.hpp
+    )
+
 link_directories(${Boost_LIBRARY_DIRS})
 add_executable(metrocalpar ${Metro_calib_parallel_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES})
 target_link_libraries(metrocalpar ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} )
@@ -200,5 +206,16 @@ IF(USE_VTK)
         target_link_libraries(testevaluation ${VTK_LIBRARIES})
     else()
         target_link_libraries(testevaluation vtkHybrid vtkWidgets)
+    endif()
+ENDIF()
+
+
+add_executable(getfirstfront ${GetFirstFront_Src} ${MCL_HEADERS} ${MCL_SOURCES})
+target_link_libraries(getfirstfront ${Boost_LIBRARIES} ${GDAL_LIBRARY} )
+IF(USE_VTK)
+    if(VTK_LIBRARIES)
+        target_link_libraries(getfirstfront ${VTK_LIBRARIES})
+    else()
+        target_link_libraries(getfirstfront vtkHybrid vtkWidgets)
     endif()
 ENDIF()
