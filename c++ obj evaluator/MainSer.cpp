@@ -124,8 +124,9 @@ int main(int argc, const char * argv[]) {
         // The optimiser
         NSGAII<RNG> optimiser(rng, metro_eval);
         SavePopCheckpoint save_pop(1, working_dir.second);
-        std::vector<double> ref_point =  {-1, 9.764}; //From Charle's email 23rd June
-        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen_hvol);
+        std::vector<double> ref_point =  {-0.1, 1}; //From Charle's email 23rd June
+        std::vector<double> unitise_point = {1,0};
+        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen_hvol, Hypervolume::MAXIMISE, unitise_point);
         MetricLinePlot hvol_plot(hvol);
         MaxGenCheckpoint maxgen(max_gen);
         std::string mail_subj("Hypervolume of front from Metro calibrator ");
