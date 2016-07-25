@@ -227,4 +227,6 @@ int main(int argc, char * argv[]) {
         }
         eval_client();
     }
+
+    return EXIT_SUCCESS;
 }
