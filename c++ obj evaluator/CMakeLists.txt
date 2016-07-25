@@ -1,5 +1,6 @@
  
 cmake_minimum_required(VERSION 3.0)
+PROJECT(Charles-Metro-Cal)
 set (CMAKE_CXX_STANDARD 11)
 #Variable for location of parallel-nsgaII-backend
 
