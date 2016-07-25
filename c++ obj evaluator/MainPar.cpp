@@ -27,6 +27,7 @@
 #include "Checkpoints/MetricLinePlot.hpp"
 #include "Checkpoints/MailCheckpoint.hpp"
 #include "Checkpoints/MaxGenCheckpoint.hpp"
+#include "Checkpoints/SaveFirstFrontCheckpoint.hpp"
 
 int main(int argc, char * argv[]) {
     boost::mpi::environment env(argc, argv);
@@ -159,8 +160,10 @@ int main(int argc, char * argv[]) {
             optimiser.log(NSGAII<RNG>::LVL1, eval_strm);
         }
         SavePopCheckpoint save_pop(1, working_dir.second);
-        std::vector<double> ref_point =  {-1, 9.764}; //From Charle's email 23rd June
-        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen_hvol);
+        SaveFirstFrontCheckpoint save_front(1, working_dir.second);
+        std::vector<double> ref_point =  {-0.1, 1};
+        std::vector<double> unitise_point = {1,0};
+        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen_hvol, unitise_point, false);
         if (eval_strm.is_open())
         {
             hvol.log(Hypervolume::LVL1, eval_strm);
@@ -181,6 +184,7 @@ int main(int argc, char * argv[]) {
 //        optimiser.add_checkpoint(max_gen_terminate);
     //    optimiser.add_checkpoint(save_state);
         optimiser.add_checkpoint(save_pop);
+        optimiser.add_checkpoint(save_front);
         optimiser.add_checkpoint(hvol);
         optimiser.add_checkpoint(mail);
         optimiser.add_checkpoint(hvol_plot);
@@ -212,6 +216,15 @@ int main(int argc, char * argv[]) {
     {
         // create evaluator client
         ParallelEvaluatePopClient eval_client(env, world, metro_eval.getProblemDefinitions(), metro_eval);
+
+        //logging eval_client
+        std::string log_filename = "evaluation_timing_worker" + std::to_string(world.rank()) + ".log";
+        boost::filesystem::path eval_log = working_dir.second / log_filename;
+        std::ofstream eval_strm(eval_log.c_str());
+        if (eval_strm.is_open())
+        {
+            eval_client.log(ParallelEvaluatorBase::LVL1, eval_strm);
+        }
         eval_client();
     }
 }

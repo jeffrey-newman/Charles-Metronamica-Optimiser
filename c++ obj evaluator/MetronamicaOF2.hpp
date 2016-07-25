@@ -364,6 +364,7 @@ public:
                 output_map = runMetro(mod_proj_file, is_logging, debug_log_file_name, logging_file);
                 if (!output_map)
                 {
+                    std::this_thread::sleep_for (std::chrono::seconds(3));
                     //Write error message and assume infeasible set of parameters and so assign worse OF values. (-1, 10)
                     if (is_logging) logging_file << "Was unable to successfully run Metronamica on decision variables\n";
                     obj[0] = -1;
@@ -378,7 +379,7 @@ public:
                 if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
                 double fks = getFuzzyKappaSim(analysisNum);
                 obj[0] += fks;
-                if (is_logging) logging_file << "FKS: " << fks;
+                if (is_logging) logging_file << "FKS: " << fks << "\n";
             }
             catch (std::runtime_error err)
             {
@@ -484,6 +485,9 @@ public:
         obj[0] /= replicates;
         obj[1] /= replicates;
         ++eval_count;
+
+        if (is_logging) logging_file << "\n\n\n FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n";
+
         if (is_logging) logging_file.close();
         return (objectives_and_constrataints);
     }

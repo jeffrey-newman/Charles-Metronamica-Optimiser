@@ -83,6 +83,7 @@ SET(prll-nsga-src
         "${PARALLEL-NSGAII}/Checkpoints/colours.hpp"
         "${PARALLEL-NSGAII}/Checkpoints/ResetMutationXoverFlags.hpp"
          "${PARALLEL-NSGAII}/Checkpoints/MailCheckpoint.hpp"
+         "${PARALLEL-NSGAII}/Checkpoints/SaveFirstFrontCheckpoint.hpp"
 
         "${PARALLEL-NSGAII}/Serialization/SerializeBoostPath.hpp"
         "${PARALLEL-NSGAII}/Serialization/SerializeRng.hpp"
