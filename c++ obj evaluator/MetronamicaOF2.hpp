@@ -309,10 +309,10 @@ public:
         return (diff);
     }
     
-    std::pair<std::vector<double>, std::vector<double> >
+    std::pair<std::vector<double>, std::vector<double> > &
     operator()(const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars)
     {
-        std::pair<std::vector<double>, std::vector<double> > objectives_and_constrataints(std::piecewise_construct, std::make_tuple(num_objectives, std::numeric_limits<double>::max()), std::make_tuple(num_constraints));
+
         std::string filename = "logWorker" + std::to_string(evaluator_id) + "_EvalNo" + std::to_string(eval_count) + "_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
         boost::filesystem::path debug_log_file_name = working_dir / filename;
         std::ofstream logging_file;
