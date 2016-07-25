@@ -11,26 +11,13 @@
 #include <random>
 #include <chrono>
 #include <boost/program_options.hpp>
-//#define BOOST_NO_CXX11_SCOPED_ENUMS
 #include <boost/filesystem.hpp>
-//#undef BOOST_NO_CXX11_SCOPED_ENUMS
-#include <boost/mpi.hpp>
 #include "MetronamicaOF2.hpp"
-#include "ParallelEvaluator.hpp"
-#include "NSGAII.hpp"
 #include "Pathify.hpp"
-#include "Checkpoints/SavePopCheckpoint.hpp"
-#include "Checkpoints/MaxGenCheckpoint.hpp"
-#include "Checkpoints/PlotFronts.hpp"
-#include "Metrics/Hypervolume.hpp"
-#include "Checkpoints/ResetMutationXoverFlags.hpp"
-#include "Checkpoints/MetricLinePlot.hpp"
-#include "Checkpoints/MailCheckpoint.hpp"
-#include "Checkpoints/MaxGenCheckpoint.hpp"
+#include <boost/archive/xml_oarchive.hpp>
+#include <boost/archive/xml_iarchive.hpp>
 
 int main(int argc, char * argv[]) {
-    boost::mpi::environment env(argc, argv);
-    boost::mpi::communicator world;
 
     CmdLinePaths metro_exe;  // path to the Metronamic executable GeonamicaCmd.exe
     CmdLinePaths mck_exe;    // path to the Map comparison kit executable
@@ -99,7 +86,7 @@ int main(int argc, char * argv[]) {
     pathify(working_dir);
     pathify(wine_reg_mod_file);
     pathify(log_file);
-    pathify(pop_xml_file)
+    pathify(pop_xml_file);
 
 
 
@@ -118,25 +105,10 @@ int main(int argc, char * argv[]) {
                                       masking_map_file.second,
                                       fks_coefficients_file.second,
                                       wine_reg_mod_file.second,
-                                      world.rank(),
+                                      1,
                                       true,
                                       replicates);
 
-
-
-    //create evaluator server
-    boost::filesystem::path eval_log = working_dir.second / "evaluation_timing.log";
-    std::ofstream eval_strm(eval_log.c_str());
-    ParallelEvaluatePopServer eval_server(env, world, metro_eval.getProblemDefinitions());
-    if (eval_strm.is_open())
-    {
-        eval_server.log(ParallelEvaluatorBase::LVL1, eval_strm);
-    }
-
-    //        // The random number generator
-    //        typedef std::mt19937 RNG;
-    //        unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    //        RNG rng(seed);
 
 
     //        optimiser.visualise();
@@ -154,15 +126,15 @@ int main(int argc, char * argv[]) {
         std::cout << *ind << std::endl;
     }
 
-    PopulationSPtr first_front = pop->getFronts();
+    Population & first_front = pop->getFronts()->at(0);
 
-    boost::filesystem::path save_file = working_dir.second / (save_file + ".xml");
+    boost::filesystem::path save_file = working_dir.second / (save_name + ".xml");
     std::ofstream ofs(save_file.c_str());
     assert(ofs.good());
     boost::archive::xml_oarchive oa(ofs);
     oa << BOOST_SERIALIZATION_NVP(first_front);
 
-    boost::filesystem::path save_file2 = working_dir.second / (save_file + ".txt");
+    boost::filesystem::path save_file2 = working_dir.second / (save_name + ".txt");
     std::ofstream ofs2(save_file2.c_str());
     assert(ofs2.good());
     ofs2 << pop;

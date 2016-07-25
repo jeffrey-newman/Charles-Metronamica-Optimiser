@@ -29,7 +29,7 @@ int main(int argc, char * argv[])
     std::vector<int> int_lowerbounds(0, std::numeric_limits<int>::min());
     std::vector<int> int_upperbounds(0, std::numeric_limits<int>::max());
     std::vector<MinOrMaxType> minimise_or_maximise = {MAXIMISATION, MINIMISATION};
-    ProblemDefinitions prob_defs(min_dv_values, max_dv_values,  int_lowerbounds, int_upperbounds, minimise_or_maximise, num_constraints);
+    ProblemDefinitionsSPtr prob_defs(new ProblemDefinitions(min_dv_values, max_dv_values,  int_lowerbounds, int_upperbounds, minimise_or_maximise, num_constraints));
     std::vector<double> ref_point =  {-1, 9.764}; //From Charle's email 23rd June
     int max_gen_hvol = 10;
     Hypervolume hvol(ref_point, dir, 1, Hypervolume::TERMINATION, max_gen_hvol);

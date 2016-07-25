@@ -65,7 +65,7 @@ class MetronamicaOF2 : public ObjectivesAndConstraintsBase
     const int MAP_ACTUAL = 1;
     const int ORIGINAL = 2;
 
-    ProblemDefinitions prob_defs;
+    ProblemDefinitionsSPtr prob_defs;
     std::pair<std::vector<double>, std::vector<double> > objectives_and_constrataints;
 
     
@@ -216,7 +216,7 @@ public:
       wine_regedit(wine_regedit_path),
       int_lowerbounds(0, std::numeric_limits<int>::min()),
       int_upperbounds(0, std::numeric_limits<int>::max()),
-      prob_defs(min_dv_values, max_dv_values,  int_lowerbounds, int_upperbounds, minimise_or_maximise, num_constraints),
+      prob_defs(new ProblemDefinitions(min_dv_values, max_dv_values,  int_lowerbounds, int_upperbounds, minimise_or_maximise, num_constraints)),
      objectives_and_constrataints(std::piecewise_construct, std::make_tuple(num_objectives, std::numeric_limits<double>::max()), std::make_tuple(num_constraints)),
     evaluator_id(_id),
       is_logging(_is_logging),
@@ -488,7 +488,7 @@ public:
         return (objectives_and_constrataints);
     }
     
-    ProblemDefinitions & getProblemDefinitions()
+    ProblemDefinitionsSPtr getProblemDefinitions()
     {
         return (prob_defs);
     }
