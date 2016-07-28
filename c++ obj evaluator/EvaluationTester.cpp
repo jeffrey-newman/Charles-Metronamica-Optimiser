@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
     pathify(log_file);
 
     if (vm.count("help")) {
-        cout << desc << "\n";
+        std::cout << desc << "\n";
         return EXIT_SUCCESS;
     }
 

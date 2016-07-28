@@ -48,6 +48,7 @@ int main(int argc, char * argv[]) {
     CmdLinePaths masking_map_file;
     CmdLinePaths fks_coefficients_file;
     CmdLinePaths working_dir;
+    CmdLinePaths restart_pop_file;
 
 //    boost::filesystem::path metro_exe_path;
 
@@ -80,7 +81,8 @@ int main(int argc, char * argv[]) {
             ("max-gen-no-hvol-improve,x", po::value<int>(&max_gen_hvol)->default_value(50), "maximum generations with no improvement in the hypervolume metric - terminaation condition")
             ("mail-gen-hvol,e", po::value<int>(&mail_hvol_gen)->default_value(10), "How often to mail the hpervolume value")
             ("max-gen,y", po::value<int>(&max_gen)->default_value(500), "Maximum number of generations - termination condition")
-            ("replicates,i", po::value<int>(&replicates)->default_value(10), "Number of times to rerun Metronamica to account for stochasticity of model for each objective function evaluation");
+            ("replicates,i", po::value<int>(&replicates)->default_value(10), "Number of times to rerun Metronamica to account for stochasticity of model for each objective function evaluation")
+            ("reseed,b", po::value<std::string>(&restart_pop_file.first)->default_value("no_seed"), "File with saved population as initial seed population for GA");
 
 
 
@@ -90,7 +92,7 @@ int main(int argc, char * argv[]) {
     po::notify(vm);
 
     if (vm.count("help")) {
-        cout << desc << "\n";
+        std::cout << desc << "\n";
         return EXIT_SUCCESS;
     }
 
@@ -107,6 +109,10 @@ int main(int argc, char * argv[]) {
     pathify(working_dir);
     pathify(wine_reg_mod_file);
     pathify(log_file);
+    if (restart_pop_file.first != "no_seed")
+    {
+        pathify(restart_pop_file);
+    }
 
 
 
@@ -199,7 +205,18 @@ int main(int argc, char * argv[]) {
 //        optimiser.visualise();
 
         // Initialise population
-        PopulationSPtr pop = intialisePopulationRandomDVAssignment(pop_size, metro_eval.getProblemDefinitions(), rng);
+
+        PopulationSPtr pop(new Population);
+        if (restart_pop_file.first == "no_seed")
+        {
+            pop = intialisePopulationRandomDVAssignment(pop_size, metro_eval.getProblemDefinitions(), rng);
+        }
+        else
+        {
+            restore_population(pop, pop_xml_file.second);
+        }
+
+
 
 //        hvol(pop);
 //        std::cout << "Hypervolume: " << hvol.getVal() << std::endl;

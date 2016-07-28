@@ -31,6 +31,8 @@ ENDIF()
 
 # Define required for how hypervolume is calculated.
 add_definitions(-DVARIANT=4)
+# define which fks code to use.
+add_definitions(-Dfast_fks)
 
 include_directories(${GDAL_INCLUDE_DIR} )
 include_directories(${Boost_INCLUDE_DIRS} )
@@ -104,6 +106,7 @@ SET (MCL_HEADERS
         "${MCL}/Neighbourhood.h"
         "${MCL}/FuzzyKappaSimulation.h"
         "${MCL}/FuzzyKappaSimulationImproved.hpp"
+        "${MCL}/FuzzyKappaSimulationImprovedFast.hpp"
         "${MCL}/ReadFuzzyTables.h"
         "${MCL}/dt.h"
         "${MCL}/Clumpiness.h"
@@ -121,6 +124,7 @@ SET (MCL_SOURCES
         "${MCL}/Neighbourhood_Impl.cpp"
         "${MCL}/FuzzyKappaSimulation.cpp"
         "${MCL}/FuzzyKappaSimulationImproved.cpp"
+        "${MCL}/FuzzyKappaSimulationImprovedFast.cpp"
         "${MCL}/Clumpiness.cpp"
         )
 

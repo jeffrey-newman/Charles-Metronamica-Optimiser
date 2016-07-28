@@ -74,7 +74,7 @@ int main(int argc, char * argv[]) {
     po::notify(vm);
 
     if (vm.count("help")) {
-        cout << desc << "\n";
+        std::cout << desc << "\n";
         return EXIT_SUCCESS;
     }
 
@@ -120,7 +120,7 @@ int main(int argc, char * argv[]) {
 
     // Initialise population
     PopulationSPtr pop(new Population);
-    restore_population(pop, pop_xml_file.second.c_str());
+    restore_population(pop, pop_xml_file.second);
     BOOST_FOREACH(IndividualSPtr ind, *pop)
     {
         std::vector<double> objectives;
