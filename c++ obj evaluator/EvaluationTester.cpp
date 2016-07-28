@@ -79,6 +79,11 @@ int main(int argc, char *argv[])
     pathify(wine_reg_mod_file);
     pathify(log_file);
 
+    if (vm.count("help")) {
+        cout << desc << "\n";
+        return EXIT_SUCCESS;
+    }
+
     MetronamicaOF2 metro_eval(metro_exe.second,
                              mck_exe.second,
                              wine_exe.second,

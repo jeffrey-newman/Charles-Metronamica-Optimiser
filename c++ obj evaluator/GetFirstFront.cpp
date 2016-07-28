@@ -73,6 +73,11 @@ int main(int argc, char * argv[]) {
               options(desc).run(), vm);
     po::notify(vm);
 
+    if (vm.count("help")) {
+        cout << desc << "\n";
+        return EXIT_SUCCESS;
+    }
+
     pathify(metro_exe); //.second = boost::filesystem::path(metro_exe.first);
     pathify(mck_exe);
     pathify(wine_exe);
