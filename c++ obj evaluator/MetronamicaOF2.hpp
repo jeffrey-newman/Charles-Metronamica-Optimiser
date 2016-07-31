@@ -196,7 +196,7 @@ public:
                   bool _is_logging = false,
                   int _replicates = 10)
     :   num_objectives(2),
-    num_real_decision_vars(371),
+    num_real_decision_vars(370),
     num_int_decision_vars(0),
     num_constraints(0),
     replicates(_replicates),
@@ -228,6 +228,7 @@ public:
         loadOriginalMap(analysisNum, original_map.c_str());
         loadMaskingMap(analysisNum, masking_map.c_str());
         loadTransitionFuzzyWeights(analysisNum, fks_coefficients.c_str());
+        numClasses(analysisNum, 15);
 
         std::string temp_dir_template = "Metro_Cal_OF_worker" + std::to_string(evaluator_id) + "_%%%%-%%%%";
         worker_dir = boost::filesystem::unique_path(working_dir / temp_dir_template);
@@ -335,7 +336,6 @@ public:
         
         for (int j = 0; j < replicates; ++j)
         {
-            
 
             boost::filesystem::path orig_geoproj_path = worker_dir / geoproject_name;
             std::string mod_proj_file(orig_geoproj_path.stem().string() + "_mod" + orig_geoproj_path.extension().string());
@@ -346,6 +346,7 @@ public:
             std::stringstream /*cmd3,*/ cmd4;    //mcd3 is for MCK.
 
             // Modify Geoproject file with decision variables and random seed
+            std::cout << "number real decision vars : " << real_decision_vars.size() << std::endl;
             cmd4 << java_cmd << " -jar " << java_geoproj_edit << " ";
             cmd4 << orig_geoproj_path<< " " << mod_geoproj_path;
             for (int i = 0; i < num_real_decision_vars; ++i)

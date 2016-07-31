@@ -213,7 +213,7 @@ int main(int argc, char * argv[]) {
         }
         else
         {
-            restore_population(pop, pop_xml_file.second);
+            restore_population(pop, restart_pop_file.second);
         }
 
 

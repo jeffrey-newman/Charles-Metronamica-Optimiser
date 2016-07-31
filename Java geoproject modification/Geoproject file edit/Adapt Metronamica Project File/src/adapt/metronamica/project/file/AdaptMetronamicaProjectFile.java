@@ -352,7 +352,7 @@ public class AdaptMetronamicaProjectFile
 ////            }
 //        }
 
-        for (int i = 0; i < 371; i++)
+        for (int i = 0; i < 370; i++)
         {
             dvs[i] = Double.parseDouble(args[i+2]);
         }
@@ -935,7 +935,7 @@ public class AdaptMetronamicaProjectFile
         double recmwe = dvs[368];
         double recowe = dvs[369];
         
-        int rseed = Integer.parseInt(args[373]);
+        int rseed = Integer.parseInt(args[372]);
           
 
         set_exp_rule_selfinfluence(xPathFactory, doc, 4, 1, gregre1, gregre2, gregre3);

@@ -33,6 +33,7 @@ ENDIF()
 add_definitions(-DVARIANT=4)
 # define which fks code to use.
 add_definitions(-Dfast_fks)
+add_definitions(-Dclump_fast)
 
 include_directories(${GDAL_INCLUDE_DIR} )
 include_directories(${Boost_INCLUDE_DIRS} )
@@ -110,6 +111,7 @@ SET (MCL_HEADERS
         "${MCL}/ReadFuzzyTables.h"
         "${MCL}/dt.h"
         "${MCL}/Clumpiness.h"
+        "${MCL}/ClumpinessFast.h"
         )
 
 SET (MCL_SOURCES
@@ -126,6 +128,7 @@ SET (MCL_SOURCES
         "${MCL}/FuzzyKappaSimulationImproved.cpp"
         "${MCL}/FuzzyKappaSimulationImprovedFast.cpp"
         "${MCL}/Clumpiness.cpp"
+        "${MCL}/ClumpinessFast.cpp"
         )
 
 SET(Metro_calib_parallel_Src
