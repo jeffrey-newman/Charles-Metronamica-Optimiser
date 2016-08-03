@@ -17,7 +17,9 @@
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
 
+
 int main(int argc, char * argv[]) {
+
 
     CmdLinePaths metro_exe;  // path to the Metronamic executable GeonamicaCmd.exe
     CmdLinePaths mck_exe;    // path to the Map comparison kit executable

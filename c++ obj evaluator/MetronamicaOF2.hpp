@@ -21,6 +21,7 @@
 #include <boost/algorithm/string.hpp> // include Boost, a C++ library
 #include <boost/date_time.hpp>
 #include <boost/optional.hpp>
+#include <boost/timer/timer.hpp>
 #include "Evaluation.hpp"
 #include "MapComparison_0_4.h"
 
@@ -42,7 +43,7 @@ class MetronamicaOF2 : public ObjectivesAndConstraintsBase
     std::string wine_temp_dir; // same path as temporary dir, but in the wine (windows) path format.
     std::string geoproject_name;
     boost::filesystem::path metro_logfile_name;
-        std::string cp_metro_log_name;
+    std::string cp_metro_log_name;
     boost::filesystem::path actual_map;
     boost::filesystem::path original_map;
     boost::filesystem::path masking_map;
@@ -72,37 +73,37 @@ class MetronamicaOF2 : public ObjectivesAndConstraintsBase
     
     //Copies entire directory - so that each geoproject is running in a different directory.
     bool copyDir(
-                 boost::filesystem::path const & source,
-                 boost::filesystem::path const & destination
-                 )
+            boost::filesystem::path const & source,
+            boost::filesystem::path const & destination
+            )
     {
         namespace fs = boost::filesystem;
         try
         {
             // Check whether the function call is valid
             if(
-               !fs::exists(source) ||
-               !fs::is_directory(source)
-               )
+                    !fs::exists(source) ||
+                    !fs::is_directory(source)
+                    )
             {
                 std::cerr << "Source directory " << source.string()
-                << " does not exist or is not a directory." << '\n'
-                ;
+                          << " does not exist or is not a directory." << '\n'
+                             ;
                 return false;
             }
             if(fs::exists(destination))
             {
                 std::cerr << "Destination directory " << destination.string()
-                << " already exists." << '\n'
-                ;
+                          << " already exists." << '\n'
+                             ;
                 return false;
             }
             // Create the destination directory
             if(!fs::create_directory(destination))
             {
                 std::cerr << "Unable to create destination directory"
-                << destination.string() << '\n'
-                ;
+                          << destination.string() << '\n'
+                             ;
                 return false;
             }
         }
@@ -124,11 +125,11 @@ class MetronamicaOF2 : public ObjectivesAndConstraintsBase
                 {
                     // Found directory: Recursion
                     if(
-                       !copyDir(
+                            !copyDir(
                                 current,
                                 destination / current.filename()
                                 )
-                       )
+                            )
                     {
                         return false;
                     }
@@ -137,9 +138,9 @@ class MetronamicaOF2 : public ObjectivesAndConstraintsBase
                 {
                     // Found file: Copy
                     fs::copy_file(
-                                  current,
-                                  destination / current.filename()
-                                  );
+                                current,
+                                destination / current.filename()
+                                );
                 }
             }
             catch(fs::filesystem_error const & e)
@@ -178,50 +179,50 @@ class MetronamicaOF2 : public ObjectivesAndConstraintsBase
 
 public:
     MetronamicaOF2(boost::filesystem::path & metro_exe,
-                  boost::filesystem::path & mck_exe,
-                  boost::filesystem::path & wine_exe,
-                  boost::filesystem::path & java_exe,
-                  boost::filesystem::path & geoproj_edit_jar,
-                  boost::filesystem::path & template_path,
-                  boost::filesystem::path & working_dir,
-                  std::string &_wine_work_dir,
-                  std::string &_geoproj_name,
-                  boost::filesystem::path & _logfile_name,
-                  boost::filesystem::path & actual_map_path,
-                  boost::filesystem::path & original_map_path,
-                  boost::filesystem::path & masking_map_path,
-                  boost::filesystem::path &  fks_coefficients_path,
-                  boost::filesystem::path & wine_regedit_path,
-                  int _id = 0,
-                  bool _is_logging = false,
-                  int _replicates = 10)
-    :   num_objectives(2),
-    num_real_decision_vars(370),
-    num_int_decision_vars(0),
-    num_constraints(0),
-    replicates(_replicates),
-      geo_cmd(metro_exe),
-      java_geoproj_edit(geoproj_edit_jar),
-      mck_cmd(mck_exe),
-      wine_cmd(wine_exe),
-      java_cmd(java_exe),
-      template_dir(template_path),
-      working_dir(working_dir),
-      wine_temp_dir(_wine_work_dir),
-      geoproject_name(_geoproj_name),
-      metro_logfile_name(_logfile_name),
-      actual_map(actual_map_path),
-      original_map(original_map_path),
-      masking_map(masking_map_path),
-      fks_coefficients(fks_coefficients_path),
-      wine_regedit(wine_regedit_path),
-      int_lowerbounds(0, std::numeric_limits<int>::min()),
-      int_upperbounds(0, std::numeric_limits<int>::max()),
-      prob_defs(new ProblemDefinitions(min_dv_values, max_dv_values,  int_lowerbounds, int_upperbounds, minimise_or_maximise, num_constraints)),
-     objectives_and_constrataints(std::piecewise_construct, std::make_tuple(num_objectives, std::numeric_limits<double>::max()), std::make_tuple(num_constraints)),
-    evaluator_id(_id),
-      is_logging(_is_logging),
-      eval_count(0)
+                   boost::filesystem::path & mck_exe,
+                   boost::filesystem::path & wine_exe,
+                   boost::filesystem::path & java_exe,
+                   boost::filesystem::path & geoproj_edit_jar,
+                   boost::filesystem::path & template_path,
+                   boost::filesystem::path & working_dir,
+                   std::string &_wine_work_dir,
+                   std::string &_geoproj_name,
+                   boost::filesystem::path & _logfile_name,
+                   boost::filesystem::path & actual_map_path,
+                   boost::filesystem::path & original_map_path,
+                   boost::filesystem::path & masking_map_path,
+                   boost::filesystem::path &  fks_coefficients_path,
+                   boost::filesystem::path & wine_regedit_path,
+                   int _id = 0,
+                   bool _is_logging = false,
+                   int _replicates = 10)
+        :   num_objectives(2),
+          num_real_decision_vars(370),
+          num_int_decision_vars(0),
+          num_constraints(0),
+          replicates(_replicates),
+          geo_cmd(metro_exe),
+          java_geoproj_edit(geoproj_edit_jar),
+          mck_cmd(mck_exe),
+          wine_cmd(wine_exe),
+          java_cmd(java_exe),
+          template_dir(template_path),
+          working_dir(working_dir),
+          wine_temp_dir(_wine_work_dir),
+          geoproject_name(_geoproj_name),
+          metro_logfile_name(_logfile_name),
+          actual_map(actual_map_path),
+          original_map(original_map_path),
+          masking_map(masking_map_path),
+          fks_coefficients(fks_coefficients_path),
+          wine_regedit(wine_regedit_path),
+          int_lowerbounds(0, std::numeric_limits<int>::min()),
+          int_upperbounds(0, std::numeric_limits<int>::max()),
+          prob_defs(new ProblemDefinitions(min_dv_values, max_dv_values,  int_lowerbounds, int_upperbounds, minimise_or_maximise, num_constraints)),
+          objectives_and_constrataints(std::piecewise_construct, std::make_tuple(num_objectives, std::numeric_limits<double>::max()), std::make_tuple(num_constraints)),
+          evaluator_id(_id),
+          is_logging(_is_logging),
+          eval_count(0)
     {
         analysisNum = createAnalysis();
         loadMap1(analysisNum, actual_map.c_str());
@@ -232,7 +233,7 @@ public:
 
         std::string temp_dir_template = "Metro_Cal_OF_worker" + std::to_string(evaluator_id) + "_%%%%-%%%%";
         worker_dir = boost::filesystem::unique_path(working_dir / temp_dir_template);
-//            create_directories(ph);
+        //            create_directories(ph);
         copyDir(template_dir, worker_dir);
 
 
@@ -240,25 +241,25 @@ public:
         std::string metro_cp_log_name = "calibration_log_%%%%-%%%%.xml";
         boost::filesystem::path metro_cp_log_path = boost::filesystem::unique_path(worker_dir / metro_cp_log_name);
         fs::copy_file(
-                      metro_logfile_name,
-                      metro_cp_log_path
-                      );
+                    metro_logfile_name,
+                    metro_cp_log_path
+                    );
         cp_metro_log_name = metro_cp_log_path.filename().string();
 
-//        std::string filename = "logWorker" + std::to_string(evaluator_id) + "_WineRegEdit_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
-//        boost::filesystem::path log_file_name = working_dir / filename;
-//        std::ofstream logging_file;
-//        if (is_logging)
-//        {
-//            logging_file.open(log_file_name.c_str(), std::ios_base::app);
-//            if (!logging_file.is_open()) is_logging = false;
-//        }
+        //        std::string filename = "logWorker" + std::to_string(evaluator_id) + "_WineRegEdit_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
+        //        boost::filesystem::path log_file_name = working_dir / filename;
+        //        std::ofstream logging_file;
+        //        if (is_logging)
+        //        {
+        //            logging_file.open(log_file_name.c_str(), std::ios_base::app);
+        //            if (!logging_file.is_open()) is_logging = false;
+        //        }
 
-//        std::stringstream cmd;
-//        cmd << wine_cmd << " regedit " << wine_regedit_path;
-//        if (is_logging) cmd << " >> \"" << log_file_name.c_str() << "\" 2>&1";
-//        if (is_logging) logging_file << "Running: " << cmd.str() << "\n";
-//        system(cmd.str().c_str());
+        //        std::stringstream cmd;
+        //        cmd << wine_cmd << " regedit " << wine_regedit_path;
+        //        if (is_logging) cmd << " >> \"" << log_file_name.c_str() << "\" 2>&1";
+        //        if (is_logging) logging_file << "Running: " << cmd.str() << "\n";
+        //        system(cmd.str().c_str());
     }
 
     ~MetronamicaOF2()
@@ -330,6 +331,7 @@ public:
         boost::filesystem::remove_all(previous_log_file);
         previous_log_file = debug_log_file_name;
 
+        boost::shared_ptr<boost::timer::auto_cpu_timer> timer;
 
         std::vector<double> & obj = objectives_and_constrataints.first;
         obj[0] = 0; obj[1] = 0;
@@ -346,6 +348,9 @@ public:
             std::stringstream /*cmd3,*/ cmd4;    //mcd3 is for MCK.
 
             // Modify Geoproject file with decision variables and random seed
+            //            {
+            if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
+            //                boost::timer::auto_cpu_timer t(logging_file);
             std::cout << "number real decision vars : " << real_decision_vars.size() << std::endl;
             cmd4 << java_cmd << " -jar " << java_geoproj_edit << " ";
             cmd4 << orig_geoproj_path<< " " << mod_geoproj_path;
@@ -356,12 +361,17 @@ public:
             cmd4 << " " << rand_seeds[j] ;
             if (is_logging) cmd4 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
 
+
             if (is_logging) logging_file << "Running: " << cmd4.str() << std::endl;
             if (is_logging) logging_file.close();
             int i4 = system(cmd4.str().c_str());
             if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
             if (!logging_file.is_open()) is_logging = false;
+            if (is_logging) logging_file << "Timing for manipulating decision variable : " << std::endl;
+            //            }
             
+            //            {
+            if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
             boost::optional<boost::filesystem::path> output_map = runMetro(mod_proj_file, is_logging, debug_log_file_name, logging_file);
             if (!output_map)
             {
@@ -376,7 +386,11 @@ public:
                     return (objectives_and_constrataints);
                 }
             }
+            if (is_logging) logging_file << "Timing for Resetting and running Metronamica : " << std::endl;
+            //            }
 
+            //            {
+            if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
             try
             {
                 loadMap2(analysisNum, (*output_map).c_str());
@@ -406,38 +420,42 @@ public:
                     return (objectives_and_constrataints);
                 }
             }
+            if (is_logging) logging_file << "Timing for Calculating FKS: " << std::endl;
+            //            }
 
 
             
-//            //Fourth calculate clumpiness values
-//            std::string clumpcsl = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use\\\\clump.csl";
-//            std::string loglog = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use\\\\auto_cal_log.log";
-//            std::string logdir = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use";
+            //            //Fourth calculate clumpiness values
+            //            std::string clumpcsl = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use\\\\clump.csl";
+            //            std::string loglog = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use\\\\auto_cal_log.log";
+            //            std::string logdir = wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\Log\\\\Land_use";
 
-//            cmd3 << wine_cmd << " " << mck_cmd << " /RunComparisonSet \"" << clumpcsl << "\" \"" << loglog << "\" \""
-//            << logdir << "\"" ;
-//            if (is_logging) cmd3 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
-//            if (is_logging) logging_file << "Running: " << cmd3.str() << std::endl;
-//            if (is_logging) logging_file.close();
-//            int i3 = system(cmd3.str().c_str());
-//            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
-//            if (!logging_file.is_open()) is_logging = false;
+            //            cmd3 << wine_cmd << " " << mck_cmd << " /RunComparisonSet \"" << clumpcsl << "\" \"" << loglog << "\" \""
+            //            << logdir << "\"" ;
+            //            if (is_logging) cmd3 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
+            //            if (is_logging) logging_file << "Running: " << cmd3.str() << std::endl;
+            //            if (is_logging) logging_file.close();
+            //            int i3 = system(cmd3.str().c_str());
+            //            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
+            //            if (!logging_file.is_open()) is_logging = false;
             
 
+            //            {
+            if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
             try
             {
                 // Take avg of clumpiness
                 double avg_clump = 0;
-    //            _Greenhouses_               3
-    //            _Housing low density_       4
-    //            _Housing high density_      5
-    //            _Industry_                  6
-    //            _Services_                  7
-    //            _Socio cultural uses_       8
-    //            _Forest_                    9
-    //            _Extensive grasslands_      10
-    //            _Nature_                    11
-    //            _Recreation areas_          12
+                //            _Greenhouses_               3
+                //            _Housing low density_       4
+                //            _Housing high density_      5
+                //            _Industry_                  6
+                //            _Services_                  7
+                //            _Socio cultural uses_       8
+                //            _Forest_                    9
+                //            _Extensive grasslands_      10
+                //            _Nature_                    11
+                //            _Recreation areas_          12
                 int gre_val = 3;
                 if (is_logging) logging_file << "Greenhouses ";
                 avg_clump += calcClumpDiff(analysisNum, gre_val, logging_file);
@@ -480,9 +498,12 @@ public:
                 obj[1] = 10;
                 return (objectives_and_constrataints);
             }
+            if (is_logging) logging_file << "Timing for Calculating Clumpiness: " << std::endl;
+            if (is_logging) timer.reset();
+            //            }
 
             
-//            boost::filesystem::current_path(temporary_dir);
+            //            boost::filesystem::current_path(temporary_dir);
 
         }
         
