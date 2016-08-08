@@ -131,6 +131,18 @@ SET (MCL_SOURCES
         "${MCL}/ClumpinessFast.cpp"
         )
 
+
+
+link_directories(${Boost_LIBRARY_DIRS})
+
+
+##################################################################################################################
+#                                                                                                                #
+#                 Parallel NSGA with Large case study                                                            #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
 SET(Metro_calib_parallel_Src
         MainPar.cpp
         MetronamicaOF2.hpp
@@ -138,38 +150,6 @@ SET(Metro_calib_parallel_Src
 
     )
 
-SET(Metro_calib_serial_Src
-       MainSer.cpp
-       MetronamicaOF2.hpp
-       Pathify.hpp
-    )
-
-SET(Metro_calib_test_Src
-        TestMetroCalOF.cpp
-        MetronamicaOF2.hpp
-        Pathify.hpp
-    )
-
-SET(Hypervolume_test_Src
-        HypervolumeCheck.cpp
-        "${PARALLEL-NSGAII}/Metrics/hv.c"
-        "${PARALLEL-NSGAII}/Metrics/hv.h"
-        "${PARALLEL-NSGAII}/Metrics/Hypervolume.hpp"
-    )
-
-SET(Evaluation_test_Src
-        EvaluationTester.cpp
-        MetronamicaOF2.hpp
-        Pathify.hpp
-    )
-
-SET(GetFirstFront_Src
-        GetFirstFront.cpp
-        MetronamicaOF2.hpp
-        Pathify.hpp
-    )
-
-link_directories(${Boost_LIBRARY_DIRS})
 add_executable(metrocalpar ${Metro_calib_parallel_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES})
 target_link_libraries(metrocalpar ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} )
 
@@ -180,6 +160,21 @@ IF(USE_VTK)
         target_link_libraries(metrocalpar vtkHybrid vtkWidgets)
     endif()
 ENDIF()
+
+
+##################################################################################################################
+#                                                                                                                #
+#                 Serial NSGA with Large case study                                                              #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+
+SET(Metro_calib_serial_Src
+       MainSer.cpp
+       MetronamicaOF2.hpp
+       Pathify.hpp
+    )
 
 
 
@@ -194,6 +189,24 @@ IF(USE_VTK)
     endif()
 ENDIF()
 
+
+
+##################################################################################################################
+#                                                                                                                #
+#                 Test MetronamicaOF on one random DV string                                                     #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+
+SET(Metro_calib_test_Src
+        TestMetroCalOF.cpp
+        MetronamicaOF2.hpp
+        Pathify.hpp
+    )
+
+
+
 add_executable(metrocaltest ${Metro_calib_test_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES})
 target_link_libraries(metrocaltest ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} )
 
@@ -205,8 +218,40 @@ IF(USE_VTK)
     endif()
 ENDIF()
 
+
+##################################################################################################################
+#                                                                                                                #
+#                 test Hypervolume Calculations wortking                                                         #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+
+SET(Hypervolume_test_Src
+        HypervolumeCheck.cpp
+        "${PARALLEL-NSGAII}/Metrics/hv.c"
+        "${PARALLEL-NSGAII}/Metrics/hv.h"
+        "${PARALLEL-NSGAII}/Metrics/Hypervolume.hpp"
+    )
+
+
+
 add_executable(testhypervol ${Hypervolume_test_Src})
 target_link_libraries(testhypervol ${Boost_LIBRARIES} )
+
+
+##################################################################################################################
+#                                                                                                                #
+#                 test MetronamicaOF on a complete population of solutions                                       #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+SET(Evaluation_test_Src
+        EvaluationTester.cpp
+        MetronamicaOF2.hpp
+        Pathify.hpp
+    )
 
 add_executable(testevaluation ${Evaluation_test_Src} ${MCL_HEADERS} ${MCL_SOURCES})
 target_link_libraries(testevaluation ${Boost_LIBRARIES} ${GDAL_LIBRARY} )
@@ -219,6 +264,21 @@ IF(USE_VTK)
 ENDIF()
 
 
+##################################################################################################################
+#                                                                                                                #
+#                 Read in a population, get the first front, and....                                             #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+
+SET(GetFirstFront_Src
+        GetFirstFront.cpp
+        MetronamicaOF2.hpp
+        Pathify.hpp
+    )
+
+
 add_executable(getfirstfront ${GetFirstFront_Src} ${MCL_HEADERS} ${MCL_SOURCES})
 target_link_libraries(getfirstfront ${Boost_LIBRARIES} ${GDAL_LIBRARY} )
 IF(USE_VTK)
@@ -228,3 +288,12 @@ IF(USE_VTK)
         target_link_libraries(getfirstfront vtkHybrid vtkWidgets)
     endif()
 ENDIF()
+
+SET(GetFirstFront_Src
+        GetFirstFront.cpp
+        MetronamicaOF2.hpp
+        Pathify.hpp
+    )
+
+SET(
+    )

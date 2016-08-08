@@ -29,13 +29,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import static java.lang.Math.abs;
 
 
 /**
  *
  * @author a1091793
  */
-public class AdaptMetronamicaProjectFile
+public class AdaptMetronamicaProjectFileSmallCaseStudy
 {
     
     
@@ -147,7 +148,7 @@ public class AdaptMetronamicaProjectFile
             
         } catch (XPathExpressionException ex)
         {
-            Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdaptMetronamicaProjectFileSmallCaseStudy.class.getName()).log(Level.SEVERE, null, ex);
         }
             
     }
@@ -168,7 +169,7 @@ public class AdaptMetronamicaProjectFile
             }            
         } catch (XPathExpressionException ex)
         {
-            Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdaptMetronamicaProjectFileSmallCaseStudy.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
     
@@ -188,7 +189,7 @@ public class AdaptMetronamicaProjectFile
             }            
         } catch (XPathExpressionException ex)
         {
-            Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdaptMetronamicaProjectFileSmallCaseStudy.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
     
@@ -210,7 +211,7 @@ public class AdaptMetronamicaProjectFile
             builder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException ex)
         {
-            Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdaptMetronamicaProjectFileSmallCaseStudy.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         Document doc = null;
@@ -219,11 +220,11 @@ public class AdaptMetronamicaProjectFile
             doc = builder.parse(new File(filename));
          } catch (SAXException | IOException ex)
         {
-            Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdaptMetronamicaProjectFileSmallCaseStudy.class.getName()).log(Level.SEVERE, null, ex);
         }
                     
         
-        double[] dvs = new double[239];
+        double[] dvs = new double[238];
         
 //        try (Scanner in = new Scanner(args[2]))
 //        {
@@ -245,7 +246,7 @@ public class AdaptMetronamicaProjectFile
 ////            }
 //        }
 
-        for (int i = 0; i < 239; i++)
+        for (int i = 0; i < 237; i++)
         {
             dvs[i] = Double.parseDouble(args[i+2]);
         }
@@ -600,7 +601,7 @@ public class AdaptMetronamicaProjectFile
         double recmwe = dvs[236];
         double recowe = dvs[237];
         
-        int rseed = Integer.parseInt(args[238]);
+        int rseed = Integer.parseInt(args[240]);
           
         // Greenhouses
         set_exp_rule(xPathFactory, doc, 2, 1, gregre1, gregre2, gregre3);
@@ -737,10 +738,10 @@ public class AdaptMetronamicaProjectFile
     transformer.transform(source, result);
     } catch (TransformerConfigurationException ex)
         {
-            Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdaptMetronamicaProjectFileSmallCaseStudy.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex)
         {
-            Logger.getLogger(AdaptMetronamicaProjectFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdaptMetronamicaProjectFileSmallCaseStudy.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     System.exit(0);

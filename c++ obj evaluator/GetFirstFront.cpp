@@ -145,4 +145,8 @@ int main(int argc, char * argv[]) {
     std::ofstream ofs2(save_file2.c_str());
     assert(ofs2.good());
     ofs2 << pop;
+
+    //Now we want to save each of these runs!
+
+
 }

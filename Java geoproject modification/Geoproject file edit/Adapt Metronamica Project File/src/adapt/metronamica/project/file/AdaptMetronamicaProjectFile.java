@@ -330,7 +330,7 @@ public class AdaptMetronamicaProjectFile
         }
                     
         
-        double[] dvs = new double[371];
+        double[] dvs = new double[370];
         
 //        try (Scanner in = new Scanner(args[2]))
 //        {
@@ -352,7 +352,7 @@ public class AdaptMetronamicaProjectFile
 ////            }
 //        }
 
-        for (int i = 0; i < 370; i++)
+        for (int i = 0; i < 369; i++)
         {
             dvs[i] = Double.parseDouble(args[i+2]);
         }
