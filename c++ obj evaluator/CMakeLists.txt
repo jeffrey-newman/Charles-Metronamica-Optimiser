@@ -18,7 +18,6 @@ IF (USE_VTK)
                 ENDIF()
 ENDIF()
 
-
 set(AHHZ_RASTER_UTIL "Not Specified" CACHE PATH "Path to Alex Hagen-Zanker's Raster Utility Include direction (select above blink)")
 set(AHHZ_RASTER_ITERATOR "Not Specified" CACHE PATH "Path to Alex Hagen-Zanker's Raster Iterator Include direction (select folder above blink)")
 set(PARALLEL-NSGAII "Not Specified" CACHE PATH "Path to Jeff's parallel NSGAII code")
@@ -52,6 +51,30 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
   add_definitions(-DMSVC)
 endif()
 
+# add path to FindPNGwriter.cmake, e.g. in the directory in cmake/
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/)
+
+# find PNGwriter installation
+#   optional: prefer static libraries over shared ones (but do not force them)
+#set(PNGwriter_USE_STATIC_LIBS ON)
+
+#   optional: specifiy (minimal) version / require to find it
+#           (PNGwriter 0.5.6 REQUIRED)
+find_package(PNGwriter)
+
+if(PNGwriter_FOUND)
+  # where to find the pngwriter.h header file (-I include for your compiler)
+  include_directories(${PNGwriter_INCLUDE_DIRS})
+  # additional compiler flags (e.g. -DNO_FREETYPE)
+  add_definitions(${PNGwriter_DEFINITIONS})
+  # libraries to link against (including dependencies)
+#  set(LIBS ${LIBS} ${PNGwriter_LIBRARIES})
+endif(PNGwriter_FOUND)
+
+# add_executable(yourBinary ${SOURCES})
+# ...
+# target_link_libraries(yourBinary ${LIBS})
+
 
 
 file(GLOB_RECURSE AHHZ_Raster
@@ -62,6 +85,11 @@ file(GLOB_RECURSE AHHZ_Raster
  "${AHHZ_RASTER_ITERATOR}/*.hpp" 
  "${AHHZ_RASTER_ITERATOR}/*.cpp"
  )
+
+SET(AHHZ_Raster_Utility
+    "${AHHZ_RASTER_UTIL}/blink/raster/Utility.cpp"
+    "${AHHZ_RASTER_UTIL}/blink/raster/gdal_raster_lru.cpp"
+    )
 
 SET(prll-nsga-src
         "${PARALLEL-NSGAII}/Checkpoint.hpp"
@@ -150,8 +178,8 @@ SET(Metro_calib_parallel_Src
 
     )
 
-add_executable(metrocalpar ${Metro_calib_parallel_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES})
-target_link_libraries(metrocalpar ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} )
+add_executable(metrocalpar ${Metro_calib_parallel_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility} ${MCL_SOURCES})
+target_link_libraries(metrocalpar ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -178,8 +206,8 @@ SET(Metro_calib_serial_Src
 
 
 
-add_executable(metrocalser ${Metro_calib_serial_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES})
-target_link_libraries(metrocalser ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} )
+add_executable(metrocalser ${Metro_calib_serial_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES})
+target_link_libraries(metrocalser ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -207,8 +235,8 @@ SET(Metro_calib_test_Src
 
 
 
-add_executable(metrocaltest ${Metro_calib_test_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES})
-target_link_libraries(metrocaltest ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} )
+add_executable(metrocaltest ${Metro_calib_test_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES})
+target_link_libraries(metrocaltest ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -253,8 +281,8 @@ SET(Evaluation_test_Src
         Pathify.hpp
     )
 
-add_executable(testevaluation ${Evaluation_test_Src} ${MCL_HEADERS} ${MCL_SOURCES})
-target_link_libraries(testevaluation ${Boost_LIBRARIES} ${GDAL_LIBRARY} )
+add_executable(testevaluation ${Evaluation_test_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+target_link_libraries(testevaluation ${Boost_LIBRARIES} ${GDAL_LIBRARY} ${PNGwriter_LIBRARIES})
 IF(USE_VTK)
     if(VTK_LIBRARIES)
         target_link_libraries(testevaluation ${VTK_LIBRARIES})
@@ -279,8 +307,8 @@ SET(GetFirstFront_Src
     )
 
 
-add_executable(getfirstfront ${GetFirstFront_Src} ${MCL_HEADERS} ${MCL_SOURCES})
-target_link_libraries(getfirstfront ${Boost_LIBRARIES} ${GDAL_LIBRARY} )
+add_executable(getfirstfront ${GetFirstFront_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+target_link_libraries(getfirstfront ${Boost_LIBRARIES} ${GDAL_LIBRARY} ${PNGwriter_LIBRARIES})
 IF(USE_VTK)
     if(VTK_LIBRARIES)
         target_link_libraries(getfirstfront ${VTK_LIBRARIES})
@@ -289,11 +317,82 @@ IF(USE_VTK)
     endif()
 ENDIF()
 
-SET(GetFirstFront_Src
-        GetFirstFront.cpp
-        MetronamicaOF2.hpp
+
+##################################################################################################################
+#                                                                                                                #
+#                 Parallel NSGA with Small case study                                                            #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+SET(Metro_calib_parallel_Small_Src
+        MainPar_SmallCaseStudy.cpp
+        MetronamicaOF2_SmallCaseStudy.hpp
+        Pathify.hpp
+
+    )
+
+add_executable(metrocalpar_sm ${Metro_calib_parallel_Small_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+target_link_libraries(metrocalpar_sm ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
+
+IF(USE_VTK)
+    if(VTK_LIBRARIES)
+        target_link_libraries(metrocalpar_sm ${VTK_LIBRARIES})
+    else()
+        target_link_libraries(metrocalpar_sm vtkHybrid vtkWidgets)
+    endif()
+ENDIF()
+
+
+##################################################################################################################
+#                                                                                                                #
+#                 Serial NSGA with Small case study                                                              #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+
+SET(Metro_calib_serial_Small_Src
+       MainSer_SmallCaseStudy.cpp
+       MetronamicaOF2_SmallCaseStudy.hpp
+       Pathify.hpp
+    )
+
+
+
+add_executable(metrocalser_sm ${Metro_calib_serial_Small_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+target_link_libraries(metrocalser_sm ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
+
+IF(USE_VTK)
+    if(VTK_LIBRARIES)
+        target_link_libraries(metrocalser_sm ${VTK_LIBRARIES})
+    else()
+        target_link_libraries(metrocalser_sm vtkHybrid vtkWidgets)
+    endif()
+ENDIF()
+
+
+##################################################################################################################
+#                                                                                                                #
+#                 test MetronamicaOF on a complete population of solutions, for SMALL case study                 #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+SET(Evaluation_test__Small_Src
+        EvaluationTester_SmallCaseStudy.cpp
+        MetronamicaOF2_SmallCaseStudy.hpp
         Pathify.hpp
     )
 
-SET(
-    )
+add_executable(testevaluation_sm ${Evaluation_test__Small_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+target_link_libraries(testevaluation_sm ${Boost_LIBRARIES} ${GDAL_LIBRARY} ${PNGwriter_LIBRARIES})
+IF(USE_VTK)
+    if(VTK_LIBRARIES)
+        target_link_libraries(testevaluation_sm ${VTK_LIBRARIES})
+    else()
+        target_link_libraries(testevaluation_sm vtkHybrid vtkWidgets)
+    endif()
+ENDIF()
+
+

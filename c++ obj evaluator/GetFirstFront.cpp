@@ -123,11 +123,14 @@ int main(int argc, char * argv[]) {
     // Initialise population
     PopulationSPtr pop(new Population);
     restore_population(pop, pop_xml_file.second);
+    int i = 0;
     BOOST_FOREACH(IndividualSPtr ind, *pop)
     {
         std::vector<double> objectives;
         std::vector<double> constraints;
-        std::tie(objectives, constraints) = metro_eval(ind->getRealDVVector(), ind->getIntDVVector());
+        boost::filesystem::path save_dir = working_dir.second / ("individual_" + std::to_string(i++));
+        if (!boost::filesystem::exists(save_dir)) boost::filesystem::create_directory(save_dir);
+        std::tie(objectives, constraints) = metro_eval(ind->getRealDVVector(), ind->getIntDVVector(), save_dir);
         ind->setObjectives(objectives);
         ind->setConstraints(constraints);
         std::cout << *ind << std::endl;

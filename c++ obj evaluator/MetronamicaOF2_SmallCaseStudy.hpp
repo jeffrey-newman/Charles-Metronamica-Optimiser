@@ -17,6 +17,7 @@
 #include <fstream>
 #include <thread>         // std::this_thread::sleep_for
 #include <chrono>         // std::chrono::seconds
+#include <tuple>
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string.hpp> // include Boost, a C++ library
 #include <boost/date_time.hpp>
@@ -24,6 +25,8 @@
 #include <boost/timer/timer.hpp>
 #include "Evaluation.hpp"
 #include "MapComparison_0_4.h"
+#include <blink/raster/PngPlotter.h>
+#include <blink/raster/utility.h>
 
 class MetronamicaOF2SmallCaseStudy : public ObjectivesAndConstraintsBase
 {
@@ -69,6 +72,8 @@ class MetronamicaOF2SmallCaseStudy : public ObjectivesAndConstraintsBase
 
     ProblemDefinitionsSPtr prob_defs;
     std::pair<std::vector<double>, std::vector<double> > objectives_and_constrataints;
+
+    std::vector<std::tuple<int, int, int> > colour_mapper;
 
 
     //Copies entire directory - so that each geoproject is running in a different directory.
@@ -260,11 +265,22 @@ public:
         //        if (is_logging) cmd << " >> \"" << log_file_name.c_str() << "\" 2>&1";
         //        if (is_logging) logging_file << "Running: " << cmd.str() << "\n";
         //        system(cmd.str().c_str());
+
+        colour_mapper.push_back(std::make_tuple(255,   255,   160));
+        colour_mapper.push_back(std::make_tuple(255,   128,     0));
+        colour_mapper.push_back(std::make_tuple(255,     0,     0));
+        colour_mapper.push_back(std::make_tuple( 78,     0,   192));
+        colour_mapper.push_back(std::make_tuple(158,    12,   234));
+        colour_mapper.push_back(std::make_tuple(255,    87,   255));
+        colour_mapper.push_back(std::make_tuple(  0,   192,     0));
+        colour_mapper.push_back(std::make_tuple(192,   157,     0));
+        colour_mapper.push_back(std::make_tuple(  0,     0,     0));
+        colour_mapper.push_back(std::make_tuple(  0,   128,   255));
     }
 
     ~MetronamicaOF2SmallCaseStudy()
     {
-        boost::filesystem::remove_all(worker_dir);
+//        boost::filesystem::remove_all(worker_dir);
     }
 
 
@@ -315,9 +331,10 @@ public:
     std::pair<std::vector<double>, std::vector<double> > &
     operator()(const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars, boost::filesystem::path save_path)
     {
+        if (!boost::filesystem::exists(save_path)) boost::filesystem::create_directory(save_path);
 
         std::string filename = "logWorker" + std::to_string(evaluator_id) + "_EvalNo" + std::to_string(eval_count) + "_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
-        boost::filesystem::path debug_log_file_name = save_path / filename;
+        boost::filesystem::path debug_log_file_name = working_dir / filename;
         std::ofstream logging_file;
         if (is_logging)
         {
@@ -329,17 +346,33 @@ public:
             }
         }
 
+        boost::filesystem::path objectives_file = save_path / "metrics_for_each_replicate.txt";
+        std::ofstream objectives_fs(objectives_file.c_str());
 
-        boost::shared_ptr<boost::timer::auto_cpu_timer> timer;
 
         std::vector<double> & obj = objectives_and_constrataints.first;
         obj[0] = 0; obj[1] = 0;
 
         for (int j = 0; j < replicates; ++j)
         {
-            std::pair<double, double> metric_vals = calcMetrics(save_path, real_decision_vars, int_decision_vars, is_logging, logging_file, debug_log_file_name);
-            obj[0] += metric_vals.first;
-            obj[1] += metric_vals.second;
+            std::pair<double, double> metric_vals = calcMetrics(worker_dir, real_decision_vars, int_decision_vars, is_logging, logging_file, debug_log_file_name, j);
+            double fks =  metric_vals.first;
+            double clump = metric_vals.second;
+            objectives_fs << "replicate " << j << " fks: " << fks << " clumpiness: " << clump << "\n";
+            obj[0] += fks;
+            obj[1] += clump;
+            boost::filesystem::path save_replicate_path = save_path / ("replicate_" + std::to_string(j));
+//            if (!boost::filesystem::exists(save_replicate_path)) boost::filesystem::create_directory(save_replicate_path);
+            if (boost::filesystem::exists(save_replicate_path)) boost::filesystem::remove_all(save_replicate_path);
+            copyDir(worker_dir, save_replicate_path);
+            boost::filesystem::path output_map = worker_dir / "Log" / "Land_use" / "Land use map_2000-Jan-01 00_00_00.rst";
+            if (boost::filesystem::exists(output_map))
+            {
+                boost::filesystem::path png_path = save_path  / ("replicate_" + std::to_string(j) + ".png");
+                blink::raster::gdal_raster<int> out_raster = blink::raster::open_gdal_raster<int>(output_map, GA_ReadOnly);
+                blink::raster::printRaster2PNG(out_raster, colour_mapper, png_path);
+            }
+
         }
 
         obj[0] /= replicates;
@@ -350,25 +383,26 @@ public:
 
         if (is_logging) logging_file.close();
 
-
-
-
+        boost::filesystem::remove_all(previous_log_file);
+        previous_log_file = debug_log_file_name;
 
         return (objectives_and_constrataints);
 
 
+        std::pair<std::vector<double>, std::vector<double> > & obj_and_const = this->operator ()(real_decision_vars, int_decision_vars);
         copyDir(worker_dir, save_path);
-
         boost::filesystem::path save_file = save_path / ("objectives.xml");
         std::ofstream ofs(save_file.c_str());
         assert(ofs.good());
         boost::archive::xml_oarchive oa(ofs);
-        oa << BOOST_SERIALIZATION_NVP(objectives);
+        oa << BOOST_SERIALIZATION_NVP(obj_and_const.first);
+
+        return obj_and_const;
 
     }
 
     std::pair<double, double>
-    calcMetrics(boost::filesystem::path & worker_dir, const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars, bool is_logging, std::ofstream & logging_file, boost::filesystem::path & debug_log_file_name)
+    calcMetrics(boost::filesystem::path & worker_dir, const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars, bool is_logging, std::ofstream & logging_file, boost::filesystem::path & debug_log_file_name, int rand_seed_id)
     {
         std::vector<double> obj(2, 0);
         boost::filesystem::path orig_geoproj_path = worker_dir / geoproject_name;
@@ -379,6 +413,7 @@ public:
         boost::filesystem::current_path(worker_dir);
         std::stringstream /*cmd3,*/ cmd4;    //mcd3 is for MCK.
 
+        boost::shared_ptr<boost::timer::auto_cpu_timer> timer;
         // Modify Geoproject file with decision variables and random seed
         //            {
         if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
@@ -390,7 +425,7 @@ public:
         {
             cmd4 << " " << real_decision_vars[i];
         }
-        cmd4 << " " << rand_seeds[j] ;
+        cmd4 << " " << rand_seeds[rand_seed_id];
         if (is_logging) cmd4 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
 
 
@@ -539,10 +574,38 @@ public:
     std::pair<std::vector<double>, std::vector<double> > &
     operator()(const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars)
     {
+
         std::string filename = "logWorker" + std::to_string(evaluator_id) + "_EvalNo" + std::to_string(eval_count) + "_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
         boost::filesystem::path debug_log_file_name = working_dir / filename;
+        std::ofstream logging_file;
+        if (is_logging)
+        {
+            logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
+            if (!logging_file.is_open())
+            {
+                is_logging = false;
+                std::cout << "attempt to log failed\n";
+            }
+        }
 
-        objectives_and_constrataints = this->operator ()(real_decision_vars, int_decision_vars, working_dir);
+
+        std::vector<double> & obj = objectives_and_constrataints.first;
+        obj[0] = 0; obj[1] = 0;
+
+        for (int j = 0; j < replicates; ++j)
+        {
+            std::pair<double, double> metric_vals = calcMetrics(worker_dir, real_decision_vars, int_decision_vars, is_logging, logging_file, debug_log_file_name, j);
+            obj[0] += metric_vals.first;
+            obj[1] += metric_vals.second;
+        }
+
+        obj[0] /= replicates;
+        obj[1] /= replicates;
+        ++eval_count;
+
+        if (is_logging) logging_file << "\n\n\n FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n";
+
+        if (is_logging) logging_file.close();
 
         boost::filesystem::remove_all(previous_log_file);
         previous_log_file = debug_log_file_name;
