@@ -15,4 +15,15 @@ pathify(CmdLinePaths & path)
     }
 }
 
+void
+pathify_mk(CmdLinePaths & path)
+{
+    path.second = boost::filesystem::path(path.first);
+    if (!(boost::filesystem::exists(path.second)))
+    {
+        boost::filesystem::create_directory(path.second);
+        std::cout << "path " << path.first << " did not exist, so created\n";
+    }
+}
+
 #endif // PATHIFY_H

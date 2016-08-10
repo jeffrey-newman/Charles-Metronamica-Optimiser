@@ -44,6 +44,7 @@ int main(int argc, const char * argv[]) {
     CmdLinePaths masking_map_file;
     CmdLinePaths fks_coefficients_file;
     CmdLinePaths working_dir;
+    CmdLinePaths save_dir;
 
 //    boost::filesystem::path metro_exe_path;
 
@@ -69,6 +70,7 @@ int main(int argc, const char * argv[]) {
             ("masking-map,s", po::value<std::string>(&masking_map_file.first), "path of the masking map to mask out/in sections of the raster")
             ("fks-coeef,c", po::value<std::string>(&fks_coefficients_file.first), "path of the fuzzy coeeficint table")
             ("working-dir,d", po::value<std::string>(&working_dir.first)->default_value(boost::filesystem::current_path().string()), "path of directory for storing temp files during running")
+            ("save-dir,v", po::value<std::string>(&save_dir.first)->default_value(boost::filesystem::current_path().string()), "path of the directory for writing results and outputs to")
             ("wine-work-dir,n", po::value<std::string>(&wine_working_dir_path), "path to working directory (working-dir,d), but in wine path format - e.g. Z:\\path\\to\\working\\dir")
             ("wine-reg-edit,r", po::value<std::string>(&wine_reg_mod_file.first), "path of the wine registry file to update registry on nodes")
             ("pop-size,p", po::value<int>(&pop_size)->default_value(415), "Population size of the NSGAII")
@@ -98,7 +100,8 @@ int main(int argc, const char * argv[]) {
     pathify(original_map_file);
     pathify(masking_map_file);
     pathify(fks_coefficients_file);
-    pathify(working_dir);
+    pathify_mk(working_dir);
+    pathify_mk(save_dir);
     pathify(wine_reg_mod_file);
     pathify(log_file);
 
@@ -111,6 +114,7 @@ int main(int argc, const char * argv[]) {
                              geoproj_manip_jar.second,
                              template_dir.second,
                              working_dir.second,
+                                            save_dir.second,
                              wine_working_dir_path,
                              geoproj_file,
                              log_file.second,

@@ -110,7 +110,8 @@ int main(int argc, char * argv[]) {
     pathify(original_map_file);
     pathify(masking_map_file);
     pathify(fks_coefficients_file);
-    pathify(working_dir);
+    pathify_mk(working_dir);
+    pathify_mk(save_dir);
     pathify(wine_reg_mod_file);
     pathify(log_file);
     if (restart_pop_file.first != "no_seed")
@@ -127,6 +128,7 @@ int main(int argc, char * argv[]) {
                              geoproj_manip_jar.second,
                              template_dir.second,
                              working_dir.second,
+                              save_dir.second,
                              wine_working_dir_path,
                              geoproj_file,
                              log_file.second,
@@ -155,7 +157,7 @@ int main(int argc, char * argv[]) {
 
 
         //create evaluator server
-        boost::filesystem::path eval_log = working_dir.second / "evaluation_timing.log";
+        boost::filesystem::path eval_log = save_dir.second / "evaluation_timing.log";
         std::ofstream eval_strm(eval_log.c_str());
         ParallelEvaluatePopServer eval_server(env, world, metro_eval.getProblemDefinitions());
         if (eval_strm.is_open())

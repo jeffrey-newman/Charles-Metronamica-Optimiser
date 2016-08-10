@@ -108,6 +108,7 @@ int main(int argc, const char * argv[]) {
                              geoproj_manip_jar.second,
                              template_dir.second,
                              working_dir.second,
+                              working_dir.second,
                              wine_working_dir_path,
                              geoproj_file,
                              log_file.second,

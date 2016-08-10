@@ -41,6 +41,7 @@ class MetronamicaOF2SmallCaseStudy : public ObjectivesAndConstraintsBase
     boost::filesystem::path wine_cmd;
     boost::filesystem::path java_cmd;
     boost::filesystem::path template_dir;
+    boost::filesystem::path save_dir;
     boost::filesystem::path working_dir;
     boost::filesystem::path worker_dir;
     std::string wine_temp_dir; // same path as temporary dir, but in the wine (windows) path format.
@@ -190,6 +191,7 @@ public:
                    boost::filesystem::path & geoproj_edit_jar,
                    boost::filesystem::path & template_path,
                    boost::filesystem::path & working_dir,
+                                 boost::filesystem::path & save_dir,
                    std::string &_wine_work_dir,
                    std::string &_geoproj_name,
                    boost::filesystem::path & _logfile_name,
@@ -213,6 +215,7 @@ public:
           java_cmd(java_exe),
           template_dir(template_path),
           working_dir(working_dir),
+          save_dir(save_dir),
           wine_temp_dir(_wine_work_dir),
           geoproject_name(_geoproj_name),
           metro_logfile_name(_logfile_name),
@@ -334,7 +337,7 @@ public:
         if (!boost::filesystem::exists(save_path)) boost::filesystem::create_directory(save_path);
 
         std::string filename = "logWorker" + std::to_string(evaluator_id) + "_EvalNo" + std::to_string(eval_count) + "_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
-        boost::filesystem::path debug_log_file_name = working_dir / filename;
+        boost::filesystem::path debug_log_file_name = save_dir / filename;
         std::ofstream logging_file;
         if (is_logging)
         {
@@ -576,7 +579,7 @@ public:
     {
 
         std::string filename = "logWorker" + std::to_string(evaluator_id) + "_EvalNo" + std::to_string(eval_count) + "_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
-        boost::filesystem::path debug_log_file_name = working_dir / filename;
+        boost::filesystem::path debug_log_file_name = save_dir / filename;
         std::ofstream logging_file;
         if (is_logging)
         {
