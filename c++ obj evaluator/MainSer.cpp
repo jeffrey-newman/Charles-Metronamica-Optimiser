@@ -162,6 +162,31 @@ int main(int argc, const char * argv[]) {
         // Run the optimisation
         optimiser(pop);
 
+        Population & first_front = pop->getFronts()->at(0);
+
+        int i = 0;
+        BOOST_FOREACH(IndividualSPtr ind, first_front)
+        {
+            std::vector<double> objectives;
+            std::vector<double> constraints;
+            boost::filesystem::path save_ind_dir = save_dir.second / ("individual_" + std::to_string(i++));
+            if (!boost::filesystem::exists(save_ind_dir)) boost::filesystem::create_directory(save_ind_dir);
+            std::tie(objectives, constraints) = metro_eval(ind->getRealDVVector(), ind->getIntDVVector(), save_ind_dir);
+            ind->setObjectives(objectives);
+            ind->setConstraints(constraints);
+            std::cout << *ind << std::endl;
+        }
+
+        boost::filesystem::path save_file = save_dir.second / "final_front.xml";
+        std::ofstream ofs(save_file.c_str());
+        assert(ofs.good());
+        boost::archive::xml_oarchive oa(ofs);
+        oa << BOOST_SERIALIZATION_NVP(first_front);
+
+        boost::filesystem::path save_file2 = save_dir.second /  "final_front.txt";
+        std::ofstream ofs2(save_file2.c_str());
+        assert(ofs2.good());
+        ofs2 << pop;
 
 //        t.reset((boost::timer::auto_cpu_timer *) nullptr);
 //        if (ofs.is_open())
