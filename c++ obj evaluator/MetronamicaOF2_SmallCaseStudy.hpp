@@ -237,7 +237,7 @@ public:
         loadOriginalMap(analysisNum, original_map.c_str());
         loadMaskingMap(analysisNum, masking_map.c_str());
         loadTransitionFuzzyWeights(analysisNum, fks_coefficients.c_str());
-        numClasses(analysisNum, 15);
+        numClasses(analysisNum, 9);
 
         std::string temp_dir_template = "Metro_Cal_OF_worker" + std::to_string(evaluator_id) + "_%%%%-%%%%";
         worker_dir = boost::filesystem::unique_path(working_dir / temp_dir_template);
