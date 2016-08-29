@@ -15,9 +15,14 @@ sys.argv[4]: Number of passive classes
 sys.argv[5]: Number of feature classes
 ''' 
 
-map1_path=str(sys.argv[1])
-map2_path=str(sys.argv[2])
-mask_path=str(sys.argv[3])
+#map1_path=str(sys.argv[1])
+#map2_path=str(sys.argv[2])
+#mask_path=str(sys.argv[3])
+
+map1_path = "/home/a1091793/Documents/Modelling/RunMetroCal/individual_2/replicate_0/Data2/lu1989.asc" 
+map2_path = "/home/a1091793/Documents/Modelling/RunMetroCal/individual_2/replicate_0/Data2/lu2000.asc" 
+mask_path = "/home/a1091793/Documents/Modelling/RunMetroCal/individual_2/replicate_0/Data2/region.asc" 
+
 
 from read_map import read_map
 import numpy as np
@@ -31,8 +36,10 @@ CLUMPY1=clumpiness_index(map1,mask)
 CLUMPY2=clumpiness_index(map2,mask)
 '''Average_absolute_clumpiness_error-----------------------------------------'''
 luc=np.amax(map1)+1
-pas=int(sys.argv[4])
-fea=int(sys.argv[5])
+#pas=int(sys.argv[4])
+#fea=int(sys.argv[5])
+pas = 3 
+fea = 3
 act=luc-(fea+pas)
 ACE=[0]*act
 for i in range(pas,luc-fea):

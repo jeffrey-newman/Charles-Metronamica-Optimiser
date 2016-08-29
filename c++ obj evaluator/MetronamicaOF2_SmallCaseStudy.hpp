@@ -519,16 +519,16 @@ public:
         {
             // Take avg of clumpiness
             double avg_clump = 0;
-            //            _Greenhouses_               3
-            //            _Housing low density_       4
-            //            _Housing high density_      5
-            //            _Industry_                  6
-            //            _Services_                  7
-            //            _Socio cultural uses_       8
-            //            _Forest_                    9
-            //            _Extensive grasslands_      10
-            //            _Nature_                    11
-            //            _Recreation areas_          12
+//            Agriculture                 0
+//            _Greenhouses_               1
+//            _Residential_               2
+//            _Industy_                   3
+//            _Services_                  4
+//            _Socio-cultural uses_       5
+//            _Nature_                    6
+//            _Recreation areas_          7
+//            Airport                     8
+//            Water                       9
             int gre_val = 1;
             if (is_logging) logging_file << "Greenhouses ";
             avg_clump += calcClumpDiff(analysisNum, gre_val, logging_file);
