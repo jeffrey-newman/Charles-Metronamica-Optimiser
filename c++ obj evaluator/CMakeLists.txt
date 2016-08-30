@@ -396,3 +396,27 @@ IF(USE_VTK)
 ENDIF()
 
 
+##################################################################################################################
+#                                                                                                                #
+#                 Read in a population, get the first front, and....                                             #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+
+SET(GetFirstFront_Small_Src
+        GetFirstFront_SmallCaseStudy.cpp
+        MetronamicaOF2_SmallCaseStudy.hpp
+        Pathify.hpp
+    )
+
+
+add_executable(getfirstfront_sm ${GetFirstFront_Small_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+target_link_libraries(getfirstfront_sm ${Boost_LIBRARIES} ${GDAL_LIBRARY} ${PNGwriter_LIBRARIES})
+IF(USE_VTK)
+    if(VTK_LIBRARIES)
+        target_link_libraries(getfirstfront_sm ${VTK_LIBRARIES})
+    else()
+        target_link_libraries(getfirstfront_sm vtkHybrid vtkWidgets)
+    endif()
+ENDIF()

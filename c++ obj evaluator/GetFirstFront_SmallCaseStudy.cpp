@@ -12,7 +12,7 @@
 #include <chrono>
 #include <boost/program_options.hpp>
 #include <boost/filesystem.hpp>
-#include "MetronamicaOF2.hpp"
+#include "MetronamicaOF2_SmallCaseStudy.hpp"
 #include "Pathify.hpp"
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
@@ -98,7 +98,7 @@ int main(int argc, char * argv[]) {
 
 
 
-    MetronamicaOF2 metro_eval(metro_exe.second,
+    MetronamicaOF2SmallCaseStudy metro_eval(metro_exe.second,
                               mck_exe.second,
                               wine_exe.second,
                               java_exe.second,
@@ -127,8 +127,12 @@ int main(int argc, char * argv[]) {
     PopulationSPtr pop = restore_population(pop_xml_file.second);
     if (pop->populationSize() > 0)
     {
+
+
+        Population & first_front = pop->getFronts()->at(0);
+
         int i = 0;
-        BOOST_FOREACH(IndividualSPtr ind, *pop)
+        BOOST_FOREACH(IndividualSPtr ind, first_front)
         {
             std::vector<double> objectives;
             std::vector<double> constraints;
@@ -139,8 +143,6 @@ int main(int argc, char * argv[]) {
             ind->setConstraints(constraints);
             std::cout << *ind << std::endl;
         }
-
-        Population & first_front = pop->getFronts()->at(0);
 
         boost::filesystem::path save_file = working_dir.second / (save_name + ".xml");
         std::ofstream ofs(save_file.c_str());

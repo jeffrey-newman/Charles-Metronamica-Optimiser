@@ -386,21 +386,13 @@ public:
 
         if (is_logging) logging_file.close();
 
-        boost::filesystem::remove_all(previous_log_file);
-        previous_log_file = debug_log_file_name;
+//        boost::filesystem::remove_all(previous_log_file);
+//        previous_log_file = debug_log_file_name;
 
         return (objectives_and_constrataints);
 
 
-        std::pair<std::vector<double>, std::vector<double> > & obj_and_const = this->operator ()(real_decision_vars, int_decision_vars);
-        copyDir(worker_dir, save_path);
-        boost::filesystem::path save_file = save_path / ("objectives.xml");
-        std::ofstream ofs(save_file.c_str());
-        assert(ofs.good());
-        boost::archive::xml_oarchive oa(ofs);
-        oa << BOOST_SERIALIZATION_NVP(obj_and_const.first);
 
-        return obj_and_const;
 
     }
 

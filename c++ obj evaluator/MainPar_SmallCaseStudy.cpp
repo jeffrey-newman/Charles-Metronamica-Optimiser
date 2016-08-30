@@ -219,7 +219,7 @@ int main(int argc, char * argv[]) {
         }
         else
         {
-            restore_population(pop, restart_pop_file.second);
+            pop = restore_population(restart_pop_file.second);
         }
 
 
