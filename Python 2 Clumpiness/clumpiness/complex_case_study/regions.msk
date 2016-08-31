@@ -1,0 +1,11 @@
+
+<maskcollection version="0">
+
+  <mask basemappath=".\region.asc" displayname="Regions" mergeregions="0">
+    <selectedregions>
+      <value value="0"/>
+      <value value="1"/>
+    </selectedregions>
+  </mask>
+
+</maskcollection>

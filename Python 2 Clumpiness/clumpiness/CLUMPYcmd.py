@@ -24,7 +24,7 @@ sys.argv[5]: Number of feature classes
 #mask_path = "/home/a1091793/Documents/Modelling/RunMetroCal/individual_2/replicate_0/Data2/region.asc" 
 
 map2_path = r"/home/a1091793/Documents/Modelling/Run/individual_0/replicate_0/Data2/lu2000.asc"
-map1_path = r"/home/a1091793/Documents/Modelling/Run/individual_0/replicate_0/Log/Land_use/Land use map_2000-Jan-01 00_00_00.rst"
+map1_path = r"home/a1091793/Documents/Modelling/Run/individual_0/replicate_0/Log/Land_use/Land use map_2000-Jan-01 00_00_00.rst"
 mask_path = r"/home/a1091793/Documents/Modelling/Run/individual_0/replicate_0/Data2/region.asc"
 
 
@@ -42,11 +42,11 @@ CLUMPY2=clumpiness_index(map2,mask)
 luc=np.amax(map1)+1
 #pas=int(sys.argv[4])
 #fea=int(sys.argv[5])
-pas = 1 
-fea = 2
+pas = 3 
+fea = 3
 act=luc-(fea+pas)
 ACE=[0]*act
 for i in range(pas,luc-fea):
     ACE[i-pas]=abs(CLUMPY1[i]-CLUMPY2[i])
 AACE=sum(ACE)/len(ACE)
-print(AACE)
+print AACE

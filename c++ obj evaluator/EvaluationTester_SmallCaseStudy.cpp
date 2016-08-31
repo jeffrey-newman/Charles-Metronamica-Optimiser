@@ -65,6 +65,13 @@ int main(int argc, char *argv[])
               options(desc).run(), vm);
     po::notify(vm);
 
+
+
+    if (vm.count("help")) {
+        std::cout << desc << "\n";
+        return EXIT_SUCCESS;
+    }
+
     pathify(metro_exe); //.second = boost::filesystem::path(metro_exe.first);
     pathify(mck_exe);
     pathify(wine_exe);
@@ -78,11 +85,6 @@ int main(int argc, char *argv[])
     pathify(working_dir);
     pathify(wine_reg_mod_file);
     pathify(log_file);
-
-    if (vm.count("help")) {
-        std::cout << desc << "\n";
-        return EXIT_SUCCESS;
-    }
 
     MetronamicaOF2SmallCaseStudy metro_eval(metro_exe.second,
                              mck_exe.second,

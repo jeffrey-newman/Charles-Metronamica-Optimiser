@@ -544,6 +544,7 @@ public:
             avg_clump +=  calcClumpDiff(analysisNum, rec_val, logging_file);
             avg_clump /= 7;
             obj[1] = avg_clump;
+            if (is_logging) logging_file << "Avg abs. diff clumpiness: " << avg_clump << "\n";
 
         }
         catch (...)
