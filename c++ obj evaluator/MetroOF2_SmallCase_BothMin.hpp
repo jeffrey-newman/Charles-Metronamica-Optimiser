@@ -28,7 +28,7 @@
 #include <blink/raster/PngPlotter.h>
 #include <blink/raster/utility.h>
 
-class MetronamicaOF2SmallCaseStudy : public ObjectivesAndConstraintsBase
+class MetroOF2SmallCase2Min : public ObjectivesAndConstraintsBase
 {
     int num_objectives;
     int num_real_decision_vars;
@@ -60,7 +60,7 @@ class MetronamicaOF2SmallCaseStudy : public ObjectivesAndConstraintsBase
     std::vector<double> max_dv_values = {5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,15,15,15,15,15,15,15,15,15,15,15,15,15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1}; // upper bound of x
     std::vector<int> int_lowerbounds;
     std::vector<int> int_upperbounds;
-    std::vector<MinOrMaxType> minimise_or_maximise = {MAXIMISATION, MINIMISATION};
+    std::vector<MinOrMaxType> minimise_or_maximise = {MINIMISATION, MINIMISATION};
     int evaluator_id;
     bool is_logging;
     int eval_count;
@@ -184,7 +184,7 @@ class MetronamicaOF2SmallCaseStudy : public ObjectivesAndConstraintsBase
 
 
 public:
-    MetronamicaOF2SmallCaseStudy(boost::filesystem::path & metro_exe,
+    MetroOF2SmallCase2Min(boost::filesystem::path & metro_exe,
                    boost::filesystem::path & mck_exe,
                    boost::filesystem::path & wine_exe,
                    boost::filesystem::path & java_exe,
@@ -233,7 +233,7 @@ public:
           eval_count(0)
     {
         analysisNum = createAnalysis();
-        loadMapActual(analysisNum, actual_map.c_str());
+        loadMap1(analysisNum, actual_map.c_str());
         loadOriginalMap(analysisNum, original_map.c_str());
         loadMaskingMap(analysisNum, masking_map.c_str());
         loadTransitionFuzzyWeights(analysisNum, fks_coefficients.c_str());
@@ -281,7 +281,7 @@ public:
         colour_mapper.push_back(std::make_tuple(  0,   128,   255));
     }
 
-    ~MetronamicaOF2SmallCaseStudy()
+    ~MetroOF2SmallCase2Min()
     {
 //        boost::filesystem::remove_all(worker_dir);
     }
@@ -380,6 +380,7 @@ public:
 
         obj[0] /= replicates;
         obj[1] /= replicates;
+        obj[0] *= -1;
         ++eval_count;
 
         if (is_logging) logging_file << "\n\n\n FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n";
@@ -457,7 +458,7 @@ public:
         if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
         try
         {
-            loadMapSimulated(analysisNum, (*output_map).c_str());
+            loadMap2(analysisNum, (*output_map).c_str());
             if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
             double fks = getFuzzyKappaSim(analysisNum);
             obj[0] = fks;
@@ -469,7 +470,7 @@ public:
             {
                 std::cout << err.what() << std::endl;
                 std::this_thread::sleep_for (std::chrono::seconds(3));
-                loadMapSimulated(analysisNum, (*output_map).c_str());
+                loadMap2(analysisNum, (*output_map).c_str());
                 if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
                 double fks = getFuzzyKappaSim(analysisNum);
                 obj[0] = fks;

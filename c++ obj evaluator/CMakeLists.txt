@@ -420,3 +420,29 @@ IF(USE_VTK)
         target_link_libraries(getfirstfront_sm vtkHybrid vtkWidgets)
     endif()
 ENDIF()
+
+##################################################################################################################
+#                                                                                                                #
+#                 Parallel NSGA with Small case study    with both obj to minimise (negative FKS)                #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+SET(Metro_calib_parallel_Small_2min_Src
+        MainPar_SmallCase_BothMin.cpp
+        MetroOF2_SmallCase_BothMin.hpp
+        Pathify.hpp
+
+    )
+
+add_executable(metrocalpar_sm_2min ${Metro_calib_parallel_Small_2min_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+target_link_libraries(metrocalpar_sm_2min ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
+
+IF(USE_VTK)
+    if(VTK_LIBRARIES)
+        target_link_libraries(metrocalpar_sm_2min ${VTK_LIBRARIES})
+    else()
+        target_link_libraries(metrocalpar_sm_2min vtkHybrid vtkWidgets)
+    endif()
+ENDIF()
+

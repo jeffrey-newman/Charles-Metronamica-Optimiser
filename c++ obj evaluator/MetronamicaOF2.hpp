@@ -233,7 +233,7 @@ public:
     {
         analysisNum = createAnalysis();
 
-        loadMap1(analysisNum, actual_map.c_str());
+        loadMapActual(analysisNum, actual_map.c_str());
         loadOriginalMap(analysisNum, original_map.c_str());
         loadMaskingMap(analysisNum, masking_map.c_str());
         loadTransitionFuzzyWeights(analysisNum, fks_coefficients.c_str());
@@ -473,7 +473,7 @@ public:
         if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
         try
         {
-            loadMap2(analysisNum, (*output_map).c_str());
+            loadMapSimulated(analysisNum, (*output_map).c_str());
             if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
             double fks = getFuzzyKappaSim(analysisNum);
             obj[0] = fks;
@@ -485,7 +485,7 @@ public:
             {
                 std::cout << err.what() << std::endl;
                 std::this_thread::sleep_for (std::chrono::seconds(3));
-                loadMap2(analysisNum, (*output_map).c_str());
+                loadMapSimulated(analysisNum, (*output_map).c_str());
                 if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
                 double fks = getFuzzyKappaSim(analysisNum);
                 obj[0] = fks;
