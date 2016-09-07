@@ -598,9 +598,10 @@ public:
 
         obj[0] /= replicates;
         obj[1] /= replicates;
+        obj[0] *= -1;
         ++eval_count;
 
-        if (is_logging) logging_file << "\n\n\n FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n";
+        if (is_logging) logging_file << "\n\n\n -FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n";
 
         if (is_logging) logging_file.close();
 
