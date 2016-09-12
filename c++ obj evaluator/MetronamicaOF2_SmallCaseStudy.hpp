@@ -413,7 +413,7 @@ public:
         //            {
         if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
         //                boost::timer::auto_cpu_timer t(logging_file);
-        std::cout << "number real decision vars : " << real_decision_vars.size() << std::endl;
+        if (is_logging) logging_file << "number real decision vars : " << real_decision_vars.size() << std::endl;
         cmd4 << java_cmd << " -jar " << java_geoproj_edit << " ";
         cmd4 << orig_geoproj_path<< " " << mod_geoproj_path;
         for (int i = 0; i < num_real_decision_vars; ++i)
