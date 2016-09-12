@@ -211,6 +211,7 @@ public class AdaptMetronamicaProjectFileSmallCaseStudy
             builder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException ex)
         {
+            System.out.println("Error in buiding document builder in java\n");
             Logger.getLogger(AdaptMetronamicaProjectFileSmallCaseStudy.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -220,6 +221,7 @@ public class AdaptMetronamicaProjectFileSmallCaseStudy
             doc = builder.parse(new File(filename));
          } catch (SAXException | IOException ex)
         {
+            System.out.println("Error in parsing document builder in java\n");
             Logger.getLogger(AdaptMetronamicaProjectFileSmallCaseStudy.class.getName()).log(Level.SEVERE, null, ex);
         }
                     
@@ -744,6 +746,7 @@ public class AdaptMetronamicaProjectFileSmallCaseStudy
             Logger.getLogger(AdaptMetronamicaProjectFileSmallCaseStudy.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    System.out.println("Java manipulation complete\n");
     System.exit(0);
         
     }

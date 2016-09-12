@@ -260,7 +260,7 @@ public:
         //        if (is_logging)
         //        {
         //            logging_file.open(log_file_name.c_str(), std::ios_base::app);
-        //            if (!logging_file.is_open()) is_logging = false;
+        //            if (!logging_file.is_open()) { is_logging = false; std::cout << "Unable to open logging file: " << debug_log_file_name.c_str() << std::endl;
         //        }
 
         //        std::stringstream cmd;
@@ -306,7 +306,11 @@ public:
         if (is_logging)  logging_file.close();
         int i1 = system(cmd1.str().c_str());
         if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
-        if (!logging_file.is_open()) is_logging = false;
+        if (!logging_file.is_open())
+        {
+            is_logging = false;
+            std::cout << "Unable to open logging file: " << debug_log_file_name.c_str() << std::endl;
+        }
 
         cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << metro_log_path << " " << wine_proj_path ;
         if (is_logging) cmd2 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
@@ -314,7 +318,11 @@ public:
         if (is_logging) logging_file.close();
         int i2 = system(cmd2.str().c_str());
         if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
-        if (!logging_file.is_open()) is_logging = false;
+        if (!logging_file.is_open())
+        {
+            is_logging = false;
+            std::cout << "Unable to open logging file: " << debug_log_file_name.c_str() << std::endl;
+        }
 
         boost::filesystem::path output_map = worker_dir / "Log" / "Land_use" / "Land use map_2000-Jan-01 00_00_00.rst";
         if (boost::filesystem::exists(output_map))
@@ -352,7 +360,7 @@ public:
             if (!logging_file.is_open())
             {
                 is_logging = false;
-                std::cout << "attempt to log failed\n";
+                std::cout << "Unable to open logging file: " << debug_log_file_name.c_str() << std::endl;
             }
         }
 
@@ -444,7 +452,11 @@ public:
         if (is_logging) logging_file.close();
         int i4 = system(cmd4.str().c_str());
         if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
-        if (!logging_file.is_open()) is_logging = false;
+        if (!logging_file.is_open())
+        {
+            is_logging = false;
+            std::cout << "Unable to open logging file: " << debug_log_file_name.c_str() << std::endl;
+        }
         if (is_logging) logging_file << "Timing for manipulating decision variable : " << std::endl;
         //            }
 
@@ -518,7 +530,7 @@ public:
         //            if (is_logging) logging_file.close();
         //            int i3 = system(cmd3.str().c_str());
         //            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
-        //            if (!logging_file.is_open()) is_logging = false;
+        //            if (!logging_file.is_open()) { is_logging = false; std::cout << "Unable to open logging file: " << debug_log_file_name.c_str() << std::endl;
 
 
         //            {
@@ -604,8 +616,9 @@ public:
             if (!logging_file.is_open())
             {
                 is_logging = false;
-                std::cout << "attempt to log failed\n";
+                std::cout << "Unable to open logging file: " << debug_log_file_name.c_str() << std::endl;
             }
+
         }
 
 

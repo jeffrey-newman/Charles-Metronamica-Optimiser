@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.0.2, 2016-09-05T15:42:59. -->
+<!-- Written by QtCreator 4.0.2, 2016-09-07T10:53:56. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -54,7 +54,9 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.PluginSettings</variable>
-  <valuemap type="QVariantMap"/>
+  <valuemap type="QVariantMap">
+   <valuelist type="QVariantList" key="ClangStaticAnalyzer.SuppressedDiagnostics"/>
+  </valuemap>
  </data>
  <data>
   <variable>ProjectExplorer.Project.Target.0</variable>
@@ -62,7 +64,7 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.7.0 GCC 64bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.7.0 GCC 64bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.57.gcc_64_kit</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">2</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">8</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
@@ -161,14 +163,22 @@
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
     <valuelist type="QVariantList" key="CMake.Configuration">
+     <value type="QString">AHHZ_RASTER_ITERATOR:PATH=/home/a1091793/Documents/Projects/AHHZ-Iterator/iterator/include</value>
+     <value type="QString">AHHZ_RASTER_UTIL:PATH=/home/a1091793/Documents/Projects/AHHZ-Raster/raster/include</value>
      <value type="QString">CMAKE_BUILD_TYPE:STRING=Release</value>
+     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable}</value>
+     <value type="QString">MCL:PATH=/home/a1091793/Documents/Projects/Map-Comparison-Lib/map-comparison-library/src</value>
+     <value type="QString">PARALLEL-NSGAII:PATH=/home/a1091793/Documents/Projects/Parallell-NSGAII-Backend/parallel-nsgaII-backend</value>
+     <value type="QString">PNGwriter_ROOT_DIR:PATH=/home/a1091793/Documents/Projects/pngwriter/build</value>
+     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
+     <value type="QString">USE_VTK:BOOL=ON</value>
     </valuelist>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
-      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
+      <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments">-j 2</value>
       <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
-       <value type="QString"></value>
+       <value type="QString">all</value>
       </valuelist>
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Make</value>
@@ -349,7 +359,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">metrocalpar_sm_2min</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">metrocalpar_sm_2min</value>
@@ -405,7 +415,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">metrocalpar</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">metrocalpar</value>
@@ -461,7 +471,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">testevaluation_sm</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">testevaluation_sm</value>
@@ -517,7 +527,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">metrocalser</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">metrocalser</value>
@@ -573,7 +583,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">metrocaltest</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">metrocaltest</value>
@@ -629,7 +639,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">testevaluation</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">testevaluation</value>
@@ -685,7 +695,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">metrocalser_sm</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">metrocalser_sm</value>
@@ -741,7 +751,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">testhypervol</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">testhypervol</value>
@@ -797,7 +807,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">metrocalpar_sm</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">metrocalpar_sm</value>
@@ -853,7 +863,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">getfirstfront_sm</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments">-m  &quot;/home/a1091793/bin/Metronamica/GeonamicaCmd.exe&quot; -k &quot;/home/a1091793/bin/Map Comparison Kit 3/MCK.exe&quot; -w &quot;/usr/bin/wine&quot; -j &quot;/usr/local/jdk1.8.0_91/bin/java&quot; -g &quot;/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/Charles-Metronamica-Optimiser/Java geoproject modification/Geoproject file edit/ADAPT_Simpler_Randstad/dist/ADAPT_Simpler_Randstad.jar&quot; -t &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/&quot; -f &quot;Randstad.geoproj&quot; -l &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/LogSettings/LogSettings.xml&quot; -a &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/lu2000.asc&quot; -o &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/lu1989.asc&quot; -s &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/region.asc&quot; -c &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/coefficients.txt&quot; -d &quot;/home/a1091793/Documents/Run/PostProcessCharlesGen370Sep5/&quot; -n &quot;Z:\\home\\a1091793\\Documents\\Run\\PostProcessCharlesGen370Sep5&quot; -r &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/wineRegSetOnlineCheck.reg&quot; -i 10 -p &quot;/home/a1091793/Documents/Run/PostProcessCharlesGen370Sep5/pop_gen375.xml&quot;</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">getfirstfront_sm</value>
@@ -909,7 +919,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">getfirstfront</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Debug</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/build-c++ obj evaluator-Desktop_Qt_5_7_0_GCC_64bit-Release</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">getfirstfront</value>

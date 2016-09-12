@@ -268,8 +268,14 @@ int main(int argc, char * argv[]) {
     }
     else
     {
-        // create evaluator client
+        std::string log_file_name = "worker_" + std::to_string(world.rank()) + "_timing.log";
+        boost::filesystem::path eval_log = save_dir.second / log_file_name;
+        std::ofstream eval_strm(eval_log.c_str());
         ParallelEvaluatePopClient eval_client(env, world, metro_eval.getProblemDefinitions(), metro_eval);
+        if (eval_strm.is_open())
+        {
+            eval_client.log(ParallelEvaluatorBase::LVL1, eval_strm);
+        }
 
         //logging eval_client
 //        std::string log_filename = "evaluation_timing_worker" + std::to_string(world.rank()) + ".log";
