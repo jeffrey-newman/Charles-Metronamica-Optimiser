@@ -294,7 +294,7 @@ public:
         std::string wine_proj_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + mod_proj_file + "\"";
         std::string metro_log_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + cp_metro_log_name + "\"";
         //Call the model
-        cmd1 << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path ;
+        cmd1 << "timeout --kill-after=20m 19m  " << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path ;
         if (is_logging) cmd1 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
         if (is_logging) logging_file << "Running: " << cmd1.str() << std::endl;
         if (is_logging)  logging_file.close();
@@ -302,7 +302,7 @@ public:
         if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
         if (!logging_file.is_open()) is_logging = false;
 
-        cmd2 << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << metro_log_path << " " << wine_proj_path ;
+        cmd2 << "timeout --kill-after=20m 19m  " << wine_cmd << " " << geo_cmd << " --Run --Save --LogSettings " << metro_log_path << " " << wine_proj_path ;
         if (is_logging) cmd2 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
         if (is_logging) logging_file << "Running: " << cmd2.str() << std::endl;
         if (is_logging) logging_file.close();
@@ -414,7 +414,7 @@ public:
         if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
         //                boost::timer::auto_cpu_timer t(logging_file);
         if (is_logging) logging_file << "number real decision vars : " << real_decision_vars.size() << std::endl;
-        cmd4 << java_cmd << " -jar " << java_geoproj_edit << " ";
+        cmd4 << "timeout --kill-after=30s 27s  " << java_cmd << " -jar " << java_geoproj_edit << " ";
         cmd4 << orig_geoproj_path<< " " << mod_geoproj_path;
         for (int i = 0; i < num_real_decision_vars; ++i)
         {
@@ -430,6 +430,33 @@ public:
         if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
         if (!logging_file.is_open()) is_logging = false;
         if (is_logging) logging_file << "Timing for manipulating decision variable : " << std::endl;
+
+
+        // If the java file manipulation fails, wait three seconds and try again.
+        if (!(boost::filesystem::exists(mod_geoproj_path)))
+        {
+            std::this_thread::sleep_for (std::chrono::seconds(3));
+            if (is_logging) logging_file << "Running: " << cmd4.str() << std::endl;
+            if (is_logging) logging_file.close();
+            int i4 = system(cmd4.str().c_str());
+            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
+            if (!logging_file.is_open())
+            {
+                is_logging = false;
+                std::cout << "Unable to open logging file: " << debug_log_file_name.c_str() << std::endl;
+            }
+            if (is_logging) logging_file << "Timing for manipulating decision variable : " << std::endl;
+            if (!(boost::filesystem::exists(mod_geoproj_path)))
+            {
+                // If still fails, return.
+                if (is_logging) logging_file << "Was unable to successfully run Metronamica on decision variables\n";
+                obj[0] = -1;
+                obj[1] = 10;
+                return std::make_pair(obj[0], obj[1]);
+            }
+        }
+
+
         //            }
 
         //            {
