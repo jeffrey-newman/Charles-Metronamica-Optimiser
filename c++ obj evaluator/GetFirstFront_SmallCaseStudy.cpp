@@ -131,6 +131,8 @@ int main(int argc, char * argv[]) {
 
         Population & first_front = pop->getFronts()->at(0);
 
+        std::vector<std::pair<std::vector<double>, std::vector<double> > > results;
+
         int i = 0;
         BOOST_FOREACH(IndividualSPtr ind, first_front)
         {
@@ -138,22 +140,60 @@ int main(int argc, char * argv[]) {
             std::vector<double> constraints;
             boost::filesystem::path save_dir = working_dir.second / ("individual_" + std::to_string(i++));
             if (!boost::filesystem::exists(save_dir)) boost::filesystem::create_directory(save_dir);
-            std::tie(objectives, constraints) = metro_eval(ind->getRealDVVector(), ind->getIntDVVector(), save_dir);
+            std::tie(objectives, constraints) = metro_eval.getObjectivesAcrossReplicates(ind->getRealDVVector(), ind->getIntDVVector(), save_dir, results);
             ind->setObjectives(objectives);
             ind->setConstraints(constraints);
             std::cout << *ind << std::endl;
         }
+
+
 
         boost::filesystem::path save_file = working_dir.second / (save_name + ".xml");
         std::ofstream ofs(save_file.c_str());
         assert(ofs.good());
         boost::archive::xml_oarchive oa(ofs);
         oa << BOOST_SERIALIZATION_NVP(first_front);
+        ofs.close();
 
         boost::filesystem::path save_file2 = working_dir.second / (save_name + ".txt");
         std::ofstream ofs2(save_file2.c_str());
         assert(ofs2.good());
         ofs2 << pop;
+        ofs2.close();
+
+        boost::filesystem::path save_file3 = working_dir.second / "collated_objective_results_first_front.txt";
+        std::ofstream ofs3(save_file3.c_str());
+        assert(ofs3.good());
+        typedef std::pair<std::vector<double>, std::vector<double> > SingleIndividualResult;
+
+        ofs3 << "Point_Number" << "\t";
+        for (int i = 1; i <= replicates; ++i)
+        {
+            ofs3 << "fks_rep_" << i << "\t";
+        }
+        for (int i = 1; i <= replicates; ++i)
+        {
+            ofs3 << "clump_rep_" << i << "\t";
+        }
+        ofs3 << "\n";
+        int p = 1;
+        BOOST_FOREACH(SingleIndividualResult & result, results )
+        {
+            ofs3 << "Point_Number_" << ++p << "\t";
+            BOOST_FOREACH(double fks_rep, result.first)
+            {
+                ofs3 << fks_rep << "\t";
+            }
+            BOOST_FOREACH(double clump_rep, result.second)
+            {
+                ofs3 << clump_rep << "\t";
+            }
+            ofs3 << "\n";
+        }
+        ofs3.close();
+
+
+
     }
     //Now we want to save each of these runs!
 

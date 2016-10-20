@@ -32,7 +32,8 @@ int main(int argc, char * argv[])
     ProblemDefinitionsSPtr prob_defs(new ProblemDefinitions(min_dv_values, max_dv_values,  int_lowerbounds, int_upperbounds, minimise_or_maximise, num_constraints));
     std::vector<double> ref_point =  {-1, 9.764}; //From Charle's email 23rd June
     int max_gen_hvol = 10;
-    Hypervolume hvol(ref_point, dir, 1, Hypervolume::TERMINATION, max_gen_hvol);
+//    Hypervolume hvol(ref_point, dir, 1, Hypervolume::TERMINATION, max_gen_hvol);
+    Hypervolume hvol(1, dir, Hypervolume::TERMINATION, max_gen_hvol, ref_point);
     PopulationSPtr pop(new Population);
 //    FrontsSPtr fronts(pop->getFronts());
     IndividualSPtr ind1(new Individual(prob_defs)); ind1->setObjectives(std::vector<double> {-0.9, 0.1}); pop->push_back(ind1);

@@ -332,6 +332,75 @@ public:
     }
 
     std::pair<std::vector<double>, std::vector<double> > &
+    getObjectivesAcrossReplicates(const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars, boost::filesystem::path save_path, std::vector<std::pair<std::vector<double>, std::vector<double> > > & results)
+    {
+        if (!boost::filesystem::exists(save_path)) boost::filesystem::create_directory(save_path);
+
+        std::pair<std::vector<double>, std::vector<double> >  objectives;
+        objectives.first.resize(replicates);
+        objectives.second.resize(replicates);
+
+        std::string filename = "logWorker" + std::to_string(evaluator_id) + "_EvalNo" + std::to_string(eval_count) + "_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
+        boost::filesystem::path debug_log_file_name = save_dir / filename;
+        std::ofstream logging_file;
+        if (is_logging)
+        {
+            logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
+            if (!logging_file.is_open())
+            {
+                is_logging = false;
+                std::cout << "attempt to log failed\n";
+            }
+        }
+
+        boost::filesystem::path objectives_file = save_path / "metrics_for_each_replicate.txt";
+        std::ofstream objectives_fs(objectives_file.c_str());
+
+
+        std::vector<double> & obj = objectives_and_constrataints.first;
+        obj[0] = 0; obj[1] = 0;
+
+        for (int j = 0; j < replicates; ++j)
+        {
+            std::pair<double, double> metric_vals = calcMetrics(worker_dir, real_decision_vars, int_decision_vars, is_logging, logging_file, debug_log_file_name, j);
+            double fks =  metric_vals.first;
+            double clump = metric_vals.second;
+            objectives.first[j] = fks;
+            objectives.second[j] = clump;
+            objectives_fs << "replicate " << j << " fks: " << fks << " clumpiness: " << clump << "\n";
+            obj[0] += fks;
+            obj[1] += clump;
+            boost::filesystem::path save_replicate_path = save_path / ("replicate_" + std::to_string(j));
+//            if (!boost::filesystem::exists(save_replicate_path)) boost::filesystem::create_directory(save_replicate_path);
+            if (boost::filesystem::exists(save_replicate_path)) boost::filesystem::remove_all(save_replicate_path);
+            copyDir(worker_dir, save_replicate_path);
+            boost::filesystem::path output_map = worker_dir / "Log" / "Land_use" / "Land use map_2000-Jan-01 00_00_00.rst";
+            if (boost::filesystem::exists(output_map))
+            {
+                boost::filesystem::path png_path = save_path  / ("replicate_" + std::to_string(j) + ".png");
+                blink::raster::gdal_raster<int> out_raster = blink::raster::open_gdal_raster<int>(output_map, GA_ReadOnly);
+                blink::raster::printRaster2PNG(out_raster, colour_mapper, png_path);
+            }
+
+        }
+
+        obj[0] /= replicates;
+        obj[1] /= replicates;
+        ++eval_count;
+
+        if (is_logging) logging_file << "\n\n\n FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n";
+
+        if (is_logging) logging_file.close();
+
+//        boost::filesystem::remove_all(previous_log_file);
+//        previous_log_file = debug_log_file_name;
+
+        results.push_back(objectives);
+        return (objectives_and_constrataints);
+    }
+
+
+    std::pair<std::vector<double>, std::vector<double> > &
     operator()(const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars, boost::filesystem::path save_path)
     {
         if (!boost::filesystem::exists(save_path)) boost::filesystem::create_directory(save_path);

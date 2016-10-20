@@ -135,7 +135,8 @@ int main(int argc, const char * argv[]) {
         SavePopCheckpoint save_pop(1, working_dir.second);
         std::vector<double> ref_point =  {-0.1, 1}; //From Charle's email 23rd June
         std::vector<double> unitise_point = {1,0};
-        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen_hvol, Hypervolume::MAXIMISE, unitise_point);
+//        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen_hvol, Hypervolume::MAXIMISE, unitise_point);
+        Hypervolume hvol(1, working_dir.second, Hypervolume::TERMINATION, max_gen_hvol, ref_point, unitise_point, Hypervolume::MAXIMISE);
         MetricLinePlot hvol_plot(hvol);
         MaxGenCheckpoint maxgen(max_gen);
         std::string mail_subj("Hypervolume of front from Metro calibrator ");
@@ -154,7 +155,8 @@ int main(int argc, const char * argv[]) {
 
         // Initialise population
         PopulationSPtr pop = intialisePopulationRandomDVAssignment(pop_size, metro_eval.getProblemDefinitions(), rng);
-        SetMutationInverseDVSize(pop->at(0), optimiser.getRealMutationOperator());
+        optimiser.getRealMutationOperator().setMutationInverseDVSize(pop->at(0));
+//        SetMutationInverseDVSize(pop->at(0), optimiser.getRealMutationOperator());
 
 //        hvol(pop);
 //        std::cout << "Hypervolume: " << hvol.getVal() << std::endl;

@@ -180,7 +180,8 @@ int main(int argc, char * argv[]) {
         SaveFirstFrontCheckpoint save_front(save_freq, save_dir.second);
         std::vector<double> ref_point =  {-0.1, 1};
         std::vector<double> unitise_point = {1,0};
-        Hypervolume hvol(ref_point, save_dir.second, save_freq, Hypervolume::TERMINATION, max_gen_hvol, Hypervolume::MAXIMISE, unitise_point);
+//        Hypervolume hvol(ref_point, save_dir.second, save_freq, Hypervolume::TERMINATION, max_gen_hvol, Hypervolume::MAXIMISE, unitise_point);
+        Hypervolume hvol(save_freq, save_dir.second, Hypervolume::TERMINATION, max_gen_hvol, ref_point, unitise_point, Hypervolume::MAXIMISE);
         if (eval_strm.is_open())
         {
             hvol.log(Hypervolume::LVL1, eval_strm);
