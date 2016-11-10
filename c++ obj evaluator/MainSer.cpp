@@ -132,21 +132,26 @@ int main(int argc, const char * argv[]) {
 
         // The optimiser
         NSGAII<RNG> optimiser(rng, metro_eval);
-        SavePopCheckpoint save_pop(1, working_dir.second);
+        boost::shared_ptr<SavePopCheckpoint> save_pop(new SavePopCheckpoint(1, working_dir.second));
+//        SavePopCheckpoint save_pop(1, working_dir.second);
         std::vector<double> ref_point =  {-0.1, 1}; //From Charle's email 23rd June
         std::vector<double> unitise_point = {1,0};
 //        Hypervolume hvol(ref_point, working_dir.second, 1, Hypervolume::TERMINATION, max_gen_hvol, Hypervolume::MAXIMISE, unitise_point);
-        Hypervolume hvol(1, working_dir.second, Hypervolume::TERMINATION, max_gen_hvol, ref_point, unitise_point, Hypervolume::MAXIMISE);
-        MetricLinePlot hvol_plot(hvol);
-        MaxGenCheckpoint maxgen(max_gen);
+        boost::shared_ptr<Hypervolume> hvol(new Hypervolume(1, working_dir.second, Hypervolume::TERMINATION, max_gen_hvol, ref_point, unitise_point, Hypervolume::MAXIMISE));
+//        Hypervolume hvol(1, working_dir.second, Hypervolume::TERMINATION, max_gen_hvol, ref_point, unitise_point, Hypervolume::MAXIMISE);
+        boost::shared_ptr<MetricLinePlot> hvol_plot(new MetricLinePlot(hvol));
+//        MetricLinePlot hvol_plot(hvol);
+        boost::shared_ptr<MaxGenCheckpoint> maxgen(new MaxGenCheckpoint(max_gen));
+//        MaxGenCheckpoint maxgen(max_gen);
         std::string mail_subj("Hypervolume of front from Metro calibrator ");
-        MailCheckpoint mail(10, hvol, mail_subj);
+        boost::shared_ptr<MailCheckpoint> mail(new MailCheckpoint(10, hvol, mail_subj));
+//        MailCheckpoint mail(10, hvol, mail_subj);
         std::string jeffs_address("jeffrey.newman@adelaide.edu.au");
         std::string charles_address("charles.p.newland@adelaide.edu.au");
-        mail.addAddress(jeffs_address);
-        mail.addAddress(charles_address);
+        mail->addAddress(jeffs_address);
+        mail->addAddress(charles_address);
 
-        PlotFrontVTK plotfront;
+        boost::shared_ptr<PlotFrontVTK> plotfront(new PlotFrontVTK);
         optimiser.add_checkpoint(save_pop);
         optimiser.add_checkpoint(mail);
         optimiser.add_checkpoint(hvol_plot);

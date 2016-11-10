@@ -176,27 +176,27 @@ int main(int argc, char * argv[]) {
         {
             optimiser.log(eval_strm, eval_log, NSGAII<RNG>::LVL1 );
         }
-        SavePopCheckpoint save_pop(save_freq, save_dir.second);
-        SaveFirstFrontCheckpoint save_front(save_freq, save_dir.second);
+        boost::shared_ptr<SavePopCheckpoint> save_pop(new SavePopCheckpoint(save_freq, save_dir.second));
+        boost::shared_ptr<SaveFirstFrontCheckpoint> save_front(new SaveFirstFrontCheckpoint(save_freq, save_dir.second));
         std::vector<double> ref_point =  {-0.1, 1};
         std::vector<double> unitise_point = {1,0};
 //        Hypervolume hvol(ref_point, save_dir.second, save_freq, Hypervolume::TERMINATION, max_gen_hvol, Hypervolume::MAXIMISE, unitise_point);
-        Hypervolume hvol(save_freq, save_dir.second, Hypervolume::TERMINATION, max_gen_hvol, ref_point, unitise_point, Hypervolume::MAXIMISE);
+        boost::shared_ptr<Hypervolume> hvol(new Hypervolume(save_freq, save_dir.second, Hypervolume::TERMINATION, max_gen_hvol, ref_point, unitise_point, Hypervolume::MAXIMISE));
         if (eval_strm.is_open())
         {
-            hvol.log(Hypervolume::LVL1, eval_strm);
+            hvol->log(Hypervolume::LVL1, eval_strm);
         }
-        MetricLinePlot hvol_plot(hvol);
-        MaxGenCheckpoint maxgen(max_gen);
+        boost::shared_ptr<MetricLinePlot> hvol_plot(new MetricLinePlot(hvol));
+        boost::shared_ptr<MaxGenCheckpoint> maxgen(new MaxGenCheckpoint(max_gen));
         std::string mail_subj("Hypervolume of front from Metro calibrator ");
-        MailCheckpoint mail(mail_hvol_gen, hvol, mail_subj);
+        boost::shared_ptr<MailCheckpoint> mail(new MailCheckpoint(mail_hvol_gen, hvol, mail_subj));
         std::string jeffs_address("jeffrey.newman@adelaide.edu.au");
         std::string charles_address("charles.p.newland@adelaide.edu.au");
-        mail.addAddress(jeffs_address);
-        mail.addAddress(charles_address);
+        mail->addAddress(jeffs_address);
+        mail->addAddress(charles_address);
 
 
-        PlotFrontVTK plotfront;
+        boost::shared_ptr<PlotFrontVTK> plotfront(new PlotFrontVTK);
     //    ResetMutXvrDebugFlags reset_flags;
     //    SerialiseCheckpoint<NSGAII<RNG> > save_state(1, optimiser, working_dir);
 //        optimiser.add_checkpoint(max_gen_terminate);
