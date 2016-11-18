@@ -101,6 +101,11 @@ int main(int argc, char * argv[]) {
         return EXIT_SUCCESS;
     }
 
+    bool isphoenix=false;
+    if (isphoenix) {
+        // wait according to rank
+        std::this_thread::sleep_for(std::chrono::seconds(world.rank()));
+    }
     pathify(metro_exe); //.second = boost::filesystem::path(metro_exe.first);
     pathify(mck_exe);
     pathify(wine_exe);
@@ -120,7 +125,7 @@ int main(int argc, char * argv[]) {
         pathify(restart_pop_file);
     }
 
-    bool isphoenix=false;
+
     if (isphoenix)
     {
         // wait according to rank
