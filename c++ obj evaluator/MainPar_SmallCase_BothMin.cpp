@@ -119,6 +119,18 @@ int main(int argc, char * argv[]) {
         pathify(restart_pop_file);
     }
 
+    bool isphoenix=false;
+    if (isphoenix)
+    {
+        boost::filesystem::path symlinkpath("~/.wine/dosdevices/j");
+        boost::filesystem::path link_to("/localscratch");
+        //Check is symbolic link for wine J: exists.
+        boost::filesystem::file_status lnk_status = boost::filesystem::status(symlinkpath);
+        if (!(boost::filesystem::exists(lnk_status)))
+        {
+            boost::filesystem::create_directory_symlink(link_to, symlinkpath);
+        }
+    }
 
 
     MetroOF2SmallCase2Min metro_eval(metro_exe.second,
@@ -288,5 +300,25 @@ int main(int argc, char * argv[]) {
 //            eval_client.log(ParallelEvaluatorBase::LVL1, eval_strm);
 //        }
         eval_client();
+    }
+
+
+
+    if (boost::filesystem::exists(working_dir.second))
+    {
+        boost::filesystem::remove_all(working_dir.second);
+        std::cout << "path " << path.first << " did not exist, so created\n";
+    }
+
+    if (isphoenix)
+    {
+        boost::filesystem::path symlinkpath("~/.wine/dosdevices/j");
+        boost::filesystem::path link_to("/localscratch");
+        //Check is symbolic link for wine J: exists.
+        boost::filesystem::file_status lnk_status = boost::filesystem::status(symlinkpath);
+        if ((boost::filesystem::exists(lnk_status)))
+        {
+            boost::filesystem::remove_all(symlinkpath);
+        }
     }
 }
