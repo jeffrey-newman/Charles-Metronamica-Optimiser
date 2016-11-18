@@ -1,18 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/Utility.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/Utility.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/gdal_raster_lru.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/gdal_raster_lru.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$">
+    <content url="file://$MODULE_DIR$/../../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/DebsCrowdingDistance.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Serialization/SerializeBoostPath.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Serialization/SerializeRng.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Evaluation.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/ProblemDefinitions.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Metrics/hv.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Metrics/hv.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Metrics/Hypervolume.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Types.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/ParallelEvaluator.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Selection.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Merge.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Individual.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Checkpoints/MaxGenCheckpoint.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Checkpoints/SerialiseCheckpoint.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Checkpoints/ResetMutationXoverFlags.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Checkpoints/PlotFronts.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Checkpoints/MailCheckpoint.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Checkpoints/colours.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Checkpoints/SaveFirstFrontCheckpoint.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Checkpoints/SavePopCheckpoint.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/NSGAII.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Comparator.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Crossover.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Checkpoint.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Mutation.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/DebsNondominatedSorting.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Population.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulation.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap_Impl.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Map_Matrix.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ClumpinessFast.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Map_Matrix_Impl.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Clumpiness.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulation.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Neighbourhood.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/RasterComparisonModule/KappaSimulation.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/RasterComparisonModule/KappaSimulation.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/RasterComparisonModule/Kappa.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/RasterComparisonModule/Kappa.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/MapComparison_0_4.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Clumpiness.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/dt.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImproved.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Neighbourhood.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Types.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/MapComparison_0_4.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Neighbourhood_Impl.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ClumpinessFast.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Map_Matrix.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImproved.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadFuzzyTables.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MetronamicaOF2.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EvaluationTester_SmallCaseStudy.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pugixml-1.7/src/pugixml.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pugixml-1.7/src/pugiconfig.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pugixml-1.7/src/pugixml.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GetFirstFront.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TestMetroCalOF.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GetFirstFront_SmallCaseStudy.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GeoprojectManipSmallCaseStudy.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MainPar_SmallCaseStudy.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MetronamicaOF2_SmallCaseStudy.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MainSer_SmallCaseStudy.cpp" isTestSource="false" />
@@ -25,48 +78,41 @@
       <sourceFolder url="file://$MODULE_DIR$/MainPar.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cmake/FindPNGwriter.cmake" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/HypervolumeCheck.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Clumpiness.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Clumpiness.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ClumpinessFast.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ClumpinessFast.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulation.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulation.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImproved.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImproved.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/MapComparison_0_4.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/MapComparison_0_4.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Map_Matrix.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Map_Matrix.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Map_Matrix_Impl.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Map_Matrix_Impl.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Neighbourhood.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Neighbourhood.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Neighbourhood_Impl.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Neighbourhood_Impl.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/RasterComparisonModule/Kappa.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/RasterComparisonModule/Kappa.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/RasterComparisonModule/KappaSimulation.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/RasterComparisonModule/KappaSimulation.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap_Impl.cpp">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap_Impl.cpp" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Metrics/hv.c">
-      <sourceFolder url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Metrics/hv.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/edge_iterator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/gdal_raster_lru.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/default_raster_view.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/raster_traits.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/PngPlotter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/coordinate_2d.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/gdal_raster_view.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/gdal_raster.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/gdal_raster_lru.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/gdal_raster_iterator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/dereference_proxy.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/raster_view.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/edge_view.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/exceptions.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/raster_iterator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/Utility.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/utility.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/detail.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/range_algebra_transform.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/zip_along_range.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/transform_range.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/counted_range.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/zip_range.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/range_algebra.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/range_algebra_wrapper.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/zip_iterator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/transform_iterator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/range_algebra_operators.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/iterator/range_range.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/utility/apply_tuple.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/utility/tuple_elements.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/utility/index_in_filter_transform.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/utility/filter_index_sequence.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/utility/index_sequence.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include/blink/utility/separated_index_sequence.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
@@ -78,11 +124,6 @@
           <root url="file:///usr/lib64/gcc/x86_64-suse-linux/4.8/include-fixed" />
           <root url="file:///usr/local/include" />
           <root url="file:///usr/x86_64-suse-linux/include" />
-          <root url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src" />
-          <root url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include" />
-          <root url="file://$MODULE_DIR$/../../../pngwriter/build/include" />
-          <root url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include" />
         </CLASSES>
         <SOURCES>
           <root url="file:///usr/include" />
@@ -91,30 +132,7 @@
           <root url="file:///usr/lib64/gcc/x86_64-suse-linux/4.8/include-fixed" />
           <root url="file:///usr/local/include" />
           <root url="file:///usr/x86_64-suse-linux/include" />
-          <root url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src" />
-          <root url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include" />
-          <root url="file://$MODULE_DIR$/../../../pngwriter/build/include" />
-          <root url="file://$MODULE_DIR$/../../../AHHZ-Iterator/iterator/include" />
         </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Metrics/hv.c" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/MapComparison_0_4.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Clumpiness.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Map_Matrix_Impl.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap_Impl.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImproved.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Neighbourhood_Impl.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Map_Matrix.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/RasterComparisonModule/KappaSimulation.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/RasterComparisonModule/Kappa.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ClumpinessFast.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/Neighbourhood.cpp" />
-          <root url="file://$MODULE_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulation.cpp" />
-          <root url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/gdal_raster_lru.cpp" />
-          <root url="file://$MODULE_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/Utility.cpp" />
-        </excluded>
       </library>
     </orderEntry>
   </component>

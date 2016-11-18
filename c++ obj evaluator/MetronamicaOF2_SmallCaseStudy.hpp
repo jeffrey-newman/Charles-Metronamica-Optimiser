@@ -27,6 +27,8 @@
 #include "MapComparison_0_4.h"
 #include <blink/raster/PngPlotter.h>
 #include <blink/raster/utility.h>
+#include "GeoprojectManipSmallCaseStudy.h"
+
 
 class MetronamicaOF2SmallCaseStudy : public ObjectivesAndConstraintsBase
 {
@@ -181,6 +183,8 @@ class MetronamicaOF2SmallCaseStudy : public ObjectivesAndConstraintsBase
         double diff = std::stod(diff_str);
         return (diff);
     }
+
+
 
 
 public:
@@ -483,47 +487,50 @@ public:
         if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
         //                boost::timer::auto_cpu_timer t(logging_file);
         if (is_logging) logging_file << "number real decision vars : " << real_decision_vars.size() << std::endl;
-        cmd4 << "timeout --kill-after=30s 27s  " << java_cmd << " -jar " << java_geoproj_edit << " ";
-        cmd4 << orig_geoproj_path<< " " << mod_geoproj_path;
-        for (int i = 0; i < num_real_decision_vars; ++i)
-        {
-            cmd4 << " " << real_decision_vars[i];
-        }
-        cmd4 << " " << rand_seeds[rand_seed_id];
-        if (is_logging) cmd4 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
-
-
-        if (is_logging) logging_file << "Running: " << cmd4.str() << std::endl;
-        if (is_logging) logging_file.close();
-        int i4 = system(cmd4.str().c_str());
-        if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
-        if (!logging_file.is_open()) is_logging = false;
+//        cmd4 << "timeout --kill-after=30s 27s  " << java_cmd << " -jar " << java_geoproj_edit << " ";
+//        cmd4 << orig_geoproj_path<< " " << mod_geoproj_path;
+//        for (int i = 0; i < num_real_decision_vars; ++i)
+//        {
+//            cmd4 << " " << real_decision_vars[i];
+//        }
+//        cmd4 << " " << rand_seeds[rand_seed_id];
+//        if (is_logging) cmd4 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
+//
+//
+//        if (is_logging) logging_file << "Running: " << cmd4.str() << std::endl;
+//        if (is_logging) logging_file.close();
+//        int i4 = system(cmd4.str().c_str());
+//        if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
+//        if (!logging_file.is_open()) is_logging = false;
+        geoprojectEdit(orig_geoproj_path, mod_geoproj_path, real_decision_vars, rand_seeds[rand_seed_id]);
         if (is_logging) logging_file << "Timing for manipulating decision variable : " << std::endl;
 
 
-        // If the java file manipulation fails, wait three seconds and try again.
-        if (!(boost::filesystem::exists(mod_geoproj_path)))
-        {
-            std::this_thread::sleep_for (std::chrono::seconds(3));
-            if (is_logging) logging_file << "Running: " << cmd4.str() << std::endl;
-            if (is_logging) logging_file.close();
-            int i4 = system(cmd4.str().c_str());
-            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
-            if (!logging_file.is_open())
-            {
-                is_logging = false;
-                std::cout << "Unable to open logging file: " << debug_log_file_name.c_str() << std::endl;
-            }
-            if (is_logging) logging_file << "Timing for manipulating decision variable : " << std::endl;
-            if (!(boost::filesystem::exists(mod_geoproj_path)))
-            {
-                // If still fails, return.
-                if (is_logging) logging_file << "Was unable to successfully run Metronamica on decision variables\n";
-                obj[0] = -1;
-                obj[1] = 10;
-                return std::make_pair(obj[0], obj[1]);
-            }
-        }
+
+
+//        // If the java file manipulation fails, wait three seconds and try again.
+//        if (!(boost::filesystem::exists(mod_geoproj_path)))
+//        {
+//            std::this_thread::sleep_for (std::chrono::seconds(3));
+//            if (is_logging) logging_file << "Running: " << cmd4.str() << std::endl;
+//            if (is_logging) logging_file.close();
+//            int i4 = system(cmd4.str().c_str());
+//            if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
+//            if (!logging_file.is_open())
+//            {
+//                is_logging = false;
+//                std::cout << "Unable to open logging file: " << debug_log_file_name.c_str() << std::endl;
+//            }
+//            if (is_logging) logging_file << "Timing for manipulating decision variable : " << std::endl;
+//            if (!(boost::filesystem::exists(mod_geoproj_path)))
+//            {
+//                // If still fails, return.
+//                if (is_logging) logging_file << "Was unable to successfully run Metronamica on decision variables\n";
+//                obj[0] = -1;
+//                obj[1] = 10;
+//                return std::make_pair(obj[0], obj[1]);
+//            }
+//        }
 
 
         //            }

@@ -8,6 +8,7 @@ FIND_PACKAGE(Boost REQUIRED COMPONENTS filesystem system program_options mpi ser
 find_package(GDAL)
 find_package(MPI REQUIRED)
 include_directories(${MPI_CXX_INCLUDE_PATH})
+include_directories("${CMAKE_SOURCE_DIR}/pugixml-1.7/src/")
 
 SET(USE_VTK CACHE BOOL "Set to on to use vtk visualisation")
 IF (USE_VTK)
@@ -75,7 +76,11 @@ endif(PNGwriter_FOUND)
 # ...
 # target_link_libraries(yourBinary ${LIBS})
 
-
+SET(PUGIXML-SRC
+        "./pugixml-1.7/src/pugiconfig.hpp"
+        "./pugixml-1.7/src/pugixml.hpp"
+        "./pugixml-1.7/src/pugixml.cpp"
+        )
 
 file(GLOB_RECURSE AHHZ_Raster
  "${AHHZ_RASTER_UTIL}/*.h"
@@ -178,7 +183,7 @@ SET(Metro_calib_parallel_Src
 
     )
 
-add_executable(metrocalpar ${Metro_calib_parallel_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility} ${MCL_SOURCES})
+add_executable(metrocalpar ${Metro_calib_parallel_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility} ${MCL_SOURCES}  ${PUGIXML-SRC})
 target_link_libraries(metrocalpar ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
 
 IF(USE_VTK)
@@ -206,7 +211,7 @@ SET(Metro_calib_serial_Src
 
 
 
-add_executable(metrocalser ${Metro_calib_serial_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES})
+add_executable(metrocalser ${Metro_calib_serial_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES}  ${PUGIXML-SRC})
 target_link_libraries(metrocalser ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
 
 IF(USE_VTK)
@@ -235,7 +240,7 @@ SET(Metro_calib_test_Src
 
 
 
-add_executable(metrocaltest ${Metro_calib_test_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES})
+add_executable(metrocaltest ${Metro_calib_test_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES}  ${PUGIXML-SRC})
 target_link_libraries(metrocaltest ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
 
 IF(USE_VTK)
@@ -281,7 +286,7 @@ SET(Evaluation_test_Src
         Pathify.hpp
     )
 
-add_executable(testevaluation ${Evaluation_test_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+add_executable(testevaluation ${Evaluation_test_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility}   ${PUGIXML-SRC})
 target_link_libraries(testevaluation ${Boost_LIBRARIES} ${GDAL_LIBRARY} ${PNGwriter_LIBRARIES})
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -307,7 +312,7 @@ SET(GetFirstFront_Src
     )
 
 
-add_executable(getfirstfront ${GetFirstFront_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+add_executable(getfirstfront ${GetFirstFront_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility}  ${PUGIXML-SRC})
 target_link_libraries(getfirstfront ${Boost_LIBRARIES} ${GDAL_LIBRARY} ${PNGwriter_LIBRARIES})
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -330,9 +335,9 @@ SET(Metro_calib_parallel_Small_Src
         MetronamicaOF2_SmallCaseStudy.hpp
         Pathify.hpp
 
-    )
+        GeoprojectManipSmallCaseStudy.h)
 
-add_executable(metrocalpar_sm ${Metro_calib_parallel_Small_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+add_executable(metrocalpar_sm ${Metro_calib_parallel_Small_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility}  ${PUGIXML-SRC})
 target_link_libraries(metrocalpar_sm ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
 
 IF(USE_VTK)
@@ -356,11 +361,11 @@ SET(Metro_calib_serial_Small_Src
        MainSer_SmallCaseStudy.cpp
        MetronamicaOF2_SmallCaseStudy.hpp
        Pathify.hpp
-    )
+        GeoprojectManipSmallCaseStudy.h)
 
 
 
-add_executable(metrocalser_sm ${Metro_calib_serial_Small_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+add_executable(metrocalser_sm ${Metro_calib_serial_Small_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility}  ${PUGIXML-SRC})
 target_link_libraries(metrocalser_sm ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
 
 IF(USE_VTK)
@@ -383,9 +388,9 @@ SET(Evaluation_test__Small_Src
         EvaluationTester_SmallCaseStudy.cpp
         MetronamicaOF2_SmallCaseStudy.hpp
         Pathify.hpp
-    )
+        GeoprojectManipSmallCaseStudy.h)
 
-add_executable(testevaluation_sm ${Evaluation_test__Small_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+add_executable(testevaluation_sm ${Evaluation_test__Small_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility}  ${PUGIXML-SRC})
 target_link_libraries(testevaluation_sm ${Boost_LIBRARIES} ${GDAL_LIBRARY} ${PNGwriter_LIBRARIES})
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -408,10 +413,10 @@ SET(GetFirstFront_Small_Src
         GetFirstFront_SmallCaseStudy.cpp
         MetronamicaOF2_SmallCaseStudy.hpp
         Pathify.hpp
-    )
+        GeoprojectManipSmallCaseStudy.h)
 
 
-add_executable(getfirstfront_sm ${GetFirstFront_Small_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+add_executable(getfirstfront_sm ${GetFirstFront_Small_Src} ${MCL_HEADERS} ${MCL_SOURCES} ${AHHZ_Raster_Utility}  ${PUGIXML-SRC})
 target_link_libraries(getfirstfront_sm ${Boost_LIBRARIES} ${GDAL_LIBRARY} ${PNGwriter_LIBRARIES})
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -433,9 +438,9 @@ SET(Metro_calib_parallel_Small_2min_Src
         MetroOF2_SmallCase_BothMin.hpp
         Pathify.hpp
 
-    )
+        GeoprojectManipSmallCaseStudy.h)
 
-add_executable(metrocalpar_sm_2min ${Metro_calib_parallel_Small_2min_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility} )
+add_executable(metrocalpar_sm_2min ${Metro_calib_parallel_Small_2min_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility}  ${PUGIXML-SRC})
 target_link_libraries(metrocalpar_sm_2min ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES})
 
 IF(USE_VTK)
