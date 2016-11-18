@@ -307,7 +307,6 @@ int main(int argc, char * argv[]) {
     if (boost::filesystem::exists(working_dir.second))
     {
         boost::filesystem::remove_all(working_dir.second);
-        std::cout << "path " << path.first << " did not exist, so created\n";
     }
 
     if (isphoenix)
