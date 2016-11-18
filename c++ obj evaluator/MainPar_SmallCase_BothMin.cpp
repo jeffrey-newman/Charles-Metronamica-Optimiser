@@ -10,6 +10,7 @@
 #include <string>
 #include <random>
 #include <chrono>
+#include <thread>
 #include <boost/program_options.hpp>
 //#define BOOST_NO_CXX11_SCOPED_ENUMS
 #include <boost/filesystem.hpp>
@@ -122,8 +123,22 @@ int main(int argc, char * argv[]) {
     bool isphoenix=false;
     if (isphoenix)
     {
+        // wait according to rank
+        std::this_thread::sleep_for(std::chrono::seconds(world.rank()));
+
+        boost::filesystem::path wine_drives("~/.wine/dosdevices");
         boost::filesystem::path symlinkpath("~/.wine/dosdevices/j");
         boost::filesystem::path link_to("/localscratch");
+
+        if (!(boost::filesystem::exists(wine_drives)))
+        {
+            // Then perhaps the wine prefix is in the non default location, or wine is not installed or has not been set up yet....
+            std::stringstream cmd1;
+            // call a windows exe and the prefix should be made. winecfg would normally be done for this, but is a gui app.
+            cmd1 << wine_exe.first << " winepath";
+            system(cmd1.str().c_str());
+        }
+
         //Check is symbolic link for wine J: exists.
         boost::filesystem::file_status lnk_status = boost::filesystem::status(symlinkpath);
         if (!(boost::filesystem::exists(lnk_status)))
