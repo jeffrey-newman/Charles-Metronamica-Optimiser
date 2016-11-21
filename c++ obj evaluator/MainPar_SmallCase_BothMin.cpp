@@ -134,7 +134,7 @@ int main(int argc, char * argv[]) {
 //        return EXIT_SUCCESS;
 //    }
 
-    bool isphoenix=false;
+    bool isphoenix=true;
     if (isphoenix) {
         // wait according to rank
         std::this_thread::sleep_for(std::chrono::seconds(world.rank()));
@@ -165,7 +165,7 @@ int main(int argc, char * argv[]) {
         std::this_thread::sleep_for(std::chrono::seconds(world.rank()));
 
         boost::filesystem::path wine_drives("/home/a1091793/.wine/dosdevices");
-        boost::filesystem::path symlinkpath("/home/a1091793/.wine/dosdevices/j");
+        boost::filesystem::path symlinkpath("/home/a1091793/.wine/dosdevices/j:");
         boost::filesystem::path link_to("/localscratch");
 
         if (!(boost::filesystem::exists(wine_drives)))
