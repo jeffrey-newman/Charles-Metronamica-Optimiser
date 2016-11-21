@@ -300,7 +300,8 @@ public:
         if (is_logging) cmd1 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
         if (is_logging) logging_file << "Running: " << cmd1.str() << std::endl;
         if (is_logging)  logging_file.close();
-        system(("ls -al " + wine_proj_path + " >> \"" + debug_log_file_name.string() + "\" 2>&1")).c_str();
+        std::string ls_cmd = "ls -al " + wine_proj_path + " >> \"" + debug_log_file_name.string() + "\" 2>&1";
+        system(ls_cmd.c_str());
         int i1 = system(cmd1.str().c_str());
         if (is_logging) logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
         if (!logging_file.is_open()) is_logging = false;
