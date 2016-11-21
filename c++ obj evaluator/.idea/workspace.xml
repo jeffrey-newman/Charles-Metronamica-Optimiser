@@ -43,7 +43,7 @@
       <file leaf-file-name="MainSer_SmallCaseStudy.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
+            <state relative-caret-position="825">
               <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
               <folding />
             </state>
@@ -53,18 +53,8 @@
       <file leaf-file-name="MetronamicaOF2_SmallCaseStudy.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MetronamicaOF2_SmallCaseStudy.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
+            <state relative-caret-position="4500">
               <caret line="300" column="60" selection-start-line="300" selection-start-column="52" selection-end-line="300" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapComparison_0_4.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/MapComparison_0_4.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2820">
-              <caret line="188" column="103" selection-start-line="188" selection-start-column="103" selection-end-line="188" selection-end-column="103" />
               <folding />
             </state>
           </provider>
@@ -93,12 +83,19 @@
       <file leaf-file-name="MainPar_SmallCase_BothMin.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MainPar_SmallCase_BothMin.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="103" column="25" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
-              <folding>
-                <element signature="e#190#209#0" expanded="true" />
-                <element signature="e#426#450#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="437">
+              <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MetroOF2_SmallCase_BothMin.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MetroOF2_SmallCase_BothMin.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="290" column="44" selection-start-line="290" selection-start-column="44" selection-end-line="290" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,7 +113,7 @@
       <file leaf-file-name="FuzzyKappaSimulationImprovedFast.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10815">
+            <state relative-caret-position="587">
               <caret line="721" column="4" selection-start-line="721" selection-start-column="4" selection-end-line="721" selection-end-column="4" />
               <folding />
             </state>
@@ -150,11 +147,11 @@
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/GeoprojectManipSmallCaseStudy.h" />
-        <option value="$PROJECT_DIR$/MetroOF2_SmallCase_BothMin.hpp" />
         <option value="$PROJECT_DIR$/MetronamicaOF2_SmallCaseStudy.hpp" />
         <option value="$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap.cpp" />
         <option value="$PROJECT_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Population.hpp" />
         <option value="$PROJECT_DIR$/Pathify.hpp" />
+        <option value="$PROJECT_DIR$/MetroOF2_SmallCase_BothMin.hpp" />
         <option value="$PROJECT_DIR$/MainPar_SmallCase_BothMin.cpp" />
       </list>
     </option>
@@ -195,78 +192,7 @@
     </navigator>
     <panes>
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charles-Metronamica-Optimiser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charles-Metronamica-Optimiser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charles-Metronamica-Optimiser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charles-Metronamica-Optimiser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charles-Metronamica-Optimiser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
     </panes>
   </component>
@@ -438,7 +364,7 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Release" EXPLICIT_BUILD_TARGET_NAME="all">
       <envs />
       <method />
     </configuration>
@@ -458,7 +384,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="metrocalpar_sm_2min" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocalpar_sm_2min" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocalpar_sm_2min">
+    <configuration default="false" name="metrocalpar_sm_2min" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocalpar_sm_2min" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocalpar_sm_2min">
       <envs />
       <method />
     </configuration>
@@ -466,7 +392,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="metrocalser_sm" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-m &quot;/home/a1091793/bin/Metronamica/GeonamicaCmd.exe&quot; -k &quot;/home/a1091793/bin/Map Comparison Kit 3/MCK.exe&quot; -w &quot;/usr/bin/wine&quot; -j &quot;/usr/local/jdk1.8.0_91/bin/java&quot; -g &quot;/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/Charles-Metronamica-Optimiser/Java geoproject modification/Geoproject file edit/ADAPT_Simpler_Randstad/dist/ADAPT_Simpler_Randstad.jar&quot; -t &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad&quot; -f &quot;Randstad.geoproj&quot; -l &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/LogSettings/LogSettings.xml&quot; -a &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/lu2000.asc&quot; -o &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/lu1989.asc&quot; -s &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/region.asc&quot; -c &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/coefficients.txt&quot; -d &quot;/home/a1091793/Documents/Run/testCharlesCalibratorMemoryBug&quot; -v &quot;/home/a1091793/Documents/Run/testCharlesCalibratorMemoryBug&quot; -n &quot;Z:\\home\\a1091793\\Documents\\Run\\testCharlesCalibratorMemoryBug&quot; -r &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/wineRegSetOnlineCheck.reg&quot; -i 1 -p 2 -x 2 -y 1" WORKING_DIR="file://$PROJECT_DIR$/../../../../Run/testCharlesCalibratorMemoryBug" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocalser_sm" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocalser_sm">
+    <configuration default="false" name="metrocalser_sm" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-m &quot;/home/a1091793/bin/Metronamica/GeonamicaCmd.exe&quot; -k &quot;/home/a1091793/bin/Map Comparison Kit 3/MCK.exe&quot; -w &quot;/usr/bin/wine&quot; -j &quot;/usr/local/jdk1.8.0_91/bin/java&quot; -g &quot;/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/Charles-Metronamica-Optimiser/Java geoproject modification/Geoproject file edit/ADAPT_Simpler_Randstad/dist/ADAPT_Simpler_Randstad.jar&quot; -t &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad&quot; -f &quot;Randstad.geoproj&quot; -l &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/LogSettings/LogSettings.xml&quot; -a &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/lu2000.asc&quot; -o &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/lu1989.asc&quot; -s &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/region.asc&quot; -c &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/coefficients.txt&quot; -d &quot;/home/a1091793/Documents/Run/testCharlesCalibratorMemoryBug&quot; -v &quot;/home/a1091793/Documents/Run/testCharlesCalibratorMemoryBug&quot; -n &quot;Z:\\home\\a1091793\\Documents\\Run\\testCharlesCalibratorMemoryBug&quot; -r &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/wineRegSetOnlineCheck.reg&quot; -i 1 -p 2 -x 2 -y 1" WORKING_DIR="file://$PROJECT_DIR$/../../../../Run/testCharlesCalibratorMemoryBug" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocalser_sm" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocalser_sm">
       <envs />
       <method />
     </configuration>
@@ -504,6 +430,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="4e54b0f5-8852-4ab4-a863-a1a2b6029a6c" name="Default" comment="" />
@@ -515,12 +444,13 @@
       <workItem from="1478756361817" duration="2620000" />
       <workItem from="1479348385566" duration="6888000" />
       <workItem from="1479359024173" duration="8873000" />
-      <workItem from="1479439415669" duration="4863000" />
+      <workItem from="1479439415669" duration="6776000" />
+      <workItem from="1479693519213" duration="3690000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25175000" />
+    <option name="totallyTimeSpent" value="30778000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -535,25 +465,25 @@
     <frame x="0" y="0" width="1920" height="1172" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20453347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20453347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291866" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38395417" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38204393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1852913" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13178703" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13178703" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14231136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -616,10 +546,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#190#209#0" expanded="true" />
-            <element signature="e#426#450#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -666,7 +593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
           <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -726,9 +652,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2760">
           <caret line="184" column="10" selection-start-line="184" selection-start-column="4" selection-end-line="184" selection-end-column="10" />
-          <folding>
-            <element signature="e#252#271#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -743,7 +667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -786,7 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -843,7 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
           <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -876,28 +797,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MetroOF2_SmallCase_BothMin.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="428" column="50" selection-start-line="428" selection-start-column="50" selection-end-line="428" selection-end-column="50" />
-          <folding>
-            <element signature="e#252#271#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/MapComparison_0_4.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2820">
           <caret line="188" column="103" selection-start-line="188" selection-start-column="103" selection-end-line="188" selection-end-column="103" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10815">
-          <caret line="721" column="4" selection-start-line="721" selection-start-column="4" selection-end-line="721" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -944,7 +847,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
+        <state relative-caret-position="825">
           <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
           <folding />
         </state>
@@ -952,20 +855,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MetronamicaOF2_SmallCaseStudy.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
+        <state relative-caret-position="4500">
           <caret line="300" column="60" selection-start-line="300" selection-start-column="52" selection-end-line="300" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="721" column="4" selection-start-line="721" selection-start-column="4" selection-end-line="721" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MetroOF2_SmallCase_BothMin.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="290" column="44" selection-start-line="290" selection-start-column="44" selection-end-line="290" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainPar_SmallCase_BothMin.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="103" column="25" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
-          <folding>
-            <element signature="e#190#209#0" expanded="true" />
-            <element signature="e#426#450#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="437">
+          <caret line="186" column="24" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

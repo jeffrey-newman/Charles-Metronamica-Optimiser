@@ -30,6 +30,16 @@
 #include "Checkpoints/MaxGenCheckpoint.hpp"
 #include "Checkpoints/SaveFirstFrontCheckpoint.hpp"
 
+
+std::pair<std::string, std::string> at_option_parser(std::string const&s)
+{
+    if ('@' == s[0])
+        return std::make_pair(std::string("cfg-file"), s.substr(1));
+    else
+        return std::pair<std::string, std::string>();
+}
+
+
 int main(int argc, char * argv[]) {
     boost::mpi::environment env(argc, argv);
     boost::mpi::communicator world;
@@ -87,19 +97,42 @@ int main(int argc, char * argv[]) {
             ("save-freq,q", po::value<int>(&save_freq)->default_value(1), "how often to save first front, hypervolume metric and population")
             ("max-gen,y", po::value<int>(&max_gen)->default_value(500), "Maximum number of generations - termination condition")
             ("replicates,i", po::value<int>(&replicates)->default_value(10), "Number of times to rerun Metronamica to account for stochasticity of model for each objective function evaluation")
-            ("reseed,b", po::value<std::string>(&restart_pop_file.first)->default_value("no_seed"), "File with saved population as initial seed population for GA");
-
-
+            ("reseed,b", po::value<std::string>(&restart_pop_file.first)->default_value("no_seed"), "File with saved population as initial seed population for GA")
+            ("cfg-file,u", po::value<std::string>(), "can be specified with '@name', too");
 
     po::variables_map vm;
-    po::store(po::command_line_parser(argc, argv).
-              options(desc).run(), vm);
+    po::store(po::command_line_parser(argc, argv).options(desc).extra_parser(at_option_parser).run(), vm);
+
+    if (vm.count("help"))
+    {
+        std::cout << desc << "\n";
+        return 1;
+    }
+
+    if (vm.count("cfg-file")) {
+        // Load the file and tokenize it
+        std::ifstream ifs(vm["cfg-file"].as<std::string>().c_str());
+        if (!ifs) {
+            std::cout << "Could not open the cfg file\n";
+            return 1;
+        }
+        po::store(po::parse_config_file(ifs, desc), vm);
+    }
+
+
     po::notify(vm);
 
-    if (vm.count("help")) {
-        std::cout << desc << "\n";
-        return EXIT_SUCCESS;
-    }
+
+
+//    po::variables_map vm;
+//    po::store(po::command_line_parser(argc, argv).
+//              options(desc).run(), vm);
+//    po::notify(vm);
+//
+//    if (vm.count("help")) {
+//        std::cout << desc << "\n";
+//        return EXIT_SUCCESS;
+//    }
 
     bool isphoenix=false;
     if (isphoenix) {
@@ -150,6 +183,8 @@ int main(int argc, char * argv[]) {
         {
             boost::filesystem::create_directory_symlink(link_to, symlinkpath);
         }
+
+        system(("ls -al " + wine_drives.string()).c_str());
     }
 
 
