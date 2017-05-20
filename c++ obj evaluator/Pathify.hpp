@@ -1,6 +1,7 @@
 #ifndef PATHIFY_H
 #define PATHIFY_H
 
+#include <iostream>
 #include <boost/filesystem.hpp>
 
 typedef std::pair<std::string, boost::filesystem::path> CmdLinePaths;

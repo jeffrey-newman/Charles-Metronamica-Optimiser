@@ -27,9 +27,9 @@
 #include "MapComparison_0_4.h"
 #include <blink/raster/PngPlotter.h>
 #include <blink/raster/utility.h>
-#include "GeoprojectManipSmallCaseStudy.h"
+#include "GeoprojectManipBigCaseStudy.h"
 
-class MetroOF2SmallCase2Min : public ObjectivesAndConstraintsBase
+class MetronamicaOF2RandstadSmallCaseStudy3Obj : public ObjectivesAndConstraintsBase
 {
     int num_objectives;
     int num_real_decision_vars;
@@ -61,7 +61,7 @@ class MetroOF2SmallCase2Min : public ObjectivesAndConstraintsBase
     std::vector<double> max_dv_values = {5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,5000,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,100,1000,5,15,15,15,15,15,15,15,15,15,15,15,15,15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1}; // upper bound of x
     std::vector<int> int_lowerbounds;
     std::vector<int> int_upperbounds;
-    std::vector<MinOrMaxType> minimise_or_maximise = {MINIMISATION, MINIMISATION};
+    std::vector<MinOrMaxType> minimise_or_maximise = {MAXIMISATION, MINIMISATION, MAXIMISATION};
     int evaluator_id;
     bool is_logging;
     int eval_count;
@@ -184,8 +184,10 @@ class MetroOF2SmallCase2Min : public ObjectivesAndConstraintsBase
     }
 
 
+
+
 public:
-    MetroOF2SmallCase2Min(boost::filesystem::path & metro_exe,
+    MetronamicaOF2RandstadSmallCaseStudy3Obj(boost::filesystem::path & metro_exe,
                    boost::filesystem::path & mck_exe,
                    boost::filesystem::path & wine_exe,
                    boost::filesystem::path & java_exe,
@@ -204,7 +206,7 @@ public:
                    int _id = 0,
                    bool _is_logging = false,
                    int _replicates = 10)
-        :   num_objectives(2),
+        :   num_objectives(3),
           num_real_decision_vars(238),
           num_int_decision_vars(0),
           num_constraints(0),
@@ -234,7 +236,7 @@ public:
           eval_count(0)
     {
         analysisNum = createAnalysis();
-        loadMap1(analysisNum, actual_map.c_str());
+        loadMapActual(analysisNum, actual_map.c_str());
         loadOriginalMap(analysisNum, original_map.c_str());
         loadMaskingMap(analysisNum, masking_map.c_str());
         loadTransitionFuzzyWeights(analysisNum, fks_coefficients.c_str());
@@ -282,7 +284,7 @@ public:
         colour_mapper.push_back(std::make_tuple(  0,   128,   255));
     }
 
-    ~MetroOF2SmallCase2Min()
+    ~MetronamicaOF2RandstadSmallCaseStudy3Obj()
     {
 //        boost::filesystem::remove_all(worker_dir);
     }
@@ -295,7 +297,6 @@ public:
         std::string wine_proj_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + mod_proj_file + "\"";
         std::string metro_log_path = "\"" + wine_temp_dir + "\\\\" + worker_dir.filename().string() + "\\\\" + cp_metro_log_name + "\"";
         //Call the model
-
         cmd1 << "timeout --kill-after=20m 19m  " << wine_cmd << " " << geo_cmd << " --Reset --Save " << wine_proj_path ;
         if (is_logging) cmd1 << " >> \"" << debug_log_file_name.c_str() << "\" 2>&1";
         if (is_logging) logging_file << "Running: " << cmd1.str() << std::endl;
@@ -335,6 +336,75 @@ public:
         return (diff);
     }
 
+//    std::pair<std::vector<double>, std::vector<double> > &
+//    getObjectivesAcrossReplicates(const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars, boost::filesystem::path save_path, std::vector<std::pair<std::vector<double>, std::vector<double> > > & results)
+//    {
+//        if (!boost::filesystem::exists(save_path)) boost::filesystem::create_directory(save_path);
+//
+//        std::pair<std::vector<double>, std::vector<double> >  objectives;
+//        objectives.first.resize(replicates);
+//        objectives.second.resize(replicates);
+//
+//        std::string filename = "logWorker" + std::to_string(evaluator_id) + "_EvalNo" + std::to_string(eval_count) + "_" + boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time()) + ".log";
+//        boost::filesystem::path debug_log_file_name = save_dir / filename;
+//        std::ofstream logging_file;
+//        if (is_logging)
+//        {
+//            logging_file.open(debug_log_file_name.c_str(), std::ios_base::app);
+//            if (!logging_file.is_open())
+//            {
+//                is_logging = false;
+//                std::cout << "attempt to log failed\n";
+//            }
+//        }
+//
+//        boost::filesystem::path objectives_file = save_path / "metrics_for_each_replicate.txt";
+//        std::ofstream objectives_fs(objectives_file.c_str());
+//
+//
+//        std::vector<double> & obj = objectives_and_constrataints.first;
+//        obj[0] = 0; obj[1] = 0;
+//
+//        for (int j = 0; j < replicates; ++j)
+//        {
+//            std::pair<double, double> metric_vals = calcMetrics(worker_dir, real_decision_vars, int_decision_vars, is_logging, logging_file, debug_log_file_name, j);
+//            double fks =  metric_vals.first;
+//            double clump = metric_vals.second;
+//            objectives.first[j] = fks;
+//            objectives.second[j] = clump;
+//            objectives_fs << "replicate " << j << " fks: " << fks << " clumpiness: " << clump << "\n";
+//            obj[0] += fks;
+//            obj[1] += clump;
+//            boost::filesystem::path save_replicate_path = save_path / ("replicate_" + std::to_string(j));
+////            if (!boost::filesystem::exists(save_replicate_path)) boost::filesystem::create_directory(save_replicate_path);
+//            if (boost::filesystem::exists(save_replicate_path)) boost::filesystem::remove_all(save_replicate_path);
+//            copyDir(worker_dir, save_replicate_path);
+//            boost::filesystem::path output_map = worker_dir / "Log" / "Land_use" / "Land use map_2000-Jan-01 00_00_00.rst";
+//            if (boost::filesystem::exists(output_map))
+//            {
+//                boost::filesystem::path png_path = save_path  / ("replicate_" + std::to_string(j) + ".png");
+//                blink::raster::gdal_raster<int> out_raster = blink::raster::open_gdal_raster<int>(output_map, GA_ReadOnly);
+//                blink::raster::printRaster2PNG(out_raster, colour_mapper, png_path);
+//            }
+//
+//        }
+//
+//        obj[0] /= replicates;
+//        obj[1] /= replicates;
+//        ++eval_count;
+//
+//        if (is_logging) logging_file << "\n\n\n FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n";
+//
+//        if (is_logging) logging_file.close();
+//
+////        boost::filesystem::remove_all(previous_log_file);
+////        previous_log_file = debug_log_file_name;
+//
+//        results.push_back(objectives);
+//        return (objectives_and_constrataints);
+//    }
+
+
     std::pair<std::vector<double>, std::vector<double> > &
     operator()(const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars, boost::filesystem::path save_path)
     {
@@ -358,16 +428,18 @@ public:
 
 
         std::vector<double> & obj = objectives_and_constrataints.first;
-        obj[0] = 0; obj[1] = 0;
+        obj[0] = 0; obj[1] = 0; obj[2] = 0;
 
         for (int j = 0; j < replicates; ++j)
         {
-            std::pair<double, double> metric_vals = calcMetrics(worker_dir, real_decision_vars, int_decision_vars, is_logging, logging_file, debug_log_file_name, j);
-            double fks =  metric_vals.first;
-            double clump = metric_vals.second;
-            objectives_fs << "replicate " << j << " fks: " << fks << " clumpiness: " << clump << "\n";
+            std::tuple<double, double, double> metric_vals = calcMetrics(worker_dir, real_decision_vars, int_decision_vars, is_logging, logging_file, debug_log_file_name, j);
+            double fks =  std::get<0>(metric_vals);
+            double clump = std::get<1>(metric_vals);
+            double k = std::get<2>(metric_vals);
+            objectives_fs << "replicate " << j << " fks: " << fks << " clumpiness: " << clump << " kappa: " << k << "\n";
             obj[0] += fks;
             obj[1] += clump;
+            obj[2] += k;
             boost::filesystem::path save_replicate_path = save_path / ("replicate_" + std::to_string(j));
 //            if (!boost::filesystem::exists(save_replicate_path)) boost::filesystem::create_directory(save_replicate_path);
             if (boost::filesystem::exists(save_replicate_path)) boost::filesystem::remove_all(save_replicate_path);
@@ -384,10 +456,10 @@ public:
 
         obj[0] /= replicates;
         obj[1] /= replicates;
-        obj[0] *= -1;
+        obj[2] /= replicates;
         ++eval_count;
 
-        if (is_logging) logging_file << "\n\n\n FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n";
+        if (is_logging) logging_file << "\n\n\n Avg FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n Avg kappa: " << obj[2] << "\n";
 
         if (is_logging) logging_file.close();
 
@@ -401,10 +473,10 @@ public:
 
     }
 
-    std::pair<double, double>
+    std::tuple<double, double, double>
     calcMetrics(boost::filesystem::path & worker_dir, const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars, bool is_logging, std::ofstream & logging_file, boost::filesystem::path & debug_log_file_name, int rand_seed_id)
     {
-        std::vector<double> obj(2, 0);
+        std::vector<double> obj(3, 0);
         boost::filesystem::path orig_geoproj_path = worker_dir / geoproject_name;
         std::string mod_proj_file(orig_geoproj_path.stem().string() + "_mod" + orig_geoproj_path.extension().string());
         boost::filesystem::path mod_geoproj_path = worker_dir / mod_proj_file;
@@ -436,6 +508,8 @@ public:
 //        if (!logging_file.is_open()) is_logging = false;
         geoprojectEdit(orig_geoproj_path, mod_geoproj_path, real_decision_vars, rand_seeds[rand_seed_id]);
         if (is_logging) logging_file << "Timing for manipulating decision variable : " << std::endl;
+
+
 
 
 //        // If the java file manipulation fails, wait three seconds and try again.
@@ -479,7 +553,8 @@ public:
 
                 obj[0] = -1;
                 obj[1] = 10;
-                return std::make_pair(obj[0], obj[1]);
+                obj[2] = -1;
+                return std::make_tuple(obj[0], obj[1], obj[2]);
 //                return (objectives_and_constrataints);
             }
         }
@@ -490,11 +565,15 @@ public:
         if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
         try
         {
-            loadMap2(analysisNum, (*output_map).c_str());
+            loadMapSimulated(analysisNum, (*output_map).c_str());
             if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
             double fks = getFuzzyKappaSim(analysisNum);
             obj[0] = fks;
             if (is_logging) logging_file << "FKS: " << fks << "\n";
+
+            double k = getKappa(analysisNum);
+            obj[2] = k;
+            if (is_logging) logging_file << "Kappa: " << k << "\n";
         }
         catch (std::runtime_error err)
         {
@@ -502,11 +581,15 @@ public:
             {
                 std::cout << err.what() << std::endl;
                 std::this_thread::sleep_for (std::chrono::seconds(3));
-                loadMap2(analysisNum, (*output_map).c_str());
+                loadMapSimulated(analysisNum, (*output_map).c_str());
                 if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
                 double fks = getFuzzyKappaSim(analysisNum);
                 obj[0] = fks;
                 if (is_logging) logging_file << "FKS: " << fks;
+
+                double k = getKappa(analysisNum);
+                obj[2] = k;
+                if (is_logging) logging_file << "Kappa: " << k << "\n";
             }
             catch (...)
             {
@@ -514,7 +597,8 @@ public:
                 if (is_logging) logging_file << "Was unable to calculate FKS\n";
                 obj[0] = -1;
                 obj[1] = 10;
-                return std::make_pair(obj[0], obj[1]);
+                obj[2] = -1;
+                return std::make_tuple(obj[0], obj[1], obj[2]);
 //                return (objectives_and_constrataints);
             }
         }
@@ -586,7 +670,8 @@ public:
             if (is_logging) logging_file << "Was unable to calculate avg. clumpiness difference\n";
             obj[0] = -1;
             obj[1] = 10;
-            return std::make_pair(obj[0], obj[1]);
+            obj[2] = -1;
+            return std::make_tuple(obj[0], obj[1], obj[2]);
 //            return (objectives_and_constrataints);
         }
         if (is_logging) logging_file << "Timing for Calculating Clumpiness: " << std::endl;
@@ -596,7 +681,7 @@ public:
 
         //            boost::filesystem::current_path(temporary_dir);
 
-        return std::make_pair(obj[0], obj[1]);
+        return std::make_tuple(obj[0], obj[1], obj[2]);
 
     }
 
@@ -619,21 +704,23 @@ public:
 
 
         std::vector<double> & obj = objectives_and_constrataints.first;
-        obj[0] = 0; obj[1] = 0;
+        obj[0] = 0; obj[1] = 0; obj[2] = 0;
 
         for (int j = 0; j < replicates; ++j)
         {
-            std::pair<double, double> metric_vals = calcMetrics(worker_dir, real_decision_vars, int_decision_vars, is_logging, logging_file, debug_log_file_name, j);
-            obj[0] += metric_vals.first;
-            obj[1] += metric_vals.second;
+            std::tuple<double, double, double> metric_vals = calcMetrics(worker_dir, real_decision_vars, int_decision_vars, is_logging, logging_file, debug_log_file_name, j);
+            obj[0] += std::get<0>(metric_vals);
+            obj[1] += std::get<1>(metric_vals);
+            obj[2] += std::get<2>(metric_vals);
+
         }
 
         obj[0] /= replicates;
         obj[1] /= replicates;
-        obj[0] *= -1;
+        obj[2] /= replicates;
         ++eval_count;
 
-        if (is_logging) logging_file << "\n\n\n -FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n";
+        if (is_logging) logging_file << "\n\n\n Avg FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n Avg kappa: " << obj[2] << "\n" ;
 
         if (is_logging) logging_file.close();
 

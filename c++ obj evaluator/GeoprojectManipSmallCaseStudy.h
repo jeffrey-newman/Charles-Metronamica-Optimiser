@@ -11,7 +11,7 @@
 #include <boost/filesystem.hpp>
 #include <string>
 
-void addPointElement(pugi::xml_node & node, int x_val, double & y_val)
+void addPointElementSmallCaseStudy(pugi::xml_node & node, int x_val, double & y_val)
 {
     pugi::xml_node elmnt = node.append_child("point");
     elmnt.append_attribute("x").set_value(x_val);
@@ -19,7 +19,7 @@ void addPointElement(pugi::xml_node & node, int x_val, double & y_val)
 
 }
 
-void setExpRule(pugi::xml_document & doc, int lu_index, int function_index, double I, double a, double b)
+void setExpRuleSmallCaseStudy(pugi::xml_document & doc, int lu_index, int function_index, double I, double a, double b)
 {
     std::string xpath_query =
             "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@name=\"MB_Rules\"]/RulesBlock/Rules/value/vector/elem[" +
@@ -31,7 +31,7 @@ void setExpRule(pugi::xml_document & doc, int lu_index, int function_index, doub
         parentNode.remove_child(node.node());
     }
     pugi::xml_node new_parent = parentNode.append_child("spline");
-    addPointElement(new_parent, 0, I);
+    addPointElementSmallCaseStudy(new_parent, 0, I);
 
 //            // Calculate exponential decay values
     double y1 = a * exp(-b * 1);
@@ -43,57 +43,57 @@ void setExpRule(pugi::xml_document & doc, int lu_index, int function_index, doub
     double y7 = a * exp(-b * 7);
     // double //y8=a*exp(-b*8);
     // Calculate absolute values of exponential decay
-    double z1 = abs(y1);
-    double z2 = abs(y2);
-    double z3 = abs(y3);
-    double z4 = abs(y4);
-    double z5 = abs(y5);
-    double z6 = abs(y6);
-    double z7 = abs(y7);
+    double z1 = std::abs(y1);
+    double z2 = std::abs(y2);
+    double z3 = std::abs(y3);
+    double z4 = std::abs(y4);
+    double z5 = std::abs(y5);
+    double z6 = std::abs(y6);
+    double z7 = std::abs(y7);
 
     double default_y = 0.0;
     if (z1 > 0.0001) {
-        addPointElement(new_parent, 1, y1);
+        addPointElementSmallCaseStudy(new_parent, 1, y1);
     } else {
-        addPointElement(new_parent, 1, default_y);
+        addPointElementSmallCaseStudy(new_parent, 1, default_y);
     }
     if (z2 > 0.0001) {
-        addPointElement(new_parent, 2, y2);
+        addPointElementSmallCaseStudy(new_parent, 2, y2);
     } else {
-        addPointElement(new_parent, 2, default_y);
+        addPointElementSmallCaseStudy(new_parent, 2, default_y);
     }
     if (z3 > 0.0001) {
-        addPointElement(new_parent, 3, (y3));
+        addPointElementSmallCaseStudy(new_parent, 3, (y3));
     } else {
-        addPointElement(new_parent, 3, default_y);
+        addPointElementSmallCaseStudy(new_parent, 3, default_y);
     }
     // Add
     if (z4 > 0.0001) {
-        addPointElement(new_parent, 4, (y4));
+        addPointElementSmallCaseStudy(new_parent, 4, (y4));
     } else {
-        addPointElement(new_parent, 4, default_y);
+        addPointElementSmallCaseStudy(new_parent, 4, default_y);
     }
     if (z5 > 0.0001) {
-        addPointElement(new_parent, 5, (y5));
+        addPointElementSmallCaseStudy(new_parent, 5, (y5));
     } else {
-        addPointElement(new_parent, 5, default_y);
+        addPointElementSmallCaseStudy(new_parent, 5, default_y);
     }
     if (z6 > 0.0001) {
-        addPointElement(new_parent, 6, (y6));
+        addPointElementSmallCaseStudy(new_parent, 6, (y6));
     } else {
-        addPointElement(new_parent, 6, default_y);
+        addPointElementSmallCaseStudy(new_parent, 6, default_y);
     }
     if (z7 > 0.0001) {
-        addPointElement(new_parent, 7, (y7));
+        addPointElementSmallCaseStudy(new_parent, 7, (y7));
     } else {
-        addPointElement(new_parent, 7, default_y);
+        addPointElementSmallCaseStudy(new_parent, 7, default_y);
     }
-    addPointElement(new_parent, 8, default_y);
+    addPointElementSmallCaseStudy(new_parent, 8, default_y);
 
 }
 
 template <typename T> void
-setAllValuesXMLNode(pugi::xml_document & doc, std::string xpath_query, T new_value)
+setAllValuesXMLNodeSmallCaseStudy(pugi::xml_document & doc, std::string xpath_query, T new_value)
 {
     pugi::xpath_node_set nodes = doc.select_nodes(xpath_query.c_str());
     for (pugi::xpath_node_set::const_iterator it = nodes.begin(); it != nodes.end(); ++it)
@@ -106,10 +106,10 @@ setAllValuesXMLNode(pugi::xml_document & doc, std::string xpath_query, T new_val
 
 
 void
-geoprojectEdit(boost::filesystem::path & orig_geoproj_path, boost::filesystem::path & mod_geoproj_path, const std::vector<double> & dvs, int seed)
+geoprojectEditSmallCaseStudy(boost::filesystem::path & geoproj_path, const std::vector<double> & dvs, int seed)
 {
     pugi::xml_document doc;
-    pugi::xml_parse_result result = doc.load_file(orig_geoproj_path.c_str());
+    pugi::xml_parse_result result = doc.load_file(geoproj_path.c_str());
     //// Parameters - Self-Influence Neighbourhood Rules
     // Greenhouses (Function Class 1)
     // From GREenhouses to GREenhouses
@@ -460,130 +460,130 @@ geoprojectEdit(boost::filesystem::path & orig_geoproj_path, boost::filesystem::p
     double recowe = dvs[237];
 
     // Greenhouses
-    setExpRule(doc, 2, 1, gregre1, gregre2, gregre3);
+    setExpRuleSmallCaseStudy(doc, 2, 1, gregre1, gregre2, gregre3);
     // Residential
-    setExpRule(doc, 3, 2, resres1, resres2, resres3);
+    setExpRuleSmallCaseStudy(doc, 3, 2, resres1, resres2, resres3);
     // Industry
-    setExpRule(doc, 4, 3, indind1, indind2, indind3);
+    setExpRuleSmallCaseStudy(doc, 4, 3, indind1, indind2, indind3);
     // Services
-    setExpRule(doc, 5, 4, serser1, serser2, serser3);
+    setExpRuleSmallCaseStudy(doc, 5, 4, serser1, serser2, serser3);
     // Socio cultural uses
-    setExpRule(doc, 6, 5, scuscu1, scuscu2, scuscu3);
+    setExpRuleSmallCaseStudy(doc, 6, 5, scuscu1, scuscu2, scuscu3);
     // Nature
-    setExpRule(doc, 7, 6, natnat1, natnat2, natnat3);
+    setExpRuleSmallCaseStudy(doc, 7, 6, natnat1, natnat2, natnat3);
     // Recreation areas
-    setExpRule(doc, 8, 7, recrec1, recrec2, recrec3);
+    setExpRuleSmallCaseStudy(doc, 8, 7, recrec1, recrec2, recrec3);
 
     // Amend Iteraction Neighbourhood Rules
     // Greenhouses
-    setExpRule(doc, 1, 1, agrgre1, agrgre2, agrgre3);
-    setExpRule(doc, 3, 1, resgre1, resgre2, resgre3);
-    setExpRule(doc, 4, 1, indgre1, indgre2, indgre3);
-    setExpRule(doc, 5, 1, sergre1, sergre2, sergre3);
-    setExpRule(doc, 6, 1, scugre1, scugre2, scugre3);
-    setExpRule(doc, 7, 1, natgre1, natgre2, natgre3);
-    setExpRule(doc, 8, 1, recgre1, recgre2, recgre3);
-    setExpRule(doc, 9, 1, airgre1, airgre2, airgre3);
-    setExpRule(doc, 10, 1, watgre1, watgre2, watgre3);
+    setExpRuleSmallCaseStudy(doc, 1, 1, agrgre1, agrgre2, agrgre3);
+    setExpRuleSmallCaseStudy(doc, 3, 1, resgre1, resgre2, resgre3);
+    setExpRuleSmallCaseStudy(doc, 4, 1, indgre1, indgre2, indgre3);
+    setExpRuleSmallCaseStudy(doc, 5, 1, sergre1, sergre2, sergre3);
+    setExpRuleSmallCaseStudy(doc, 6, 1, scugre1, scugre2, scugre3);
+    setExpRuleSmallCaseStudy(doc, 7, 1, natgre1, natgre2, natgre3);
+    setExpRuleSmallCaseStudy(doc, 8, 1, recgre1, recgre2, recgre3);
+    setExpRuleSmallCaseStudy(doc, 9, 1, airgre1, airgre2, airgre3);
+    setExpRuleSmallCaseStudy(doc, 10, 1, watgre1, watgre2, watgre3);
     // Residential
-    setExpRule(doc, 1, 2, agrres1, agrres2, agrres3);
-    setExpRule(doc, 2, 2, greres1, greres2, greres3);
-    setExpRule(doc, 4, 2, indres1, indres2, indres3);
-    setExpRule(doc, 5, 2, serres1, serres2, serres3);
-    setExpRule(doc, 6, 2, scures1, scures2, scures3);
-    setExpRule(doc, 7, 2, natres1, natres2, natres3);
-    setExpRule(doc, 8, 2, recres1, recres2, recres3);
-    setExpRule(doc, 9, 2, airres1, airres2, airres3);
-    setExpRule(doc, 10, 2, watres1, watres2, watres3);
+    setExpRuleSmallCaseStudy(doc, 1, 2, agrres1, agrres2, agrres3);
+    setExpRuleSmallCaseStudy(doc, 2, 2, greres1, greres2, greres3);
+    setExpRuleSmallCaseStudy(doc, 4, 2, indres1, indres2, indres3);
+    setExpRuleSmallCaseStudy(doc, 5, 2, serres1, serres2, serres3);
+    setExpRuleSmallCaseStudy(doc, 6, 2, scures1, scures2, scures3);
+    setExpRuleSmallCaseStudy(doc, 7, 2, natres1, natres2, natres3);
+    setExpRuleSmallCaseStudy(doc, 8, 2, recres1, recres2, recres3);
+    setExpRuleSmallCaseStudy(doc, 9, 2, airres1, airres2, airres3);
+    setExpRuleSmallCaseStudy(doc, 10, 2, watres1, watres2, watres3);
     // Industry
-    setExpRule(doc, 1, 3, agrind1, agrind2, agrind3);
-    setExpRule(doc, 2, 3, greind1, greind2, greind3);
-    setExpRule(doc, 3, 3, resind1, resind2, resind3);
-    setExpRule(doc, 5, 3, serind1, serind2, serind3);
-    setExpRule(doc, 6, 3, scuind1, scuind2, scuind3);
-    setExpRule(doc, 7, 3, natind1, natind2, natind3);
-    setExpRule(doc, 8, 3, recind1, recind2, recind3);
-    setExpRule(doc, 9, 3, airind1, airind2, airind3);
-    setExpRule(doc, 10, 3, watind1, watind2, watind3);
+    setExpRuleSmallCaseStudy(doc, 1, 3, agrind1, agrind2, agrind3);
+    setExpRuleSmallCaseStudy(doc, 2, 3, greind1, greind2, greind3);
+    setExpRuleSmallCaseStudy(doc, 3, 3, resind1, resind2, resind3);
+    setExpRuleSmallCaseStudy(doc, 5, 3, serind1, serind2, serind3);
+    setExpRuleSmallCaseStudy(doc, 6, 3, scuind1, scuind2, scuind3);
+    setExpRuleSmallCaseStudy(doc, 7, 3, natind1, natind2, natind3);
+    setExpRuleSmallCaseStudy(doc, 8, 3, recind1, recind2, recind3);
+    setExpRuleSmallCaseStudy(doc, 9, 3, airind1, airind2, airind3);
+    setExpRuleSmallCaseStudy(doc, 10, 3, watind1, watind2, watind3);
     // Services
-    setExpRule(doc, 1, 4, agrser1, agrser2, agrser3);
-    setExpRule(doc, 2, 4, greser1, greser2, greser3);
-    setExpRule(doc, 3, 4, resser1, resser2, resser3);
-    setExpRule(doc, 4, 4, indser1, indser2, indser3);
-    setExpRule(doc, 6, 4, scuser1, scuser2, scuser3);
-    setExpRule(doc, 7, 4, natser1, natser2, natser3);
-    setExpRule(doc, 8, 4, recser1, recser2, recser3);
-    setExpRule(doc, 9, 4, airser1, airser2, airser3);
-    setExpRule(doc, 10, 4, watser1, watser2, watser3);
+    setExpRuleSmallCaseStudy(doc, 1, 4, agrser1, agrser2, agrser3);
+    setExpRuleSmallCaseStudy(doc, 2, 4, greser1, greser2, greser3);
+    setExpRuleSmallCaseStudy(doc, 3, 4, resser1, resser2, resser3);
+    setExpRuleSmallCaseStudy(doc, 4, 4, indser1, indser2, indser3);
+    setExpRuleSmallCaseStudy(doc, 6, 4, scuser1, scuser2, scuser3);
+    setExpRuleSmallCaseStudy(doc, 7, 4, natser1, natser2, natser3);
+    setExpRuleSmallCaseStudy(doc, 8, 4, recser1, recser2, recser3);
+    setExpRuleSmallCaseStudy(doc, 9, 4, airser1, airser2, airser3);
+    setExpRuleSmallCaseStudy(doc, 10, 4, watser1, watser2, watser3);
     // Socio cultural uses
-    setExpRule(doc, 1, 5, agrscu1, agrscu2, agrscu3);
-    setExpRule(doc, 2, 5, grescu1, grescu2, grescu3);
-    setExpRule(doc, 3, 5, resscu1, resscu2, resscu3);
-    setExpRule(doc, 4, 5, indscu1, indscu2, indscu3);
-    setExpRule(doc, 5, 5, serscu1, serscu2, serscu3);
-    setExpRule(doc, 7, 5, natscu1, natscu2, natscu3);
-    setExpRule(doc, 8, 5, recscu1, recscu2, recscu3);
-    setExpRule(doc, 9, 5, airscu1, airscu2, airscu3);
-    setExpRule(doc, 10, 5, watscu1, watscu2, watscu3);
+    setExpRuleSmallCaseStudy(doc, 1, 5, agrscu1, agrscu2, agrscu3);
+    setExpRuleSmallCaseStudy(doc, 2, 5, grescu1, grescu2, grescu3);
+    setExpRuleSmallCaseStudy(doc, 3, 5, resscu1, resscu2, resscu3);
+    setExpRuleSmallCaseStudy(doc, 4, 5, indscu1, indscu2, indscu3);
+    setExpRuleSmallCaseStudy(doc, 5, 5, serscu1, serscu2, serscu3);
+    setExpRuleSmallCaseStudy(doc, 7, 5, natscu1, natscu2, natscu3);
+    setExpRuleSmallCaseStudy(doc, 8, 5, recscu1, recscu2, recscu3);
+    setExpRuleSmallCaseStudy(doc, 9, 5, airscu1, airscu2, airscu3);
+    setExpRuleSmallCaseStudy(doc, 10, 5, watscu1, watscu2, watscu3);
     // Nature
-    setExpRule(doc, 1, 6, agrnat1, agrnat2, agrnat3);
-    setExpRule(doc, 2, 6, grenat1, grenat2, grenat3);
-    setExpRule(doc, 3, 6, resnat1, resnat2, resnat3);
-    setExpRule(doc, 4, 6, indnat1, indnat2, indnat3);
-    setExpRule(doc, 5, 6, sernat1, sernat2, sernat3);
-    setExpRule(doc, 6, 6, scunat1, scunat2, scunat3);
-    setExpRule(doc, 8, 6, recnat1, recnat2, recnat3);
-    setExpRule(doc, 9, 6, airnat1, airnat2, airnat3);
-    setExpRule(doc, 10, 6, watnat1, watnat2, watnat3);
+    setExpRuleSmallCaseStudy(doc, 1, 6, agrnat1, agrnat2, agrnat3);
+    setExpRuleSmallCaseStudy(doc, 2, 6, grenat1, grenat2, grenat3);
+    setExpRuleSmallCaseStudy(doc, 3, 6, resnat1, resnat2, resnat3);
+    setExpRuleSmallCaseStudy(doc, 4, 6, indnat1, indnat2, indnat3);
+    setExpRuleSmallCaseStudy(doc, 5, 6, sernat1, sernat2, sernat3);
+    setExpRuleSmallCaseStudy(doc, 6, 6, scunat1, scunat2, scunat3);
+    setExpRuleSmallCaseStudy(doc, 8, 6, recnat1, recnat2, recnat3);
+    setExpRuleSmallCaseStudy(doc, 9, 6, airnat1, airnat2, airnat3);
+    setExpRuleSmallCaseStudy(doc, 10, 6, watnat1, watnat2, watnat3);
     // Recreation areas
-    setExpRule(doc, 1, 7, agrrec1, agrrec2, agrrec3);
-    setExpRule(doc, 2, 7, grerec1, grerec2, grerec3);
-    setExpRule(doc, 3, 7, resrec1, resrec2, resrec3);
-    setExpRule(doc, 4, 7, indrec1, indrec2, indrec3);
-    setExpRule(doc, 5, 7, serrec1, serrec2, serrec3);
-    setExpRule(doc, 6, 7, scurec1, scurec2, scurec3);
-    setExpRule(doc, 7, 7, natrec1, natrec2, natrec3);
-    setExpRule(doc, 9, 7, airrec1, airrec2, airrec3);
-    setExpRule(doc, 10, 7, watrec1, watrec2, watrec3);
+    setExpRuleSmallCaseStudy(doc, 1, 7, agrrec1, agrrec2, agrrec3);
+    setExpRuleSmallCaseStudy(doc, 2, 7, grerec1, grerec2, grerec3);
+    setExpRuleSmallCaseStudy(doc, 3, 7, resrec1, resrec2, resrec3);
+    setExpRuleSmallCaseStudy(doc, 4, 7, indrec1, indrec2, indrec3);
+    setExpRuleSmallCaseStudy(doc, 5, 7, serrec1, serrec2, serrec3);
+    setExpRuleSmallCaseStudy(doc, 6, 7, scurec1, scurec2, scurec3);
+    setExpRuleSmallCaseStudy(doc, 7, 7, natrec1, natrec2, natrec3);
+    setExpRuleSmallCaseStudy(doc, 9, 7, airrec1, airrec2, airrec3);
+    setExpRuleSmallCaseStudy(doc, 10, 7, watrec1, watrec2, watrec3);
 
 //        % Amend Accessibility
 //    % Motorway distance decay
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[1]", gremdd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[2]", resmdd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[3]", indmdd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[4]", sermdd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[5]", scumdd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[6]", natmdd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[7]", recmdd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[1]", gremdd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[2]", resmdd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[3]", indmdd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[4]", sermdd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[5]", scumdd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[6]", natmdd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[7]", recmdd);
 //        % Other roads distance decay
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[1]", greodd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[2]", resodd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[3]", indodd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[4]", serodd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[5]", scuodd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[6]", natodd);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[7]", recodd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[1]", greodd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[2]", resodd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[3]", indodd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[4]", serodd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[5]", scuodd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[6]", natodd);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/DistanceDecay/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[7]", recodd);
 //        % Motorway weights
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[1]", gremwe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[2]", resmwe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[3]", indmwe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[4]", sermwe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[5]", scumwe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[6]", natmwe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[7]", recmwe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[1]", gremwe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[2]", resmwe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[3]", indmwe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[4]", sermwe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[5]", scumwe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[6]", natmwe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[7]", recmwe);
 //        % Other roads weights
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[1]", greowe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[2]", resowe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[3]", indowe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[4]", serowe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[5]", scuowe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[6]", natowe);
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[7]", recowe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[1]", greowe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[2]", resowe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[3]", indowe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[4]", serowe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[5]", scuowe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[6]", natowe);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1989-Jan-01 00:00:00\"]/vector/elem[2]/vector/elem[7]", recowe);
 
-    setAllValuesXMLNode(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Total_potential\"]/TotalPotentialBlock/Seed", seed);
+    setAllValuesXMLNodeSmallCaseStudy(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Total_potential\"]/TotalPotentialBlock/Seed", seed);
 
 
-    doc.save_file(mod_geoproj_path.c_str());
+    doc.save_file(geoproj_path.c_str());
 }
 
 #endif //CHARLES_METRO_CAL_GEOPROJECTMANIPSMALLCASESTUDY_H

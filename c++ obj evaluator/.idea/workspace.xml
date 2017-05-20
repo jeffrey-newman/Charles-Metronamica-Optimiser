@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="Charles-Metro-Cal" targetName="getfirstfront_sm" />
-      <config projectName="Charles-Metro-Cal" targetName="testevaluation_sm" />
-      <config projectName="Charles-Metro-Cal" targetName="metrocalpar_sm" />
-      <config projectName="Charles-Metro-Cal" targetName="metrocalpar_sm_2min" />
-      <config projectName="Charles-Metro-Cal" targetName="metrocaltest" />
-      <config projectName="Charles-Metro-Cal" targetName="testhypervol" />
-      <config projectName="Charles-Metro-Cal" targetName="getfirstfront" />
-      <config projectName="Charles-Metro-Cal" targetName="metrocalser" />
-      <config projectName="Charles-Metro-Cal" targetName="metrocalpar" />
-      <config projectName="Charles-Metro-Cal" targetName="testevaluation" />
-      <config projectName="Charles-Metro-Cal" targetName="metrocalser_sm" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_cal_par_smR_2obj" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_smR_test" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_cal_ser_smR_3obj" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_cal_par_lrgR_3obj" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_cal_par_lrgR_2obj" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_cal_ser_lrgR_2obj" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_cal_ser_smR_2obj" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_cal_par_smR_3obj" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_lrgR_test" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_cal_ser_lrgR_3obj" />
     </generated>
   </component>
-  <component name="CMakeSettings" AUTO_RELOAD="false" GENERATION_PASS_SYSTEM_ENVIRONMENT="true" BUILD_OUTPUT_DIR="Charles-Metronamica-Optimiser/clion-build" ADDITIONAL_BUILD_OPTIONS="-j 2">
-    <ADDITIONAL_GENERATION_ENVIRONMENT>
-      <envs />
-    </ADDITIONAL_GENERATION_ENVIRONMENT>
+  <component name="CMakeSettings" ADDITIONAL_BUILD_OPTIONS="-j 2">
+    <configurations>
+      <configuration CONFIG_NAME="Debug" GENERATION_DIR="$PROJECT_DIR$/../../cmake-build-debug-clion" />
+    </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e54b0f5-8852-4ab4-a863-a1a2b6029a6c" name="Default" comment="" />
     <ignored path="c++ obj evaluator.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/../../cmake-build-debug-clion/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,123 +39,302 @@
     <favorites_list name="c++ obj evaluator" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainSer_SmallCaseStudy.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MetronamicaOF2_SmallCaseStudy.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MetronamicaOF2_SmallCaseStudy.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3853">
-              <caret line="300" column="60" selection-start-line="300" selection-start-column="52" selection-end-line="300" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReadInMap.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2205">
-              <caret line="147" column="11" selection-start-line="147" selection-start-column="11" selection-end-line="147" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Population.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Population.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainPar_SmallCase_BothMin.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MainPar_SmallCase_BothMin.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="167" column="82" selection-start-line="167" selection-start-column="82" selection-end-line="167" selection-end-column="82" />
-              <folding>
-                <element signature="e#190#209#0" expanded="true" />
-                <element signature="e#426#450#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MetroOF2_SmallCase_BothMin.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MetroOF2_SmallCase_BothMin.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="388" column="0" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pathify.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Pathify.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FuzzyKappaSimulationImprovedFast.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="721" column="4" selection-start-line="721" selection-start-column="4" selection-end-line="721" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FuzzyKappaSimulation.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulation.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8220">
-              <caret line="548" column="4" selection-start-line="548" selection-start-column="4" selection-end-line="548" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="Evaluation.hpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Evaluation.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="930">
+                  <caret line="62" column="41" lean-forward="false" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Pathify.hpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Pathify.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="135">
+                  <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#37#56#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="3195">
+                  <caret line="213" column="50" lean-forward="false" selection-start-line="213" selection-start-column="50" selection-end-line="213" selection-end-column="50" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="TestMetroOFSmall.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/TestMetroOFSmall.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="465">
+                  <caret line="31" column="37" lean-forward="false" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EvaluationTester_RandstadLargeCaseStudy.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/EvaluationTester_RandstadLargeCaseStudy.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1095">
+                  <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Individual.hpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Individual.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1635">
+                  <caret line="109" column="111" lean-forward="false" selection-start-line="109" selection-start-column="111" selection-end-line="109" selection-end-column="111" />
+                  <folding>
+                    <element signature="e#203#220#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="common_terminals.hpp" pinned="false" current-in-tab="false">
+            <entry file="file:///opt/local/include/boost/spirit/home/support/common_terminals.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="3570">
+                  <caret line="238" column="9" lean-forward="false" selection-start-line="238" selection-start-column="4" selection-end-line="238" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ProblemDefinitions.hpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/ProblemDefinitions.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1425">
+                  <caret line="95" column="46" lean-forward="false" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="TestMetroOFLarge.cpp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/TestMetroOFLarge.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="345">
+                  <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="GeoprojectManipSmallCaseStudy.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/GeoprojectManipSmallCaseStudy.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="114">
+                  <caret line="396" column="30" lean-forward="true" selection-start-line="396" selection-start-column="30" selection-end-line="396" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#3255#3267#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="ColourMapperParsers.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../../../Raster2Png/src/ColourMapperParsers.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1680">
+                  <caret line="112" column="36" lean-forward="false" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+                  <folding>
+                    <element signature="e#133#168#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainSer_SmallCaseStudy_3Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy_3Obj.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="465">
+                  <caret line="31" column="145" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="145" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainSer_LargeCaseStudy_2Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MainSer_LargeCaseStudy_2Obj.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="300">
+                  <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainSer_LargeCaseStudy_3Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MainSer_LargeCaseStudy_3Obj.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="345">
+                  <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MetronamicaOF2Utility.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MetronamicaOF2Utility.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1590">
+                  <caret line="106" column="32" lean-forward="false" selection-start-line="106" selection-start-column="32" selection-end-line="106" selection-end-column="32" />
+                  <folding>
+                    <element signature="e#144#162#0" expanded="true" />
+                    <element signature="e#10117#10131#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MetronamicaCalibrationObjectiveFunction.h" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/MetronamicaCalibrationObjectiveFunction.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="468">
+                  <caret line="976" column="41" lean-forward="true" selection-start-line="976" selection-start-column="41" selection-end-line="976" selection-end-column="41" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ReadInMap.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/ReadInMap.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="435">
+                  <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MapComparison_0_4.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/MapComparison_0_4.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="453">
+                  <caret line="267" column="0" lean-forward="false" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="foreach.hpp" pinned="false" current-in-tab="false">
+            <entry file="file:///opt/local/include/boost/foreach.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1343">
+                  <caret line="739" column="0" lean-forward="false" selection-start-line="739" selection-start-column="0" selection-end-line="739" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Population.hpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Population.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2130">
+                  <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#2071#2091#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pugi</find>
+      <find>xpath</find>
+      <find>MAP_SIMULATED</find>
+      <find>num_objectives</find>
+      <find>marsc</find>
+      <find>metrocal</find>
+      <find>objT</find>
+      <find>setAllValuesXMLNode</find>
+      <find>SMALL_RANDSTAD</find>
+      <find>wine_working_logging</find>
+      <find>real_lowerbounds</find>
+      <find>wine_working_dir</find>
+      <find>wine_drive_path</find>
+      <find>objectives_and_constrat</find>
+      <find>num_classes</find>
+      <find>15</find>
+      <find>log</find>
+      <find>objectives_and_constraints</find>
+      <find>save_path</find>
+      <find>num</find>
+      <find>Population::Population</find>
+      <find>mail_hvol_gen</find>
+      <find>phrase_</find>
+      <find>space</find>
+      <find>ofst</find>
+      <find>gremdd</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>-100</replace>
+      <replace>j</replace>
+      <replace>setAllValuesXMLNodeSmallCaseStudy</replace>
+      <replace>setAllValuesXMLNodeLargeCaseStudy</replace>
+      <replace>obj_t</replace>
+      <replace>log_spec_file</replace>
+    </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/GeoprojectManipSmallCaseStudy.h" />
         <option value="$PROJECT_DIR$/MetronamicaOF2_SmallCaseStudy.hpp" />
         <option value="$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap.cpp" />
         <option value="$PROJECT_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Population.hpp" />
-        <option value="$PROJECT_DIR$/Pathify.hpp" />
         <option value="$PROJECT_DIR$/MetroOF2_SmallCase_BothMin.hpp" />
         <option value="$PROJECT_DIR$/MainPar_SmallCase_BothMin.cpp" />
+        <option value="$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/MapComparison_0_4.cpp" />
+        <option value="$PROJECT_DIR$/MetronamicaOF2_RandstadSmallCaseStudy.hpp" />
+        <option value="$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/MapComparison_0_4.h" />
+        <option value="$PROJECT_DIR$/MetronamicaOF2_RandstadLargeCaseStudy_2Obj.hpp" />
+        <option value="$PROJECT_DIR$/MetronamicaOF2_RandstadLargeCaseStudy_3Obj.hpp" />
+        <option value="$PROJECT_DIR$/MetronamicaOF2_RandstadSmallCaseStudy_3Obj.hpp" />
+        <option value="$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/dt.h" />
+        <option value="$PROJECT_DIR$/MetronamicaOF2_RandstadSmallCaseStudy_2Obj.hpp" />
+        <option value="$PROJECT_DIR$/Pathify.hpp" />
+        <option value="$PROJECT_DIR$/GeoprojectManipSmallCaseStudy.h" />
+        <option value="$PROJECT_DIR$/GeoprojectManipBigCaseStudy.h" />
+        <option value="$PROJECT_DIR$/MainSer_SmallCaseStudy_2Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainPar_SmallCaseStudy_3Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainPar_LargCaseStudy_2Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainPar_LargeCaseStudy_3Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainSer_SmallCaseStudy_3Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainSer_LargeCaseStudy_2Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainPar_SmallCaseStudy_2Obj.cpp" />
+        <option value="$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Population.hpp" />
+        <option value="$PROJECT_DIR$/MainSer_LargeCaseStudy_3Obj.cpp" />
+        <option value="$PROJECT_DIR$/TestMetroOFLarge.cpp" />
+        <option value="$PROJECT_DIR$/TestMetroOFSmall.cpp" />
+        <option value="$PROJECT_DIR$/MetronamicaOF2Utility.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Individual.hpp" />
+        <option value="$PROJECT_DIR$/MetronamicaCalibrationObjectiveFunction.h" />
       </list>
     </option>
   </component>
@@ -165,19 +344,12 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="1920" />
-    <option name="height" value="1172" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
+    <option name="x" value="-3008" />
+    <option name="y" value="-784" />
+    <option name="width" value="3008" />
+    <option name="height" value="1692" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -198,13 +370,7 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
+              <option name="myItemId" value="Charles-Metro-Cal" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -214,11 +380,65 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
+              <option name="myItemId" value="Charles-Metro-Cal" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Projects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Parallel NSGAII Backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charles-Metro-Cal" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Projects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Parallel NSGAII Backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="respository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parallel-nsgaII-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charles-Metro-Cal" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Projects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charles Metronamica NSGAII Calibration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charles-Metro-Cal" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Projects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charles Metronamica NSGAII Calibration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -228,7 +448,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
+              <option name="myItemId" value="Charles-Metro-Cal" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -236,25 +456,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Charles-Metronamica-Optimiser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charles-Metronamica-Optimiser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c++ obj evaluator" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charles-Metronamica-Optimiser" />
+              <option name="myItemId" value="Charles Metronamica NSGAII Calibration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -274,9 +476,34 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="CMakeSettings" />
     <property name="settings.editor.splitter.proportion" value="0.28833172" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../clion-build" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../cmake-build-debug-clion" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
-  <component name="RunManager" selected="Application.Build All">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.metro_lrgR_test">
+    <configuration default="true" type="CLion_Remote" factoryName="GDB Remote Debug" remoteCommand="" symbolFile="" sysroot="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CMakeCatchTestRunConfigurationType" factoryName="Catch Test" PASS_PARENT_ENVS_2="true" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="getfirstfront" CONFIG_NAME="Debug" TEST_MODE="SUITE_TEST">
       <envs />
       <method />
@@ -285,7 +512,32 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="ChromiumRemoteDebugType" factoryName="Chromium Remote">
+      <method />
+    </configuration>
+    <configuration default="true" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
+      <method />
+    </configuration>
+    <configuration default="true" type="FirefoxRemoteDebugType" factoryName="Firefox Remote">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeWebKit" factoryName="NW.js">
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -303,6 +555,13 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ReactNative" factoryName="React Native">
+      <node-interpreter value="project" />
+      <platform value="ANDROID" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
@@ -317,6 +576,27 @@
       <module name="c++ obj evaluator" />
       <method />
     </configuration>
+    <configuration default="true" type="XSLT" factoryName="XSLT">
+      <option name="myOutputFile" />
+      <option name="myOpenOutputFile" value="false" />
+      <option name="myOpenInBrowser" value="false" />
+      <option name="mySmartErrorHandling" value="true" />
+      <option name="myRunnerPort" value="34873" />
+      <option name="myVmArguments" />
+      <option name="myWorkingDirectory" />
+      <option name="myModule" />
+      <option name="myJdk" />
+      <parameters />
+      <OutputType value="CONSOLE" save-to-file="false" />
+      <FileType name="XML" />
+      <JdkChoice value="FROM_MODULE" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -327,29 +607,10 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
+      <command value="run" />
       <scripts />
       <node-interpreter value="project" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Attests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="c++ obj evaluator" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -381,15 +642,10 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="c++ obj evaluator" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -402,19 +658,90 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="c++ obj evaluator" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="c++ obj evaluator" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metrocalser_sm" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-m &quot;/home/a1091793/bin/Metronamica/GeonamicaCmd.exe&quot; -k &quot;/home/a1091793/bin/Map Comparison Kit 3/MCK.exe&quot; -w &quot;/usr/bin/wine&quot; -j &quot;/usr/local/jdk1.8.0_91/bin/java&quot; -g &quot;/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/Charles-Metronamica-Optimiser/Java geoproject modification/Geoproject file edit/ADAPT_Simpler_Randstad/dist/ADAPT_Simpler_Randstad.jar&quot; -t &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad&quot; -f &quot;Randstad.geoproj&quot; -l &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/LogSettings/LogSettings.xml&quot; -a &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/lu2000.asc&quot; -o &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/lu1989.asc&quot; -s &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/region.asc&quot; -c &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/coefficients.txt&quot; -d &quot;/home/a1091793/Documents/Run/testCharlesCalibratorMemoryBug&quot; -v &quot;/home/a1091793/Documents/Run/testCharlesCalibratorMemoryBug&quot; -n &quot;Z:\\home\\a1091793\\Documents\\Run\\testCharlesCalibratorMemoryBug&quot; -r &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/wineRegSetOnlineCheck.reg&quot; -i 1 -p 2 -x 2 -y 1" WORKING_DIR="file://$PROJECT_DIR$/../../../../Run/testCharlesCalibratorMemoryBug" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocalser_sm" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocalser_sm">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metro_cal_par_lrgR_2obj" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metro_cal_par_lrgR_2obj" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metro_cal_par_lrgR_2obj">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metro_cal_par_lrgR_3obj" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metro_cal_par_lrgR_3obj" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metro_cal_par_lrgR_3obj">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metro_cal_par_smR_2obj" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metro_cal_par_smR_2obj" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metro_cal_par_smR_2obj">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metro_cal_par_smR_3obj" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metro_cal_par_smR_3obj" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metro_cal_par_smR_3obj">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metro_cal_ser_lrgR_2obj" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metro_cal_ser_lrgR_2obj" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metro_cal_ser_lrgR_2obj">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metro_cal_ser_lrgR_3obj" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metro_cal_ser_lrgR_3obj" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metro_cal_ser_lrgR_3obj">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metro_cal_ser_smR_3obj" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metro_cal_ser_smR_3obj" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metro_cal_ser_smR_3obj">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metro_cal_ser_smR_2obj" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="@Macbook_RanstadSmall.cfg" WORKING_DIR="file://$PROJECT_DIR$/../../../../Modelling/Charles-Metronamica-Calibration-Run/Working" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metro_cal_ser_smR_2obj" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metro_cal_ser_smR_2obj">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metro_lrgR_test" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="@Macbook_RanstadLarge_OFTester.cfg" WORKING_DIR="file://$PROJECT_DIR$/../../../../Modelling/Charles-Metronamica-Calibration-Run/Working" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metro_lrgR_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metro_lrgR_test">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="metro_smR_test" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="@Macbook_RanstadSmall_OFTester.cfg" WORKING_DIR="file://$PROJECT_DIR$/../../../../Modelling/Charles-Metronamica-Calibration-Run/Working" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metro_smR_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metro_smR_test">
+      <envs />
+      <method />
+    </configuration>
+    <list size="12">
+      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
+      <item index="1" class="java.lang.String" itemvalue="Application.metrocalser_sm" />
+      <item index="2" class="java.lang.String" itemvalue="Application.metro_cal_par_lrgR_2obj" />
+      <item index="3" class="java.lang.String" itemvalue="Application.metro_cal_par_lrgR_3obj" />
+      <item index="4" class="java.lang.String" itemvalue="Application.metro_cal_par_smR_2obj" />
+      <item index="5" class="java.lang.String" itemvalue="Application.metro_cal_par_smR_3obj" />
+      <item index="6" class="java.lang.String" itemvalue="Application.metro_cal_ser_lrgR_2obj" />
+      <item index="7" class="java.lang.String" itemvalue="Application.metro_cal_ser_lrgR_3obj" />
+      <item index="8" class="java.lang.String" itemvalue="Application.metro_cal_ser_smR_3obj" />
+      <item index="9" class="java.lang.String" itemvalue="Application.metro_cal_ser_smR_2obj" />
+      <item index="10" class="java.lang.String" itemvalue="Application.metro_lrgR_test" />
+      <item index="11" class="java.lang.String" itemvalue="Application.metro_smR_test" />
+    </list>
+    <configuration default="true" type="tests" factoryName="Attests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -431,75 +758,8 @@
       <option name="TEST_TYPE" value="TEST_SCRIPT" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
-      <option name="testToRun" value="" />
-      <option name="keywords" value="" />
-      <option name="params" value="" />
-      <option name="USE_PARAM" value="false" />
-      <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Release" EXPLICIT_BUILD_TARGET_NAME="all">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="getfirstfront" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="getfirstfront" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="getfirstfront">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="getfirstfront_sm" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="getfirstfront_sm" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="getfirstfront_sm">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="metrocalpar" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocalpar" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocalpar">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="metrocalpar_sm" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocalpar_sm" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocalpar_sm">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="metrocalpar_sm_2min" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocalpar_sm_2min" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocalpar_sm_2min">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="metrocalser" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocalser" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocalser">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="metrocalser_sm" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-m &quot;/home/a1091793/bin/Metronamica/GeonamicaCmd.exe&quot; -k &quot;/home/a1091793/bin/Map Comparison Kit 3/MCK.exe&quot; -w &quot;/usr/bin/wine&quot; -j &quot;/usr/local/jdk1.8.0_91/bin/java&quot; -g &quot;/home/a1091793/Documents/Projects/Charles-Metronamica-Optimiser/Charles-Metronamica-Optimiser/Java geoproject modification/Geoproject file edit/ADAPT_Simpler_Randstad/dist/ADAPT_Simpler_Randstad.jar&quot; -t &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad&quot; -f &quot;Randstad.geoproj&quot; -l &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/LogSettings/LogSettings.xml&quot; -a &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/lu2000.asc&quot; -o &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/lu1989.asc&quot; -s &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/region.asc&quot; -c &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/Simpler Randstad-UC-1989/Randstad/Data/coefficients.txt&quot; -d &quot;/home/a1091793/Documents/Run/testCharlesCalibratorMemoryBug&quot; -v &quot;/home/a1091793/Documents/Run/testCharlesCalibratorMemoryBug&quot; -n &quot;Z:\\home\\a1091793\\Documents\\Run\\testCharlesCalibratorMemoryBug&quot; -r &quot;/home/a1091793/Documents/Modelling/Charles-Randstad-Project-Files/wineRegSetOnlineCheck.reg&quot; -i 1 -p 2 -x 2 -y 1" WORKING_DIR="file://$PROJECT_DIR$/../../../../Run/testCharlesCalibratorMemoryBug" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocalser_sm" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocalser_sm">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="metrocaltest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="metrocaltest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="metrocaltest">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="testevaluation" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="testevaluation" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="testevaluation">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="testevaluation_sm" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="testevaluation_sm" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="testevaluation_sm">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="testhypervol" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Charles-Metro-Cal" TARGET_NAME="testhypervol" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Charles-Metro-Cal" RUN_TARGET_NAME="testhypervol">
-      <envs />
-      <method />
-    </configuration>
-    <list size="12">
-      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
-      <item index="1" class="java.lang.String" itemvalue="Application.getfirstfront" />
-      <item index="2" class="java.lang.String" itemvalue="Application.getfirstfront_sm" />
-      <item index="3" class="java.lang.String" itemvalue="Application.metrocalpar" />
-      <item index="4" class="java.lang.String" itemvalue="Application.metrocalpar_sm" />
-      <item index="5" class="java.lang.String" itemvalue="Application.metrocalpar_sm_2min" />
-      <item index="6" class="java.lang.String" itemvalue="Application.metrocalser" />
-      <item index="7" class="java.lang.String" itemvalue="Application.metrocalser_sm" />
-      <item index="8" class="java.lang.String" itemvalue="Application.metrocaltest" />
-      <item index="9" class="java.lang.String" itemvalue="Application.testevaluation" />
-      <item index="10" class="java.lang.String" itemvalue="Application.testevaluation_sm" />
-      <item index="11" class="java.lang.String" itemvalue="Application.testhypervol" />
-    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -520,11 +780,17 @@
       <workItem from="1479359024173" duration="8873000" />
       <workItem from="1479439415669" duration="6776000" />
       <workItem from="1479693519213" duration="7731000" />
+      <workItem from="1494703431389" duration="826000" />
+      <workItem from="1494911444329" duration="16139000" />
+      <workItem from="1494979857964" duration="13136000" />
+      <workItem from="1495004389710" duration="3817000" />
+      <workItem from="1495052580077" duration="20165000" />
+      <workItem from="1495155343610" duration="3791000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34819000" />
+    <option name="totallyTimeSpent" value="92693000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -536,20 +802,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1172" extended-state="6" />
+    <frame x="-3008" y="-784" width="3008" height="1692" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20453347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12025317" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291866" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38204393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1852913" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.448125" sideWeight="0.49730277" order="7" side_tool="false" content_ui="tabs" x="0" y="23" width="1920" height="1173" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11125" sideWeight="0.4986514" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.381875" sideWeight="0.5026972" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13178703" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0836143" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.3263019" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-4925" y="75" width="1916" height="1080" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -559,6 +826,9 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14231136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -572,401 +842,352 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/MainSer_SmallCaseStudy_2Obj.cpp</url>
+          <line>16</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="119" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy.cpp">
+    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap.cpp" />
+    <entry file="file://$PROJECT_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Population.hpp" />
+    <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy.cpp" />
+    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp" />
+    <entry file="file://$PROJECT_DIR$/MainPar_SmallCase_BothMin.cpp" />
+    <entry file="file://$PROJECT_DIR$/MetronamicaOF2.hpp" />
+    <entry file="file://$PROJECT_DIR$/MetroOF2_SmallCase_BothMin.hpp" />
+    <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/MapComparison_0_4.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+        <state relative-caret-position="955">
+          <caret line="76" column="28" lean-forward="false" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MetronamicaOF2_SmallCaseStudy.hpp">
+    <entry file="file://$PROJECT_DIR$/../../../AHHZ/raster/raster/include/blink/raster/PngPlotter.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8325">
-          <caret line="555" column="29" selection-start-line="555" selection-start-column="29" selection-end-line="555" selection-end-column="29" />
+        <state relative-caret-position="180">
+          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/dt.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="119" column="15" lean-forward="false" selection-start-line="119" selection-start-column="14" selection-end-line="119" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MetronamicaOF2_RandstadLargeCaseStudy_2Obj.hpp" />
+    <entry file="file://$PROJECT_DIR$/MetronamicaOF2_RandstadLargeCaseStudy_3Obj.hpp" />
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6030">
+          <caret line="402" column="0" lean-forward="false" selection-start-line="402" selection-start-column="0" selection-end-line="402" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MetronamicaOF2_RandstadSmallCaseStudy_3Obj.hpp" />
+    <entry file="file://$PROJECT_DIR$/MetronamicaOF2_RandstadSmallCaseStudy_2Obj.hpp" />
+    <entry file="file://$PROJECT_DIR$/Deprecated/MetronamicaOF2_RandstadLargeCaseStudy_3Obj.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="61" column="3473" lean-forward="true" selection-start-line="60" selection-start-column="4" selection-end-line="61" selection-end-column="3473" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GeoprojectManipBigCaseStudy.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16095">
+          <caret line="1073" column="42" lean-forward="false" selection-start-line="1073" selection-start-column="42" selection-end-line="1073" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/utility">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7500">
+          <caret line="500" column="0" lean-forward="false" selection-start-line="500" selection-start-column="0" selection-end-line="500" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/MapComparison_0_4.cpp">
+    <entry file="file:///opt/local/include/boost/function/function_template.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2820">
-          <caret line="188" column="103" selection-start-line="188" selection-start-column="103" selection-end-line="188" selection-end-column="103" />
-          <folding />
+        <state relative-caret-position="1500">
+          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap.cpp">
+    <entry file="file:///opt/local/include/boost/program_options/detail/parsers.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2205">
-          <caret line="147" column="11" selection-start-line="147" selection-start-column="11" selection-end-line="147" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="1620">
+          <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Population.hpp">
+    <entry file="file://$PROJECT_DIR$/MainPar_SmallCaseStudy_3Obj.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="330">
+          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPar_SmallCase_BothMin.cpp">
+    <entry file="file://$PROJECT_DIR$/MainPar_LargCaseStudy_2Obj.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPar_LargeCaseStudy_3Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPar_SmallCaseStudy_2Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
           <folding>
-            <element signature="e#190#209#0" expanded="true" />
-            <element signature="e#426#450#0" expanded="true" />
+            <element signature="e#191#225#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/ClumpinessFast.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/local/include/boost/proto/operators.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="294" column="0" lean-forward="false" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy_2Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Checkpoints/SignalCheckpoint.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EvaluationTester_RandstadLargeCaseStudy.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Evaluation.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="62" column="41" lean-forward="false" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/local/include/boost/spirit/home/qi/parse.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2835">
+          <caret line="189" column="17" lean-forward="false" selection-start-line="189" selection-start-column="17" selection-end-line="189" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Population.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2130">
+          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding>
+            <element signature="e#2071#2091#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainSer_LargeCaseStudy_3Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Pathify.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#37#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestMetroOFSmall.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="37" lean-forward="false" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp">
+    <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy_3Obj.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10815">
-          <caret line="721" column="4" selection-start-line="721" selection-start-column="4" selection-end-line="721" selection-end-column="4" />
+        <state relative-caret-position="465">
+          <caret line="31" column="145" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="145" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImproved.cpp">
+    <entry file="file:///opt/local/include/ImageMagick-6/magick/magick-config.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9765">
-          <caret line="651" column="4" selection-start-line="651" selection-start-column="4" selection-end-line="651" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulation.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8220">
-          <caret line="548" column="4" selection-start-line="548" selection-start-column="4" selection-end-line="548" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="450">
+          <caret line="30" column="47" lean-forward="false" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6120">
-          <caret line="408" column="114" selection-start-line="408" selection-start-column="114" selection-end-line="408" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetFirstFront_SmallCaseStudy.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+        <state relative-caret-position="3195">
+          <caret line="213" column="50" lean-forward="false" selection-start-line="213" selection-start-column="50" selection-end-line="213" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPar.cpp">
+    <entry file="file://$PROJECT_DIR$/MetronamicaOF2Utility.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+        <state relative-caret-position="1590">
+          <caret line="106" column="32" lean-forward="false" selection-start-line="106" selection-start-column="32" selection-end-line="106" selection-end-column="32" />
+          <folding>
+            <element signature="e#144#162#0" expanded="true" />
+            <element signature="e#10117#10131#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainSer.cpp">
+    <entry file="file://$PROJECT_DIR$/MainSer_LargeCaseStudy_2Obj.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2325">
-          <caret line="155" column="39" selection-start-line="155" selection-start-column="39" selection-end-line="155" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2925">
-          <caret line="195" column="38" selection-start-line="195" selection-start-column="38" selection-end-line="195" selection-end-column="38" />
+        <state relative-caret-position="300">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MetronamicaOF2_SmallCaseStudy.hpp">
+    <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/ProblemDefinitions.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1425">
+          <caret line="95" column="46" lean-forward="false" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pugixml-1.7/src/pugixml.cpp">
+    <entry file="file:///opt/local/include/boost/filesystem/operations.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82470">
-          <caret line="5498" column="20" selection-start-line="5498" selection-start-column="20" selection-end-line="5498" selection-end-column="20" />
+        <state relative-caret-position="484">
+          <caret line="501" column="0" lean-forward="false" selection-start-line="501" selection-start-column="0" selection-end-line="501" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pugixml-1.7/src/pugixml.hpp">
+    <entry file="file://$PROJECT_DIR$/../../../Raster2Png/src/ColourMapperParsers.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4410">
-          <caret line="294" column="24" selection-start-line="294" selection-start-column="24" selection-end-line="294" selection-end-column="24" />
+        <state relative-caret-position="1680">
+          <caret line="112" column="36" lean-forward="false" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+          <folding>
+            <element signature="e#133#168#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/gdal_raster_iterator.h">
+    <entry file="file:///opt/local/include/boost/spirit/home/support/common_terminals.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MetroOF2_SmallCase_BothMin.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2760">
-          <caret line="184" column="10" selection-start-line="184" selection-start-column="4" selection-end-line="184" selection-end-column="10" />
+        <state relative-caret-position="3570">
+          <caret line="238" column="9" lean-forward="false" selection-start-line="238" selection-start-column="4" selection-end-line="238" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Individual.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1635">
+          <caret line="109" column="111" lean-forward="false" selection-start-line="109" selection-start-column="111" selection-end-line="109" selection-end-column="111" />
+          <folding>
+            <element signature="e#203#220#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GetFirstFront_SmallCaseStudy.cpp">
+    <entry file="file:///opt/local/include/boost/foreach.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/PngPlotter.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/4.8/backward/backward_warning.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPar.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainSer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2325">
-          <caret line="155" column="39" selection-start-line="155" selection-start-column="39" selection-end-line="155" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5364">
-          <caret line="298" column="22" selection-start-line="298" selection-start-column="22" selection-end-line="298" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetFirstFront_SmallCaseStudy.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/PngPlotter.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/4.8/backward/backward_warning.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/PngPlotter.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/4.8/backward/backward_warning.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPar.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainSer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2325">
-          <caret line="155" column="39" selection-start-line="155" selection-start-column="39" selection-end-line="155" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GetFirstFront_SmallCaseStudy.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../AHHZ-Raster/raster/include/blink/raster/gdal_raster_iterator.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pugixml-1.7/src/pugixml.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4410">
-          <caret line="294" column="24" selection-start-line="294" selection-start-column="24" selection-end-line="294" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pugixml-1.7/src/pugixml.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82470">
-          <caret line="5498" column="20" selection-start-line="5498" selection-start-column="20" selection-end-line="5498" selection-end-column="20" />
+        <state relative-caret-position="1343">
+          <caret line="739" column="0" lean-forward="false" selection-start-line="739" selection-start-column="0" selection-end-line="739" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GeoprojectManipSmallCaseStudy.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/MapComparison_0_4.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2820">
-          <caret line="188" column="103" selection-start-line="188" selection-start-column="103" selection-end-line="188" selection-end-column="103" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImproved.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9765">
-          <caret line="651" column="4" selection-start-line="651" selection-start-column="4" selection-end-line="651" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulation.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8220">
-          <caret line="548" column="4" selection-start-line="548" selection-start-column="4" selection-end-line="548" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/ReadInMap.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2205">
-          <caret line="147" column="11" selection-start-line="147" selection-start-column="11" selection-end-line="147" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Parallell-NSGAII-Backend/parallel-nsgaII-backend/Population.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Pathify.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Map-Comparison-Lib/map-comparison-library/src/FuzzyKappaSimulationImprovedFast.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="721" column="4" selection-start-line="721" selection-start-column="4" selection-end-line="721" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MetronamicaOF2_SmallCaseStudy.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3853">
-          <caret line="300" column="60" selection-start-line="300" selection-start-column="52" selection-end-line="300" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MetroOF2_SmallCase_BothMin.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="388" column="0" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPar_SmallCase_BothMin.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="167" column="82" selection-start-line="167" selection-start-column="82" selection-end-line="167" selection-end-column="82" />
+        <state relative-caret-position="114">
+          <caret line="396" column="30" lean-forward="true" selection-start-line="396" selection-start-column="30" selection-end-line="396" selection-end-column="30" />
           <folding>
-            <element signature="e#190#209#0" expanded="true" />
-            <element signature="e#426#450#0" expanded="true" />
+            <element signature="e#3255#3267#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestMetroOFLarge.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/ReadInMap.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/MapComparison_0_4.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="267" column="0" lean-forward="false" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MetronamicaCalibrationObjectiveFunction.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="976" column="41" lean-forward="true" selection-start-line="976" selection-start-column="41" selection-end-line="976" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>

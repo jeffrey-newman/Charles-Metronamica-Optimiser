@@ -6,7 +6,7 @@
 #include <boost/program_options.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
-#include "MetronamicaOF2_SmallCaseStudy.hpp"
+#include "MetronamicaOF2_RandstadSmallCaseStudy_2Obj.hpp"
 #include "Pathify.hpp"
 
 
