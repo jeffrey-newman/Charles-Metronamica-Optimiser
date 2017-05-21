@@ -398,9 +398,28 @@ public:
         qi::rule<std::string::iterator, std::string()> string_parser_quote_delimited = qi::lit("\"") >> +(qi::char_ - "\"") >> qi::lit("\"");   //[_val = _1]
         string_parser_quote_delimited.name("string_quote_delimited_parser");
 //        qi::debug(string_parser_quote_delimited);
-        qi::rule<std::string::iterator, StringTuple()> catgeorised_save_map_rule = qi::no_case[qi::lit("CATEGORISED") | qi::lit("CAT")] >> qi::lit(":") >> qi::lit("LEGEND") >> qi::lit("=") >> string_parser_quote_delimited >> qi::lit(":") >> qi::lit("PATH") >> qi::lit("=") >> string_parser_quote_delimited >> qi::lit(":") >> ( (qi::lit("DIFF") >> qi::lit("=") >> string_parser_quote_delimited) | qi::attr(std::string("no_diff")))>> qi::lit(":") >> qi::lit("SAVE_AS") >> qi::lit("=")  >> string_parser_quote_delimited;
-        qi::rule<std::string::iterator, StringTuple()> line_grad_save_map_rule = qi::no_case[qi::lit("LINEAR_GRADIENT") | qi::lit("LIN_GRAD")] >> qi::lit(":")  >> qi::lit("LEGEND") >> qi::lit("=") >> string_parser_quote_delimited >> qi::lit(":") >> qi::lit("PATH") >> qi::lit("=")  >> string_parser_quote_delimited >> qi::lit(":") >> ( (qi::lit("DIFF") >> qi::lit("=") >> string_parser_quote_delimited) | qi::attr(std::string("no_diff")))>> qi::lit(":") >> qi::lit("SAVE_AS") >> qi::lit("=")  >> string_parser_quote_delimited;
-        auto save_maps_parser = catgeorised_save_map_rule[ph::push_back(ph::ref(classified_img_rqsts_tmp), qi::_1)] | line_grad_save_map_rule[ph::push_back(ph::ref(lin_grdnt_img_rqsts_tmp), qi::_1)];
+        qi::rule<std::string::iterator, std::string()> diff_map_parser = ( qi::lit("DIFF") >> qi::lit("=") >> string_parser_quote_delimited >> qi::lit(":") ) | qi::attr(std::string("no_diff"));
+        diff_map_parser.name("diff_map_parser");
+//        qi::debug(diff_map_parser);
+        qi::rule<std::string::iterator, std::string()> legend_file_parser = qi::lit("LEGEND") >> qi::lit("=") >> string_parser_quote_delimited >> qi::lit(":");
+        legend_file_parser.name("legend_file_parser");
+//        qi::debug(legend_file_parser);
+        qi::rule<std::string::iterator, std::string()> save_map_parser = qi::lit("PATH") >> qi::lit("=") >> string_parser_quote_delimited >> qi::lit(":");
+        save_map_parser.name("save_map_parser");
+//        qi::debug(save_map_parser);
+        qi::rule<std::string::iterator, std::string()> save_as_img_parser = qi::lit("SAVE_AS") >> qi::lit("=")  >> string_parser_quote_delimited;
+        save_as_img_parser.name("save_as_img_parser");
+//        qi::debug(save_as_img_parser);
+        qi::rule<std::string::iterator, std::vector<std::string>() > save_map_info = legend_file_parser  >> save_map_parser >> diff_map_parser >> save_as_img_parser;
+        qi::rule<std::string::iterator, StringTuple()> categorised_save_map_rule = (qi::lit("CATEGORISED") | qi::lit("CAT")) >> qi::lit(":") >> save_map_info;
+        categorised_save_map_rule.name("category_map_parser");
+//        qi::debug(categorised_save_map_rule);
+        qi::rule<std::string::iterator, StringTuple()> linear_grad_save_map_rule = (qi::lit("LINEAR_GRADIENT") | qi::lit("LIN_GRAD")) >> qi::lit(":")  >> save_map_info;
+        linear_grad_save_map_rule.name("linear_grad_map_parser");
+//        qi::debug(linear_grad_save_map_rule);
+        qi::rule<std::string::iterator> save_maps_parser = categorised_save_map_rule [ph::push_back(ph::ref(classified_img_rqsts_tmp), qi::_1)] | linear_grad_save_map_rule[ph::push_back(ph::ref(lin_grdnt_img_rqsts_tmp), qi::_1)];
+        save_maps_parser.name("save_map_parser");
+//        qi::debug(save_maps_parser);
         BOOST_FOREACH(std::string & save_map, params.save_maps)
                     {
                         boost::spirit::qi::parse(save_map.begin(), save_map.end(),  save_maps_parser);
