@@ -43,13 +43,8 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
     boost::filesystem::path logfile;
     boost::filesystem::path previous_logfile;
 
-    int num_objectives;
-    int num_real_decision_vars;
-    int num_int_decision_vars;
     int num_constraints;
     int num_classes;
-
-
 
     int analysisNum;
     std::vector<double> real_lowerbounds  ; //lower bounds
@@ -62,7 +57,6 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
 
     std::vector<MinOrMaxType> minimise_or_maximise;
 
-    bool is_logging;
     int eval_count;
 
     const int MAP1 = 0;
@@ -238,13 +232,14 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
 public:
     MetronamicaCalibrationObjectiveFunction( MetronamicaOF2Parameters & _params, ObjectivesE _obj_t, CaseStudyE _case_t, std::vector<double> & _real_lowerbounds, std::vector<double> & _real_upperbounds, int _num_classes)
             :   params(_params),
+                previous_logfile("unspecified"),
                 num_classes(_num_classes),
                 obj_t(_obj_t),
                 case_t(_case_t),
                 real_lowerbounds(_real_lowerbounds),
                 real_upperbounds(_real_upperbounds),
                 eval_count(0),
-                num_objectives(0)
+                num_constraints(0)
     {
         // Set up wine prefixes and wine paths.
         using_wine = false;
@@ -459,28 +454,14 @@ public:
 
         if (this->obj_t == FKS_CLUMP)
         {
-            num_objectives = 2;
-            num_int_decision_vars = 0;
             params.min_or_max = {MAXIMISATION, MINIMISATION};
         }
         else if (this->obj_t == FKS_CLUMP_KAPPA)
         {
-            num_objectives = 3;
-            num_int_decision_vars = 0;
             params.min_or_max = {MAXIMISATION, MINIMISATION, MAXIMISATION};
         }
-        num_real_decision_vars = real_lowerbounds.size();
-        num_constraints = 0;
-        objectives_and_constraints.first.resize(num_objectives);
+        objectives_and_constraints.first.resize(params.min_or_max.size());
         objectives_and_constraints.second.resize(num_constraints);
-        if(this->case_t == SMALL_RANDSTAD)
-        {
-            num_classes = 9;
-        }
-        else if (this->case_t == LARGE_RANDSTAD)
-        {
-            num_classes = 15;
-        }
 
         analysisNum = createAnalysis();
         loadMapActual(analysisNum, params.actual_map_file.second.c_str());
@@ -489,7 +470,6 @@ public:
         loadTransitionFuzzyWeights(analysisNum, params.fks_coefficients_file.second.c_str());
         numClasses(analysisNum, num_classes);
 
-        num_objectives = int(objectives_and_constraints.first.size());
         // Make the problem defintions and intialise the objectives and constraints struct.
         prob_defs.reset(new ProblemDefinitions(real_lowerbounds, real_upperbounds, int_lowerbounds, int_upperbounds, params.min_or_max, num_constraints));
     }
@@ -527,8 +507,6 @@ public:
     boost::optional<boost::filesystem::path>
     runMetro(std::string mod_geoproject_file_str, std::ofstream & logging_file)
     {
-        boost::scoped_ptr<boost::timer::auto_cpu_timer> t(nullptr);
-        if (params.is_logging) t.reset(new boost::timer::auto_cpu_timer(logging_file));
         std::stringstream cmd1, cmd2;
 
         if (params.with_reset_and_save)
@@ -587,13 +565,6 @@ public:
         }
 
 
-        if (params.is_logging)
-        {
-            logging_file << "Geonamica run time:\n";
-            t->stop();
-            t->report();
-        }
-
         boost::filesystem::path output_map = params.simulated_map_file.first;
         if (boost::filesystem::exists(output_map))
         {
@@ -611,7 +582,7 @@ public:
         double clump_sim = getClumpiness(analysisNum, MAP_SIMULATED, luc_val);
         double clump_act = getClumpiness(analysisNum, MAP_ACTUAL, luc_val);
         double diff = std::abs(clump_sim - clump_act);
-        if (is_logging) log << "clump diff: " << clump_sim << " - " << clump_act << " = " << diff << "\n";
+        if (params.is_logging) log << "clump diff: " << clump_sim << " - " << clump_act << " = " << diff << "\n";
         return (diff);
     }
 
@@ -645,15 +616,12 @@ public:
                 this->logfile = _logfile;
             }
 
-            if (params.is_logging)
-            {
                 logging_file.open(this->logfile.string().c_str(), std::ios_base::app);
                 if (!logging_file.is_open())
                 {
                     params.is_logging = false;
                     std::cout << "attempt to log failed\n";
                 }
-            }
         }
         boost::scoped_ptr<boost::timer::auto_cpu_timer> t(nullptr);
         if (params.is_logging) t.reset(new boost::timer::auto_cpu_timer(logging_file));
@@ -676,8 +644,19 @@ public:
         }
 
 
+        if (params.is_logging)
+        {
+            logging_file << "Evaluation started\n"
+            logging_file << "number real decision vars : " << real_decision_vars.size() << "\n";
+
+        }
+
         for (int j = 0; j < params.replicates; ++j)
         {
+            if (params.is_logging)
+            {
+                logging_file << "Evaluation of objectives functions for replicate " << j << "\n";
+            }
 
             std::tuple<double, double, double> metric_vals = calcMetrics(real_decision_vars, int_decision_vars, logging_file, j, do_save, save_path);
             double fks =  std::get<0>(metric_vals);
@@ -692,6 +671,10 @@ public:
             if (do_save)
             {
                 objectives_fs << "replicate " << j << " fks: " << fks << " clumpiness: " << clump << " kappa: " << k << "\n";
+            }
+            if (params.is_logging)
+            {
+                logging_file << "replicate " << j << " fks: " << fks << " clumpiness: " << clump << " kappa: " << k << "\n";
             }
 
 
@@ -710,9 +693,21 @@ public:
         }
         ++eval_count;
 
-        if (is_logging) logging_file << "\n\n\n Avg FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n Avg kappa: " << obj[2] << "\n";
+        if (params.is_logging)
+        {
+            logging_file << "\n\n\nEvaluation complete\n";
+            logging_file << "Avg FKS: " << obj[0] << "\n Average Clump Diff: " << obj[1] << "\n Avg kappa: " << obj[2] << "\n";
+            logging_file << "Evaluation run time:\n";
+            t->stop();
+            t->report();
+        }
 
-        if (is_logging) logging_file.close();
+        if (params.is_logging)
+        {
+            logging_file.close();
+            if (previous_logfile != "unspecified") boost::filesystem::remove_all(previous_logfile);
+            previous_logfile = logfile;
+        }
 
         return (objectives_and_constraints);
 
@@ -729,10 +724,10 @@ public:
         boost::shared_ptr<boost::timer::auto_cpu_timer> timer;
         // Modify Geoproject file with decision variables and random seed
         //            {
-        if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
-        //                boost::timer::auto_cpu_timer t(logging_file);
-        if (is_logging) logging_file << "number real decision vars : " << real_decision_vars.size() << std::endl;
-
+        if (params.is_logging)
+        {
+            timer.reset(new boost::timer::auto_cpu_timer(logging_file));
+        }
         std::string extnsn = params.geoproj_file.second.extension().string();
         std::string mod_filename = params.geoproj_file.second.stem().string() + "_mod_rep" + std::to_string(rand_seed_id) + extnsn;
         boost::filesystem::path mod_geoproject_file_pth = params.geoproj_file.second.parent_path() / mod_filename;
@@ -748,16 +743,13 @@ public:
             geoprojectEditLargeCaseStudy(mod_geoproject_file_pth, real_decision_vars, params.rand_seeds[rand_seed_id]);
         }
 
-        if (is_logging) logging_file << "Timing for manipulating decision variable : " << std::endl;
+        if (params.is_logging)
+        {
+            logging_file << "Replicate " << rand_seed_id << ": Timing for manipulating geoproject file : " << "\n";
+            timer.reset(new boost::timer::auto_cpu_timer(logging_file));
+        }
 
-//        if (do_save)
-//        {
-//            // Save a copy of the geoproject file as the current Cmd line runner mangles the GUI aspects preventing it from being loadable in the HGUI interface of Metronamica
-//
-//
-//        }
 
-        if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
         boost::optional<boost::filesystem::path> output_map = runMetro(mod_geoproject_file_str, logging_file);
         if (!output_map)
         {
@@ -766,7 +758,7 @@ public:
             {
                 std::this_thread::sleep_for (std::chrono::seconds(3));
                 //Write error message and assume infeasible set of parameters and so assign worse OF values. (-1, 10)
-                if (is_logging) logging_file << "Was unable to successfully run Metronamica on decision variables\n";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": Was unable to successfully run Metronamica on decision variables\n";
 
                 obj[0] = -1;
                 obj[1] = 10;
@@ -775,22 +767,24 @@ public:
 //                return (objectives_and_constrataints);
             }
         }
-        if (is_logging) logging_file << "Timing for Resetting and running Metronamica : " << std::endl;
+        if (params.is_logging)
+        {
+            logging_file << "Replicate " << rand_seed_id << ": Timing for Resetting and running Metronamica : " << std::endl;
+            timer.reset(new boost::timer::auto_cpu_timer(logging_file));
+        }
 
-        if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
+        if (params.is_logging)
         try
         {
             loadMapSimulated(analysisNum, (*output_map).c_str());
-            if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
+            if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": Simulated map: " << (*output_map).string() << "\n";
             double fks = getFuzzyKappaSim(analysisNum);
             obj[0] = fks;
-            if (is_logging) logging_file << "FKS: " << fks << "\n";
 
             if(this->obj_t == FKS_CLUMP_KAPPA)
             {
                 double k = getKappa(analysisNum);
                 obj[2] = k;
-                if (is_logging) logging_file << "Kappa: " << k << "\n";
             }
         }
         catch (std::runtime_error err)
@@ -800,22 +794,20 @@ public:
                 std::cout << err.what() << std::endl;
                 std::this_thread::sleep_for (std::chrono::seconds(3));
                 loadMapSimulated(analysisNum, (*output_map).c_str());
-                if (is_logging) logging_file << "Simulated map: " << (*output_map).string() << "\n";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": Simulated map: " << (*output_map).string() << "\n";
                 double fks = getFuzzyKappaSim(analysisNum);
                 obj[0] = fks;
-                if (is_logging) logging_file << "FKS: " << fks;
 
                 if(this->obj_t == FKS_CLUMP_KAPPA)
                 {
                     double k = getKappa(analysisNum);
                     obj[2] = k;
-                    if (is_logging) logging_file << "Kappa: " << k << "\n";
                 }
             }
             catch (...)
             {
                 //Write error message and assume infeasible set of parameters and so assign worse OF values. (-1, 10)
-                if (is_logging) logging_file << "Was unable to calculate FKS\n";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": Was unable to calculate FKS/kappa\n";
                 obj[0] = -1;
                 obj[1] = 10;
                 obj[2] = -1;
@@ -823,9 +815,9 @@ public:
 
             }
         }
-        if (is_logging) logging_file << "Timing for Calculating FKS: " << std::endl;
+        if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": Timing for Calculating FKS (and Kappa, if requested): " << std::endl;
 
-        if (is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
+        if (params.is_logging) timer.reset(new boost::timer::auto_cpu_timer(logging_file));
         try
         {
             double avg_clump = 0;
@@ -846,25 +838,25 @@ public:
 //            Airport                     8
 //            Water                       9
                 int gre_val = 1;
-                if (is_logging) logging_file << "Greenhouses ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": Greenhouses ";
                 avg_clump += calcClumpDiff(analysisNum, gre_val, logging_file);
                 int res_val = 2;
-                if (is_logging) logging_file << "_Residential_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Residential_ ";
                 avg_clump += calcClumpDiff(analysisNum, res_val, logging_file);
                 int ind_val = 3;
-                if (is_logging) logging_file << "_Industry_  ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Industry_  ";
                 avg_clump += calcClumpDiff(analysisNum, ind_val, logging_file);
                 int ser_val = 4;
-                if (is_logging) logging_file << "_Services_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Services_ ";
                 avg_clump += calcClumpDiff(analysisNum, ser_val, logging_file);
                 int scu_val = 5;
-                if (is_logging) logging_file << "_Socio cultural uses_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Socio cultural uses_ ";
                 avg_clump += calcClumpDiff(analysisNum, scu_val, logging_file);
                 int nat_val = 6;
-                if (is_logging) logging_file << "_Nature_  ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Nature_  ";
                 avg_clump += calcClumpDiff(analysisNum, nat_val, logging_file);
                 int rec_val = 7;
-                if (is_logging) logging_file << "_Recreation areas_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Recreation areas_ ";
                 avg_clump += calcClumpDiff(analysisNum, rec_val, logging_file);
                 avg_clump /= 7;
             }
@@ -889,62 +881,62 @@ public:
 
                 // Greenhouses
                 int gre_val = 3;
-                if (is_logging) logging_file << "_Greenhouses_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Greenhouses_ ";
                 avg_clump += calcClumpDiff(analysisNum, gre_val, logging_file);
                 // Housing low density
                 int hld_val = 4;
-                if (is_logging) logging_file << "_Housing low density_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Housing low density_ ";
                 avg_clump += calcClumpDiff(analysisNum, hld_val, logging_file);
                 // Housing high density
                 int hhd_val = 5;
-                if (is_logging) logging_file << "_Housing high density_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Housing high density_ ";
                 avg_clump += calcClumpDiff(analysisNum, hhd_val, logging_file);
                 // Industry
                 int ind_val = 6;
-                if (is_logging) logging_file << "_Industry_  ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Industry_  ";
                 avg_clump += calcClumpDiff(analysisNum, ind_val, logging_file);
                 // Services
                 int ser_val = 7;
-                if (is_logging) logging_file << "_Services_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Services_ ";
                 avg_clump += calcClumpDiff(analysisNum, ser_val, logging_file);
                 // Socio cultural uses
                 int scu_val = 8;
-                if (is_logging) logging_file << "_Socio cultural uses_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Socio cultural uses_ ";
                 avg_clump += calcClumpDiff(analysisNum, scu_val, logging_file);
                 // Forest
                 int for_val = 9;
-                if (is_logging) logging_file << "_Forest_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Forest_ ";
                 avg_clump += calcClumpDiff(analysisNum, for_val, logging_file);
                 // Extensive grasslands
                 int ext_val = 10;
-                if (is_logging) logging_file << "_Extensive grasslands_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Extensive grasslands_ ";
                 avg_clump += calcClumpDiff(analysisNum, ext_val, logging_file);
                 // Nature
                 int nat_val = 11;
-                if (is_logging) logging_file << "_Nature_  ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Nature_  ";
                 avg_clump += calcClumpDiff(analysisNum, nat_val, logging_file);
                 // Recreation areas
                 int rec_val = 12;
-                if (is_logging) logging_file << "_Recreation areas_ ";
+                if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": _Recreation areas_ ";
                 avg_clump += calcClumpDiff(analysisNum, rec_val, logging_file);
                 avg_clump /= 10;
             }
             obj[1] = avg_clump;
-            if (is_logging) logging_file << "Avg abs. diff clumpiness: " << avg_clump << "\n";
+            if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": Avg abs. diff clumpiness: " << avg_clump << "\n";
 
         }
         catch (...)
         {
             //Write error message and assume infeasible set of parameters and so assign worse OF values. (-1, 10)
-            if (is_logging) logging_file << "Was unable to calculate avg. clumpiness difference\n";
+            if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": Was unable to calculate avg. clumpiness difference\n";
             obj[0] = -1;
             obj[1] = 10;
             obj[2] = -1;
             return std::make_tuple(obj[0], obj[1], obj[2]);
 //            return (objectives_and_constrataints);
         }
-        if (is_logging) logging_file << "Timing for Calculating Clumpiness: " << std::endl;
-        if (is_logging) timer.reset();
+        if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": Timing for Calculating Clumpiness: " << std::endl;
+        if (params.is_logging) timer.reset();
 
 
         boost::filesystem::path save_replicate_path = save_path / ("replicate_" + std::to_string(rand_seed_id));
