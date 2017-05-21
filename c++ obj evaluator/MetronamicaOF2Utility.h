@@ -201,7 +201,7 @@ createCheckpoints(NSGAII<RNG> & optimiser, MetronamicaOF2Parameters & params, st
     boost::shared_ptr<MetricLinePlot> hvol_plot(new MetricLinePlot(hvol));
     boost::shared_ptr<MaxGenCheckpoint> maxgen(new MaxGenCheckpoint(params.max_gen));
     std::string mail_subj("Hypervolume of front from Metro calibrator ");
-    boost::shared_ptr<MailCheckpoint> mail(new MailCheckpoint(params.mail_hvol_gen, hvol, mail_subj));
+    boost::shared_ptr<MailCheckpoint> mail(new MailCheckpoint(params.mail_hvol_gen, hvol, mail_subj, params.save_dir.second / "mail_log.log"));
     std::string jeffs_address("jeffrey.newman@adelaide.edu.au");
     std::string charles_address("charles.p.newland@adelaide.edu.au");
     mail->addAddress(jeffs_address);

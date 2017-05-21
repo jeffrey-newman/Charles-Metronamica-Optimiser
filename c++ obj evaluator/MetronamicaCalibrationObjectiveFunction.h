@@ -646,7 +646,7 @@ public:
 
         if (params.is_logging)
         {
-            logging_file << "Evaluation started\n"
+            logging_file << "Evaluation started\n";
             logging_file << "number real decision vars : " << real_decision_vars.size() << "\n";
 
         }
