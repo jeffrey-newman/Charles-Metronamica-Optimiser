@@ -84,7 +84,7 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
     bool copyDir(   boost::filesystem::path const & source,
                     boost::filesystem::path const & destination )
     {
-//        std::cout << "Copying " << source << " to " << destination << std::endl;
+        std::cout << "Copying " << source << " to " << destination << std::endl;
         namespace fs = boost::filesystem;
         try
         {
@@ -155,6 +155,7 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
             boost::filesystem::path const & destination
     )
     {
+        std::cout << "Copying files in " << source << " to " << destination << std::endl;
         namespace fs = boost::filesystem;
         try
         {
@@ -288,8 +289,10 @@ public:
                                                   prefix_copied_path / "dosdevices");
                 boost::filesystem::path drive_c_link = prefix_copied_path / "dosdevices/c:";
                 boost::filesystem::create_directory_symlink(drive_c_copied_path, drive_c_link);
-                boost::filesystem::path drive_z_link = prefix_copied_path / "dosdevices/z:";
-                boost::filesystem::create_directory_symlink(boost::filesystem::path("/"), drive_z_link);
+
+                // Copied out because we do not actually need z drive and possibly this is causing problems on phoenix.
+//                boost::filesystem::path drive_z_link = prefix_copied_path / "dosdevices/z:";
+//                boost::filesystem::create_directory_symlink(boost::filesystem::path("/"), drive_z_link);
 
                 params.wine_prefix_path.second = prefix_copied_path;
                 params.wine_prefix_path.first = params.wine_prefix_path.second.string();
