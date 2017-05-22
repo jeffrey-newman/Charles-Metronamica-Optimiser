@@ -82,22 +82,23 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
 
     //Copies entire directory - so that each geoproject is running in a different directory.
     bool copyDir(   boost::filesystem::path const & source,
-                    boost::filesystem::path const & destination )
+                    boost::filesystem::path const & destination,
+                    std::ostream & logging)
     {
-        std::cout << "Copying " << source << " to " << destination << std::endl;
+        if(params.is_logging) logging << "Copying directory " << source << " to " << destination << std::endl;
         namespace fs = boost::filesystem;
         try
         {
             // Check whether the function call is valid
             if(!fs::exists(source) || !fs::is_directory(source))
             {
-                std::cerr << "Source directory " << source.string()
+                if(params.is_logging) logging << "Source directory " << source.string()
                           << " does not exist or is not a directory." << '\n';
                 return false;
             }
             if(fs::exists(destination))
             {
-                std::cerr << "Destination directory " << destination.string()
+                if(params.is_logging) logging << "Destination directory " << destination.string()
                           << " already exists." << '\n';
                 return false;
             }
@@ -105,14 +106,14 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
             fs::copy_directory(source, destination);
             if(!fs::exists(destination) || !fs::is_directory(destination))
             {
-                std::cerr << "Unable to create destination directory"
+                if(params.is_logging) logging << "Unable to create destination directory"
                           << destination.string() << '\n';
                 return false;
             }
         }
         catch(fs::filesystem_error const & e)
         {
-            std::cerr << e.what() << '\n';
+            if(params.is_logging) logging << e.what() << '\n';
             return false;
         }
         // Iterate through the source directory
@@ -125,11 +126,11 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
             try
             {
                 fs::path current(file->path());
-//                std::cout << "descending into: " << current << std::endl;
+                if(params.is_logging) logging << "descending into: " << current << std::endl;
                 if(fs::is_directory(current))
                 {
                     // Found directory: Recursion
-                    if(!copyDir(current, destination / current.filename()))
+                    if(!copyDir(current, destination / current.filename(), logging))
                     {
                         return false;
                     }
@@ -137,7 +138,7 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
                 else
                 {
                     // Found file: Copy
-//                    std::cout << "Copying " << current << " to " << destination / current.filename() << std::endl;
+                    if(params.is_logging) logging << "Copying " << current << " to " << destination / current.filename() << std::endl;
                     fs::copy_file(current, destination / current.filename());
                 }
             }
@@ -152,23 +153,24 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
     //Copies entire directory - so that each geoproject is running in a different directory.
     bool copyFilesInDir(
             boost::filesystem::path const & source,
-            boost::filesystem::path const & destination
+            boost::filesystem::path const & destination,
+            std::ostream & logging
     )
     {
-        std::cout << "Copying files in " << source << " to " << destination << std::endl;
+        if(params.is_logging) logging << "Copying files in " << source << " to " << destination << std::endl;
         namespace fs = boost::filesystem;
         try
         {
             // Check whether the function call is valid
             if(!fs::exists(source) || !fs::is_directory(source))
             {
-                std::cerr << "Source directory " << source.string()
+                if(params.is_logging) logging << "Source directory " << source.string()
                           << " does not exist or is not a directory." << '\n';
                 return false;
             }
             if(!fs::exists(destination) || !fs::is_directory(destination))
             {
-                std::cerr << "Destination directory " << destination.string()
+                if(params.is_logging) logging << "Destination directory " << destination.string()
                           << " does not exist or is not a directory." << '\n';
                 return false;
             }
@@ -176,14 +178,11 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
         }
         catch(fs::filesystem_error const & e)
         {
-            std::cerr << e.what() << '\n';
+            if(params.is_logging) logging << e.what() << '\n';
             return false;
         }
         // Iterate through the source directory
-        for(
-                fs::directory_iterator file(source);
-                file != fs::directory_iterator(); ++file
-                )
+        for(fs::directory_iterator file(source); file != fs::directory_iterator(); ++file )
         {
             try
             {
@@ -191,6 +190,7 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
                 if(!(fs::is_directory(current)))  // Should we be checking for other things?
                 {
                     // Found file: Copy
+                    if(params.is_logging) logging << "Copying " << current << " to " << destination / current.filename() << std::endl;
                     fs::copy_file(current, destination / current.filename());
                 }
             }
@@ -242,16 +242,38 @@ public:
                 eval_count(0),
                 num_constraints(0)
     {
+
+        std::ofstream logging_file;
+        if (params.is_logging)
+        {
+            std::string filename = "logWorker" + std::to_string(params.evaluator_id)
+                                       + "_Constructor_" + boost::posix_time::to_simple_string(
+                                               boost::posix_time::second_clock::local_time()) +
+                                       ".log";
+                this->logfile = params.save_dir.second / filename;
+
+            logging_file.open(this->logfile.string().c_str(), std::ios_base::app);
+            if (!logging_file.is_open())
+            {
+                params.is_logging = false;
+                std::cout << "attempt to log failed\n";
+            }
+        }
+        boost::scoped_ptr<boost::timer::auto_cpu_timer> t(nullptr);
+        if (params.is_logging) t.reset(new boost::timer::auto_cpu_timer(logging_file));
+
         // Set up wine prefixes and wine paths.
         using_wine = false;
         if (params.wine_cmd != "no_wine")
         {
+            if (params.is_logging) logging_file << "Using wine\n";
             using_wine = true;
             // Configure Wine prefix tp use.
             if (params.wine_prefix_path.first == "use_home_path")
             {
                 params.wine_prefix_path.second = boost::filesystem::path(userHomeDir()) / ".wine";
                 params.wine_prefix_path.first = params.wine_prefix_path.second.string();
+                if (params.is_logging) logging_file << "Using home path for wine prefix\nWine prefix is: " << params.wine_prefix_path.first << "\n";
             } else if (params.wine_prefix_path.first.substr(0, 8) == "generate")
             {
                 std::string prefix_template =
@@ -268,8 +290,8 @@ public:
                 boost::filesystem::path template_geonamica_binary_root = params.wine_prefix_path.first.substr(9);
                 boost::filesystem::path copy_geonamica_binary_root =
                         params.wine_prefix_path.second / "drive_c/Program Files (x86)/Geonamica";
-                copyDir(template_geonamica_binary_root, copy_geonamica_binary_root);
-
+                copyDir(template_geonamica_binary_root, copy_geonamica_binary_root, logging_file);
+                if (params.is_logging) logging_file << "Copying Geonamica Binary directory into prexisting wine prefix\nWarning: This is not supported\nWine prefix is: " << params.wine_prefix_path.first << "\n";
 
             } else if (params.wine_prefix_path.first.substr(0, 4) == "copy")
             {
@@ -279,11 +301,11 @@ public:
                         params.working_dir.second / prefix_copy_template);
                 boost::filesystem::path prefix_template_path = params.wine_prefix_path.first.substr(5);
                 boost::filesystem::create_directories(prefix_copied_path);
-                copyFilesInDir(prefix_template_path, prefix_copied_path);
+                copyFilesInDir(prefix_template_path, prefix_copied_path, logging_file);
 
                 boost::filesystem::path drive_c_copied_path = prefix_copied_path / "drive_c";
                 boost::filesystem::path drive_c_template_path = prefix_template_path / "drive_c";
-                copyDir(drive_c_template_path, drive_c_copied_path);
+                copyDir(drive_c_template_path, drive_c_copied_path, logging_file);
 
                 boost::filesystem::copy_directory(prefix_template_path / "dosdevices",
                                                   prefix_copied_path / "dosdevices");
@@ -297,14 +319,17 @@ public:
                 params.wine_prefix_path.second = prefix_copied_path;
                 params.wine_prefix_path.first = params.wine_prefix_path.second.string();
                 this->delete_wine_prefix_on_exit = true;
+                if (params.is_logging) logging_file << "Making new prefix based on template\nTemplate Wine prefix is: \nTemplate Wine prefix is: " << params.wine_prefix_path.first << "\n";
             }
             else if (params.wine_prefix_path.first.substr(0, 2) == "na")
             {
                 // Do nothing, no prefix path set.
+                if (params.is_logging) logging_file << "Wine prefix not needed; are we running on Windows?\n";
             }
             else
             {
                 pathify_mk(params.wine_prefix_path); //although should really already exist....
+                if (params.is_logging) logging_file << "Wine prefix is: " << params.wine_prefix_path.first << "\n";
             }
 
             // Check dosdevices path exists.
@@ -321,7 +346,8 @@ public:
             std::string temp_dir_template = "Metro_Cal_OF_worker" + std::to_string(params.evaluator_id) + "_%%%%-%%%%";
             params.working_dir.second = boost::filesystem::unique_path(params.working_dir.second / temp_dir_template);
 //            temp_dir_template = params.working_dir.second.filename().string();
-            copyDir(params.template_project_dir.second, params.working_dir.second);
+            if (params.is_logging) logging_file << "Copying Geoproject from : " << params.template_project_dir.second.string() << " to " << params.working_dir.second.string() << "\n";
+            copyDir(params.template_project_dir.second, params.working_dir.second, logging_file);
 
 
 
@@ -344,10 +370,12 @@ public:
                                 params.wine_drive_path.second = params.wine_drive_path.second / drive_option;
                                 params.wine_drive_path.first = params.wine_drive_path.second.string();
                                 delete_wine_dir_on_exit = true;
+                                if (params.is_logging) logging_file << "Wine path to geoproject directory is : " << params.working_dir.first << "\n";
+                                if (params.is_logging) logging_file << "Unix path of wine drive is : " << params.wine_drive_path.first << "\n";
                                 break;
                             }
                             if (drive_option == "b:")
-                                std::cerr << "Could not make a symlink to the working drive for winedrive.\n";
+                                logging_file << "Could not make a symlink to the working drive for winedrive.\n";
                         }
         }
 
@@ -948,7 +976,7 @@ public:
 //                boost::filesystem::path save_replicate_path = save_path / ("replicate_" + std::to_string(j));
             //            if (!boost::filesystem::exists(save_replicate_path)) boost::filesystem::create_directory(save_replicate_path);
             if (boost::filesystem::exists(save_replicate_path)) boost::filesystem::remove_all(save_replicate_path);
-            copyDir(params.working_dir.second, save_replicate_path);
+            copyDir(params.working_dir.second, save_replicate_path, logging_file);
             typedef std::tuple<boost::filesystem::path, boost::filesystem::path, boost::shared_ptr<ColourMapperClassified>,     boost::shared_ptr<MagickWriterClassified>, std::string >  ClassfdImgRqstTuple;
             typedef std::tuple<boost::filesystem::path, boost::filesystem::path, boost::shared_ptr<ColourMapperGradient>, boost::shared_ptr<MagickWriterGradient>, std::string >  LinGradntImgRqstTuple;
 
