@@ -997,9 +997,10 @@ public:
             obj_fs.close();
 
 
+            if (params.is_logging) logging_file << " Saving images..." << std::endl;
             BOOST_FOREACH(ClassfdImgRqstTuple & classified_img_request, classified_img_rqsts)
                         {
-
+                            if (params.is_logging) logging_file << " ... classified images..." << std::endl;
                             blink::raster::gdal_raster<int> map = blink::raster::open_gdal_raster<int>(std::get<0>(classified_img_request), GA_ReadOnly);
                             boost::filesystem::path save_img_path = save_replicate_path / std::get<4>(classified_img_request);
                             if (params.is_logging) logging_file << " Saving " << std::get<0>(classified_img_request) << " to " << save_img_path.string() << "\n";
@@ -1048,18 +1049,19 @@ public:
                                         }
                                     }
                                 }
-                                if (params.is_logging) logging_file << " Rendering now... \n";
+                                if (params.is_logging) logging_file << " Rendering now... " << std::endl;
                                 std::get<3>(classified_img_request)->render(out, save_img_path);
                             }
                             else
                             {
-                                if (params.is_logging) logging_file << " Rendering now... \n";
+                                if (params.is_logging) logging_file << " Rendering now... " << std::endl;
                                 std::get<3>(classified_img_request)->render(map, save_img_path);
                             }
 
                         }
             BOOST_FOREACH(LinGradntImgRqstTuple & lin_grad_img_request, lin_grdnt_img_rqsts)
                         {
+                            if (params.is_logging) logging_file << " ... gradient images..." << std::endl;
                             blink::raster::gdal_raster<double> map = blink::raster::open_gdal_raster<double>(std::get<0>(lin_grad_img_request), GA_ReadOnly);
                             boost::filesystem::path save_img_path = save_replicate_path / std::get<4>(lin_grad_img_request);
                             if ((std::get<1>(lin_grad_img_request).string() != "no_diff"))
@@ -1095,11 +1097,12 @@ public:
                                         std::get<2>(i) = map_val - diff_val;
                                     }
                                 }
+                                if (params.is_logging) logging_file << " Rendering now... " << std::endl;
                                 std::get<3>(lin_grad_img_request)->render(out, save_img_path);
                             }
                             else
                             {
-
+                                if (params.is_logging) logging_file << " Rendering now... " << std::endl;
                                 std::get<3>(lin_grad_img_request)->render(map, save_img_path);
                             }
 
