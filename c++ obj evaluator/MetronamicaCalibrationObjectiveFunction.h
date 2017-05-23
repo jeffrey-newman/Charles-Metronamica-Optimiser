@@ -997,7 +997,7 @@ public:
             obj_fs.close();
 
 
-            if (params.bypass_save)
+            if (!params.bypass_save)
             {
                 if (params.is_logging) logging_file << " Saving images..." << std::endl;
                 BOOST_FOREACH(ClassfdImgRqstTuple &classified_img_request, classified_img_rqsts) {
