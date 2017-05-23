@@ -996,8 +996,10 @@ public:
 
             BOOST_FOREACH(ClassfdImgRqstTuple & classified_img_request, classified_img_rqsts)
                         {
+
                             blink::raster::gdal_raster<int> map = blink::raster::open_gdal_raster<int>(std::get<0>(classified_img_request), GA_ReadOnly);
                             boost::filesystem::path save_img_path = save_replicate_path / std::get<4>(classified_img_request);
+                            if (params.is_logging) logging_file << " Saving " << std::get<0>(classified_img_request) << " to " << save_img_path.string() << "\n";
                             if ((std::get<1>(classified_img_request)).string() != "no_diff")
                             {
                                 boost::optional<int> map_no_data = map.noDataVal();
@@ -1043,11 +1045,12 @@ public:
                                         }
                                     }
                                 }
+                                if (params.is_logging) logging_file << " Rendering now... \n";
                                 std::get<3>(classified_img_request)->render(out, save_img_path);
                             }
                             else
                             {
-
+                                if (params.is_logging) logging_file << " Rendering now... \n";
                                 std::get<3>(classified_img_request)->render(map, save_img_path);
                             }
 
