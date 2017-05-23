@@ -653,6 +653,7 @@ public:
                     params.is_logging = false;
                     std::cout << "attempt to log failed\n";
                 }
+            logging_file << "Begin evaluation " << "\n";
         }
         boost::scoped_ptr<boost::timer::auto_cpu_timer> t(nullptr);
         if (params.is_logging) t.reset(new boost::timer::auto_cpu_timer(logging_file));
@@ -738,6 +739,7 @@ public:
             logging_file.close();
             if (previous_logfile != "unspecified") boost::filesystem::remove_all(previous_logfile);
             previous_logfile = logfile;
+            logging_file << "End evaluation " << "\n";
         }
 
         return (objectives_and_constraints);
@@ -750,6 +752,7 @@ public:
     std::tuple<double, double, double>
     calcMetrics(const std::vector<double>  & real_decision_vars, const std::vector<int> & int_decision_vars, std::ofstream & logging_file, int rand_seed_id, bool do_save, boost::filesystem::path save_path)
     {
+        logging_file << "Replicate " << rand_seed_id << ": Begin evaluation " << "\n";
         std::vector<double> obj(3, 0);
 
         boost::shared_ptr<boost::timer::auto_cpu_timer> timer;
@@ -1105,7 +1108,9 @@ public:
 
 
         boost::filesystem::remove(mod_geoproject_file_pth);
+        logging_file << "Replicate " << rand_seed_id << ": End evaluation " << "\n";
         return std::make_tuple(obj[0], obj[1], obj[2]);
+
 
     }
 
