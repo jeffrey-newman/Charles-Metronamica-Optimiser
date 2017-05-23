@@ -997,116 +997,104 @@ public:
             obj_fs.close();
 
 
-            if (params.is_logging) logging_file << " Saving images..." << std::endl;
-            BOOST_FOREACH(ClassfdImgRqstTuple & classified_img_request, classified_img_rqsts)
-                        {
-                            if (params.is_logging) logging_file << " ... classified images..." << std::endl;
-                            blink::raster::gdal_raster<int> map = blink::raster::open_gdal_raster<int>(std::get<0>(classified_img_request), GA_ReadOnly);
-                            boost::filesystem::path save_img_path = save_replicate_path / std::get<4>(classified_img_request);
-                            if (params.is_logging) logging_file << " Saving " << std::get<0>(classified_img_request) << " to " << save_img_path.string() << "\n";
-                            if ((std::get<1>(classified_img_request)).string() != "no_diff")
-                            {
-                                boost::optional<int> map_no_data = map.noDataVal();
-                                blink::raster::gdal_raster<int> diff = blink::raster::open_gdal_raster<int>(std::get<1>(classified_img_request), GA_ReadOnly);
-                                boost::optional<int> diff_no_data = diff.noDataVal();
-                                blink::raster::gdal_raster<int> out = blink::raster::create_temp_gdal_raster_from_model<int>(diff);
+            if (params.bypass_save)
+            {
+                if (params.is_logging) logging_file << " Saving images..." << std::endl;
+                BOOST_FOREACH(ClassfdImgRqstTuple &classified_img_request, classified_img_rqsts) {
+                                if (params.is_logging) logging_file << " ... classified images..." << std::endl;
+                                blink::raster::gdal_raster<int> map = blink::raster::open_gdal_raster<int>(
+                                        std::get<0>(classified_img_request), GA_ReadOnly);
+                                boost::filesystem::path save_img_path =
+                                        save_replicate_path / std::get<4>(classified_img_request);
+                                if (params.is_logging)
+                                    logging_file << " Saving " << std::get<0>(classified_img_request) << " to "
+                                                 << save_img_path.string() << "\n";
+                                if ((std::get<1>(classified_img_request)).string() != "no_diff") {
+                                    boost::optional<int> map_no_data = map.noDataVal();
+                                    blink::raster::gdal_raster<int> diff = blink::raster::open_gdal_raster<int>(
+                                            std::get<1>(classified_img_request), GA_ReadOnly);
+                                    boost::optional<int> diff_no_data = diff.noDataVal();
+                                    blink::raster::gdal_raster<int> out = blink::raster::create_temp_gdal_raster_from_model<int>(
+                                            diff);
 
-                                auto zip = blink::iterator::make_zip_range(std::ref(map), std::ref(diff), std::ref(out));
-                                if (map_no_data || diff_no_data)
-                                {
-                                    for (auto &&i : zip)
-                                    {
+                                    auto zip = blink::iterator::make_zip_range(std::ref(map), std::ref(diff),
+                                                                               std::ref(out));
+                                    if (map_no_data || diff_no_data) {
+                                        for (auto &&i : zip) {
 
-                                        const int map_val = std::get<0>(i);
-                                        const int diff_val = std::get<1>(i);
-                                        if(map_val == map_no_data.value() || diff_val == diff_no_data.value())
-                                        {
-                                            std::get<2>(i) = map_no_data.value();
+                                            const int map_val = std::get<0>(i);
+                                            const int diff_val = std::get<1>(i);
+                                            if (map_val == map_no_data.value() || diff_val == diff_no_data.value()) {
+                                                std::get<2>(i) = map_no_data.value();
+                                            } else if (map_val != diff_val) {
+                                                std::get<2>(i) = map_val;
+                                            } else {
+                                                std::get<2>(i) = map_no_data.value();
+                                            }
                                         }
-                                        else if(map_val != diff_val)
-                                        {
-                                            std::get<2>(i) = map_val;
-                                        }
-                                        else
-                                        {
-                                            std::get<2>(i) = map_no_data.value();
+                                    } else {
+                                        for (auto &&i : zip) {
+
+                                            const int map_val = std::get<0>(i);
+                                            const int diff_val = std::get<1>(i);
+                                            if (map_val != diff_val) {
+                                                std::get<2>(i) = map_val;
+                                            } else {
+                                                std::get<2>(i) = map_no_data.value();
+                                            }
                                         }
                                     }
-                                } else
-                                {
-                                    for (auto &&i : zip)
-                                    {
-
-                                        const int map_val = std::get<0>(i);
-                                        const int diff_val = std::get<1>(i);
-                                        if(map_val != diff_val)
-                                        {
-                                            std::get<2>(i) = map_val;
-                                        }
-                                        else
-                                        {
-                                            std::get<2>(i) = map_no_data.value();
-                                        }
-                                    }
+                                    if (params.is_logging) logging_file << " Rendering now... " << std::endl;
+                                    std::get<3>(classified_img_request)->render(out, save_img_path);
+                                } else {
+                                    if (params.is_logging) logging_file << " Rendering now... " << std::endl;
+                                    std::get<3>(classified_img_request)->render(map, save_img_path);
                                 }
-                                if (params.is_logging) logging_file << " Rendering now... " << std::endl;
-                                std::get<3>(classified_img_request)->render(out, save_img_path);
-                            }
-                            else
-                            {
-                                if (params.is_logging) logging_file << " Rendering now... " << std::endl;
-                                std::get<3>(classified_img_request)->render(map, save_img_path);
-                            }
 
-                        }
-            BOOST_FOREACH(LinGradntImgRqstTuple & lin_grad_img_request, lin_grdnt_img_rqsts)
-                        {
-                            if (params.is_logging) logging_file << " ... gradient images..." << std::endl;
-                            blink::raster::gdal_raster<double> map = blink::raster::open_gdal_raster<double>(std::get<0>(lin_grad_img_request), GA_ReadOnly);
-                            boost::filesystem::path save_img_path = save_replicate_path / std::get<4>(lin_grad_img_request);
-                            if ((std::get<1>(lin_grad_img_request).string() != "no_diff"))
-                            {
-                                boost::optional<double> map_no_data = map.noDataVal();
-                                blink::raster::gdal_raster<double> diff = blink::raster::open_gdal_raster<double>(std::get<1>(lin_grad_img_request), GA_ReadOnly);
-                                boost::optional<double> diff_no_data = diff.noDataVal();
-                                blink::raster::gdal_raster<double> out = blink::raster::create_temp_gdal_raster_from_model<double>(diff);
-                                auto zip = blink::iterator::make_zip_range(std::ref(map), std::ref(diff), std::ref(out));
-                                if (map_no_data || diff_no_data)
-                                {
-                                    for (auto &&i : zip)
-                                    {
+                            }
+                BOOST_FOREACH(LinGradntImgRqstTuple &lin_grad_img_request, lin_grdnt_img_rqsts) {
+                                if (params.is_logging) logging_file << " ... gradient images..." << std::endl;
+                                blink::raster::gdal_raster<double> map = blink::raster::open_gdal_raster<double>(
+                                        std::get<0>(lin_grad_img_request), GA_ReadOnly);
+                                boost::filesystem::path save_img_path =
+                                        save_replicate_path / std::get<4>(lin_grad_img_request);
+                                if ((std::get<1>(lin_grad_img_request).string() != "no_diff")) {
+                                    boost::optional<double> map_no_data = map.noDataVal();
+                                    blink::raster::gdal_raster<double> diff = blink::raster::open_gdal_raster<double>(
+                                            std::get<1>(lin_grad_img_request), GA_ReadOnly);
+                                    boost::optional<double> diff_no_data = diff.noDataVal();
+                                    blink::raster::gdal_raster<double> out = blink::raster::create_temp_gdal_raster_from_model<double>(
+                                            diff);
+                                    auto zip = blink::iterator::make_zip_range(std::ref(map), std::ref(diff),
+                                                                               std::ref(out));
+                                    if (map_no_data || diff_no_data) {
+                                        for (auto &&i : zip) {
 
-                                        const double map_val = std::get<0>(i);
-                                        const double diff_val = std::get<1>(i);
-                                        if(map_val == map_no_data.value() || diff_val == diff_no_data.value())
-                                        {
-                                            std::get<2>(i) = map_no_data.value();
+                                            const double map_val = std::get<0>(i);
+                                            const double diff_val = std::get<1>(i);
+                                            if (map_val == map_no_data.value() || diff_val == diff_no_data.value()) {
+                                                std::get<2>(i) = map_no_data.value();
+                                            } else {
+                                                std::get<2>(i) = map_val - diff_val;
+                                            }
                                         }
-                                        else
-                                        {
+                                    } else {
+                                        for (auto &&i : zip) {
+
+                                            const double map_val = std::get<0>(i);
+                                            const double diff_val = std::get<1>(i);
                                             std::get<2>(i) = map_val - diff_val;
                                         }
                                     }
-                                } else
-                                {
-                                    for (auto &&i : zip)
-                                    {
-
-                                        const double map_val = std::get<0>(i);
-                                        const double diff_val = std::get<1>(i);
-                                        std::get<2>(i) = map_val - diff_val;
-                                    }
+                                    if (params.is_logging) logging_file << " Rendering now... " << std::endl;
+                                    std::get<3>(lin_grad_img_request)->render(out, save_img_path);
+                                } else {
+                                    if (params.is_logging) logging_file << " Rendering now... " << std::endl;
+                                    std::get<3>(lin_grad_img_request)->render(map, save_img_path);
                                 }
-                                if (params.is_logging) logging_file << " Rendering now... " << std::endl;
-                                std::get<3>(lin_grad_img_request)->render(out, save_img_path);
-                            }
-                            else
-                            {
-                                if (params.is_logging) logging_file << " Rendering now... " << std::endl;
-                                std::get<3>(lin_grad_img_request)->render(map, save_img_path);
-                            }
 
-                        }
+                            }
+            }
         }
 
 

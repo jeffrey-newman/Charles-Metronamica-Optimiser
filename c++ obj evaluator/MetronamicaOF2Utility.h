@@ -67,6 +67,8 @@ struct MetronamicaOF2Parameters
 
     CmdLinePaths test_ind_file;
 
+    bool bypass_save;
+
 };
 
 std::string
@@ -129,6 +131,7 @@ int processOptions(int argc, char * argv[], MetronamicaOF2Parameters & params)
                 ("reseed,b", po::value<std::string>(&params.restart_pop_file.first)->default_value("no_seed"),"File with saved population as initial seed population for GA")
                 ("is-logging,j", po::value<bool>(&params.is_logging)->default_value(false), "TRUE or FALSE whether to log the evaluation")
                 ("test-inds-file", po::value<std::string>(&params.test_ind_file.first)->default_value("no_test"), "Path to file which contains individuals to test evaluation on")
+                ("bypass-save", po::value<bool>(&params.bypass_save)->default_value(false), "Bypass save as this is causing seg fault in Image Magick on Phoenix at the moment")
                 ("cfg-file,c", po::value<std::string>(), "can be specified with '@name', too");
 
 //r and z still available.
