@@ -280,7 +280,16 @@ public:
                         "Metro_Cal_OF_worker" + std::to_string(params.evaluator_id) + "_wine_prefix_%%%%-%%%%";
                 params.wine_prefix_path.second = boost::filesystem::unique_path(
                         params.working_dir.second / prefix_template);
+                int i = 2;
+                while(boost::filesystem::exists(params.wine_prefix_path.second))
+                {
+                    prefix_template =
+                            "Metro_Cal_OF_worker" + std::to_string(params.evaluator_id) + "_wine_prefix_%%%%-%%%%_v" + std::to_string(i++);
+                    params.wine_prefix_path.second = boost::filesystem::unique_path(
+                            params.working_dir.second / prefix_template);
+                }
                 params.wine_prefix_path.first = params.wine_prefix_path.second.string();
+
                 std::stringstream cmd;
                 cmd << "WINEPREFIX=" << params.wine_prefix_path.second.string().c_str() << " " << params.wine_cmd << " winecfg";
                 int return_val = system(cmd.str().c_str());
@@ -299,6 +308,15 @@ public:
                         "Metro_Cal_OF_worker" + std::to_string(params.evaluator_id) + "_wine_prefix_%%%%-%%%%";
                 boost::filesystem::path prefix_copied_path = boost::filesystem::unique_path(
                         params.working_dir.second / prefix_copy_template);
+                int i = 2;
+                while(boost::filesystem::exists(prefix_copied_path))
+                {
+                    prefix_copy_template =
+                            "Metro_Cal_OF_worker" + std::to_string(params.evaluator_id) + "_wine_prefix_%%%%-%%%%_v" + std::to_string(i++);
+                    prefix_copied_path = boost::filesystem::unique_path(
+                            params.working_dir.second / prefix_copy_template);
+                }
+
                 boost::filesystem::path prefix_template_path = params.wine_prefix_path.first.substr(5);
                 boost::filesystem::create_directories(prefix_copied_path);
                 copyFilesInDir(prefix_template_path, prefix_copied_path, logging_file);
@@ -345,6 +363,13 @@ public:
             // Copy project directory into working directory
             std::string temp_dir_template = "Metro_Cal_OF_worker" + std::to_string(params.evaluator_id) + "_%%%%-%%%%";
             params.working_dir.second = boost::filesystem::unique_path(params.working_dir.second / temp_dir_template);
+            int i = 2;
+            while(boost::filesystem::exists(params.working_dir.second))
+            {
+                temp_dir_template = "Metro_Cal_OF_worker" + std::to_string(params.evaluator_id) + "_%%%%-%%%%_v" + std::to_string(i++);
+                params.working_dir.second = boost::filesystem::unique_path(params.working_dir.second / temp_dir_template);
+            }
+
 //            temp_dir_template = params.working_dir.second.filename().string();
             if (params.is_logging) logging_file << "Copying Geoproject from : " << params.template_project_dir.second.string() << " to " << params.working_dir.second.string() << "\n";
             copyDir(params.template_project_dir.second, params.working_dir.second, logging_file);
@@ -603,7 +628,15 @@ public:
         }
         else
         {
-            return boost::none;
+            std::this_thread::sleep_for (std::chrono::seconds(3));
+            if (boost::filesystem::exists(output_map))
+            {
+                return output_map;
+            }
+            else
+            {
+                return boost::none;
+            }
         }
     }
 
@@ -623,12 +656,6 @@ public:
         boost::filesystem::path initial_path = boost::filesystem::current_path();
         boost::filesystem::current_path(params.working_dir.second);
 
-        bool do_save = false;
-        if (save_path != "no_path") do_save = true;
-
-
-        if (do_save && !boost::filesystem::exists(save_path)) boost::filesystem::create_directory(save_path);
-
         std::ofstream logging_file;
         if (params.is_logging)
         {
@@ -647,14 +674,22 @@ public:
                 this->logfile = _logfile;
             }
 
-                logging_file.open(this->logfile.string().c_str(), std::ios_base::app);
-                if (!logging_file.is_open())
-                {
-                    params.is_logging = false;
-                    std::cout << "attempt to log failed\n";
-                }
-            logging_file << "Begin evaluation " << "\n";
+            logging_file.open(this->logfile.string().c_str(), std::ios_base::app);
+            if (!logging_file.is_open())
+            {
+                params.is_logging = false;
+                std::cout << "attempt to log failed\n";
+            }
+            logging_file << "Evaluation started\n";
+            logging_file << "number real decision vars : " << real_decision_vars.size() << "\n";
+
         }
+
+        bool do_save = false;
+        if (save_path != "no_path") do_save = true;
+        if (do_save && !boost::filesystem::exists(save_path)) boost::filesystem::create_directory(save_path);
+
+
         boost::scoped_ptr<boost::timer::auto_cpu_timer> t(nullptr);
         if (params.is_logging) t.reset(new boost::timer::auto_cpu_timer(logging_file));
 
@@ -675,13 +710,6 @@ public:
             obj[0] = 0; obj[1] = 0; obj[2] = 0;
         }
 
-
-        if (params.is_logging)
-        {
-            logging_file << "Evaluation started\n";
-            logging_file << "number real decision vars : " << real_decision_vars.size() << "\n";
-
-        }
 
         for (int j = 0; j < params.replicates; ++j)
         {
@@ -765,6 +793,13 @@ public:
         std::string extnsn = params.geoproj_file.second.extension().string();
         std::string mod_filename = params.geoproj_file.second.stem().string() + "_mod_rep" + std::to_string(rand_seed_id) + extnsn;
         boost::filesystem::path mod_geoproject_file_pth = params.geoproj_file.second.parent_path() / mod_filename;
+        int i = 2;
+        while (boost::filesystem::exists(mod_geoproject_file_pth))
+        {
+            mod_filename = params.geoproj_file.second.stem().string() + "_mod_rep" + std::to_string(rand_seed_id) + "_v" + std::to_string(i++) + extnsn;
+            mod_geoproject_file_pth = params.geoproj_file.second.parent_path() / mod_filename;
+
+        }
         boost::filesystem::copy_file(params.geoproj_file.second, mod_geoproject_file_pth);
         std::string mod_geoproject_file_str = params.working_dir.first + "\\" + mod_filename;
 
@@ -787,10 +822,10 @@ public:
         boost::optional<boost::filesystem::path> output_map = runMetro(mod_geoproject_file_str, logging_file);
         if (!output_map)
         {
+            std::this_thread::sleep_for (std::chrono::seconds(3));
             output_map = runMetro(mod_geoproject_file_str, logging_file);
             if (!output_map)
             {
-                std::this_thread::sleep_for (std::chrono::seconds(3));
                 //Write error message and assume infeasible set of parameters and so assign worse OF values. (-1, 10)
                 if (params.is_logging) logging_file << "Replicate " << rand_seed_id << ": Was unable to successfully run Metronamica on decision variables\n";
 
