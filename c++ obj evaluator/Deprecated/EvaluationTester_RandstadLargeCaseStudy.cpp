@@ -7,7 +7,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
 #include "MetronamicaOF2.hpp"
-#include "Pathify.hpp"
+#include "../Pathify.hpp"
 
 
 int main(int argc, char *argv[])

@@ -33,18 +33,31 @@ int main(int argc, char * argv[]) {
 
 
         // The random number generator
-        typedef std::mt19937 RNG;
-        unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-        RNG rng(seed);
+    typedef std::mt19937 RNG;
+    if (params.search_rand_seed == -1) params.search_rand_seed = std::chrono::system_clock::now().time_since_epoch().count();
+    RNG rng(params.search_rand_seed);
 
-        // The optimiser
+
+    // The optimiser
         NSGAII<RNG> optimiser(rng, metro_eval);
     std::vector<double> ref_point =  {-0.1, 1, -0.1};
     std::vector<double> unitise_point = {1,0, 1};
     createCheckpoints(optimiser, params, ref_point, unitise_point);
 
         // Initialise population
-        PopulationSPtr pop = intialisePopulationRandomDVAssignment(params.pop_size, metro_eval.getProblemDefinitions(), rng);
+    PopulationSPtr pop(new Population);
+    if (params.restart_pop_file_xml.first != "none")
+    {
+        pop = restore_population(params.pop_file_xml.second);
+    }
+    else if (params.restart_pop_file_txt.first != "none")
+    {
+        pop.reset(new Population(params.pop_file_txt.second, metro_eval.getProblemDefinitions()));
+    }
+    else
+    {
+        pop = intialisePopulationRandomDVAssignment(params.pop_size, metro_eval.getProblemDefinitions(), rng);
+    }
         optimiser.getRealMutationOperator().setMutationInverseDVSize(pop->at(0));
 //        SetMutationInverseDVSize(pop->at(0), optimiser.getRealMutationOperator());
 

@@ -55,8 +55,9 @@ int main(int argc, char * argv[]) {
 
         // The random number generator
         typedef std::mt19937 RNG;
-        unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-        RNG rng(seed);
+        if (params.search_rand_seed == -1) params.search_rand_seed = std::chrono::system_clock::now().time_since_epoch().count();
+        RNG rng(params.search_rand_seed);
+
 
         // The optimiser
         NSGAII<RNG> optimiser(rng, eval_server);
@@ -71,13 +72,17 @@ int main(int argc, char * argv[]) {
         // Initialise population
 
         PopulationSPtr pop(new Population);
-        if (params.restart_pop_file.first == "no_seed")
+        if (params.pop_file_xml.first != "none")
         {
-            pop = intialisePopulationRandomDVAssignment(params.pop_size, metro_eval.getProblemDefinitions(), rng);
+            pop = restore_population(params.pop_file_xml.second);
+        }
+        else if (params.pop_file_txt.first != "none")
+        {
+            pop.reset(new Population(params.pop_file_txt.second, metro_eval.getProblemDefinitions()));
         }
         else
         {
-            pop = restore_population(params.restart_pop_file.second);
+            pop = intialisePopulationRandomDVAssignment(params.pop_size, metro_eval.getProblemDefinitions(), rng);
         }
 
 

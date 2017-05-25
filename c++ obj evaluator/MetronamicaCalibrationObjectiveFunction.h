@@ -494,7 +494,7 @@ public:
         BOOST_FOREACH(StringTuple & lin_grad_save_map_pair, lin_grdnt_img_rqsts_tmp)
                     {
 //                        boost::shared_ptr<ColourMapperGradient> lin_grad_clr_map = parseColourMapLinearGradient(params.working_dir.second / std::get<0>(lin_grad_save_map_pair));
-                        boost::shared_ptr<ColourMapperGradient> lin_grad_clr_map = parseColourMapLinearGradient(params.working_dir.second / (lin_grad_save_map_pair[0]));
+                        boost::shared_ptr<ColourMapperGradient> lin_grad_clr_map = parseColourMapGradient(params.working_dir.second / (lin_grad_save_map_pair[0]));
                         boost::shared_ptr<MagickWriterGradient> lin_grad_map_prntr(new MagickWriterGradient(*lin_grad_clr_map));
                         boost::filesystem::path diff_map;
                         if(lin_grad_save_map_pair[2] == "no_diff")
@@ -805,11 +805,11 @@ public:
 
         if(case_t == SMALL_RANDSTAD)
         {
-            geoprojectEditSmallCaseStudy(mod_geoproject_file_pth, real_decision_vars, params.rand_seeds[rand_seed_id]);
+            geoprojectEditSmallCaseStudy(mod_geoproject_file_pth, real_decision_vars, params.metro_rand_seeds[rand_seed_id]);
         }
         else if(case_t == LARGE_RANDSTAD)
         {
-            geoprojectEditLargeCaseStudy(mod_geoproject_file_pth, real_decision_vars, params.rand_seeds[rand_seed_id]);
+            geoprojectEditLargeCaseStudy(mod_geoproject_file_pth, real_decision_vars, params.metro_rand_seeds[rand_seed_id]);
         }
 
         if (params.is_logging)
