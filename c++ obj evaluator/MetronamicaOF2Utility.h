@@ -47,7 +47,7 @@ struct MetronamicaOF2Parameters
     CmdLinePaths fks_coefficients_file;
     CmdLinePaths simulated_map_file;
     CmdLinePaths save_dir;
-    CmdLinePaths restart_pop_file;
+    CmdLinePaths pop_file_xml;
     std::vector<std::string> save_maps;
     bool is_logging = false;
     std::vector<MinOrMaxType> min_or_max; //vector of whether the objectives in the maps above are minimised or maximised.
@@ -63,9 +63,10 @@ struct MetronamicaOF2Parameters
 
     int evaluator_id;
 
-    std::vector<int> rand_seeds { 1000,1001,1002,1003,1004,1005,1006,1007,1008,1009, 1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020 };
+    std::vector<int> metro_rand_seeds { 1000,1001,1002,1003,1004,1005,1006,1007,1008,1009, 1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020 };
+    int search_rand_seed;
 
-    CmdLinePaths test_ind_file;
+    CmdLinePaths pop_file_txt;
 
     bool bypass_save;
 
@@ -128,10 +129,11 @@ int processOptions(int argc, char * argv[], MetronamicaOF2Parameters & params)
                 ("save-freq,q", po::value<int>(&params.save_freq)->default_value(1),"how often to save first front, hypervolume metric and population")
                 ("max-gen,y", po::value<int>(&params.max_gen)->default_value(500), "Maximum number of generations - termination condition")
                 ("replicates,i", po::value<int>(&params.replicates)->default_value(10), "Number of times to rerun Metronamica to account for stochasticity of model for each objective function evaluation")
-                ("reseed,b", po::value<std::string>(&params.restart_pop_file.first)->default_value("no_seed"),"File with saved population as initial seed population for GA")
+                ("pop-file-xml,b", po::value<std::string>(&params.pop_file_xml.first)->default_value("none"),"File with saved population as initial seed population for GA")
+                ("pop-file-txt", po::value<std::string>(&params.pop_file_txt.first)->default_value("none"), "Path to file which contains individuals to test evaluation on")
                 ("is-logging,j", po::value<bool>(&params.is_logging)->default_value(false), "TRUE or FALSE whether to log the evaluation")
-                ("test-inds-file", po::value<std::string>(&params.test_ind_file.first)->default_value("no_test"), "Path to file which contains individuals to test evaluation on")
                 ("bypass-save", po::value<bool>(&params.bypass_save)->default_value(false), "Bypass save as this is causing seg fault in Image Magick on Phoenix at the moment")
+                ("rng-seed", po::value<int>(&params.search_rand_seed)->default_value(-1), "Positive random number seed (integer) for use in the search (not Metronamica)")
                 ("cfg-file,c", po::value<std::string>(), "can be specified with '@name', too");
 
 //r and z still available.
@@ -167,9 +169,13 @@ int processOptions(int argc, char * argv[], MetronamicaOF2Parameters & params)
             pathify_mk(params.save_dir);
             pathify(params.template_project_dir);
 
-            if (params.restart_pop_file.first != "no_seed")
+            if (params.pop_file_xml.first != "none")
             {
-                pathify(params.restart_pop_file);
+                pathify(params.pop_file_xml);
+            }
+            if (params.pop_file_txt.first != "none")
+            {
+                pathify(params.pop_file_txt);
             }
         }
         catch (po::error &e)

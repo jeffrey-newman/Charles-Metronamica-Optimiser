@@ -7,16 +7,16 @@
       <config projectName="Charles-Metro-Cal" targetName="metro_lrgR_test" />
       <config projectName="Charles-Metro-Cal" targetName="metro_cal_ser_lrgR_3obj" />
       <config projectName="Charles-Metro-Cal" targetName="metro_cal_par_smR_3obj" />
-      <config projectName="Charles-Metro-Cal" targetName="metro_cal_ser_smR_3obj" />
       <config projectName="Charles-Metro-Cal" targetName="metro_cal_ser_smR_2obj" />
-      <config projectName="Charles-Metro-Cal" targetName="metro_cal_ser_lrgR_2obj" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_cal_ser_smR_3obj" />
       <config projectName="Charles-Metro-Cal" targetName="metro_cal_par_lrgR_2obj" />
+      <config projectName="Charles-Metro-Cal" targetName="metro_cal_ser_lrgR_2obj" />
       <config projectName="Charles-Metro-Cal" targetName="metro_cal_par_lrgR_3obj" />
     </generated>
   </component>
   <component name="CMakeSettings" ADDITIONAL_BUILD_OPTIONS="-j 2">
     <configurations>
-      <configuration CONFIG_NAME="Debug" GENERATION_DIR="$PROJECT_DIR$/../../build-cmake-clion-debug" />
+      <configuration CONFIG_NAME="Debug" GENERATION_DIR="$PROJECT_DIR$/../../build-cmake-debug-clion" />
     </configurations>
   </component>
   <component name="ChangeListManager">
@@ -25,6 +25,7 @@
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/../../cmake-build-debug-clion/" />
     <ignored path="$PROJECT_DIR$/../../build-cmake-clion-debug/" />
+    <ignored path="$PROJECT_DIR$/../../build-cmake-debug-clion/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,52 +44,108 @@
     <splitter split-orientation="horizontal" split-proportion="0.29784173">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Pathify.hpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Pathify.hpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4260">
-                  <caret line="213" column="50" lean-forward="false" selection-start-line="213" selection-start-column="50" selection-end-line="213" selection-end-column="50" />
+                <state relative-caret-position="1064">
+                  <caret line="243" column="0" lean-forward="false" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TestMetroOFSmall.cpp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/TestMetroOFSmall.cpp">
+          <file leaf-file-name="EvaluatePop_SmallCaseStudy_3Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/EvaluatePop_SmallCaseStudy_3Obj.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="660">
-                  <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+                <state relative-caret-position="561">
+                  <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TestMetroOFLarge.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/TestMetroOFLarge.cpp">
+          <file leaf-file-name="EvaluationTester_RandstadLargeCaseStudy.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Deprecated/EvaluationTester_RandstadLargeCaseStudy.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="460">
-                  <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+                <state relative-caret-position="1241">
+                  <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="GeoprojectManipSmallCaseStudy.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/GeoprojectManipSmallCaseStudy.h">
+          <file leaf-file-name="EvaluatePop_LargeCaseStudy_3Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/EvaluatePop_LargeCaseStudy_3Obj.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1614">
-                  <caret line="471" column="13" lean-forward="false" selection-start-line="471" selection-start-column="13" selection-end-line="471" selection-end-column="13" />
+                <state relative-caret-position="459">
+                  <caret line="27" column="3" lean-forward="false" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Population.hpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../../../Parallel-NSGAII/parallel-nsgaII-backend/Population.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-1513">
+                  <caret line="67" column="27" lean-forward="false" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Individual.hpp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../../../Parallel-NSGAII/parallel-nsgaII-backend/Individual.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="782">
+                  <caret line="107" column="72" lean-forward="false" selection-start-line="107" selection-start-column="72" selection-end-line="107" selection-end-column="72" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="TestMetroCalOF.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Deprecated/TestMetroCalOF.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#191#210#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="GetFirstFront_LargeCaseStudy.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Deprecated/GetFirstFront_LargeCaseStudy.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-112">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#190#209#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EvaluationTester_RandstadSmallCaseStudy.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Deprecated/EvaluationTester_RandstadSmallCaseStudy.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="544">
+                  <caret line="32" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MetronamicaCalibrationObjectiveFunction.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MetronamicaCalibrationObjectiveFunction.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="579">
+                  <caret line="811" column="93" lean-forward="false" selection-start-line="811" selection-start-column="93" selection-end-line="811" selection-end-column="93" />
+                  <folding>
+                    <marker date="1495678248583" expanded="true" signature="8955:10953" ph="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -100,18 +157,8 @@
           <file leaf-file-name="MainSer_SmallCaseStudy_3Obj.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy_3Obj.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="400">
-                  <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ColourMapperParsers.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../Raster2Image/Raster2Image/ColourMapperParsers.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="260">
-                  <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+                <state relative-caret-position="884">
+                  <caret line="52" column="48" lean-forward="false" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
                   <folding />
                 </state>
               </provider>
@@ -120,53 +167,59 @@
           <file leaf-file-name="MagickWriterClassified.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../../../Raster2Image/Raster2Image/MagickWriterClassified.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="560">
-                  <caret line="37" column="20" lean-forward="false" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+                <state relative-caret-position="1292">
+                  <caret line="76" column="52" lean-forward="false" selection-start-line="76" selection-start-column="52" selection-end-line="76" selection-end-column="52" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MetronamicaOF2Utility.h" pinned="false" current-in-tab="false">
+          <file leaf-file-name="MainSer_LargeCaseStudy_2Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MainSer_LargeCaseStudy_2Obj.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="612">
+                  <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainSer_LargeCaseStudy_3Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MainSer_LargeCaseStudy_3Obj.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="765">
+                  <caret line="45" column="20" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainSer_SmallCaseStudy_2Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy_2Obj.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="578">
+                  <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MetronamicaOF2Utility.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/MetronamicaOF2Utility.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="235">
-                  <caret line="140" column="9" lean-forward="true" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
+                <state relative-caret-position="119">
+                  <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="shared_ptr.hpp" pinned="false" current-in-tab="false">
-            <entry file="file:///usr/include/boost/smart_ptr/shared_ptr.hpp">
+          <file leaf-file-name="MainPar_LargCaseStudy_2Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MainPar_LargCaseStudy_2Obj.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="593">
-                  <caret line="359" column="13" lean-forward="false" selection-start-line="359" selection-start-column="13" selection-end-line="359" selection-end-column="13" />
+                <state relative-caret-position="1099">
+                  <caret line="78" column="24" lean-forward="false" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
                   <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MailCheckpoint.hpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../Parallel-NSGAII/parallel-nsgaII-backend/Checkpoints/MailCheckpoint.hpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1200">
-                  <caret line="60" column="71" lean-forward="false" selection-start-line="60" selection-start-column="71" selection-end-line="60" selection-end-column="71" />
-                  <folding>
-                    <element signature="e#55#72#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MetronamicaCalibrationObjectiveFunction.h" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/MetronamicaCalibrationObjectiveFunction.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="273">
-                  <caret line="1035" column="13" lean-forward="true" selection-start-line="1035" selection-start-column="13" selection-end-line="1035" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#179#198#0" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -174,28 +227,30 @@
           <file leaf-file-name="MainPar_LargeCaseStudy_3Obj.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/MainPar_LargeCaseStudy_3Obj.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="593">
-                  <caret line="62" column="11" lean-forward="false" selection-start-line="62" selection-start-column="11" selection-end-line="62" selection-end-column="11" />
+                <state relative-caret-position="1343">
+                  <caret line="79" column="24" lean-forward="false" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#191#225#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainPar_SmallCaseStudy_2Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MainPar_SmallCaseStudy_2Obj.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="731">
+                  <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="parse.hpp" pinned="false" current-in-tab="false">
-            <entry file="file:///usr/include/boost/spirit/home/qi/parse.hpp">
+          <file leaf-file-name="MainPar_SmallCaseStudy_3Obj.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MainPar_SmallCaseStudy_3Obj.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="593">
-                  <caret line="40" column="4" lean-forward="false" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ReadInMap.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/ReadInMap.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
-                  <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+                <state relative-caret-position="595">
+                  <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="105" selection-end-column="43" />
                   <folding />
                 </state>
               </provider>
@@ -207,7 +262,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>MAP_SIMULATED</find>
       <find>marsc</find>
       <find>metrocal</find>
       <find>objT</find>
@@ -237,6 +291,7 @@
       <find>logging_file</find>
       <find>copy</find>
       <find>working_dir</find>
+      <find>seed</find>
     </findStrings>
     <replaceStrings>
       <replace>-100</replace>
@@ -266,24 +321,30 @@
         <option value="$PROJECT_DIR$/Pathify.hpp" />
         <option value="$PROJECT_DIR$/GeoprojectManipSmallCaseStudy.h" />
         <option value="$PROJECT_DIR$/GeoprojectManipBigCaseStudy.h" />
-        <option value="$PROJECT_DIR$/MainSer_SmallCaseStudy_2Obj.cpp" />
-        <option value="$PROJECT_DIR$/MainPar_SmallCaseStudy_3Obj.cpp" />
-        <option value="$PROJECT_DIR$/MainPar_LargCaseStudy_2Obj.cpp" />
-        <option value="$PROJECT_DIR$/MainPar_LargeCaseStudy_3Obj.cpp" />
-        <option value="$PROJECT_DIR$/MainSer_SmallCaseStudy_3Obj.cpp" />
-        <option value="$PROJECT_DIR$/MainSer_LargeCaseStudy_2Obj.cpp" />
-        <option value="$PROJECT_DIR$/MainPar_SmallCaseStudy_2Obj.cpp" />
         <option value="$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Population.hpp" />
-        <option value="$PROJECT_DIR$/MainSer_LargeCaseStudy_3Obj.cpp" />
-        <option value="$PROJECT_DIR$/TestMetroOFLarge.cpp" />
-        <option value="$PROJECT_DIR$/TestMetroOFSmall.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Individual.hpp" />
         <option value="$PROJECT_DIR$/../../../Raster2Image/Raster2Image/ColourMapperParsers.h" />
         <option value="$PROJECT_DIR$/../../../Parallel-NSGAII/parallel-nsgaII-backend/Checkpoints/MailCheckpoint.hpp" />
         <option value="$PROJECT_DIR$/../../../Raster2Image/Raster2Image/MagickWriterClassified.h" />
+        <option value="$PROJECT_DIR$/ProcessMetroCalibrationParetoFront.cpp" />
+        <option value="$PROJECT_DIR$/TestMetroOFSmall.cpp" />
+        <option value="$PROJECT_DIR$/TestMetroOFLarge.cpp" />
+        <option value="$PROJECT_DIR$/Deprecated/GetFirstFront_LargeCaseStudy.cpp" />
+        <option value="$PROJECT_DIR$/Deprecated/TestMetroCalOF.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/MetronamicaOF2Utility.h" />
+        <option value="$PROJECT_DIR$/EvaluatePop_SmallCaseStudy_3Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainSer_SmallCaseStudy_2Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainPar_SmallCaseStudy_2Obj.cpp" />
         <option value="$PROJECT_DIR$/MetronamicaCalibrationObjectiveFunction.h" />
+        <option value="$PROJECT_DIR$/EvaluatePop_LargeCaseStudy_3Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainSer_LargeCaseStudy_2Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainSer_LargeCaseStudy_3Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainPar_LargCaseStudy_2Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainPar_LargeCaseStudy_3Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainSer_SmallCaseStudy_3Obj.cpp" />
+        <option value="$PROJECT_DIR$/MainPar_SmallCaseStudy_3Obj.cpp" />
+        <option value="$PROJECT_DIR$/../../../Parallel-NSGAII/parallel-nsgaII-backend/Individual.hpp" />
       </list>
     </option>
   </component>
@@ -295,8 +356,9 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
+    <option name="x" value="1920" />
     <option name="width" value="3840" />
-    <option name="height" value="2160" />
+    <option name="height" value="2124" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -321,7 +383,7 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Developer" />
+              <option name="myItemId" value="Code-Projects" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -331,11 +393,29 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Developer" />
+              <option name="myItemId" value="Code-Projects" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Charels-Metronamica-Calibrator" />
+              <option name="myItemId" value="Parallel-NSGAII" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parallel-nsgaII-backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charles-Metro-Cal" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code-Projects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charles-Metronamica-Calibrator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -349,11 +429,11 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Developer" />
+              <option name="myItemId" value="Code-Projects" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Charels-Metronamica-Calibrator" />
+              <option name="myItemId" value="Charles-Metronamica-Calibrator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -371,11 +451,37 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Developer" />
+              <option name="myItemId" value="Code-Projects" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Charels-Metronamica-Calibrator" />
+              <option name="myItemId" value="Charles-Metronamica-Calibrator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charles-Metronamica-Optimiser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c++ obj evaluator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Deprecated" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charles-Metro-Cal" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Code-Projects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charles-Metronamica-Calibrator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -393,6 +499,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Deprecated" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -698,11 +807,12 @@
       <workItem from="1495052580077" duration="20165000" />
       <workItem from="1495155343610" duration="3791000" />
       <workItem from="1495311241501" duration="36833000" />
+      <workItem from="1495675939982" duration="4675000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129526000" />
+    <option name="totallyTimeSpent" value="135274000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -714,19 +824,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="3840" height="2160" extended-state="6" />
-    <editor active="true" />
+    <frame x="1920" y="0" width="3840" height="2124" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12018977" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12018977" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291866" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.448125" sideWeight="0.49730277" order="7" side_tool="false" content_ui="tabs" x="3930" y="1456" width="1196" height="1830" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.111056514" sideWeight="0.4986514" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.448125" sideWeight="0.49730277" order="7" side_tool="false" content_ui="tabs" x="3224" y="679" width="1920" height="1043" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11200402" sideWeight="0.4986514" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.381875" sideWeight="0.5026972" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08408013" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.084870845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" show_stripe_button="true" weight="0.3263019" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="3890" y="224" width="761" height="1044" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.3263019" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="3890" y="224" width="761" height="1044" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -770,25 +879,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/MapComparison_0_4.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="955">
-          <caret line="76" column="28" lean-forward="false" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../AHHZ/raster/raster/include/blink/raster/PngPlotter.h" />
-    <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/dt.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="119" column="15" lean-forward="false" selection-start-line="119" selection-start-column="14" selection-end-line="119" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MetronamicaOF2_RandstadLargeCaseStudy_2Obj.hpp" />
-    <entry file="file://$PROJECT_DIR$/MetronamicaOF2_RandstadLargeCaseStudy_3Obj.hpp" />
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/__config" />
     <entry file="file://$PROJECT_DIR$/MetronamicaOF2_RandstadSmallCaseStudy_3Obj.hpp" />
     <entry file="file://$PROJECT_DIR$/MetronamicaOF2_RandstadSmallCaseStudy_2Obj.hpp" />
     <entry file="file://$PROJECT_DIR$/Deprecated/MetronamicaOF2_RandstadLargeCaseStudy_3Obj.hpp">
@@ -808,76 +898,19 @@
     <entry file="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/utility" />
     <entry file="file:///opt/local/include/boost/function/function_template.hpp" />
     <entry file="file:///opt/local/include/boost/program_options/detail/parsers.hpp" />
-    <entry file="file://$PROJECT_DIR$/MainPar_SmallCaseStudy_3Obj.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="5" lean-forward="false" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPar_LargCaseStudy_2Obj.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPar_SmallCaseStudy_2Obj.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding>
-            <element signature="e#191#225#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/ClumpinessFast.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///opt/local/include/boost/proto/operators.hpp" />
-    <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy_2Obj.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Checkpoints/SignalCheckpoint.hpp" />
     <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Evaluation.hpp" />
     <entry file="file:///opt/local/include/boost/spirit/home/qi/parse.hpp" />
     <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/Population.hpp" />
-    <entry file="file://$PROJECT_DIR$/MainSer_LargeCaseStudy_3Obj.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///opt/local/include/ImageMagick-6/magick/magick-config.h" />
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4260">
-          <caret line="213" column="50" lean-forward="false" selection-start-line="213" selection-start-column="50" selection-end-line="213" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainSer_LargeCaseStudy_2Obj.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../Parallel NSGAII Backend/respository/parallel-nsgaII-backend/ProblemDefinitions.hpp" />
     <entry file="file:///opt/local/include/boost/filesystem/operations.hpp" />
     <entry file="file://$PROJECT_DIR$/../../../Raster2Png/src/ColourMapperParsers.h" />
@@ -886,7 +919,7 @@
     <entry file="file:///opt/local/include/boost/foreach.hpp" />
     <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/MapComparison_0_4.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5340">
+        <state relative-caret-position="4539">
           <caret line="267" column="0" lean-forward="false" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
           <folding />
         </state>
@@ -894,15 +927,14 @@
     </entry>
     <entry file="file:///usr/include/c++/6/bits/stl_vector.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
+        <state relative-caret-position="14008">
           <caret line="824" column="0" lean-forward="false" selection-start-line="824" selection-start-column="0" selection-end-line="824" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GeoprojectManipSmallCaseStudy.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1614">
+        <state relative-caret-position="8007">
           <caret line="471" column="13" lean-forward="false" selection-start-line="471" selection-start-column="13" selection-end-line="471" selection-end-column="13" />
           <folding />
         </state>
@@ -912,38 +944,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1481">
           <caret line="40" column="6" lean-forward="false" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy_3Obj.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../Raster2Image/Raster2Image/ColourMapperParsers.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
+        <state relative-caret-position="340">
           <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestMetroOFLarge.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Pathify.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -952,7 +967,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="593">
           <caret line="359" column="13" lean-forward="false" selection-start-line="359" selection-start-column="13" selection-end-line="359" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -960,75 +974,196 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
           <caret line="60" column="71" lean-forward="false" selection-start-line="60" selection-start-column="71" selection-end-line="60" selection-end-column="71" />
-          <folding>
-            <element signature="e#55#72#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../MapComparisonLib/MapComparisonLib/src/ReadInMap.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
+        <state relative-caret-position="578">
           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///usr/include/boost/spirit/home/qi/parse.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
+        <state relative-caret-position="680">
           <caret line="40" column="4" lean-forward="false" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Deprecated/EvaluationTester_RandstadLargeCaseStudy.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPar_LargeCaseStudy_3Obj.cpp">
+    <entry file="file://$PROJECT_DIR$/Deprecated/EvaluationTester_RandstadSmallCaseStudy.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="62" column="11" lean-forward="false" selection-start-line="62" selection-start-column="11" selection-end-line="62" selection-end-column="11" />
+        <state relative-caret-position="544">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../Raster2Image/Raster2Image/MagickWriterClassified.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="37" column="20" lean-forward="false" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+        <state relative-caret-position="1292">
+          <caret line="76" column="52" lean-forward="false" selection-start-line="76" selection-start-column="52" selection-end-line="76" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EvaluationTester_RandstadLargeCaseStudy.cpp">
+    <entry file="file://$PROJECT_DIR$/Deprecated/GetFirstFront_LargeCaseStudy.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="59" lean-forward="false" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
+        <state relative-caret-position="-112">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#190#209#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessMetroCalibrationParetoFront.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TestMetroOFSmall.cpp">
+    <entry file="file://$PROJECT_DIR$/Deprecated/TestMetroCalOF.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#191#210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1064">
+          <caret line="243" column="0" lean-forward="false" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MetronamicaOF2Utility.h">
+    <entry file="file://$PROJECT_DIR$/EvaluatePop_SmallCaseStudy_3Obj.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="140" column="9" lean-forward="true" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
+        <state relative-caret-position="561">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MetronamicaCalibrationObjectiveFunction.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="1035" column="13" lean-forward="true" selection-start-line="1035" selection-start-column="13" selection-end-line="1035" selection-end-column="13" />
+        <state relative-caret-position="579">
+          <caret line="811" column="93" lean-forward="false" selection-start-line="811" selection-start-column="93" selection-end-line="811" selection-end-column="93" />
           <folding>
-            <element signature="e#179#198#0" expanded="true" />
+            <marker date="1495678248583" expanded="true" signature="8955:10953" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainSer_LargeCaseStudy_2Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainSer_LargeCaseStudy_3Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="20" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy_2Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPar_LargCaseStudy_2Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1099">
+          <caret line="78" column="24" lean-forward="false" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPar_LargeCaseStudy_3Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="79" column="24" lean-forward="false" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
+          <folding>
+            <element signature="e#191#225#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPar_SmallCaseStudy_2Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainSer_SmallCaseStudy_3Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="48" lean-forward="false" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPar_SmallCaseStudy_3Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="105" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MetronamicaOF2Utility.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EvaluatePop_LargeCaseStudy_3Obj.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="3" lean-forward="false" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Parallel-NSGAII/parallel-nsgaII-backend/Population.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1513">
+          <caret line="67" column="27" lean-forward="false" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Parallel-NSGAII/parallel-nsgaII-backend/Individual.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="107" column="72" lean-forward="false" selection-start-line="107" selection-start-column="72" selection-end-line="107" selection-end-column="72" />
+          <folding />
         </state>
       </provider>
     </entry>

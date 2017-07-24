@@ -27,17 +27,27 @@ int main(int argc, char * argv[]) {
     params.evaluator_id = 0;
     MetronamicaCalibrationObjectiveFunction metro_eval(params, FKS_CLUMP_KAPPA, SMALL_RANDSTAD, real_lowerbounds, real_upperbounds, num_classes);
 
+
+    typedef std::mt19937 RNG;
+    if (params.search_rand_seed == -1) params.search_rand_seed = std::chrono::system_clock::now().time_since_epoch().count();
+    RNG rng(params.search_rand_seed);
+
+
+
     // Initialise population
-    PopulationSPtr pop;
-    if (params.test_ind_file.first == "no_test")
+    PopulationSPtr pop(new Population);
+    if (params.pop_file_xml.first != "none")
     {
-        std::cerr << "Must provide a file of solutions to test\n";
-        return EXIT_SUCCESS;
+        pop = restore_population(params.pop_file_xml.second);
+    }
+    else if (params.pop_file_txt.first != "none")
+    {
+        pop.reset(new Population(params.pop_file_txt.second, metro_eval.getProblemDefinitions()));
     }
     else
     {
-        pathify(params.test_ind_file);
-        pop.reset(new Population(params.test_ind_file.second, metro_eval.getProblemDefinitions()));
+        std::cerr << "Warning: a file of solutions was not give. evaluating a random population\n";
+        pop = intialisePopulationRandomDVAssignment(params.pop_size, metro_eval.getProblemDefinitions(), rng);
     }
 
     postProcessResults(metro_eval, pop, params);

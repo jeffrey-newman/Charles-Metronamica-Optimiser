@@ -77,13 +77,17 @@ int main(int argc, char * argv[]) {
         // Initialise population
 
         PopulationSPtr pop(new Population);
-        if (params.restart_pop_file.first == "no_seed")
+        if (params.pop_file_xml.first != "none")
         {
-            pop = intialisePopulationRandomDVAssignment(params.pop_size, metro_eval.getProblemDefinitions(), rng);
+            pop = restore_population(params.pop_file_xml.second);
+        }
+        else if (params.pop_file_txt.first != "none")
+        {
+            pop.reset(new Population(params.pop_file_txt.second, metro_eval.getProblemDefinitions()));
         }
         else
         {
-            pop = restore_population(params.restart_pop_file.second);
+            pop = intialisePopulationRandomDVAssignment(params.pop_size, metro_eval.getProblemDefinitions(), rng);
         }
 
 

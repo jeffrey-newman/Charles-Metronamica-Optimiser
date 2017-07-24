@@ -204,24 +204,24 @@ link_directories(${Boost_LIBRARY_DIRS})
 
 
 SET(Test_Metro_OF_Large_Src
-        TestMetroOFLarge.cpp
+        EvaluatePop_LargeCaseStudy_3Obj.cpp
         MetronamicaCalibrationObjectiveFunction.h
         Pathify.hpp
         )
 
 
 
-add_executable(metro_lrgR_test ${Test_Metro_OF_Large_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES}  ${PUGIXML-SRC})
-target_link_libraries(metro_lrgR_test ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+add_executable(eval_pop_lrgR_3obj ${Test_Metro_OF_Large_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES}  ${PUGIXML-SRC})
+target_link_libraries(eval_pop_lrgR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
-        target_link_libraries(metro_lrgR_test ${VTK_LIBRARIES})
+        target_link_libraries(eval_pop_lrgR_3obj ${VTK_LIBRARIES})
     else()
-        target_link_libraries(metro_lrgR_test vtkHybrid vtkWidgets)
+        target_link_libraries(eval_pop_lrgR_3obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(metro_lrgR_test PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+target_compile_definitions(eval_pop_lrgR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 ##################################################################################################################
 #                                                                                                                #
@@ -232,24 +232,24 @@ target_compile_definitions(metro_lrgR_test PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16
 
 
 SET(Test_Metro_OF_Small_Src
-        TestMetroOFSmall.cpp
+        EvaluatePop_SmallCaseStudy_3Obj.cpp
         MetronamicaCalibrationObjectiveFunction.h
         Pathify.hpp
         )
 
 
 
-add_executable(metro_smR_test ${Test_Metro_OF_Small_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES}  ${PUGIXML-SRC})
-target_link_libraries(metro_smR_test ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+add_executable(eval_pop_smR_3obj ${Test_Metro_OF_Small_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES}  ${PUGIXML-SRC})
+target_link_libraries(eval_pop_smR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
-        target_link_libraries(metro_smR_test ${VTK_LIBRARIES})
+        target_link_libraries(eval_pop_smR_3obj ${VTK_LIBRARIES})
     else()
-        target_link_libraries(metro_smR_test vtkHybrid vtkWidgets)
+        target_link_libraries(eval_pop_smR_3obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(metro_smR_test PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+target_compile_definitions(eval_pop_smR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 ##################################################################################################################
 #                                                                                                                #
