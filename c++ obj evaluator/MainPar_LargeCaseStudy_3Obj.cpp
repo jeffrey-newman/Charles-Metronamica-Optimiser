@@ -80,7 +80,7 @@ int main(int argc, char * argv[]) {
         {
             pop = restore_population(params.restart_pop_file.second);
         }
-
+        optimiser.getRealMutationOperator().setMutationInverseDVSize(pop->at(0));
 
 
 //        hvol(pop);
