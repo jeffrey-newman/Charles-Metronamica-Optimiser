@@ -9,7 +9,8 @@ find_package(GDAL)
 find_package(MPI REQUIRED)
 include_directories(${MPI_CXX_INCLUDE_PATH})
 include_directories("${CMAKE_SOURCE_DIR}/pugixml-1.7/src/")
-find_package(ImageMagick COMPONENTS Magick++ MagickWand MagickCore)
+#find_package(ImageMagick COMPONENTS Magick++ MagickWand MagickCore)
+find_package(OpenCV)
 
 SET(USE_VTK CACHE BOOL "Set to on to use vtk visualisation")
 IF (USE_VTK)
@@ -56,7 +57,7 @@ INCLUDE_DIRECTORIES(${AHHZ_RASTER_UTIL} )
 INCLUDE_DIRECTORIES(${AHHZ_RASTER_ITERATOR})
 INCLUDE_DIRECTORIES(${PARALLEL-NSGAII})
 INCLUDE_DIRECTORIES(${MCL})
-include_directories(${ImageMagick_Magick++_INCLUDE_DIR})
+#include_directories(${ImageMagick_Magick++_INCLUDE_DIR})
 include_directories(${RASTER2IMAGE})
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
@@ -70,7 +71,7 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 endif()
 
 # add path to FindPNGwriter.cmake, e.g. in the directory in cmake/
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/)
+#set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/)
 
 # find PNGwriter installation
 #   optional: prefer static libraries over shared ones (but do not force them)
@@ -78,27 +79,27 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/)
 
 #   optional: specifiy (minimal) version / require to find it
 #           (PNGwriter 0.5.6 REQUIRED)
-find_package(PNGwriter)
+#find_package(PNGwriter)
 
-if(PNGwriter_FOUND)
-  # where to find the pngwriter.h header file (-I include for your compiler)
-  include_directories(${PNGwriter_INCLUDE_DIRS})
-  # additional compiler flags (e.g. -DNO_FREETYPE)
-  add_definitions(${PNGwriter_DEFINITIONS})
-  # libraries to link against (including dependencies)
+#if(PNGwriter_FOUND)
+#  # where to find the pngwriter.h header file (-I include for your compiler)
+#  include_directories(${PNGwriter_INCLUDE_DIRS})
+#  # additional compiler flags (e.g. -DNO_FREETYPE)
+#  add_definitions(${PNGwriter_DEFINITIONS})
+#  # libraries to link against (including dependencies)
 #  set(LIBS ${LIBS} ${PNGwriter_LIBRARIES})
-endif(PNGwriter_FOUND)
+#endif(PNGwriter_FOUND)
 
 # add_executable(yourBinary ${SOURCES})
 # ...
 # target_link_libraries(yourBinary ${LIBS})
 
 
-SET(MagickLibs
-        ${ImageMagick_Magick++_LIBRARY}
-        ${ImageMagick_MagickWand_LIBRARY}
-        ${ImageMagick_MagickCore_LIBRARY}
-        )
+#SET(MagickLibs
+#        ${ImageMagick_Magick++_LIBRARY}
+#        ${ImageMagick_MagickWand_LIBRARY}
+#        ${ImageMagick_MagickCore_LIBRARY}
+#        )
 
 SET(PUGIXML-SRC
         "./pugixml-1.7/src/pugiconfig.hpp"
@@ -133,9 +134,10 @@ SET(prll-nsga-src
         "${PARALLEL-NSGAII}/NSGAII.hpp"
         "${PARALLEL-NSGAII}/ParallelEvaluator.hpp"
         "${PARALLEL-NSGAII}/Population.hpp"
+        "${PARALLEL-NSGAII}/Population.hpp"
         "${PARALLEL-NSGAII}/ProblemDefinitions.hpp"
         "${PARALLEL-NSGAII}/Selection.hpp"
-        "${PARALLEL-NSGAII}/Types.hpp"
+#        "${PARALLEL-NSGAII}/Types.hpp"
 
         "${PARALLEL-NSGAII}/Checkpoints/MaxGenCheckpoint.hpp"
         "${PARALLEL-NSGAII}/Checkpoints/SavePopCheckpoint.hpp"
@@ -143,11 +145,12 @@ SET(prll-nsga-src
         "${PARALLEL-NSGAII}/Checkpoints/PlotFronts.hpp"
         "${PARALLEL-NSGAII}/Checkpoints/colours.hpp"
         "${PARALLEL-NSGAII}/Checkpoints/ResetMutationXoverFlags.hpp"
-         "${PARALLEL-NSGAII}/Checkpoints/MailCheckpoint.hpp"
-         "${PARALLEL-NSGAII}/Checkpoints/SaveFirstFrontCheckpoint.hpp"
+        "${PARALLEL-NSGAII}/Checkpoints/MailCheckpoint.hpp"
+        "${PARALLEL-NSGAII}/Checkpoints/SaveFirstFrontCheckpoint.hpp"
         "${PARALLEL-NSGAII}/Checkpoints/SignalCheckpoint.hpp"
         "${PARALLEL-NSGAII}/Checkpoints/SignalHandler.cpp"
         "${PARALLEL-NSGAII}/Checkpoints/SignalHandler.hpp"
+        "${PARALLEL-NSGAII}/Checkpoints/BoolTerminateCheckpoint.hpp"
 
         "${PARALLEL-NSGAII}/Serialization/SerializeBoostPath.hpp"
         "${PARALLEL-NSGAII}/Serialization/SerializeRng.hpp"
@@ -212,7 +215,7 @@ SET(Test_Metro_OF_Large_Src
 
 
 add_executable(eval_pop_lrgR_3obj ${Test_Metro_OF_Large_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES}  ${PUGIXML-SRC})
-target_link_libraries(eval_pop_lrgR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+target_link_libraries(eval_pop_lrgR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${OpenCV_LIBS})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -221,7 +224,7 @@ IF(USE_VTK)
         target_link_libraries(eval_pop_lrgR_3obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(eval_pop_lrgR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+#target_compile_definitions(eval_pop_lrgR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 ##################################################################################################################
 #                                                                                                                #
@@ -240,7 +243,7 @@ SET(Test_Metro_OF_Small_Src
 
 
 add_executable(eval_pop_smR_3obj ${Test_Metro_OF_Small_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES}  ${PUGIXML-SRC})
-target_link_libraries(eval_pop_smR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+target_link_libraries(eval_pop_smR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${OpenCV_LIBS})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -249,7 +252,7 @@ IF(USE_VTK)
         target_link_libraries(eval_pop_smR_3obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(eval_pop_smR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+#target_compile_definitions(eval_pop_smR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 ##################################################################################################################
 #                                                                                                                #
@@ -266,7 +269,7 @@ SET(Metro_calib_parallel_Lrg_2Obj_Src
     )
 
 add_executable(metro_cal_par_lrgR_2obj ${Metro_calib_parallel_Lrg_2Obj_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility} ${MCL_SOURCES}  ${PUGIXML-SRC})
-target_link_libraries(metro_cal_par_lrgR_2obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+target_link_libraries(metro_cal_par_lrgR_2obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${OpenCV_LIBS})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -275,7 +278,7 @@ IF(USE_VTK)
         target_link_libraries(metro_cal_par_lrgR_2obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(metro_cal_par_lrgR_2obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+#target_compile_definitions(metro_cal_par_lrgR_2obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 ##################################################################################################################
 #                                                                                                                #
@@ -295,7 +298,7 @@ SET(Metro_calib_serial_Lrg_2Obj_Src
 
 
 add_executable(metro_cal_ser_lrgR_2obj ${Metro_calib_serial_Lrg_2Obj_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES}  ${PUGIXML-SRC})
-target_link_libraries(metro_cal_ser_lrgR_2obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+target_link_libraries(metro_cal_ser_lrgR_2obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${OpenCV_LIBS})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -304,7 +307,7 @@ IF(USE_VTK)
         target_link_libraries(metro_cal_ser_lrgR_2obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(metro_cal_ser_lrgR_2obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+#target_compile_definitions(metro_cal_ser_lrgR_2obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 
 
@@ -324,7 +327,7 @@ SET(Metro_calib_parallel_Small_2Obj_Src
         GeoprojectManipSmallCaseStudy.h)
 
 add_executable(metro_cal_par_smR_2obj ${Metro_calib_parallel_Small_2Obj_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility}  ${PUGIXML-SRC})
-target_link_libraries(metro_cal_par_smR_2obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+target_link_libraries(metro_cal_par_smR_2obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${OpenCV_LIBS})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -333,7 +336,7 @@ IF(USE_VTK)
         target_link_libraries(metro_cal_par_smR_2obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(metro_cal_par_smR_2obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+#target_compile_definitions(metro_cal_par_smR_2obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 ##################################################################################################################
 #                                                                                                                #
@@ -352,7 +355,7 @@ SET(Metro_calib_serial_Small_2obj_Src
 
 
 add_executable(metro_cal_ser_smR_2obj ${Metro_calib_serial_Small_2obj_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility}  ${PUGIXML-SRC})
-target_link_libraries(metro_cal_ser_smR_2obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+target_link_libraries(metro_cal_ser_smR_2obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${OpenCV_LIBS})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -361,7 +364,7 @@ IF(USE_VTK)
         target_link_libraries(metro_cal_ser_smR_2obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(metro_cal_ser_smR_2obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+#target_compile_definitions(metro_cal_ser_smR_2obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 ##################################################################################################################
 #                                                                                                                #
@@ -378,7 +381,7 @@ SET(Metro_calib_parallel_Lrg_3obj_Src
         )
 
 add_executable(metro_cal_par_lrgR_3obj ${Metro_calib_parallel_Lrg_3obj_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility} ${MCL_SOURCES}  ${PUGIXML-SRC})
-target_link_libraries(metro_cal_par_lrgR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+target_link_libraries(metro_cal_par_lrgR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${OpenCV_LIBS})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -387,7 +390,7 @@ IF(USE_VTK)
         target_link_libraries(metro_cal_par_lrgR_3obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(metro_cal_par_lrgR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+#target_compile_definitions(metro_cal_par_lrgR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 ##################################################################################################################
 #                                                                                                                #
@@ -407,7 +410,7 @@ SET(Metro_calib_serial_Lrg_3obj_Src
 
 
 add_executable(metro_cal_ser_lrgR_3obj ${Metro_calib_serial_Lrg_3obj_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${AHHZ_Raster_Utility}  ${MCL_SOURCES}  ${PUGIXML-SRC})
-target_link_libraries(metro_cal_ser_lrgR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+target_link_libraries(metro_cal_ser_lrgR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${OpenCV_LIBS})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -416,7 +419,7 @@ IF(USE_VTK)
         target_link_libraries(metro_cal_ser_lrgR_3obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(metro_cal_ser_lrgR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+#target_compile_definitions(metro_cal_ser_lrgR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 
 
@@ -437,7 +440,7 @@ SET(Metro_calib_parallel_Small_3obj_Src
         GeoprojectManipSmallCaseStudy.h)
 
 add_executable(metro_cal_par_smR_3obj ${Metro_calib_parallel_Small_3obj_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility}  ${PUGIXML-SRC})
-target_link_libraries(metro_cal_par_smR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+target_link_libraries(metro_cal_par_smR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${OpenCV_LIBS})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -446,7 +449,7 @@ IF(USE_VTK)
         target_link_libraries(metro_cal_par_smR_3obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(metro_cal_par_smR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+#target_compile_definitions(metro_cal_par_smR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 ##################################################################################################################
 #                                                                                                                #
@@ -465,7 +468,7 @@ SET(Metro_calib_serial_Small__3obbj_Src
 
 
 add_executable(metro_cal_ser_smR_3obj ${Metro_calib_serial_Small__3obbj_Src} ${prll-nsga-src} ${MCL_HEADERS} ${AHHZ_Raster} ${MCL_SOURCES} ${AHHZ_Raster_Utility}  ${PUGIXML-SRC})
-target_link_libraries(metro_cal_ser_smR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${PNGwriter_LIBRARIES} ${MagickLibs})
+target_link_libraries(metro_cal_ser_smR_3obj ${GDAL_LIBRARY} ${Boost_LIBRARIES} ${MPI_LIBRARIES} ${OpenCV_LIBS})
 
 IF(USE_VTK)
     if(VTK_LIBRARIES)
@@ -474,7 +477,7 @@ IF(USE_VTK)
         target_link_libraries(metro_cal_ser_smR_3obj vtkHybrid vtkWidgets)
     endif()
 ENDIF()
-target_compile_definitions(metro_cal_ser_smR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
+#target_compile_definitions(metro_cal_ser_smR_3obj PUBLIC "-DMAGICKCORE_QUANTUM_DEPTH=16" PUBLIC "-DMAGICKCORE_HDRI_ENABLE=0")
 
 #
 ###################################################################################################################
