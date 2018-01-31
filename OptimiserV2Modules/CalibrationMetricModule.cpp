@@ -120,15 +120,16 @@ CalibrationMetricModule::configure(const std::string _configure_string, const bo
     bool ok = boost::spirit::qi::phrase_parse(
         it, end, parser, boost::spirit::qi::space);
 
-    if (ok)
+//    if (ok)
+//    {
+//        if (do_log) logging_file << "Parsing calibration metrics config file successful\n";
+//        else std::cout << "Parsing calibration metrics config file successful\n";
+//    }
+    if(!ok)
     {
-        if (do_log) logging_file << "Parsing calibration metrics config file successful\n";
-        else std::cout << "Parsing calibration metrics config file successful\n";
-    }
-    else
-    {
-        if (do_log) logging_file << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
-        else std::cout << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
+//        if (do_log) logging_file << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
+//        else std::cout << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
+        std::cout << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
     }
 
 
