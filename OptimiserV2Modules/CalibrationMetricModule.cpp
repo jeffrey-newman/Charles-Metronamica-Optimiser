@@ -122,10 +122,15 @@ CalibrationMetricModule::configure(const std::string _configure_string, const bo
 
     if (ok)
     {
-        std::cout << "Parsing calibration metrics config file successful\n";
+        if (do_log) logging_file << "Parsing calibration metrics config file successful\n";
+        else std::cout << "Parsing calibration metrics config file successful\n";
     }
     else
-        std::cout << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
+    {
+        if (do_log) logging_file << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
+        else std::cout << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
+    }
+
 
 //    filePathMakeCheck(params.geoproj_file, _geoproj_dir);
 //    if (filePathMakeCheck(params.logging_file, _geoproj_dir)) params.is_logging = true;
@@ -197,7 +202,7 @@ CalibrationMetricModule::calculate(const std::vector<double> &_real_decision_var
                 obj->push_back(getFuzzyKappaSim(this->analysis_num));
                 if (do_log)
                 {
-                    std::cout << "FKS = " << obj->back() << "\n";
+                    if (do_log) logging_file  << "FKS = " << obj->back() << "\n";
                 }
             }
             if (params.do_calc_Kappa)
@@ -205,7 +210,7 @@ CalibrationMetricModule::calculate(const std::vector<double> &_real_decision_var
                 obj->push_back(getKappa(this->analysis_num));
                 if (do_log)
                 {
-                    std::cout << "Kappa = " << obj->back() << "\n";
+                    if (do_log) logging_file  << "Kappa = " << obj->back() << "\n";
                 }
             }
             if (params.do_calc_clump)
@@ -213,7 +218,7 @@ CalibrationMetricModule::calculate(const std::vector<double> &_real_decision_var
                 obj->push_back(getWeightedClumpinessDifference(this->analysis_num));
                 if (do_log)
                 {
-                    std::cout << "Area weighted average clumpiness difference = " << obj->back() << "\n";
+                    if (do_log) logging_file << "Area weighted average clumpiness difference = " << obj->back() << "\n";
                 }
             }
 
