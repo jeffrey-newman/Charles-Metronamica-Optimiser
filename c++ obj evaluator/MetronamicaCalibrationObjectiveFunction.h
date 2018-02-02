@@ -83,7 +83,7 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
     //Copies entire directory - so that each geoproject is running in a different directory.
     bool copyDir(   boost::filesystem::path const & source,
                     boost::filesystem::path const & destination,
-                    std::ostream & logging)
+                    std::ostream & logging = std::cout)
     {
         if(params.is_logging) logging << "Copying directory " << source << " to " << destination << std::endl;
         namespace fs = boost::filesystem;
@@ -130,10 +130,21 @@ class MetronamicaCalibrationObjectiveFunction : public ObjectivesAndConstraintsB
                 if(fs::is_directory(current))
                 {
                     // Found directory: Recursion
-                    if(!copyDir(current, destination / current.filename(), logging))
+                    if(params.is_logging)
                     {
-                        return false;
+                        if(!copyDir(current, destination / current.filename(), logging))
+                        {
+                            return false;
+                        }
                     }
+                    else
+                    {
+                        if(!copyDir(current, destination / current.filename()))
+                        {
+                            return false;
+                        }
+                    }
+
                 }
                 else
                 {
@@ -256,7 +267,7 @@ public:
             if (!logging_file.is_open())
             {
                 params.is_logging = false;
-                std::cout << "attempt to log failed\n";
+                std::cout << "attempt to log MetronamicaCalibrationObjectiveFunction constructor using " << this->logfile.string() << " failed\n";
             }
         }
         boost::scoped_ptr<boost::timer::auto_cpu_timer> t(nullptr);
@@ -299,7 +310,10 @@ public:
                 boost::filesystem::path template_geonamica_binary_root = params.wine_prefix_path.first.substr(9);
                 boost::filesystem::path copy_geonamica_binary_root =
                         params.wine_prefix_path.second / "drive_c/Program Files (x86)/Geonamica";
-                copyDir(template_geonamica_binary_root, copy_geonamica_binary_root, logging_file);
+
+                if (params.is_logging) copyDir(template_geonamica_binary_root, copy_geonamica_binary_root, logging_file);
+                else copyDir(template_geonamica_binary_root, copy_geonamica_binary_root);
+
                 if (params.is_logging) logging_file << "Copying Geonamica Binary directory into prexisting wine prefix\nWarning: This is not supported\nWine prefix is: " << params.wine_prefix_path.first << "\n";
 
             } else if (params.wine_prefix_path.first.substr(0, 4) == "copy")
@@ -323,7 +337,9 @@ public:
 
                 boost::filesystem::path drive_c_copied_path = prefix_copied_path / "drive_c";
                 boost::filesystem::path drive_c_template_path = prefix_template_path / "drive_c";
-                copyDir(drive_c_template_path, drive_c_copied_path, logging_file);
+
+                if (params.is_logging) copyDir(drive_c_template_path, drive_c_copied_path, logging_file);
+                else copyDir(drive_c_template_path, drive_c_copied_path);
 
                 boost::filesystem::copy_directory(prefix_template_path / "dosdevices",
                                                   prefix_copied_path / "dosdevices");
@@ -372,7 +388,9 @@ public:
 
 //            temp_dir_template = params.working_dir.second.filename().string();
             if (params.is_logging) logging_file << "Copying Geoproject from : " << params.template_project_dir.second.string() << " to " << params.working_dir.second.string() << "\n";
-            copyDir(params.template_project_dir.second, params.working_dir.second, logging_file);
+
+            if (params.is_logging) copyDir(params.template_project_dir.second, params.working_dir.second, logging_file);
+            else copyDir(params.template_project_dir.second, params.working_dir.second);
 
 
 
@@ -400,7 +418,10 @@ public:
                                 break;
                             }
                             if (drive_option == "b:")
-                                logging_file << "Could not make a symlink to the working drive for winedrive.\n";
+                            {
+                                if (params.is_logging) logging_file << "Could not make a symlink to the working drive for winedrive.\n";
+                            }
+
                         }
         }
 
@@ -528,6 +549,7 @@ public:
 
         // Make the problem defintions and intialise the objectives and constraints struct.
         prob_defs.reset(new ProblemDefinitions(real_lowerbounds, real_upperbounds, int_lowerbounds, int_upperbounds, params.min_or_max, num_constraints));
+        logging_file.close();
     }
 
     ~MetronamicaCalibrationObjectiveFunction()
@@ -678,7 +700,7 @@ public:
             if (!logging_file.is_open())
             {
                 params.is_logging = false;
-                std::cout << "attempt to log failed\n";
+                std::cout << "attempt to log MetronamicaCalibrationObjectiveFunction using " << this->logfile.string() << " failed\n";
             }
             logging_file << "Evaluation started\n";
             logging_file << "number real decision vars : " << real_decision_vars.size() << "\n";
@@ -1014,7 +1036,8 @@ public:
 //                boost::filesystem::path save_replicate_path = save_path / ("replicate_" + std::to_string(j));
             //            if (!boost::filesystem::exists(save_replicate_path)) boost::filesystem::create_directory(save_replicate_path);
             if (boost::filesystem::exists(save_replicate_path)) boost::filesystem::remove_all(save_replicate_path);
-            copyDir(params.working_dir.second, save_replicate_path, logging_file);
+            if (params.is_logging) copyDir(params.working_dir.second, save_replicate_path, logging_file);
+            else copyDir(params.working_dir.second, save_replicate_path);
             typedef std::tuple<boost::filesystem::path, boost::filesystem::path, boost::shared_ptr<ColourMapperClassified>,     boost::shared_ptr<MagickWriterClassified>, std::string >  ClassfdImgRqstTuple;
             typedef std::tuple<boost::filesystem::path, boost::filesystem::path, boost::shared_ptr<ColourMapperGradient>, boost::shared_ptr<MagickWriterGradient>, std::string >  LinGradntImgRqstTuple;
 

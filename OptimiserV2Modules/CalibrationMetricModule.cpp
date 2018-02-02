@@ -181,7 +181,7 @@ CalibrationMetricModule::calculate(const std::vector<double> &_real_decision_var
         if (!logging_file.is_open())
         {
             do_log = false;
-            std::cout << "attempt to log failed\n";
+            std::cout << "attempt to log CalibrationMetricModule using " << log_file_path.string() << " failed\n";
         }
     }
 
