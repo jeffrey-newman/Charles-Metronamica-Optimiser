@@ -808,7 +808,7 @@ geoprojectEditMadrid(const boost::filesystem::path & geoproj_path, const std::ve
     setAllValuesXMLNodeMadrid(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1990-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[7]", recmwe);
     setAllValuesXMLNodeMadrid(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Accessibility\"]/AccessibilityWithZABlock/Weight/value[@time=\"1990-Jan-01 00:00:00\"]/vector/elem[1]/vector/elem[8]", formwe);
 
-    //Seed setting done in Geonamica Optimiser Core, bnot in plugin.
+    //Seed setting done in Geonamica Optimiser Core, not in plugin.
 //    setAllValuesXMLNodeMadrid(doc, "/GeonamicaSimulation/model/modelBlocks/modelBlock[@library=\"\" and @name=\"MB_Land_use_model\"]/CompositeModelBlock/modelBlocks/modelBlock[@library=\"CAModel.dll\" and @name=\"MB_Total_potential\"]/TotalPotentialBlock/Seed", seed);
 
 
