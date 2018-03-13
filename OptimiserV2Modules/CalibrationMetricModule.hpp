@@ -26,6 +26,7 @@ struct CalibrationMetricsParams
 
     int num_classes;
     std::vector<int> classes_4_clump_calc;
+    std::vector<double> weights_4_clump_classes;
 
     std::string dummy;
 

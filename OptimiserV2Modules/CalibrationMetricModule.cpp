@@ -43,13 +43,15 @@ struct CalibratnMetricParser : boost::spirit::qi::grammar<IteratorType, SkipperT
                                     | (qi::lit("false") >> qi::attr(false))[ph::ref(params.do_calc_FKS) = qi::_1]);
         clump_class_idxs_parser  = qi::lit("clump_class_idxs") >> qi::lit("=") >>
                                                      (+(qi::int_))[ph::ref(params.classes_4_clump_calc) = qi::_1];
+        clump_class_weights_parser  = qi::lit("clump_class_weights") >> qi::lit("=") >>
+                                                               (+(qi::double_))[ph::ref(params.weights_4_clump_classes) = qi::_1];
 
 //        start =  logging_file_parser ^ output_map_file_parser ^ actual_map_file_parser
 //            ^ original_map_file_parser ^ masking_map_file_parser ^ fks_coefficients_file_parser ^ clump_class_idxs_parser
 //            ^ do_calc_FKS_parser ^ do_calc_Kappa_parser ^ do_calc_clump_parser;
         start =  *(logging_file_parser | output_map_file_parser | actual_map_file_parser
-            | original_map_file_parser | masking_map_file_parser | fks_coefficients_file_parser | clump_class_idxs_parser
-            | do_calc_FKS_parser | do_calc_Kappa_parser | do_calc_clump_parser);
+            | original_map_file_parser | masking_map_file_parser | fks_coefficients_file_parser | clump_class_idxs_parser | clump_class_weights_parser
+            | do_calc_FKS_parser | do_calc_Kappa_parser | do_calc_clump_parser );
 //        ^ geoproj_file_parser;
 //        qi::debug(start);
     }
@@ -67,6 +69,7 @@ struct CalibratnMetricParser : boost::spirit::qi::grammar<IteratorType, SkipperT
     boost::spirit::qi::rule<IteratorType, SkipperType > do_calc_Kappa_parser;
     boost::spirit::qi::rule<IteratorType, SkipperType > do_calc_clump_parser;
     boost::spirit::qi::rule<IteratorType, SkipperType > clump_class_idxs_parser;
+    boost::spirit::qi::rule<IteratorType, SkipperType > clump_class_weights_parser;
 
     boost::spirit::qi::rule<IteratorType, SkipperType> start;
 };
@@ -157,7 +160,19 @@ CalibrationMetricModule::configure(const std::string _configure_string, const bo
     loadTransitionFuzzyWeights(this->analysis_num, this->params.fks_coefficients_file.second.c_str());
     this->params.num_classes = maxClassVal(this->analysis_num);
     numClasses(this->analysis_num, this->params.num_classes);
-    setClumpinessDifferenceClasses(this->analysis_num, this->params.classes_4_clump_calc.size(), this->params.classes_4_clump_calc.data());
+    if (this->params.weights_4_clump_classes.size() == params.classes_4_clump_calc.size() )
+    {
+        setClumpinessDifferenceClassesAndWeights(this->analysis_num,
+                                       this->params.classes_4_clump_calc.size(),
+                                       this->params.classes_4_clump_calc.data(),
+                                        this->params.weights_4_clump_classes.data());
+    }
+    else
+    {
+        setClumpinessDifferenceClasses(this->analysis_num,
+                                       this->params.classes_4_clump_calc.size(),
+                                       this->params.classes_4_clump_calc.data());
+    }
     if (this->params.do_calc_FKS) min_or_max.push_back(MAXIMISATION);
     if (this->params.do_calc_Kappa) min_or_max.push_back(MAXIMISATION);
     if (this->params.do_calc_clump) min_or_max.push_back(MINIMISATION);
