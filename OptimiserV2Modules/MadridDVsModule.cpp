@@ -186,467 +186,403 @@ geoprojectEditMadrid(const boost::filesystem::path & geoproj_path, const std::ve
     double roaara1 = dvs[48];
     double roaara2 = dvs[49];
     double roaara3 = dvs[50];
-    // From PORt area to ARAble land
-    double porara1 = dvs[51];
-    double porara2 = dvs[52];
-    double porara3 = dvs[53];
     // From AIRports to ARAble land
-    double airara1 = dvs[54];
-    double airara2 = dvs[55];
-    double airara3 = dvs[56];
+    double airara1 = dvs[51];
+    double airara2 = dvs[52];
+    double airara3 = dvs[53];
     // From MINe and dump sites to ARAble land
-    double minara1 = dvs[57];
-    double minara2 = dvs[58];
-    double minara3 = dvs[59];
+    double minara1 = dvs[54];
+    double minara2 = dvs[55];
+    double minara3 = dvs[56];
     // From FREsh water to ARAble land
-    double freara1 = dvs[60];
-    double freara2 = dvs[61];
-    double freara3 = dvs[62];
-    // From MARine water to ARAble land
-    double marara1 = dvs[63];
-    double marara2 = dvs[64];
-    double marara3 = dvs[65];
+    double freara1 = dvs[57];
+    double freara2 = dvs[58];
+    double freara3 = dvs[59];
 
     // Permanent crops (Function Class 2)
     // From NATural areas to PERmanent crops
-    double natper1 = dvs[66];
-    double natper2 = dvs[67];
-    double natper3 = dvs[68];
+    double natper1 = dvs[60];
+    double natper2 = dvs[61];
+    double natper3 = dvs[62];
     // From ARAble land to PERmanent crops
-    double araper1 = dvs[69];
-    double araper2 = dvs[70];
-    double araper3 = dvs[71];
+    double araper1 = dvs[63];
+    double araper2 = dvs[64];
+    double araper3 = dvs[65];
     // From PAStures to PERmanent crops
-    double pasper1 = dvs[72];
-    double pasper2 = dvs[73];
-    double pasper3 = dvs[74];
+    double pasper1 = dvs[66];
+    double pasper2 = dvs[67];
+    double pasper3 = dvs[68];
     // From AGRicultural areas to PERmanent crops
-    double agrper1 = dvs[75];
-    double agrper2 = dvs[76];
-    double agrper3 = dvs[77];
+    double agrper1 = dvs[69];
+    double agrper2 = dvs[70];
+    double agrper3 = dvs[71];
     // From RESidential to PERmanent crops
-    double resper1 = dvs[78];
-    double resper2 = dvs[79];
-    double resper3 = dvs[80];
+    double resper1 = dvs[72];
+    double resper2 = dvs[73];
+    double resper3 = dvs[74];
     // From INDustry & commerce to PERmanent crops
-    double indper1 = dvs[81];
-    double indper2 = dvs[82];
-    double indper3 = dvs[83];
+    double indper1 = dvs[75];
+    double indper2 = dvs[76];
+    double indper3 = dvs[77];
     // From RECreation areas to PERmanent crops
-    double recper1 = dvs[84];
-    double recper2 = dvs[85];
-    double recper3 = dvs[86];
+    double recper1 = dvs[78];
+    double recper2 = dvs[79];
+    double recper3 = dvs[80];
     // From FORest to PERmanent crops
-    double forper1 = dvs[87];
-    double forper2 = dvs[88];
-    double forper3 = dvs[89];
+    double forper1 = dvs[81];
+    double forper2 = dvs[82];
+    double forper3 = dvs[83];
     // From ROAd & rail to PERmanent crops
-    double roaper1 = dvs[90];
-    double roaper2 = dvs[91];
-    double roaper3 = dvs[92];
-    // From PORt area to PERmanent crops
-    double porper1 = dvs[93];
-    double porper2 = dvs[94];
-    double porper3 = dvs[95];
+    double roaper1 = dvs[84];
+    double roaper2 = dvs[85];
+    double roaper3 = dvs[86];
     // From AIRports to PERmanent crops
-    double airper1 = dvs[96];
-    double airper2 = dvs[97];
-    double airper3 = dvs[98];
+    double airper1 = dvs[87];
+    double airper2 = dvs[88];
+    double airper3 = dvs[89];
     // From MINe & dump sites to PERmanent crops
-    double minper1 = dvs[99];
-    double minper2 = dvs[100];
-    double minper3 = dvs[101];
+    double minper1 = dvs[90];
+    double minper2 = dvs[91];
+    double minper3 = dvs[92];
     // From FREsh water to PERmanent crops
-    double freper1 = dvs[102];
-    double freper2 = dvs[103];
-    double freper3 = dvs[104];
-    // From MARine water to PERmanent crops
-    double marper1 = dvs[105];
-    double marper2 = dvs[106];
-    double marper3 = dvs[107];
+    double freper1 = dvs[93];
+    double freper2 = dvs[94];
+    double freper3 = dvs[95];
 
     // Pastures (Function Class 3)
     // From NATural areas to PAStures
-    double natpas1 = dvs[108];
-    double natpas2 = dvs[109];
-    double natpas3 = dvs[110];
+    double natpas1 = dvs[96];
+    double natpas2 = dvs[97];
+    double natpas3 = dvs[98];
     // From ARAble land to PAStures
-    double arapas1 = dvs[111];
-    double arapas2 = dvs[112];
-    double arapas3 = dvs[113];
+    double arapas1 = dvs[99];
+    double arapas2 = dvs[100];
+    double arapas3 = dvs[101];
     // From PERmanent crops to PAStures
-    double perpas1 = dvs[114];
-    double perpas2 = dvs[115];
-    double perpas3 = dvs[116];
+    double perpas1 = dvs[102];
+    double perpas2 = dvs[103];
+    double perpas3 = dvs[104];
     // From AGRicultural areas to PAStures
-    double agrpas1 = dvs[117];
-    double agrpas2 = dvs[118];
-    double agrpas3 = dvs[119];
+    double agrpas1 = dvs[105];
+    double agrpas2 = dvs[106];
+    double agrpas3 = dvs[107];
     // From RESidential to PAStures
-    double respas1 = dvs[120];
-    double respas2 = dvs[121];
-    double respas3 = dvs[122];
+    double respas1 = dvs[108];
+    double respas2 = dvs[109];
+    double respas3 = dvs[110];
     // From INDustry & commerce to PAStures
-    double indpas1 = dvs[123];
-    double indpas2 = dvs[124];
-    double indpas3 = dvs[125];
+    double indpas1 = dvs[111];
+    double indpas2 = dvs[112];
+    double indpas3 = dvs[113];
     // From RECreation areas to PAStures
-    double recpas1 = dvs[126];
-    double recpas2 = dvs[127];
-    double recpas3 = dvs[128];
+    double recpas1 = dvs[114];
+    double recpas2 = dvs[115];
+    double recpas3 = dvs[116];
     // From FORest to PAStures
-    double forpas1 = dvs[129];
-    double forpas2 = dvs[130];
-    double forpas3 = dvs[131];
+    double forpas1 = dvs[117];
+    double forpas2 = dvs[118];
+    double forpas3 = dvs[119];
     // From ROAd & rail to PAStures
-    double roapas1 = dvs[132];
-    double roapas2 = dvs[133];
-    double roapas3 = dvs[134];
-    // From PORt area to PAStures
-    double porpas1 = dvs[135];
-    double porpas2 = dvs[136];
-    double porpas3 = dvs[137];
+    double roapas1 = dvs[120];
+    double roapas2 = dvs[121];
+    double roapas3 = dvs[122];
     // From AIRports to PAStures
-    double airpas1 = dvs[138];
-    double airpas2 = dvs[139];
-    double airpas3 = dvs[140];
+    double airpas1 = dvs[123];
+    double airpas2 = dvs[124];
+    double airpas3 = dvs[125];
     // From MINe & dump sites to PAStures
-    double minpas1 = dvs[141];
-    double minpas2 = dvs[142];
-    double minpas3 = dvs[143];
+    double minpas1 = dvs[126];
+    double minpas2 = dvs[127];
+    double minpas3 = dvs[128];
     // From FREsh water to PAStures
-    double frepas1 = dvs[144];
-    double frepas2 = dvs[145];
-    double frepas3 = dvs[146];
-    // From MARine water to PAStures
-    double marpas1 = dvs[147];
-    double marpas2 = dvs[148];
-    double marpas3 = dvs[149];
+    double frepas1 = dvs[129];
+    double frepas2 = dvs[130];
+    double frepas3 = dvs[131];
 
     // Agricultural areas (Function Class 4)
     // From NATural areas to AGRicultural areas
-    double natagr1 = dvs[150];
-    double natagr2 = dvs[151];
-    double natagr3 = dvs[152];
+    double natagr1 = dvs[132];
+    double natagr2 = dvs[133];
+    double natagr3 = dvs[134];
     // From ARAble land to AGRicultural areas
-    double araagr1 = dvs[153];
-    double araagr2 = dvs[154];
-    double araagr3 = dvs[155];
+    double araagr1 = dvs[135];
+    double araagr2 = dvs[136];
+    double araagr3 = dvs[137];
     // From PERmanent crops to AGRicultural areas
-    double peragr1 = dvs[156];
-    double peragr2 = dvs[157];
-    double peragr3 = dvs[158];
+    double peragr1 = dvs[138];
+    double peragr2 = dvs[139];
+    double peragr3 = dvs[140];
     // From PAStures to AGRicultural areas
-    double pasagr1 = dvs[159];
-    double pasagr2 = dvs[160];
-    double pasagr3 = dvs[161];
+    double pasagr1 = dvs[141];
+    double pasagr2 = dvs[142];
+    double pasagr3 = dvs[143];
     // From RESidential to AGRicultural areas
-    double resagr1 = dvs[162];
-    double resagr2 = dvs[163];
-    double resagr3 = dvs[164];
+    double resagr1 = dvs[144];
+    double resagr2 = dvs[145];
+    double resagr3 = dvs[146];
     // From INDustry & commerce to AGRicultural areas
-    double indagr1 = dvs[165];
-    double indagr2 = dvs[166];
-    double indagr3 = dvs[167];
+    double indagr1 = dvs[147];
+    double indagr2 = dvs[148];
+    double indagr3 = dvs[149];
     // From RECreation areas to AGRicultural areas
-    double recagr1 = dvs[168];
-    double recagr2 = dvs[169];
-    double recagr3 = dvs[170];
+    double recagr1 = dvs[150];
+    double recagr2 = dvs[151];
+    double recagr3 = dvs[152];
     // From FORest to AGRicultural areas
-    double foragr1 = dvs[171];
-    double foragr2 = dvs[172];
-    double foragr3 = dvs[173];
+    double foragr1 = dvs[153];
+    double foragr2 = dvs[154];
+    double foragr3 = dvs[155];
     // From ROAd & rail to AGRicultural areas
-    double roaagr1 = dvs[174];
-    double roaagr2 = dvs[175];
-    double roaagr3 = dvs[176];
-    // From PORt area to AGRicultural areas
-    double poragr1 = dvs[177];
-    double poragr2 = dvs[178];
-    double poragr3 = dvs[179];
+    double roaagr1 = dvs[156];
+    double roaagr2 = dvs[157];
+    double roaagr3 = dvs[158];
     // From AIRports to AGRicultural areas
-    double airagr1 = dvs[180];
-    double airagr2 = dvs[181];
-    double airagr3 = dvs[182];
+    double airagr1 = dvs[159];
+    double airagr2 = dvs[160];
+    double airagr3 = dvs[161];
     // From MINe & dump sites to AGRicultural areas
-    double minagr1 = dvs[183];
-    double minagr2 = dvs[184];
-    double minagr3 = dvs[185];
+    double minagr1 = dvs[162];
+    double minagr2 = dvs[163];
+    double minagr3 = dvs[164];
     // From FREsh water to AGRicultural areas
-    double freagr1 = dvs[186];
-    double freagr2 = dvs[187];
-    double freagr3 = dvs[188];
-    // From MARine water to AGRicultural areas
-    double maragr1 = dvs[189];
-    double maragr2 = dvs[190];
-    double maragr3 = dvs[191];
+    double freagr1 = dvs[165];
+    double freagr2 = dvs[166];
+    double freagr3 = dvs[167];
 
     // Residential (Function Class 5)
     // From NATural areas to RESidential
-    double natres1 = dvs[192];
-    double natres2 = dvs[193];
-    double natres3 = dvs[194];
+    double natres1 = dvs[168];
+    double natres2 = dvs[169];
+    double natres3 = dvs[170];
     // From ARAble land to RESidential
-    double arares1 = dvs[195];
-    double arares2 = dvs[196];
-    double arares3 = dvs[197];
+    double arares1 = dvs[171];
+    double arares2 = dvs[172];
+    double arares3 = dvs[173];
     // From PERmanent crops to RESidential
-    double perres1 = dvs[198];
-    double perres2 = dvs[199];
-    double perres3 = dvs[200];
+    double perres1 = dvs[174];
+    double perres2 = dvs[175];
+    double perres3 = dvs[176];
     // From PAStures to RESidential
-    double pasres1 = dvs[201];
-    double pasres2 = dvs[202];
-    double pasres3 = dvs[203];
+    double pasres1 = dvs[177];
+    double pasres2 = dvs[178];
+    double pasres3 = dvs[179];
     // From AGRicultural areas to RESidential
-    double agrres1 = dvs[204];
-    double agrres2 = dvs[205];
-    double agrres3 = dvs[206];
+    double agrres1 = dvs[180];
+    double agrres2 = dvs[181];
+    double agrres3 = dvs[182];
     // From INDustry & commerce to RESidential
-    double indres1 = dvs[207];
-    double indres2 = dvs[208];
-    double indres3 = dvs[209];
+    double indres1 = dvs[183];
+    double indres2 = dvs[184];
+    double indres3 = dvs[185];
     // From RECreation areas to RESidential
-    double recres1 = dvs[210];
-    double recres2 = dvs[211];
-    double recres3 = dvs[212];
+    double recres1 = dvs[186];
+    double recres2 = dvs[187];
+    double recres3 = dvs[188];
     // From FORest to RESidential
-    double forres1 = dvs[213];
-    double forres2 = dvs[214];
-    double forres3 = dvs[215];
+    double forres1 = dvs[189];
+    double forres2 = dvs[190];
+    double forres3 = dvs[191];
     // From ROAd & rail to RESidential
-    double roares1 = dvs[216];
-    double roares2 = dvs[217];
-    double roares3 = dvs[218];
-    // From PORt area to RESidential
-    double porres1 = dvs[219];
-    double porres2 = dvs[220];
-    double porres3 = dvs[221];
+    double roares1 = dvs[192];
+    double roares2 = dvs[193];
+    double roares3 = dvs[194];
     // From AIRports to RESidential
-    double airres1 = dvs[222];
-    double airres2 = dvs[223];
-    double airres3 = dvs[224];
+    double airres1 = dvs[195];
+    double airres2 = dvs[196];
+    double airres3 = dvs[197];
     // From MINe & dump sites to RESidential
-    double minres1 = dvs[225];
-    double minres2 = dvs[226];
-    double minres3 = dvs[227];
+    double minres1 = dvs[198];
+    double minres2 = dvs[199];
+    double minres3 = dvs[200];
     // From FREsh water to RESidential
-    double freres1 = dvs[228];
-    double freres2 = dvs[229];
-    double freres3 = dvs[230];
-    // From MARine water to RESidential
-    double marres1 = dvs[231];
-    double marres2 = dvs[232];
-    double marres3 = dvs[233];
+    double freres1 = dvs[201];
+    double freres2 = dvs[202];
+    double freres3 = dvs[203];
 
     // Industry & commerce (Function class 6)
     // From NATural areas to INDustry & commerce
-    double natind1 = dvs[234];
-    double natind2 = dvs[235];
-    double natind3 = dvs[236];
+    double natind1 = dvs[204];
+    double natind2 = dvs[205];
+    double natind3 = dvs[206];
     // From ARAble land to INDustry & commerce
-    double araind1 = dvs[237];
-    double araind2 = dvs[238];
-    double araind3 = dvs[239];
+    double araind1 = dvs[207];
+    double araind2 = dvs[208];
+    double araind3 = dvs[209];
     // From PERmanent crops to INDustry & commerce
-    double perind1 = dvs[240];
-    double perind2 = dvs[241];
-    double perind3 = dvs[242];
+    double perind1 = dvs[210];
+    double perind2 = dvs[211];
+    double perind3 = dvs[212];
     // From PAStures to INDustry & commerce
-    double pasind1 = dvs[243];
-    double pasind2 = dvs[244];
-    double pasind3 = dvs[245];
+    double pasind1 = dvs[213];
+    double pasind2 = dvs[214];
+    double pasind3 = dvs[215];
     // From AGRicultural areas to INDustry & commerce
-    double agrind1 = dvs[246];
-    double agrind2 = dvs[247];
-    double agrind3 = dvs[248];
+    double agrind1 = dvs[216];
+    double agrind2 = dvs[217];
+    double agrind3 = dvs[218];
     // From RESidential to INDustry & commerce
-    double resind1 = dvs[249];
-    double resind2 = dvs[250];
-    double resind3 = dvs[251];
+    double resind1 = dvs[219];
+    double resind2 = dvs[220];
+    double resind3 = dvs[221];
     // From RECreation areas to INDustry & commerce
-    double recind1 = dvs[252];
-    double recind2 = dvs[253];
-    double recind3 = dvs[254];
+    double recind1 = dvs[222];
+    double recind2 = dvs[223];
+    double recind3 = dvs[224];
     // From FORest to INDustry & commerce
-    double forind1 = dvs[255];
-    double forind2 = dvs[256];
-    double forind3 = dvs[257];
+    double forind1 = dvs[225];
+    double forind2 = dvs[226];
+    double forind3 = dvs[227];
     // From ROAd & rail to INDustry & commerce
-    double roaind1 = dvs[258];
-    double roaind2 = dvs[259];
-    double roaind3 = dvs[260];
-    // From PORt area to INDustry & commerce
-    double porind1 = dvs[261];
-    double porind2 = dvs[262];
-    double porind3 = dvs[263];
+    double roaind1 = dvs[228];
+    double roaind2 = dvs[229];
+    double roaind3 = dvs[230];
     // From AIRports to INDustry & commerce
-    double airind1 = dvs[264];
-    double airind2 = dvs[265];
-    double airind3 = dvs[266];
+    double airind1 = dvs[231];
+    double airind2 = dvs[232];
+    double airind3 = dvs[233];
     // From MINe & dump sites to INDustry & commerce
-    double minind1 = dvs[267];
-    double minind2 = dvs[268];
-    double minind3 = dvs[269];
+    double minind1 = dvs[234];
+    double minind2 = dvs[235];
+    double minind3 = dvs[236];
     // From FREsh water to INDustry & commerce
-    double freind1 = dvs[270];
-    double freind2 = dvs[271];
-    double freind3 = dvs[272];
-    // From MARine water to INDustry & commerce
-    double marind1 = dvs[273];
-    double marind2 = dvs[274];
-    double marind3 = dvs[275];
+    double freind1 = dvs[237];
+    double freind2 = dvs[238];
+    double freind3 = dvs[239];
 
     // Recreation areas (Function class 7)
     // From NATural areas to RECreation areas
-    double natrec1 = dvs[276];
-    double natrec2 = dvs[277];
-    double natrec3 = dvs[278];
+    double natrec1 = dvs[240];
+    double natrec2 = dvs[241];
+    double natrec3 = dvs[242];
     // From ARAble land to RECreation areas
-    double ararec1 = dvs[279];
-    double ararec2 = dvs[280];
-    double ararec3 = dvs[281];
+    double ararec1 = dvs[243];
+    double ararec2 = dvs[244];
+    double ararec3 = dvs[245];
     // From PERmanent crops to RECreation areas
-    double perrec1 = dvs[282];
-    double perrec2 = dvs[283];
-    double perrec3 = dvs[284];
+    double perrec1 = dvs[246];
+    double perrec2 = dvs[247];
+    double perrec3 = dvs[248];
     // From PAStures to RECreation areas
-    double pasrec1 = dvs[285];
-    double pasrec2 = dvs[286];
-    double pasrec3 = dvs[287];
+    double pasrec1 = dvs[249];
+    double pasrec2 = dvs[250];
+    double pasrec3 = dvs[251];
     // From AGRicultural areas to RECreation areas
-    double agrrec1 = dvs[288];
-    double agrrec2 = dvs[289];
-    double agrrec3 = dvs[290];
+    double agrrec1 = dvs[252];
+    double agrrec2 = dvs[253];
+    double agrrec3 = dvs[254];
     // From RESidential to RECreation areas
-    double resrec1 = dvs[291];
-    double resrec2 = dvs[292];
-    double resrec3 = dvs[293];
+    double resrec1 = dvs[255];
+    double resrec2 = dvs[256];
+    double resrec3 = dvs[257];
     // From INDusty & commerce to RECreation areas
-    double indrec1 = dvs[294];
-    double indrec2 = dvs[295];
-    double indrec3 = dvs[296];
+    double indrec1 = dvs[258];
+    double indrec2 = dvs[259];
+    double indrec3 = dvs[260];
     // From FORest to RECreation areas
-    double forrec1 = dvs[297];
-    double forrec2 = dvs[298];
-    double forrec3 = dvs[299];
+    double forrec1 = dvs[261];
+    double forrec2 = dvs[262];
+    double forrec3 = dvs[263];
     // From ROAd & rail to RECreation areas
-    double roarec1 = dvs[300];
-    double roarec2 = dvs[301];
-    double roarec3 = dvs[302];
-    // From PORt area to RECreation areas
-    double porrec1 = dvs[303];
-    double porrec2 = dvs[304];
-    double porrec3 = dvs[305];
+    double roarec1 = dvs[264];
+    double roarec2 = dvs[265];
+    double roarec3 = dvs[266];
     // From AIRports to RECreation areas
-    double airrec1 = dvs[306];
-    double airrec2 = dvs[307];
-    double airrec3 = dvs[308];
+    double airrec1 = dvs[267];
+    double airrec2 = dvs[268];
+    double airrec3 = dvs[269];
     // From MINe & dump sites to RECreation areas
-    double minrec1 = dvs[309];
-    double minrec2 = dvs[310];
-    double minrec3 = dvs[311];
+    double minrec1 = dvs[270];
+    double minrec2 = dvs[271];
+    double minrec3 = dvs[272];
     // From FREsh water to RECreation areas
-    double frerec1 = dvs[312];
-    double frerec2 = dvs[313];
-    double frerec3 = dvs[314];
-    // From MARine water to RECreation areas
-    double marrec1 = dvs[315];
-    double marrec2 = dvs[316];
-    double marrec3 = dvs[317];
+    double frerec1 = dvs[273];
+    double frerec2 = dvs[274];
+    double frerec3 = dvs[275];
 
     // Forest (class 8)
     // From NATural areas to FORest
-    double natfor1 = dvs[318];
-    double natfor2 = dvs[319];
-    double natfor3 = dvs[320];
+    double natfor1 = dvs[276];
+    double natfor2 = dvs[277];
+    double natfor3 = dvs[278];
     // From ARAble land to FORest
-    double arafor1 = dvs[321];
-    double arafor2 = dvs[322];
-    double arafor3 = dvs[323];
+    double arafor1 = dvs[279];
+    double arafor2 = dvs[280];
+    double arafor3 = dvs[281];
     // From PERmanent crops to FORest
-    double perfor1 = dvs[324];
-    double perfor2 = dvs[325];
-    double perfor3 = dvs[326];
+    double perfor1 = dvs[282];
+    double perfor2 = dvs[283];
+    double perfor3 = dvs[284];
     // From PAStures to FORest
-    double pasfor1 = dvs[327];
-    double pasfor2 = dvs[328];
-    double pasfor3 = dvs[329];
+    double pasfor1 = dvs[285];
+    double pasfor2 = dvs[286];
+    double pasfor3 = dvs[287];
     // From AGRicultural areas to FORest
-    double agrfor1 = dvs[330];
-    double agrfor2 = dvs[331];
-    double agrfor3 = dvs[332];
+    double agrfor1 = dvs[288];
+    double agrfor2 = dvs[289];
+    double agrfor3 = dvs[290];
     // From RESidential to FORest
-    double resfor1 = dvs[333];
-    double resfor2 = dvs[334];
-    double resfor3 = dvs[335];
+    double resfor1 = dvs[291];
+    double resfor2 = dvs[292];
+    double resfor3 = dvs[293];
     // From INDusty & commerce to FORest
-    double indfor1 = dvs[336];
-    double indfor2 = dvs[337];
-    double indfor3 = dvs[338];
+    double indfor1 = dvs[294];
+    double indfor2 = dvs[295];
+    double indfor3 = dvs[296];
     // From RECreation areas to FORest
-    double recfor1 = dvs[339];
-    double recfor2 = dvs[340];
-    double recfor3 = dvs[341];
+    double recfor1 = dvs[297];
+    double recfor2 = dvs[298];
+    double recfor3 = dvs[299];
     // From ROAd & rail to FORest
-    double roafor1 = dvs[342];
-    double roafor2 = dvs[343];
-    double roafor3 = dvs[344];
-    // From PORt area to FORest
-    double porfor1 = dvs[345];
-    double porfor2 = dvs[346];
-    double porfor3 = dvs[347];
+    double roafor1 = dvs[300];
+    double roafor2 = dvs[301];
+    double roafor3 = dvs[302];
     // From AIRports to FORest
-    double airfor1 = dvs[348];
-    double airfor2 = dvs[349];
-    double airfor3 = dvs[350];
+    double airfor1 = dvs[303];
+    double airfor2 = dvs[304];
+    double airfor3 = dvs[305];
     // From MINe & dump sites to FORest
-    double minfor1 = dvs[351];
-    double minfor2 = dvs[352];
-    double minfor3 = dvs[353];
+    double minfor1 = dvs[306];
+    double minfor2 = dvs[307];
+    double minfor3 = dvs[308];
     // From FREsh water to FORest
-    double frefor1 = dvs[354];
-    double frefor2 = dvs[355];
-    double frefor3 = dvs[356];
-    // From MARine water to EXTensive grasslands
-    double marfor1 = dvs[357];
-    double marfor2 = dvs[358];
-    double marfor3 = dvs[359];
+    double frefor1 = dvs[309];
+    double frefor2 = dvs[310];
+    double frefor3 = dvs[311];
 
     //// Parameters - Accessibility distance decay
     // ARAble land
-    double aramdd = dvs[360];
+    double aramdd = dvs[312];
     // PERmanent crops
-    double permdd = dvs[361];
+    double permdd = dvs[313];
     // PAStures
-    double pasmdd = dvs[362];
+    double pasmdd = dvs[314];
     // AGRicultural areas
-    double agrmdd = dvs[363];
+    double agrmdd = dvs[315];
     // RESidential
-    double resmdd = dvs[364];
+    double resmdd = dvs[316];
     // INDustry & commerce
-    double indmdd = dvs[365];
+    double indmdd = dvs[317];
     // RECreation areas
-    double recmdd = dvs[366];
+    double recmdd = dvs[318];
     // FORest
-    double formdd = dvs[367];
+    double formdd = dvs[319];
     //// Parameters - Accessibility Weights
     // ARAble land
-    double aramwe = dvs[368];
+    double aramwe = dvs[320];
     // PERmanent crops
-    double permwe = dvs[369];
+    double permwe = dvs[321];
     // PAStures
-    double pasmwe = dvs[370];
+    double pasmwe = dvs[322];
     // AGRicultural areas
-    double agrmwe = dvs[371];
+    double agrmwe = dvs[323];
     // RESidential
-    double resmwe = dvs[372];
+    double resmwe = dvs[324];
     // INDustry & commerce
-    double indmwe = dvs[373];
+    double indmwe = dvs[325];
     // RECreation areas
-    double recmwe = dvs[374];
+    double recmwe = dvs[326];
     // FORest
-    double formwe = dvs[375];
+    double formwe = dvs[327];
 
     //	%Amend Self-influence Neighbourhood Rules
     // Arable land
@@ -677,11 +613,9 @@ geoprojectEditMadrid(const boost::filesystem::path & geoproj_path, const std::ve
     setExpRuleMadrid(doc, 8, 1, recara1, recara2, recara3);
     setExpRuleMadrid(doc, 9, 1, forara1, forara2, forara3);
     setExpRuleMadrid(doc, 10, 1, roaara1, roaara2, roaara3);
-    setExpRuleMadrid(doc, 11, 1, porara1, porara2, porara3);
     setExpRuleMadrid(doc, 12, 1, airara1, airara2, airara3);
     setExpRuleMadrid(doc, 13, 1, minara1, minara2, minara3);
     setExpRuleMadrid(doc, 14, 1, freara1, freara2, freara3);
-    setExpRuleMadrid(doc, 15, 1, marara1, marara2, marara3);
     // Permanent crops
     setExpRuleMadrid(doc, 1, 2, natper1, natper2, natper3);
     setExpRuleMadrid(doc, 2, 2, araper1, araper2, araper3);
@@ -692,11 +626,9 @@ geoprojectEditMadrid(const boost::filesystem::path & geoproj_path, const std::ve
     setExpRuleMadrid(doc, 8, 2, recper1, recper2, recper3);
     setExpRuleMadrid(doc, 9, 2, forper1, forper2, forper3);
     setExpRuleMadrid(doc, 10, 2, roaper1, roaper2, roaper3);
-    setExpRuleMadrid(doc, 11, 2, porper1, porper2, porper3);
     setExpRuleMadrid(doc, 12, 2, airper1, airper2, airper3);
     setExpRuleMadrid(doc, 13, 2, minper1, minper2, minper3);
     setExpRuleMadrid(doc, 14, 2, freper1, freper2, freper3);
-    setExpRuleMadrid(doc, 15, 2, marper1, marper2, marper3);
     // Pastures
     setExpRuleMadrid(doc, 1, 3, natpas1, natpas2, natpas3);
     setExpRuleMadrid(doc, 2, 3, arapas1, arapas2, arapas3);
@@ -707,11 +639,9 @@ geoprojectEditMadrid(const boost::filesystem::path & geoproj_path, const std::ve
     setExpRuleMadrid(doc, 8, 3, recpas1, recpas2, recpas3);
     setExpRuleMadrid(doc, 9, 3, forpas1, forpas2, forpas3);
     setExpRuleMadrid(doc, 10, 3, roapas1, roapas2, roapas3);
-    setExpRuleMadrid(doc, 11, 3, porpas1, porpas2, porpas3);
     setExpRuleMadrid(doc, 12, 3, airpas1, airpas2, airpas3);
     setExpRuleMadrid(doc, 13, 3, minpas1, minpas2, minpas3);
     setExpRuleMadrid(doc, 14, 3, frepas1, frepas2, frepas3);
-    setExpRuleMadrid(doc, 15, 3, marpas1, marpas2, marpas3);
     // Agricultural areas
     setExpRuleMadrid(doc, 1, 4, natagr1, natagr2, natagr3);
     setExpRuleMadrid(doc, 2, 4, araagr1, araagr2, araagr3);
@@ -722,11 +652,9 @@ geoprojectEditMadrid(const boost::filesystem::path & geoproj_path, const std::ve
     setExpRuleMadrid(doc, 8, 4, recagr1, recagr2, recagr3);
     setExpRuleMadrid(doc, 9, 4, foragr1, foragr2, foragr3);
     setExpRuleMadrid(doc, 10, 4, roaagr1, roaagr2, roaagr3);
-    setExpRuleMadrid(doc, 11, 4, poragr1, poragr2, poragr3);
     setExpRuleMadrid(doc, 12, 4, airagr1, airagr2, airagr3);
     setExpRuleMadrid(doc, 13, 4, minagr1, minagr2, minagr3);
     setExpRuleMadrid(doc, 14, 4, freagr1, freagr2, freagr3);
-    setExpRuleMadrid(doc, 15, 4, maragr1, maragr2, maragr3);
     // Residential
     setExpRuleMadrid(doc, 1, 5, natres1, natres2, natres3);
     setExpRuleMadrid(doc, 2, 5, arares1, arares2, arares3);
@@ -737,11 +665,9 @@ geoprojectEditMadrid(const boost::filesystem::path & geoproj_path, const std::ve
     setExpRuleMadrid(doc, 8, 5, recres1, recres2, recres3);
     setExpRuleMadrid(doc, 9, 5, forres1, forres2, forres3);
     setExpRuleMadrid(doc, 10, 5, roares1, roares2, roares3);
-    setExpRuleMadrid(doc, 11, 5, porres1, porres2, porres3);
     setExpRuleMadrid(doc, 12, 5, airres1, airres2, airres3);
     setExpRuleMadrid(doc, 13, 5, minres1, minres2, minres3);
     setExpRuleMadrid(doc, 14, 5, freres1, freres2, freres3);
-    setExpRuleMadrid(doc, 15, 5, marres1, marres2, marres3);
     // Industry & commerce
     setExpRuleMadrid(doc, 1, 6, natind1, natind2, natind3);
     setExpRuleMadrid(doc, 2, 6, araind1, araind2, araind3);
@@ -752,11 +678,9 @@ geoprojectEditMadrid(const boost::filesystem::path & geoproj_path, const std::ve
     setExpRuleMadrid(doc, 8, 6, recind1, recind2, recind3);
     setExpRuleMadrid(doc, 9, 6, forind1, forind2, forind3);
     setExpRuleMadrid(doc, 10, 6, roaind1, roaind2, roaind3);
-    setExpRuleMadrid(doc, 11, 6, porind1, porind2, porind3);
     setExpRuleMadrid(doc, 12, 6, airind1, airind2, airind3);
     setExpRuleMadrid(doc, 13, 6, minind1, minind2, minind3);
     setExpRuleMadrid(doc, 14, 6, freind1, freind2, freind3);
-    setExpRuleMadrid(doc, 15, 6, marind1, marind2, marind3);
     // Recreation areas
     setExpRuleMadrid(doc, 1, 7, natrec1, natrec2, natrec3);
     setExpRuleMadrid(doc, 2, 7, ararec1, ararec2, ararec3);
@@ -767,11 +691,9 @@ geoprojectEditMadrid(const boost::filesystem::path & geoproj_path, const std::ve
     setExpRuleMadrid(doc, 7, 7, indrec1, indrec2, indrec3);
     setExpRuleMadrid(doc, 9, 7, forrec1, forrec2, forrec3);
     setExpRuleMadrid(doc, 10, 7, roarec1, roarec2, roarec3);
-    setExpRuleMadrid(doc, 11, 7, porrec1, porrec2, porrec3);
     setExpRuleMadrid(doc, 12, 7, airrec1, airrec2, airrec3);
     setExpRuleMadrid(doc, 13, 7, minrec1, minrec2, minrec3);
     setExpRuleMadrid(doc, 14, 7, frerec1, frerec2, frerec3);
-    setExpRuleMadrid(doc, 15, 7, marrec1, marrec2, marrec3);
     // Forest
     setExpRuleMadrid(doc, 1, 8, natfor1, natfor2, natfor3);
     setExpRuleMadrid(doc, 2, 8, arafor1, arafor2, arafor3);
@@ -782,11 +704,9 @@ geoprojectEditMadrid(const boost::filesystem::path & geoproj_path, const std::ve
     setExpRuleMadrid(doc, 7, 8, indfor1, indfor2, indfor3);
     setExpRuleMadrid(doc, 8, 8, recfor1, recfor2, recfor3);
     setExpRuleMadrid(doc, 10, 8, roafor1, roafor2, roafor3);
-    setExpRuleMadrid(doc, 11, 8, porfor1, porfor2, porfor3);
     setExpRuleMadrid(doc, 12, 8, airfor1, airfor2, airfor3);
     setExpRuleMadrid(doc, 13, 8, minfor1, minfor2, minfor3);
     setExpRuleMadrid(doc, 14, 8, frefor1, frefor2, frefor3);
-    setExpRuleMadrid(doc, 15, 8, marfor1, marfor2, marfor3);
 
 //        % Amend Accessibility
 //    % Main roads distance decay
