@@ -26,7 +26,7 @@ struct CalibratnMetricParser : boost::spirit::qi::grammar<IteratorType, SkipperT
 
         string_parser_eol_delimited = qi::lexeme[+(qi::char_ - qi::eol)];
 //        geoproj_file_parser = qi::lit("geoproj_file") >> qi::lit("=") >> string_parser_eol_delimited[ph::ref(params.geoproj_file) = qi::_1];
-        logging_file_parser = qi::lit("logging_file") >> qi::lit("=") >> string_parser_eol_delimited[ph::ref(params.logging_file.first) = qi::_1];
+        logging_dir_parser = qi::lit("logging_dir") >> qi::lit("=") >> string_parser_eol_delimited[ph::ref(params.logging_dir.first) = qi::_1];
         output_map_file_parser = qi::lit("output_map_file") >> qi::lit("=") >> string_parser_eol_delimited[ph::ref(params.output_map_file.first) = qi::_1];
         actual_map_file_parser = qi::lit("actual_map_file") >> qi::lit("=") >> string_parser_eol_delimited[ph::ref(params.actual_map_file.first) = qi::_1];
         original_map_file_parser = qi::lit("original_map_file") >> qi::lit("=") >> string_parser_eol_delimited[ph::ref(params.original_map_file.first) = qi::_1];
@@ -46,10 +46,10 @@ struct CalibratnMetricParser : boost::spirit::qi::grammar<IteratorType, SkipperT
         clump_class_weights_parser  = qi::lit("clump_class_weights") >> qi::lit("=") >>
                                                                (+(qi::double_))[ph::ref(params.weights_4_clump_classes) = qi::_1];
 
-//        start =  logging_file_parser ^ output_map_file_parser ^ actual_map_file_parser
+//        start =  logging_dir_parser ^ output_map_file_parser ^ actual_map_file_parser
 //            ^ original_map_file_parser ^ masking_map_file_parser ^ fks_coefficients_file_parser ^ clump_class_idxs_parser
 //            ^ do_calc_FKS_parser ^ do_calc_Kappa_parser ^ do_calc_clump_parser;
-        start =  *(logging_file_parser | output_map_file_parser | actual_map_file_parser
+        start =  *(logging_dir_parser | output_map_file_parser | actual_map_file_parser
             | original_map_file_parser | masking_map_file_parser | fks_coefficients_file_parser | clump_class_idxs_parser | clump_class_weights_parser
             | do_calc_FKS_parser | do_calc_Kappa_parser | do_calc_clump_parser );
 //        ^ geoproj_file_parser;
@@ -59,7 +59,7 @@ struct CalibratnMetricParser : boost::spirit::qi::grammar<IteratorType, SkipperT
     CalibrationMetricsParams& params;
     boost::spirit::qi::rule<IteratorType, std::string(), SkipperType> string_parser_eol_delimited;
 //    boost::spirit::qi::rule<std::string::iterator, boost::spirit::qi::space_type > geoproj_file_parser;
-    boost::spirit::qi::rule<IteratorType, SkipperType > logging_file_parser;
+    boost::spirit::qi::rule<IteratorType, SkipperType > logging_dir_parser;
     boost::spirit::qi::rule<IteratorType, SkipperType > output_map_file_parser;
     boost::spirit::qi::rule<IteratorType, SkipperType > actual_map_file_parser;
     boost::spirit::qi::rule<IteratorType, SkipperType > original_map_file_parser;
@@ -125,24 +125,24 @@ CalibrationMetricModule::configure(const std::string _configure_string, const bo
 
 //    if (ok)
 //    {
-//        if (do_log) logging_file << "Parsing calibration metrics config file successful\n";
+//        if (do_log) logging_dir << "Parsing calibration metrics config file successful\n";
 //        else std::cout << "Parsing calibration metrics config file successful\n";
 //    }
     if(!ok)
     {
-//        if (do_log) logging_file << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
+//        if (do_log) logging_dir << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
 //        else std::cout << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
         std::cout << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
     }
 
 
 //    filePathMakeCheck(params.geoproj_file, _geoproj_dir);
-//    if (filePathMakeCheck(params.logging_file, _geoproj_dir)) params.is_logging = true;
-    if (!params.logging_file.first.empty())
+//    if (filePathMakeCheck(params.logging_dir, _geoproj_dir)) params.is_logging = true;
+    if (!params.logging_dir.first.empty())
     {
-        params.logging_file.first = params.logging_file.first + "_%%%%%%%_eval";
-        params.logging_file.second = boost::filesystem::path(params.logging_file.first);
-        params.logging_file.second = boost::filesystem::unique_path(params.logging_file.second);
+        params.logging_dir.first = params.logging_dir.first + "\log_map_metrics_%%%%%%%_eval";
+        params.logging_dir.second = boost::filesystem::path(params.logging_dir.first);
+        params.logging_dir.second = boost::filesystem::unique_path(params.logging_dir.second);
         params.is_logging = true;
     }
 
@@ -190,7 +190,7 @@ CalibrationMetricModule::calculate(const std::vector<double> &_real_decision_var
     bool do_log = params.is_logging;
     if (do_log)
     {
-        log_file_str = params.logging_file.second.string() + std::to_string(++eval_count) + ".log";
+        log_file_str = params.logging_dir.second.string() + std::to_string(++eval_count) + ".log";
         log_file_path = boost::filesystem::path(log_file_str);
         logging_file.open(log_file_path.string().c_str(), std::ios_base::app);
         if (!logging_file.is_open())
@@ -288,7 +288,7 @@ CalibrationMetricModule::calculate(const std::vector<double> &_real_decision_var
         if (logging_file.is_open()) logging_file.close();
         if (eval_count > 3)
         {
-            std::string previous_log_file_str = params.logging_file.second.string() + std::to_string(eval_count - 3) + ".log";
+            std::string previous_log_file_str = params.logging_dir.second.string() + std::to_string(eval_count - 3) + ".log";
             boost::filesystem::path previous_log_file_path(previous_log_file_str);
             try
             {
@@ -296,7 +296,7 @@ CalibrationMetricModule::calculate(const std::vector<double> &_real_decision_var
             }
             catch(...)
             {
-                 if (do_log) logging_file << "UInsuccessful remove of old log file in calibration metric evaluator module\n";
+                 if (do_log) logging_file << "Unsuccessful remove of old log file in calibration metric evaluator module\n";
             }
         }
     }

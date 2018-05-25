@@ -13,7 +13,7 @@ struct CalibrationMetricsParams
 {
     bool is_logging;
 //    CmdLinePaths geoproj_file;
-    CmdLinePaths logging_file;
+    CmdLinePaths logging_dir;
     CmdLinePaths output_map_file;
     CmdLinePaths actual_map_file;
     CmdLinePaths original_map_file;
