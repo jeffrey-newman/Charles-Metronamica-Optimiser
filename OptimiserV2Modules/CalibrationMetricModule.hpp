@@ -65,6 +65,7 @@ private:
     const double WORST_CLUMP_VAL = 10;
     std::vector<MinOrMaxType> min_or_max;
     int eval_count;
+    std::string log_file_prefix;
 
     bool
     filePathMakeCheck(CmdLinePaths & rel_file_path, const boost::filesystem::path& geoproj_dir);

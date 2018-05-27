@@ -140,10 +140,38 @@ CalibrationMetricModule::configure(const std::string _configure_string, const bo
 //    if (filePathMakeCheck(params.logging_dir, _geoproj_dir)) params.is_logging = true;
     if (!params.logging_dir.first.empty())
     {
-        params.logging_dir.first = params.logging_dir.first + "\log_map_metrics_%%%%%%%_eval";
         params.logging_dir.second = boost::filesystem::path(params.logging_dir.first);
-        params.logging_dir.second = boost::filesystem::unique_path(params.logging_dir.second);
-        params.is_logging = true;
+        if (!(boost::filesystem::exists(params.logging_dir.second)))
+        {
+            try
+            {
+                boost::filesystem::create_directories(params.logging_dir.second);
+                std::cout << "path " << params.logging_dir.second.string().c_str() << " did not exist, so created\n";
+            }
+            catch(boost::filesystem::filesystem_error& e)
+            {
+                std::cout << "Attempted to create " << params.logging_dir.second.string().c_str() << " but was unable\n";
+                std::cout << e.what() << "\n";
+                params.is_logging = false;
+            }
+        }
+
+        boost::filesystem::path prefix_gen(params.logging_dir.first);
+        prefix_gen = prefix_gen / "log_map_metrics_%%%%%%%_eval";
+        prefix_gen = boost::filesystem::unique_path(prefix_gen);
+        this->log_file_prefix = prefix_gen.stem().string();
+        try
+        {
+            boost::filesystem::create_directories(prefix_gen);
+            params.is_logging = true;
+        }
+        catch(boost::filesystem::filesystem_error& e)
+        {
+            std::cout << "Attempted to create as placeholder for map metric logging" << prefix_gen.c_str() << " but was unable\n";
+            std::cout << e.what() << "\n";
+            params.is_logging = false;
+        }
+
     }
 
     filePathMakeCheck(params.output_map_file, _geoproj_dir);
@@ -185,13 +213,12 @@ CalibrationMetricModule::calculate(const std::vector<double> &_real_decision_var
                                 const std::vector<int> &_int_decision_vars)
 {
     std::ofstream logging_file;
-    std::string log_file_str;
+//    std::string log_file_str;
     boost::filesystem::path log_file_path;
     bool do_log = params.is_logging;
     if (do_log)
     {
-        log_file_str = params.logging_dir.second.string() + std::to_string(++eval_count) + ".log";
-        log_file_path = boost::filesystem::path(log_file_str);
+        log_file_path = params.logging_dir.second / (log_file_prefix + std::to_string(++eval_count) + ".log");
         logging_file.open(log_file_path.string().c_str(), std::ios_base::app);
         if (!logging_file.is_open())
         {
@@ -288,8 +315,7 @@ CalibrationMetricModule::calculate(const std::vector<double> &_real_decision_var
         if (logging_file.is_open()) logging_file.close();
         if (eval_count > 3)
         {
-            std::string previous_log_file_str = params.logging_dir.second.string() + std::to_string(eval_count - 3) + ".log";
-            boost::filesystem::path previous_log_file_path(previous_log_file_str);
+            boost::filesystem::path previous_log_file_path = log_file_path = params.logging_dir.second / (log_file_prefix + std::to_string(eval_count - 3) + ".log");
             try
             {
                 if (boost::filesystem::exists(previous_log_file_path)) boost::filesystem::remove(previous_log_file_path);
