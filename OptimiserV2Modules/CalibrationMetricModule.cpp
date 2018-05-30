@@ -15,6 +15,7 @@
 #include <boost/spirit/include/phoenix_stl.hpp>
 #include <boost/fusion/include/adapt_struct.hpp>
 #include <boost/bind.hpp>
+#include <chrono>
 
 template <typename IteratorType, typename SkipperType>
 struct CalibratnMetricParser : boost::spirit::qi::grammar<IteratorType, SkipperType>
@@ -100,6 +101,7 @@ CalibrationMetricModule::filePathMakeCheck(CmdLinePaths & rel_file_path, const b
 void
 CalibrationMetricModule::configure(const std::string _configure_string, const boost::filesystem::path _geoproj_dir)
 {
+    std::this_thread::sleep_for(std::chrono::seconds{30});
 
     params.is_logging = false;
     params.do_calc_FKS = false;
@@ -132,6 +134,10 @@ CalibrationMetricModule::configure(const std::string _configure_string, const bo
     {
 //        if (do_log) logging_dir << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
 //        else std::cout << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
+        std::cout << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
+    }
+    if (it != end)
+    {
         std::cout << "Parsing calibration metrics config file failed at: '" << std::string(it,end) << "'\n";
     }
 
