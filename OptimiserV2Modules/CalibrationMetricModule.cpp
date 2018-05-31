@@ -101,7 +101,7 @@ CalibrationMetricModule::filePathMakeCheck(CmdLinePaths & rel_file_path, const b
 void
 CalibrationMetricModule::configure(const std::string _configure_string, const boost::filesystem::path _geoproj_dir)
 {
-    std::this_thread::sleep_for(std::chrono::seconds{30});
+//    std::this_thread::sleep_for(std::chrono::seconds{30});
 
     params.is_logging = false;
     params.do_calc_FKS = false;
