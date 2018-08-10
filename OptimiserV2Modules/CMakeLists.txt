@@ -149,6 +149,19 @@ add_library(madriddvmodule-seeded SHARED ${Madrid_DV_Module_Seeded})
 target_link_libraries(madriddvmodule-seeded ${Boost_LIBRARIES})
 
 
+SET(Madrid_DV_Module_Seeded_v2
+        MadridDVsModuleSeededv2.cpp
+        MadridDVsModuleSeededv2.hpp
+        "${GEONAMICA_OPTIMISATION_FRAMEWORK}/Modules/DVModules/DVModuleAPI.hpp"
+        ${PUGIXML-SRC}
+        )
+
+
+
+add_library(madriddvmodule-seeded-v2 SHARED ${Madrid_DV_Module_Seeded_v2})
+target_link_libraries(madriddvmodule-seeded-v2 ${Boost_LIBRARIES})
+
+
 SET(Madrid_DV_Module_All
         MadridDVsModuleAllNeighbourhoodRules.cpp
         MadridDVsModuleAllNeighbourhoodRules.hpp
